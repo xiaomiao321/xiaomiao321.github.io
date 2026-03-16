@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容">
+<meta property="og:type" content="website">
+<meta property="og:title" content="XiaoMiao&#39;s Blog">
+<meta property="og:url" content="https://xiaomiao321.github.io/index.html">
+<meta property="og:site_name" content="XiaoMiao&#39;s Blog">
+<meta property="og:description" content="XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xiaomiao321.github.io/img/avatar.png">
+<meta property="article:author" content="XiaoMiao">
+<meta property="article:tag" content="ESP32，嵌入式开发，Arduino,STM32,Git 教程,Linux，编程笔记，技术博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaomiao321.github.io/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "XiaoMiao's Blog",
+  "alternateName": [
+    "xiaomiao321.github.io"
+  ],
+  "url": "https://xiaomiao321.github.io/"
+}</script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://xiaomiao321.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-YEX7FDZ26Z"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-YEX7FDZ26Z')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-YEX7FDZ26Z', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'XiaoMiao\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://picsum.photos/1920/400);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div></div></nav><div id="site-info"><h1 id="site-title">XiaoMiao's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/13/2025-07-13-git-version-control-tutorial/" title="Git 版本控制入门教程">Git 版本控制入门教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-07-13T14:59:00.000Z" title="Created 2026-07-13 22:59:00">2026-07-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tools/">Tools</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tools/DevOps/">DevOps</a></span></div><div class="content">Git 版本控制入门教程一、什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。 二、创建版本库2.1 创建空目录mkdir learngit cd learngit  2.2 初始化为 Git 仓库git init  2.3 把文件添加到仓库git add README.txt  2.4 把文件提交到仓库git commit -m "wrote a readme file"   [!TIP]-m 后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。  commit 可以一次提交很多文件，所以你可以多次 add 不同的文件： git add file1.txt git add file2.txt file3.txt git commit -m "add 3 files."   [!NOTE]git add 命令实际上就是把要提交的所有修改放到暂存区（Stage），然后执行 git commit 就可以一次性把暂存区的所有修改提交到分支。  每次修改，如果不用 git add 到暂存区，...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/15/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-15T14:50:02.233Z" title="Created 2026-03-15 22:50:02">2026-03-15</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post$ hexo new "My New Post"  More info: Writing Run server$ hexo server  More info: Server Generate static files$ hexo generate  More info: Generating Deploy to remote sites$ hexo deploy  More info: Deployment </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-alarm-module/" title="闹钟模块 - 多组定时与持久化存储">闹钟模块 - 多组定时与持久化存储</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">一、引言闹钟是多功能时钟不可或缺的核心功能。本模块实现了一个强大且用户友好的闹钟系统，它允许用户创建、编辑和管理多达 10 组闹钟。所有设置都会被自动保存到 EEPROM 中，确保设备断电后信息不丢失。 二、实现思路2.1 数据结构与持久化数据结构：每个闹钟的核心信息被封装在一个 AlarmSetting 结构体中，包含时、分、重复日（使用位掩码表示）、启用状态以及一个用于防止当天重复触发的标志位。 持久化存储：为了实现掉电不丢数据，模块使用了 EEPROM。在初始化时，程序会检查 EEPROM 中是否存有特定的”魔数”。如果存在，则加载已保存的闹钟数据；如果不存在，则初始化一个空的闹钟列表并写入 EEPROM。 2.2 后台检查任务闹钟的触发逻辑在一个独立的 FreeRTOS 后台任务 Alarm_Check_Task 中运行。该任务每秒执行一次检查函数，负责：  获取当前时间 重置每日触发状态（在每天零点过后） 遍历与匹配所有已启用的闹钟 如果匹配成功且当天尚未触发过，则触发闹钟  2.3 响铃流程当闹钟触发时：  设置全局标志位 g_alarm_is_ringing = t...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-aiot-project-report/" title="智能物联网（AIot）系统设计大作业实验报告">智能物联网（AIot）系统设计大作业实验报告</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Project/">Project</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Project/Report/">Report</a></span></div><div class="content">                                                	          《智能物联网（AIot）系统设计大作业实验报告》                         	      		题　　目     		：      		AIoT系统设计大作业实验报告          	      		授课教师     		：      		楼东武/綦成林           	      		姓　　名     		：      		何辰阳/苗翔宇          	      		学　　号     		：      		3240104411/3240101943           	      		日　　期     		：      		2025.11.13                                  [TOC]  团队成员分工与贡献本项目由团队成员协作完成，具体分工与贡献说明如下：    成员 主要负责模块 具体工作内容 贡献度    苗翔宇 ESP32 物联网终端 &amp; 云平台 1. 负责整体硬件方案设计...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-altium-designer-20-notes/" title="Altium Designer 20 学习笔记">Altium Designer 20 学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/EDA/">EDA</a></span></div><div class="content">学习思路学什么用 AD 做电子设计  AD 软件 原理图 原理图库 原理图   PCB 布局、布线  怎么学软件一共 120 个操作，每天 8 个操作，练习快捷键 50 遍 硬件设计先看一遍，第二遍边看边练习，第三遍对比式学习 AD 的工程组成及创建工程文件：  原理图库 原理图 PCB 库 PCB 生产文件  元件库介绍和电阻容模型的创建元件符号：元件在原理图上的表示  原件边框 管脚 管脚序号 管脚名称   元件名称 原件说明  管脚带四个点的那一端是有电气属性的，应该冲外面 视图 - 栅格 - 切换可视栅格 选中一个元件，按住 shift 拖动可以复制 IC 类元件模型的创建字母的前后都加上 \ 可以使其上面出现横线，如 \E\N\ 快捷键 水平分布 Num1 垂直分布 Num2 TC 新建元器件 PR 放置矩形 ctrl+R 画矩形来选择接触到的器件 ctrl+space 切换输入法 shift+ 右键在 3D 视图下改变视角 按住 shift 多选 shift+R 忽略障碍物走线  多个管脚的时候，先复制一个，然后编辑 - 阵列式粘贴，主增量是编号增量，次增量是名称增量...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-arduino-basic-notes/" title="Arduino 基础学习笔记">Arduino 基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">串口 Serial.print 是打印到串口监视器 Serial.read 是单片机读串口  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-c-language-notes/" title="C 语言学习笔记">C 语言学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content"> [!NOTE] 本文档为原始笔记，内容待补充。建议参考 C 语言教材获取更详细的内容。  C 语言基础数据类型 基本类型：int, float, double, char 派生类型：指针、数组、结构体、联合体  控制结构// 条件语句 if (condition) &#123;     // ... &#125; else &#123;     // ... &#125;  // 循环语句 for (int i = 0; i &lt; n; i++) &#123;     // ... &#125;  while (condition) &#123;     // ... &#125;  do &#123;     // ... &#125; while (condition);  函数return_type function_name(parameter_list) &#123;     // 函数体     return value; &#125;  指针int *ptr;      // 指针声明 ptr = &amp;var;    // 取地址 value = *pt...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-clock-wifi-ntp-weather/" title="时钟模块 - WiFi、NTP 与天气集成">时钟模块 - WiFi、NTP 与天气集成</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/IoT/">IoT</a></span></div><div class="content">一、引言时钟模块是多功能时钟项目的核心，它不仅负责设备的网络连接（WiFi），还通过网络时间协议（NTP）同步精确时间，并从互联网获取实时天气信息。本模块旨在提供一个稳定、可靠且易于配置的网络与时间&#x2F;天气服务，为其他依赖精确时间或天气数据的模块提供基础支持。 二、实现思路2.1 WiFi 连接管理为了简化用户配置 WiFi 的流程，本模块采用了 WiFiManager 库。WiFiManager 能够自动创建一个 AP 热点，用户通过手机连接该热点即可进入配置页面，输入 WiFi 凭据。这种方式极大地提升了用户体验，避免了硬编码 WiFi 信息或复杂的串口配置。 2.2 NTP 时间同步精确的时间是时钟设备的基础。本模块通过 NTP（Network Time Protocol）服务进行时间同步。  使用 configTime 函数配置时区和 NTP 服务器 注册 sntp_set_time_sync_notification_cb 回调函数，以便在时间同步成功时执行特定操作 getLocalTime 函数用于获取当前的本地时间，并存储在 tm 结构体中  2.3 天气数...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-buzzer-music-player/" title="音乐播放器模块 - 蜂鸣器与 LED 灯效">音乐播放器模块 - 蜂鸣器与 LED 灯效</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">一、引言本模块将简单的无源蜂鸣器变成一个功能丰富的音乐播放器。它能够播放多首预先定义好的单音旋律，并配有同步的 LED 彩虹灯效，创造出动感的视听体验。 二、实现思路2.1 歌曲数据的存储PROGMEM：单片机的 RAM 资源非常有限，将大量的歌曲数据直接定义为普通数组会迅速耗尽 RAM。因此，本模块使用 PROGMEM 关键字将这些静态、只读的数据存放在程序闪存中。 数据结构：每首歌曲被定义为一个 Song 结构体，包含歌曲名、指向音高数组的指针、指向时长数组的指针和歌曲长度。 typedef struct &#123;   const char* name;   const int* melody;   const int* durations;   int length; &#125; Song;  const Song songs[] PROGMEM = &#123;   &#123; "Cai Bu Tou", melody_cai_bu_tou, durations_cai_bu_tou, length &#125;,   // ... 更多歌曲 &#125;;  2...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-circuit-basics-notes/" title="电路基础学习笔记">电路基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Electronics/">Electronics</a></span></div><div class="content">电路结构和电路调试缩写 GND(Ground)：地，整个电路的参考点，决定了电压基准 VCC(C&#x3D;circuit)：接入板子正向电源的电压 VDD(D&#x3D;device)：集成 IC 的电压 VEE(E&#x3D;emitter)：在电路指代电源负极。直流电源分为单电源和双电源 单电源：电压只有高于 GND 的部分 双电源：既有正电压又有负电压   VSS(S&#x3D;series)：公共连接点，约等于 GND Vpp(p&#x3D;peak)：电压峰峰值，最大值 - 最小值 VBAT(BAT&#x3D;BATTERY)：电源电压 网络：联通的所有节点  电路结构IO 口杜邦线与排针 简单但是连接不可靠，且传输大电流发烫严重、损耗大 只适用于简单的东西  SMA(同轴线缆) 用于高频或对信号要求比较高的场景  FPC 连接器 用于两块板子的连接，集成度高、简单、信号稳定性比较好  USB 接口详细见 USB 供电管理 [!NOTE] 通常板子的供电和芯片所需电压不一样  LDO(Low Dropout Regulator)LDO 是低压差线性稳压器  优势：伺服...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XiaoMiao</div><div class="author-info-description">XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">92</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">30</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/13/2025-07-13-git-version-control-tutorial/" title="Git 版本控制入门教程">Git 版本控制入门教程</a><time datetime="2026-07-13T14:59:00.000Z" title="Created 2026-07-13 22:59:00">2026-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/15/hello-world/" title="Hello World">Hello World</a><time datetime="2026-03-15T14:50:02.233Z" title="Created 2026-03-15 22:50:02">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-alarm-module/" title="闹钟模块 - 多组定时与持久化存储">闹钟模块 - 多组定时与持久化存储</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-aiot-project-report/" title="智能物联网（AIot）系统设计大作业实验报告">智能物联网（AIot）系统设计大作业实验报告</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-altium-designer-20-notes/" title="Altium Designer 20 学习笔记">Altium Designer 20 学习笔记</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            <a class="card-more-btn" href="/categories/" title="View More">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/"><span class="card-category-list-name">Embedded</span><span class="card-category-list-count">6</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/Arduino/"><span class="card-category-list-name">Arduino</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/Circuit/"><span class="card-category-list-name">Circuit</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/OS/"><span class="card-category-list-name">OS</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/OS/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Project/"><span class="card-category-list-name">Project</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Project/Report/"><span class="card-category-list-name">Report</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Tools/"><span class="card-category-list-name">Tools</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/writing/" style="font-size: 1.1em; color: #999">writing</a> <a href="/tags/weather/" style="font-size: 1.1em; color: #999">weather</a> <a href="/tags/solidworks/" style="font-size: 1.1em; color: #999">solidworks</a> <a href="/tags/programming/" style="font-size: 1.42em; color: #99a6b7">programming</a> <a href="/tags/mechanical/" style="font-size: 1.1em; color: #999">mechanical</a> <a href="/tags/ai/" style="font-size: 1.1em; color: #999">ai</a> <a href="/tags/hardware/" style="font-size: 1.1em; color: #999">hardware</a> <a href="/tags/i2c/" style="font-size: 1.1em; color: #999">i2c</a> <a href="/tags/github/" style="font-size: 1.1em; color: #999">github</a> <a href="/tags/latex/" style="font-size: 1.1em; color: #999">latex</a> <a href="/tags/games/" style="font-size: 1.1em; color: #999">games</a> <a href="/tags/sensor/" style="font-size: 1.34em; color: #99a3b0">sensor</a> <a href="/tags/container/" style="font-size: 1.1em; color: #999">container</a> <a href="/tags/buzzer/" style="font-size: 1.26em; color: #999fa8">buzzer</a> <a href="/tags/http/" style="font-size: 1.1em; color: #999">http</a> <a href="/tags/iot/" style="font-size: 1.18em; color: #999ca1">iot</a> <a href="/tags/drawing/" style="font-size: 1.1em; color: #999">drawing</a> <a href="/tags/ws2812/" style="font-size: 1.1em; color: #999">ws2812</a> <a href="/tags/esp32/" style="font-size: 1.5em; color: #99a9bf">esp32</a> <a href="/tags/electronics/" style="font-size: 1.1em; color: #999">electronics</a> <a href="/tags/tutorial/" style="font-size: 1.18em; color: #999ca1">tutorial</a> <a href="/tags/makefile/" style="font-size: 1.1em; color: #999">makefile</a> <a href="/tags/pid/" style="font-size: 1.1em; color: #999">pid</a> <a href="/tags/command-line/" style="font-size: 1.1em; color: #999">command-line</a> <a href="/tags/light-sensor/" style="font-size: 1.1em; color: #999">light-sensor</a> <a href="/tags/neopixel/" style="font-size: 1.18em; color: #999ca1">neopixel</a> <a href="/tags/protocol/" style="font-size: 1.18em; color: #999ca1">protocol</a> <a href="/tags/tikz/" style="font-size: 1.1em; color: #999">tikz</a> <a href="/tags/arduino/" style="font-size: 1.42em; color: #99a6b7">arduino</a> <a href="/tags/cmake/" style="font-size: 1.18em; color: #999ca1">cmake</a> <a href="/tags/temperature/" style="font-size: 1.18em; color: #999ca1">temperature</a> <a href="/tags/control-theory/" style="font-size: 1.1em; color: #999">control-theory</a> <a href="/tags/AIoT/" style="font-size: 1.1em; color: #999">AIoT</a> <a href="/tags/uart/" style="font-size: 1.1em; color: #999">uart</a> <a href="/tags/operating-system/" style="font-size: 1.1em; color: #999">operating-system</a> <a href="/tags/ui/" style="font-size: 1.26em; color: #999fa8">ui</a> <a href="/tags/algorithm/" style="font-size: 1.1em; color: #999">algorithm</a> <a href="/tags/ntp/" style="font-size: 1.1em; color: #999">ntp</a> <a href="/tags/build-tool/" style="font-size: 1.26em; color: #999fa8">build-tool</a> <a href="/tags/hotspot/" style="font-size: 1.1em; color: #999">hotspot</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              July 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              March 2026
+            </span>
+            <span class="card-archive-list-count">43</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              September 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              July 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">52</div></div><div class="webinfo-item"><div class="item-name">Total Word Count :</div><div class="item-count">65.4k</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-03-16T07:25:02.090Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@3.0.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = [].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const from = '出自 ' + data.from
+      typedJSFn.processSubtitle(data.hitokoto, [from])
+    })
+    .catch(err => {
+      console.error('Failed to get the Hitokoto API:', err)
+      typedJSFn.processSubtitle([])
+    })
+}
+typedJSFn.run(subtitleType)
+</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
