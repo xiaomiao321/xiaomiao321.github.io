@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>Hello World</title>
+      <title>Hello, World!</title>
       <link href="/2026/03/15/hello-world/"/>
       <url>/2026/03/15/hello-world/</url>
       
@@ -35,11 +35,11 @@
       
         <tags>
             
-            <tag> solidworks </tag>
+            <tag> Solidworks </tag>
             
-            <tag> cad </tag>
+            <tag> CAD </tag>
             
-            <tag> 3d-modeling </tag>
+            <tag> 3D-modeling </tag>
             
         </tags>
       
@@ -63,6 +63,8 @@
       
       
         <tags>
+            
+            <tag> embedded </tag>
             
             <tag> AIoT </tag>
             
@@ -88,7 +90,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> STM32 </category>
           
@@ -96,6 +98,8 @@
       
       
         <tags>
+            
+            <tag> embedded </tag>
             
             <tag> HAL </tag>
             
@@ -128,9 +132,9 @@
       
         <tags>
             
-            <tag> programming </tag>
-            
             <tag> cpp </tag>
+            
+            <tag> programming </tag>
             
         </tags>
       
@@ -152,7 +156,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> ESP32 </category>
           
@@ -164,8 +168,6 @@
             <tag> esp32 </tag>
             
             <tag> encoder </tag>
-            
-            <tag> input </tag>
             
             <tag> state-machine </tag>
             
@@ -189,7 +191,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> ESP32 </category>
           
@@ -198,9 +200,11 @@
       
         <tags>
             
+            <tag> embedded </tag>
+            
             <tag> esp32 </tag>
             
-            <tag> arduino </tag>
+            <tag> Arduino </tag>
             
             <tag> sensor </tag>
             
@@ -226,7 +230,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> ESP32 </category>
           
@@ -235,11 +239,11 @@
       
         <tags>
             
+            <tag> embedded </tag>
+            
             <tag> esp32 </tag>
             
-            <tag> arduino </tag>
-            
-            <tag> buzzer </tag>
+            <tag> Arduino </tag>
             
             <tag> music </tag>
             
@@ -265,7 +269,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> ESP32 </category>
           
@@ -274,9 +278,11 @@
       
         <tags>
             
+            <tag> embedded </tag>
+            
             <tag> esp32 </tag>
             
-            <tag> arduino </tag>
+            <tag> Arduino </tag>
             
             <tag> aht20 </tag>
             
@@ -304,7 +310,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> ESP32 </category>
           
@@ -313,15 +319,13 @@
       
         <tags>
             
+            <tag> embedded </tag>
+            
             <tag> esp32 </tag>
             
-            <tag> tft </tag>
-            
-            <tag> st7789 </tag>
+            <tag> Arduino </tag>
             
             <tag> display </tag>
-            
-            <tag> arduino </tag>
             
         </tags>
       
@@ -343,7 +347,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> ESP32 </category>
           
@@ -352,9 +356,11 @@
       
         <tags>
             
+            <tag> embedded </tag>
+            
             <tag> esp32 </tag>
             
-            <tag> tft </tag>
+            <tag> Arduino </tag>
             
             <tag> sensor </tag>
             
@@ -440,7 +446,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> ESP32 </category>
           
@@ -449,13 +455,13 @@
       
         <tags>
             
+            <tag> embedded </tag>
+            
             <tag> esp32 </tag>
             
-            <tag> menu </tag>
-            
-            <tag> ui </tag>
-            
             <tag> animation </tag>
+            
+            <tag> Arduino </tag>
             
         </tags>
       
@@ -464,7 +470,7 @@
     
     
     <entry>
-      <title>STM32 学习笔记</title>
+      <title>正点原子 STM32 学习笔记</title>
       <link href="/2025/07/21/2025-07-21-stm32-notes/"/>
       <url>/2025/07/21/2025-07-21-stm32-notes/</url>
       
@@ -477,7 +483,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> STM32 </category>
           
@@ -486,9 +492,9 @@
       
         <tags>
             
-            <tag> stm32 </tag>
-            
             <tag> embedded </tag>
+            
+            <tag> stm32 </tag>
             
             <tag> mcu </tag>
             
@@ -519,9 +525,9 @@
       
         <tags>
             
-            <tag> programming </tag>
-            
             <tag> web </tag>
+            
+            <tag> frontend </tag>
             
             <tag> javascript </tag>
             
@@ -544,8 +550,6 @@
           <category> Learning </category>
           
           <category> Language </category>
-          
-          <category> JavaScript </category>
           
       </categories>
       
@@ -587,10 +591,6 @@
             
             <tag> docker </tag>
             
-            <tag> container </tag>
-            
-            <tag> virtualization </tag>
-            
         </tags>
       
     </entry>
@@ -615,8 +615,6 @@
       
       
         <tags>
-            
-            <tag> communication </tag>
             
             <tag> protocol </tag>
             
@@ -682,10 +680,6 @@
             
             <tag> linux </tag>
             
-            <tag> shell </tag>
-            
-            <tag> command-line </tag>
-            
         </tags>
       
     </entry>
@@ -744,6 +738,8 @@
             
             <tag> altium-designer </tag>
             
+            <tag> EDA </tag>
+            
             <tag> pcb </tag>
             
         </tags>
@@ -766,7 +762,7 @@
           
           <category> Embedded </category>
           
-          <category> MCU </category>
+          <category> Platform </category>
           
           <category> RaspberryPi </category>
           
@@ -777,9 +773,9 @@
             
             <tag> raspberry-pi </tag>
             
-            <tag> hotspot </tag>
+            <tag> embedded </tag>
             
-            <tag> linux </tag>
+            <tag> Linux </tag>
             
         </tags>
       
@@ -806,9 +802,7 @@
       
         <tags>
             
-            <tag> build-tool </tag>
-            
-            <tag> cmake </tag>
+            <tag> CMake </tag>
             
         </tags>
       
@@ -835,9 +829,7 @@
       
         <tags>
             
-            <tag> makefile </tag>
-            
-            <tag> build-tool </tag>
+            <tag> Makefile </tag>
             
         </tags>
       
@@ -866,8 +858,6 @@
             
             <tag> git </tag>
             
-            <tag> version-control </tag>
-            
             <tag> github </tag>
             
         </tags>
@@ -890,16 +880,12 @@
           
           <category> Language </category>
           
-          <category> MATLAB </category>
-          
       </categories>
       
       
         <tags>
             
-            <tag> matlab </tag>
-            
-            <tag> programming </tag>
+            <tag> MATLAB </tag>
             
         </tags>
       
@@ -926,9 +912,7 @@
       
         <tags>
             
-            <tag> markdown </tag>
-            
-            <tag> writing </tag>
+            <tag> Markdown </tag>
             
         </tags>
       
