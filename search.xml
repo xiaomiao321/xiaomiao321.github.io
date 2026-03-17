@@ -66,9 +66,9 @@
             
             <tag> embedded </tag>
             
-            <tag> AIoT </tag>
-            
             <tag> ESP32 </tag>
+            
+            <tag> AIoT </tag>
             
         </tags>
       
@@ -101,9 +101,9 @@
             
             <tag> embedded </tag>
             
-            <tag> HAL </tag>
-            
             <tag> STM32 </tag>
+            
+            <tag> HAL </tag>
             
         </tags>
       
@@ -165,7 +165,7 @@
       
         <tags>
             
-            <tag> esp32 </tag>
+            <tag> ESP32 </tag>
             
             <tag> encoder </tag>
             
@@ -202,13 +202,11 @@
             
             <tag> embedded </tag>
             
-            <tag> esp32 </tag>
+            <tag> ESP32 </tag>
             
             <tag> Arduino </tag>
             
             <tag> sensor </tag>
-            
-            <tag> temperature </tag>
             
         </tags>
       
@@ -241,7 +239,7 @@
             
             <tag> embedded </tag>
             
-            <tag> esp32 </tag>
+            <tag> ESP32 </tag>
             
             <tag> Arduino </tag>
             
@@ -280,15 +278,11 @@
             
             <tag> embedded </tag>
             
-            <tag> esp32 </tag>
+            <tag> ESP32 </tag>
             
             <tag> Arduino </tag>
             
-            <tag> aht20 </tag>
-            
             <tag> sensor </tag>
-            
-            <tag> i2c </tag>
             
         </tags>
       
@@ -321,7 +315,7 @@
             
             <tag> embedded </tag>
             
-            <tag> esp32 </tag>
+            <tag> ESP32 </tag>
             
             <tag> Arduino </tag>
             
@@ -358,15 +352,13 @@
             
             <tag> embedded </tag>
             
-            <tag> esp32 </tag>
+            <tag> ESP32 </tag>
             
             <tag> Arduino </tag>
             
             <tag> sensor </tag>
             
             <tag> adc </tag>
-            
-            <tag> light-sensor </tag>
             
         </tags>
       
@@ -457,7 +449,7 @@
             
             <tag> embedded </tag>
             
-            <tag> esp32 </tag>
+            <tag> ESP32 </tag>
             
             <tag> animation </tag>
             
@@ -494,9 +486,7 @@
             
             <tag> embedded </tag>
             
-            <tag> stm32 </tag>
-            
-            <tag> mcu </tag>
+            <tag> STM32 </tag>
             
         </tags>
       
@@ -589,7 +579,7 @@
       
         <tags>
             
-            <tag> docker </tag>
+            <tag> Docker </tag>
             
         </tags>
       
@@ -618,10 +608,6 @@
             
             <tag> protocol </tag>
             
-            <tag> http </tag>
-            
-            <tag> tcp-ip </tag>
-            
         </tags>
       
     </entry>
@@ -647,11 +633,9 @@
       
         <tags>
             
-            <tag> tikz </tag>
+            <tag> TikZ </tag>
             
-            <tag> latex </tag>
-            
-            <tag> drawing </tag>
+            <tag> LaTex </tag>
             
         </tags>
       
@@ -660,7 +644,7 @@
     
     
     <entry>
-      <title>Linux 入门教程（上）- 系统基础与文件操作</title>
+      <title>Linux 入门教程</title>
       <link href="/2025/07/14/2025-07-14-linux-tutorial/"/>
       <url>/2025/07/14/2025-07-14-linux-tutorial/</url>
       
@@ -678,7 +662,7 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Linux </tag>
             
         </tags>
       
@@ -736,11 +720,11 @@
       
         <tags>
             
-            <tag> altium-designer </tag>
+            <tag> Altium-Designer </tag>
             
             <tag> EDA </tag>
             
-            <tag> pcb </tag>
+            <tag> PCB </tag>
             
         </tags>
       
