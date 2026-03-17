@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容">
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="XiaoMiao&#39;s technical blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="XiaoMiao&#39;s Blog">
 <meta property="og:url" content="https://xiaomiao321.github.io/page/2/index.html">
 <meta property="og:site_name" content="XiaoMiao&#39;s Blog">
-<meta property="og:description" content="XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容">
+<meta property="og:description" content="XiaoMiao&#39;s technical blog">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xiaomiao321.github.io/img/avatar.png">
 <meta property="article:author" content="XiaoMiao">
-<meta property="article:tag" content="ESP32，嵌入式开发，Arduino,STM32,Git 教程,Linux，编程笔记，技术博客">
+<meta property="article:tag" content="ESP32,embedded development,Arduino,STM32,Git,Linux,programming notes,technical blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xiaomiao321.github.io/img/avatar.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://xiaomiao321.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
     (() => {
@@ -130,7 +130,7 @@ btf.addGlobalFn('pjaxComplete', () => {
     month: 'months ago'
   },
   copyright: undefined,
-  lightbox: 'null',
+  lightbox: 'medium-zoom',
   Snackbar: undefined,
   infinitegrid: {
     js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
@@ -141,7 +141,7 @@ btf.addGlobalFn('pjaxComplete', () => {
   isAnchor: false,
   percent: {
     toc: true,
-    rightside: false,
+    rightside: true,
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
@@ -149,37 +149,15 @@ btf.addGlobalFn('pjaxComplete', () => {
   isHighlightShrink: false,
   isToc: false,
   pageType: 'home'
-}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
-  const $loadingBox = document.getElementById('loading-box')
-  const $body = document.body
-  const preloader = {
-    endLoading: () => {
-      if ($loadingBox.classList.contains('loaded')) return
-      $body.style.overflow = ''
-      $loadingBox.classList.add('loaded')
-    },
-    initLoading: () => {
-      $body.style.overflow = 'hidden'
-      $loadingBox.classList.remove('loaded')
-    }
-  }
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
 
-  preloader.initLoading()
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
 
-  if (document.readyState === 'complete') {
-    preloader.endLoading()
-  } else {
-    window.addEventListener('load', preloader.endLoading)
-    document.addEventListener('DOMContentLoaded', preloader.endLoading)
-    // Add timeout protection: force end after 7 seconds
-    setTimeout(preloader.endLoading, 7000)
-  }
-
-  if (false) {
-    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
-    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
-  }
-})()</script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://picsum.photos/1920/400);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div></div></nav><div id="site-info"><h1 id="site-title">XiaoMiao's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-clock-wifi-ntp-weather/" title="时钟模块 - WiFi、NTP 与天气集成">时钟模块 - WiFi、NTP 与天气集成</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/IoT/">IoT</a></span></div><div class="content">一、引言时钟模块是多功能时钟项目的核心，它不仅负责设备的网络连接（WiFi），还通过网络时间协议（NTP）同步精确时间，并从互联网获取实时天气信息。本模块旨在提供一个稳定、可靠且易于配置的网络与时间&#x2F;天气服务，为其他依赖精确时间或天气数据的模块提供基础支持。 二、实现思路2.1 WiFi 连接管理为了简化用户配置 WiFi 的流程，本模块采用了 WiFiManager 库。WiFiManager 能够自动创建一个 AP 热点，用户通过手机连接该热点即可进入配置页面，输入 WiFi 凭据。这种方式极大地提升了用户体验，避免了硬编码 WiFi 信息或复杂的串口配置。 2.2 NTP 时间同步精确的时间是时钟设备的基础。本模块通过 NTP（Network Time Protocol）服务进行时间同步。  使用 configTime 函数配置时区和 NTP 服务器 注册 sntp_set_time_sync_notification_cb 回调函数，以便在时间同步成功时执行特定操作 getLocalTime 函数用于获取当前的本地时间，并存储在 tm 结构体中  2.3 天气数...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-cmake-notes/" title="CMake 学习笔记">CMake 学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content">CMake 基本命令cmake_minimum_required指定使用的 cmake 的最低版本 可选，非必须，如果不加可能会有警告 project定义工程名称，并可指定工程的版本、工程描述、web 主页地址、支持的语言（默认情况支持所有语言），如果不需要这些都是可以忽略的，只需要指定出工程名字即可 # PROJECT 指令的语法是： project(&lt;PROJECT-NAME> [&lt;language-name>...]) project(&lt;PROJECT-NAME>        [VERSION &lt;major>[.&lt;minor>[.&lt;patch>[.&lt;tweak>]]]]        [DESCRIPTION &lt;project-description-string>]        [HOMEPAGE_URL &lt;url-string>]        [LANGUAGES &lt;language-name>...])  add_executable定义工程会生成一个可执行程序 add_executable(可执行程序...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-cpp-basic-notes/" title="C++ 基础学习笔记">C++ 基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content">g++ 基本命令和选项基本用法： g++ [options] source_files -o output_file   options：编译器的选项参数 source_files：要编译的源代码文件 -o output_file：生成的可执行文件的名称  可选项 -c 只进行编译，生成.o 文件，不进行链接操作 -E 只进行预处理，生成预处理后的.i 文件 -S 只编译到汇编代码，生成汇编文件 (.s) -save-temps 保存中间文件 (预处理、汇编、目标文件) -std=c++XX 指定要使用的 C++ 标准版本，如 -std=c++11、-std=c++14 等 -I dir 指定头文件目录 -L dir 指定链接库目录 -l library 指定要链接的库文件 -O level 指定优化级别，常见的有 -O0（无优化）、-O1、-O2、-O3（最高级别的优化），以及 -Os（针对空间优化）等 -g 生成调试信息 -Wall 启用所有警告信息 -Werror 将警告视为错误  C++ 是如何工作的编译器：为每个.cpp 文件生成.obj(linux 下是.o) 文件 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-communication-protocol-notes/" title="通信协议学习笔记">通信协议学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Communication/">Communication</a></span></div><div class="content">HTTPTCP&#x2F;IP 模型   OSI 模型（国际标准化组织 ISO 提出） 功能    物理层 传输⽐特流   数据链路层 节点之间传输帧   ⽹络层 报⽂分组、路由选择   传输层 端到端传输和流量控制   会话层 建⽴、管理和终⽌会话   表⽰层 负责数据格式转换和加密   应⽤层 提供⽹络服务      TCP&#x2F;IP 模型 功能    应⽤层 包含⾼层协议，如 HTTP、FTP、SMTP 等   传输层 提供端到端通信，包含传输控制协议（TCP）和⽤⼾数据报协议（UDP）   互联⽹层 对应 OSI 模型的⽹络层，负责 IP 地址和路由选择，包含 IP 协议   ⽹络接⼊层 相当于 OSI 模型的物理层和数据链路层   TCP&#x2F;IP 模型是对 OSI 模型的简化 IP 地址互联⽹协议的⽬的是解决实现⼤规模、异构⽹络的互联问题。IP 地址是⽹络上的设备的地址标识。IP 地址分为 IPv4 和 IPv6 IPv4IPv4 是 32 位（4 字节）地址，因此⼀共可以存储 $2^{32}&#x3D;4294967296$ 个地址，但是实际使⽤中保留了...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-easyeda-notes/" title="立创 EDA 学习笔记">立创 EDA 学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/EDA/">EDA</a></span></div><div class="content">立创 EDA 基本使用立创 EDA 是一款在线的 PCB 设计工具，适合初学者和快速原型设计。  [!NOTE] 本文档为学习笔记摘要，建议参考立创 EDA 官方教程获取更详细的内容。  基本功能 原理图绘制 PCB 布局布线 元件库管理 3D 预览 一键下单生产  使用流程 创建项目 绘制原理图 更新到 PCB PCB 布局布线 设计规则检查 (DRC) 生成 Gerber 文件 下单生产  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-docker-container-notes/" title="Docker 容器技术学习笔记">Docker 容器技术学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/DevOps/">DevOps</a></span></div><div class="content">什么是 DockerDocker 使用 Google 公司推出的 Go 语言 进行开发实现，属于操作系统层面的虚拟化技术。 Docker 通过将源代码、环境、第三方依赖等打包成一个镜像，就可以在任何地方依据镜像生成并运行容器。这样可以有效避免仅提供源码但环境不同、配置不同及第三方依赖的版本不同导致的兼容问题。轻松实现跨平台、跨服务器的运行，简化了从开发、调试到生成的迁移问题。 对比传统虚拟机   特性 容器 虚拟机    启动 秒级 分钟级   硬盘使用 一般为 MB 一般为 GB   性能 接近原生 弱于原生   系统支持量 单机支持上千个容器 一般几十个   Docker 基本概念镜像 (Image)Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如环境变量等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变，相当于是一个只读的模板。 容器 (Container)镜像和容器的关系，就像是面向对象程序设计中的 类 和 对象 一样，镜像是静态的定义，容器是镜像运行时的实体。 容器的实质是进...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-ds18b20-temperature/" title="DS18B20 温度监控模块">DS18B20 温度监控模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">一、引言实时监测环境温度是许多智能设备的基础功能之一。本模块使用经典的 DS18B20 单总线数字温度传感器，通过 DallasTemperature 库来获取精确的摄氏度读数，并将历史温度数据绘制成平滑滚动的折线图。 二、实现思路2.1 双任务协作架构本模块设计了两个独立的后台任务来协同工作：  updateTempTask：轻量级后台任务，每隔 2 秒钟读取一次温度，更新到全局变量 currentTemperature 中 DS18B20_Task：UI 渲染任务，以更高频率（每 500 毫秒）运行，负责绘制温度数字和折线图  这种”生产者 - 消费者”模式确保了即使传感器响应较慢，UI 刷新也能保持流畅。 2.2 动态图表绘制TFT_eWidget 库：利用 TFT_eSPI 的扩展库来轻松实现图表绘制。  GraphWidget 用于创建图表的背景、坐标轴和网格 TraceWidget 用于在图表上绘制折线  滚动图表：程序维护一个 X 轴坐标 gx，每次获取到新的温度点时绘制一个点，然后 gx 自增。当到达右边界时重置为 0 并清空背景，实现无限滚动效果。 2.3 全局...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-games-module/" title="游戏模块 - 多合一迷你游戏启动器">游戏模块 - 多合一迷你游戏启动器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">一、引言本模块作为一个迷你游戏平台，集成了一个可视化的游戏选择菜单和多个独立的小游戏。用户可以通过横向滚动界面浏览所有可玩的游戏，并通过单击启动所选游戏。 二、实现思路2.1 游戏启动器菜单表驱动设计：与主菜单类似，GamesMenu 也采用”表驱动”设计。一个 GameItem 结构体数组集中管理了所有游戏，每个条目包含游戏的名称、图标和一个指向游戏主函数的函数指针。 struct GameItem &#123;     const char *name;     const uint16_t *image;     void (*function)(); // 指向游戏主函数的指针 &#125;;  const GameItem gameItems[] = &#123;     &#123;"Conway's Game", bird_big, ConwayGame&#125;,     &#123;"Buzzer Tap", bird_big, BuzzerTapGame&#125;,     &#123;"Time Challenge", Timer, TimeChalle...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-embedded-c-language-notes/" title="嵌入式开发 C 语言加强笔记">嵌入式开发 C 语言加强笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">本文档位于 assets/blog/25_26_Autumn/weidongshan/c_improve/notes/ 目录下，包含以下相关内容： 文件结构c_improve&#x2F; ├── notes&#x2F; │   ├── 嵌入式开发 C 语言加强.md │   ├── 以面向对象思想编写单片机程序&#x2F; │   │   └── 20210928_单片机项目课程_输入系统补课.md │   └── pic&#x2F; └── ATPCS(ATM-Thumb 指令调用标准).pdf  相关资源 C 语言基础知识点图解（C.tif ~ C5.tif） ATPCS 标准文档   [!NOTE] 由于原文档内容主要为图片格式（C.tif ~ C5.tif），建议查看原始文件获取完整内容。  面向对象思想编写单片机程序在 以面向对象思想编写单片机程序 目录下有相关课程笔记，记录了 2021 年 9 月 28 日的单片机项目课程输入系统补课内容。 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-git-version-control-notes/" title="Git 版本控制学习笔记">Git 版本控制学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/DevOps/">DevOps</a></span></div><div class="content">版本控制1. 创建版本库1.1 创建空目录mkdir learngit cd learngit  1.2 把这个目录变成 Git 可以管理的仓库git init  1.3 把文件添加到仓库git add README.txt  1.4 把文件提交到仓库git commit -m "wrote a readme file"  -m 后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。 commit 可以一次提交很多文件，所以你可以多次 add 不同的文件，比如： git add file1.txt git add file2.txt file3.txt git commit -m "add 3 files."  所以，git add 命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行 git commit 就可以一次性把暂存区的所有修改提交到分支。 每次修改，如果不用 git add 到暂存区，那就不会加入到 commit 中。 第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; gi...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XiaoMiao</div><div class="author-info-description">XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">92</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">30</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/13/2025-07-13-git-version-control-tutorial/" title="Git 版本控制入门教程">Git 版本控制入门教程</a><time datetime="2026-07-13T14:59:00.000Z" title="Created 2026-07-13 22:59:00">2026-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/15/hello-world/" title="Hello World">Hello World</a><time datetime="2026-03-15T14:50:02.233Z" title="Created 2026-03-15 22:50:02">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-alarm-module/" title="闹钟模块 - 多组定时与持久化存储">闹钟模块 - 多组定时与持久化存储</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-altium-designer-20-notes/" title="Altium Designer 20 学习笔记">Altium Designer 20 学习笔记</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-aiot-project-report/" title="智能物联网（AIot）系统设计大作业实验报告">智能物联网（AIot）系统设计大作业实验报告</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+</script><link rel="stylesheet" href="/css/pace-loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://picsum.photos/1920/400);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div></div></nav><div id="site-info"><h1 id="site-title">XiaoMiao's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-cmake-advanced-notes/" title="CMake 进阶笔记">CMake 进阶笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content"> [!NOTE] 本文档为原始笔记，内容待补充。建议参考 CMake 官方文档获取更详细的内容。  CMake 基本结构cmake_minimum_required(VERSION 3.0) project(ProjectName) add_executable(target source1.cpp source2.cpp)  常用命令 cmake_minimum_required: 指定最低版本 project: 定义项目名称 add_executable: 添加可执行文件 add_library: 添加库文件 target_link_libraries: 链接库 include_directories: 包含头文件目录 add_subdirectory: 添加子目录  变量和缓存set(VAR_NAME value) set(VAR_NAME value CACHE TYPE "description")  条件判断if(CONDITION)     # ... elseif(ANOTHER_CONDITION)     # ... else()     # ... endi...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-cmake-notes/" title="CMake 学习笔记">CMake 学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content">CMake 基本命令cmake_minimum_required指定使用的 cmake 的最低版本 可选，非必须，如果不加可能会有警告 project定义工程名称，并可指定工程的版本、工程描述、web 主页地址、支持的语言（默认情况支持所有语言），如果不需要这些都是可以忽略的，只需要指定出工程名字即可 # PROJECT 指令的语法是： project(&lt;PROJECT-NAME> [&lt;language-name>...]) project(&lt;PROJECT-NAME>        [VERSION &lt;major>[.&lt;minor>[.&lt;patch>[.&lt;tweak>]]]]        [DESCRIPTION &lt;project-description-string>]        [HOMEPAGE_URL &lt;url-string>]        [LANGUAGES &lt;language-name>...])  add_executable定义工程会生成一个可执行程序 add_executable(可执行程序...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-communication-protocol-notes/" title="通信协议学习笔记">通信协议学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Communication/">Communication</a></span></div><div class="content">HTTPTCP&#x2F;IP 模型   OSI 模型（国际标准化组织 ISO 提出） 功能    物理层 传输⽐特流   数据链路层 节点之间传输帧   ⽹络层 报⽂分组、路由选择   传输层 端到端传输和流量控制   会话层 建⽴、管理和终⽌会话   表⽰层 负责数据格式转换和加密   应⽤层 提供⽹络服务      TCP&#x2F;IP 模型 功能    应⽤层 包含⾼层协议，如 HTTP、FTP、SMTP 等   传输层 提供端到端通信，包含传输控制协议（TCP）和⽤⼾数据报协议（UDP）   互联⽹层 对应 OSI 模型的⽹络层，负责 IP 地址和路由选择，包含 IP 协议   ⽹络接⼊层 相当于 OSI 模型的物理层和数据链路层   TCP&#x2F;IP 模型是对 OSI 模型的简化 IP 地址互联⽹协议的⽬的是解决实现⼤规模、异构⽹络的互联问题。IP 地址是⽹络上的设备的地址标识。IP 地址分为 IPv4 和 IPv6 IPv4IPv4 是 32 位（4 字节）地址，因此⼀共可以存储 $2^{32}&#x3D;4294967296$ 个地址，但是实际使⽤中保留了...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-ds18b20-temperature/" title="DS18B20 温度监控模块">DS18B20 温度监控模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">一、引言实时监测环境温度是许多智能设备的基础功能之一。本模块使用经典的 DS18B20 单总线数字温度传感器，通过 DallasTemperature 库来获取精确的摄氏度读数，并将历史温度数据绘制成平滑滚动的折线图。 二、实现思路2.1 双任务协作架构本模块设计了两个独立的后台任务来协同工作：  updateTempTask：轻量级后台任务，每隔 2 秒钟读取一次温度，更新到全局变量 currentTemperature 中 DS18B20_Task：UI 渲染任务，以更高频率（每 500 毫秒）运行，负责绘制温度数字和折线图  这种”生产者 - 消费者”模式确保了即使传感器响应较慢，UI 刷新也能保持流畅。 2.2 动态图表绘制TFT_eWidget 库：利用 TFT_eSPI 的扩展库来轻松实现图表绘制。  GraphWidget 用于创建图表的背景、坐标轴和网格 TraceWidget 用于在图表上绘制折线  滚动图表：程序维护一个 X 轴坐标 gx，每次获取到新的温度点时绘制一个点，然后 gx 自增。当到达右边界时重置为 0 并清空背景，实现无限滚动效果。 2.3 全局...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-embedded-c-language-notes/" title="嵌入式开发 C 语言加强笔记">嵌入式开发 C 语言加强笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">本文档位于 assets/blog/25_26_Autumn/weidongshan/c_improve/notes/ 目录下，包含以下相关内容： 文件结构c_improve&#x2F; ├── notes&#x2F; │   ├── 嵌入式开发 C 语言加强.md │   ├── 以面向对象思想编写单片机程序&#x2F; │   │   └── 20210928_单片机项目课程_输入系统补课.md │   └── pic&#x2F; └── ATPCS(ATM-Thumb 指令调用标准).pdf  相关资源 C 语言基础知识点图解（C.tif ~ C5.tif） ATPCS 标准文档   [!NOTE] 由于原文档内容主要为图片格式（C.tif ~ C5.tif），建议查看原始文件获取完整内容。  面向对象思想编写单片机程序在 以面向对象思想编写单片机程序 目录下有相关课程笔记，记录了 2021 年 9 月 28 日的单片机项目课程输入系统补课内容。 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-easyeda-notes/" title="立创 EDA 学习笔记">立创 EDA 学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/EDA/">EDA</a></span></div><div class="content">立创 EDA 基本使用立创 EDA 是一款在线的 PCB 设计工具，适合初学者和快速原型设计。  [!NOTE] 本文档为学习笔记摘要，建议参考立创 EDA 官方教程获取更详细的内容。  基本功能 原理图绘制 PCB 布局布线 元件库管理 3D 预览 一键下单生产  使用流程 创建项目 绘制原理图 更新到 PCB PCB 布局布线 设计规则检查 (DRC) 生成 Gerber 文件 下单生产  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-cpp-basic-notes/" title="C++ 基础学习笔记">C++ 基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content">g++ 基本命令和选项基本用法： g++ [options] source_files -o output_file   options：编译器的选项参数 source_files：要编译的源代码文件 -o output_file：生成的可执行文件的名称  可选项 -c 只进行编译，生成.o 文件，不进行链接操作 -E 只进行预处理，生成预处理后的.i 文件 -S 只编译到汇编代码，生成汇编文件 (.s) -save-temps 保存中间文件 (预处理、汇编、目标文件) -std=c++XX 指定要使用的 C++ 标准版本，如 -std=c++11、-std=c++14 等 -I dir 指定头文件目录 -L dir 指定链接库目录 -l library 指定要链接的库文件 -O level 指定优化级别，常见的有 -O0（无优化）、-O1、-O2、-O3（最高级别的优化），以及 -Os（针对空间优化）等 -g 生成调试信息 -Wall 启用所有警告信息 -Werror 将警告视为错误  C++ 是如何工作的编译器：为每个.cpp 文件生成.obj(linux 下是.o) 文件 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-games-module/" title="游戏模块 - 多合一迷你游戏启动器">游戏模块 - 多合一迷你游戏启动器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">一、引言本模块作为一个迷你游戏平台，集成了一个可视化的游戏选择菜单和多个独立的小游戏。用户可以通过横向滚动界面浏览所有可玩的游戏，并通过单击启动所选游戏。 二、实现思路2.1 游戏启动器菜单表驱动设计：与主菜单类似，GamesMenu 也采用”表驱动”设计。一个 GameItem 结构体数组集中管理了所有游戏，每个条目包含游戏的名称、图标和一个指向游戏主函数的函数指针。 struct GameItem &#123;     const char *name;     const uint16_t *image;     void (*function)(); // 指向游戏主函数的指针 &#125;;  const GameItem gameItems[] = &#123;     &#123;"Conway's Game", bird_big, ConwayGame&#125;,     &#123;"Buzzer Tap", bird_big, BuzzerTapGame&#125;,     &#123;"Time Challenge", Timer, TimeChalle...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-javascript-basic-notes/" title="JavaScript 基础学习笔记">JavaScript 基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content">JavaScript 用于做交互式网页，用 JavaScript 引擎运行。 把 &lt;script&gt; 标签放在 &lt;body&gt; 标签的末尾，在 &lt;body&gt; 中所有其他标签之后，因为浏览器解析是自顶向下的。 基本示例&lt;!DOCTYPE html> &lt;html lang="en"> &lt;head>     &lt;meta charset="UTF-8">     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">     &lt;title>Document&lt;/title> &lt;/head> &lt;body>     &lt;h1>hello&lt;/h1>     &lt;script>         console.log('hello world')     &lt;/script> &lt;/body> &lt;/html>  分成不同文件： index.js console.log('hello world')  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-git-advanced-notes/" title="Git 进阶笔记">Git 进阶笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/DevOps/">DevOps</a></span></div><div class="content"> [!NOTE] 本文档为原始笔记，内容待补充。建议参考 Git 官方文档获取更详细的内容。  Git 分支管理创建和切换分支git branch &lt;branch-name>      # 创建分支 git checkout &lt;branch-name>    # 切换分支 git checkout -b &lt;branch-name> # 创建并切换  合并分支git merge &lt;branch-name>  删除分支git branch -d &lt;branch-name>   # 删除本地分支 git branch -D &lt;branch-name>   # 强制删除 git push origin --delete &lt;branch-name> # 删除远程分支  Git 远程操作git remote add origin &lt;url>   # 添加远程仓库 git remote -v                 # 查看远程仓库 git remote rm origin          # 删除远程仓库  Git 撤销操作git c...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XiaoMiao</div><div class="author-info-description">XiaoMiao's technical blog </div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">92</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">30</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/13/2025-07-13-git-version-control-tutorial/" title="Git 版本控制入门教程">Git 版本控制入门教程</a><time datetime="2026-07-13T14:59:00.000Z" title="Created 2026-07-13 22:59:00">2026-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/15/hello-world/" title="Hello World">Hello World</a><time datetime="2026-03-15T14:50:02.233Z" title="Created 2026-03-15 22:50:02">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-alarm-module/" title="闹钟模块 - 多组定时与持久化存储">闹钟模块 - 多组定时与持久化存储</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-aiot-project-report/" title="智能物联网（AIot）系统设计大作业实验报告">智能物联网（AIot）系统设计大作业实验报告</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-altium-designer-20-notes/" title="Altium Designer 20 学习笔记">Altium Designer 20 学习笔记</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>Categories</span>
             <a class="card-more-btn" href="/categories/" title="View More">
@@ -187,7 +165,7 @@ btf.addGlobalFn('pjaxComplete', () => {
           </div>
           <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/"><span class="card-category-list-name">Embedded</span><span class="card-category-list-count">6</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/Arduino/"><span class="card-category-list-name">Arduino</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/Circuit/"><span class="card-category-list-name">Circuit</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/OS/"><span class="card-category-list-name">OS</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/OS/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Project/"><span class="card-category-list-name">Project</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Project/Report/"><span class="card-category-list-name">Report</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Tools/"><span class="card-category-list-name">Tools</span><span class="card-category-list-count">1</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/3d-modeling/" style="font-size: 1.1em; color: #999">3d-modeling</a> <a href="/tags/aht20/" style="font-size: 1.1em; color: #999">aht20</a> <a href="/tags/latex/" style="font-size: 1.1em; color: #999">latex</a> <a href="/tags/stm32/" style="font-size: 1.1em; color: #999">stm32</a> <a href="/tags/eda/" style="font-size: 1.18em; color: #999ca1">eda</a> <a href="/tags/hardware/" style="font-size: 1.1em; color: #999">hardware</a> <a href="/tags/electrical/" style="font-size: 1.1em; color: #999">electrical</a> <a href="/tags/ds18b20/" style="font-size: 1.1em; color: #999">ds18b20</a> <a href="/tags/iot/" style="font-size: 1.18em; color: #999ca1">iot</a> <a href="/tags/sensor/" style="font-size: 1.34em; color: #99a3b0">sensor</a> <a href="/tags/temperature/" style="font-size: 1.18em; color: #999ca1">temperature</a> <a href="/tags/ws2812/" style="font-size: 1.1em; color: #999">ws2812</a> <a href="/tags/virtualization/" style="font-size: 1.1em; color: #999">virtualization</a> <a href="/tags/circuit/" style="font-size: 1.18em; color: #999ca1">circuit</a> <a href="/tags/git/" style="font-size: 1.26em; color: #999fa8">git</a> <a href="/tags/input/" style="font-size: 1.1em; color: #999">input</a> <a href="/tags/mcu/" style="font-size: 1.18em; color: #999ca1">mcu</a> <a href="/tags/display/" style="font-size: 1.1em; color: #999">display</a> <a href="/tags/pcb/" style="font-size: 1.26em; color: #999fa8">pcb</a> <a href="/tags/eeprom/" style="font-size: 1.1em; color: #999">eeprom</a> <a href="/tags/games/" style="font-size: 1.1em; color: #999">games</a> <a href="/tags/version-control/" style="font-size: 1.26em; color: #999fa8">version-control</a> <a href="/tags/shell/" style="font-size: 1.18em; color: #999ca1">shell</a> <a href="/tags/container/" style="font-size: 1.1em; color: #999">container</a> <a href="/tags/esp32/" style="font-size: 1.5em; color: #99a9bf">esp32</a> <a href="/tags/http/" style="font-size: 1.1em; color: #999">http</a> <a href="/tags/operating-system/" style="font-size: 1.1em; color: #999">operating-system</a> <a href="/tags/timer/" style="font-size: 1.1em; color: #999">timer</a> <a href="/tags/linux/" style="font-size: 1.26em; color: #999fa8">linux</a> <a href="/tags/build-tool/" style="font-size: 1.26em; color: #999fa8">build-tool</a> <a href="/tags/c-language/" style="font-size: 1.18em; color: #999ca1">c-language</a> <a href="/tags/writing/" style="font-size: 1.1em; color: #999">writing</a> <a href="/tags/communication/" style="font-size: 1.26em; color: #999fa8">communication</a> <a href="/tags/st7789/" style="font-size: 1.1em; color: #999">st7789</a> <a href="/tags/embedded/" style="font-size: 1.34em; color: #99a3b0">embedded</a> <a href="/tags/encoder/" style="font-size: 1.1em; color: #999">encoder</a> <a href="/tags/tutorial/" style="font-size: 1.18em; color: #999ca1">tutorial</a> <a href="/tags/ai/" style="font-size: 1.1em; color: #999">ai</a> <a href="/tags/arduino/" style="font-size: 1.42em; color: #99a6b7">arduino</a> <a href="/tags/cpp/" style="font-size: 1.1em; color: #999">cpp</a></div></div><div class="card-widget card-archives">
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/performance/" style="font-size: 1.1em; color: #999">performance</a> <a href="/tags/adc/" style="font-size: 1.1em; color: #999">adc</a> <a href="/tags/linux/" style="font-size: 1.3em; color: #99a1ac">linux</a> <a href="/tags/protocol/" style="font-size: 1.2em; color: #999da3">protocol</a> <a href="/tags/mechanical/" style="font-size: 1.1em; color: #999">mechanical</a> <a href="/tags/operating-system/" style="font-size: 1.1em; color: #999">operating-system</a> <a href="/tags/latex/" style="font-size: 1.1em; color: #999">latex</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/ntp/" style="font-size: 1.1em; color: #999">ntp</a> <a href="/tags/aht20/" style="font-size: 1.1em; color: #999">aht20</a> <a href="/tags/encoder/" style="font-size: 1.1em; color: #999">encoder</a> <a href="/tags/tcp-ip/" style="font-size: 1.1em; color: #999">tcp-ip</a> <a href="/tags/eeprom/" style="font-size: 1.1em; color: #999">eeprom</a> <a href="/tags/kalman-filter/" style="font-size: 1.1em; color: #999">kalman-filter</a> <a href="/tags/iot/" style="font-size: 1.2em; color: #999da3">iot</a> <a href="/tags/build-tool/" style="font-size: 1.3em; color: #99a1ac">build-tool</a> <a href="/tags/communication/" style="font-size: 1.3em; color: #99a1ac">communication</a> <a href="/tags/algorithm/" style="font-size: 1.1em; color: #999">algorithm</a> <a href="/tags/graphics/" style="font-size: 1.1em; color: #999">graphics</a> <a href="/tags/circuit/" style="font-size: 1.2em; color: #999da3">circuit</a> <a href="/tags/cpp/" style="font-size: 1.1em; color: #999">cpp</a> <a href="/tags/mqtt/" style="font-size: 1.2em; color: #999da3">mqtt</a> <a href="/tags/solidworks/" style="font-size: 1.1em; color: #999">solidworks</a> <a href="/tags/mcu/" style="font-size: 1.2em; color: #999da3">mcu</a> <a href="/tags/ai/" style="font-size: 1.1em; color: #999">ai</a> <a href="/tags/matlab/" style="font-size: 1.1em; color: #999">matlab</a> <a href="/tags/weather/" style="font-size: 1.1em; color: #999">weather</a> <a href="/tags/altium-designer/" style="font-size: 1.2em; color: #999da3">altium-designer</a> <a href="/tags/esp32/" style="font-size: 1.5em; color: #99a9bf">esp32</a> <a href="/tags/javascript/" style="font-size: 1.1em; color: #999">javascript</a> <a href="/tags/drawing/" style="font-size: 1.1em; color: #999">drawing</a> <a href="/tags/programming/" style="font-size: 1.4em; color: #99a5b6">programming</a> <a href="/tags/easyeda/" style="font-size: 1.1em; color: #999">easyeda</a> <a href="/tags/control-theory/" style="font-size: 1.1em; color: #999">control-theory</a> <a href="/tags/container/" style="font-size: 1.1em; color: #999">container</a> <a href="/tags/i2c/" style="font-size: 1.1em; color: #999">i2c</a> <a href="/tags/pomodoro/" style="font-size: 1.1em; color: #999">pomodoro</a> <a href="/tags/raspberry-pi/" style="font-size: 1.1em; color: #999">raspberry-pi</a> <a href="/tags/ui/" style="font-size: 1.3em; color: #99a1ac">ui</a> <a href="/tags/git/" style="font-size: 1.3em; color: #99a1ac">git</a></div></div><div class="card-widget card-archives">
     <div class="item-headline">
       <i class="fas fa-archive"></i>
       <span>Archives</span>
@@ -233,7 +211,7 @@ btf.addGlobalFn('pjaxComplete', () => {
         </li>
       
     </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">52</div></div><div class="webinfo-item"><div class="item-name">Total Word Count :</div><div class="item-count">65.4k</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-03-16T08:36:19.881Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">52</div></div><div class="webinfo-item"><div class="item-name">Total Word Count :</div><div class="item-count">65.4k</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-03-17T04:46:28.548Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: str => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
@@ -244,7 +222,7 @@ btf.addGlobalFn('pjaxComplete', () => {
     }, null))
   },
   run: subtitleType => {
-    if (true) {
+    if () {
       if (typeof Typed === 'function') {
         subtitleType()
       } else {
@@ -255,7 +233,7 @@ btf.addGlobalFn('pjaxComplete', () => {
     }
   },
   processSubtitle: (content, extraContents = []) => {
-    if (true) {
+    if () {
       const sub = [].slice()
 
       if (extraContents.length > 0) {
@@ -277,16 +255,345 @@ btf.addGlobalFn('pjaxComplete', () => {
 }
 btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
 </script><script>function subtitleType () {
-  fetch('https://v1.hitokoto.cn')
-    .then(response => response.json())
-    .then(data => {
-      const from = '出自 ' + data.from
-      typedJSFn.processSubtitle(data.hitokoto, [from])
+  btf.getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js')
+    .then(() => {
+      jinrishici.load(result => {
+        if (result && result.data && result.data.content) {
+          typedJSFn.processSubtitle(result.data.content)
+        } else {
+          throw new Error('Failed to parse the return value of Jinrishici API')
+        }
+      })
     })
     .catch(err => {
-      console.error('Failed to get the Hitokoto API:', err)
-      typedJSFn.processSubtitle([])
+      console.error('Failed to get the Jinrishici API:', err)
+      typedJSFn.processSubtitle(0)
     })
 }
 typedJSFn.run(subtitleType)
-</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
+</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>

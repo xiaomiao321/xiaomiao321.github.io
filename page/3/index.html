@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容">
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="XiaoMiao&#39;s technical blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="XiaoMiao&#39;s Blog">
 <meta property="og:url" content="https://xiaomiao321.github.io/page/3/index.html">
 <meta property="og:site_name" content="XiaoMiao&#39;s Blog">
-<meta property="og:description" content="XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容">
+<meta property="og:description" content="XiaoMiao&#39;s technical blog">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xiaomiao321.github.io/img/avatar.png">
 <meta property="article:author" content="XiaoMiao">
-<meta property="article:tag" content="ESP32，嵌入式开发，Arduino,STM32,Git 教程,Linux，编程笔记，技术博客">
+<meta property="article:tag" content="ESP32,embedded development,Arduino,STM32,Git,Linux,programming notes,technical blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xiaomiao321.github.io/img/avatar.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://xiaomiao321.github.io/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
     (() => {
@@ -130,7 +130,7 @@ btf.addGlobalFn('pjaxComplete', () => {
     month: 'months ago'
   },
   copyright: undefined,
-  lightbox: 'null',
+  lightbox: 'medium-zoom',
   Snackbar: undefined,
   infinitegrid: {
     js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
@@ -141,7 +141,7 @@ btf.addGlobalFn('pjaxComplete', () => {
   isAnchor: false,
   percent: {
     toc: true,
-    rightside: false,
+    rightside: true,
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
@@ -149,37 +149,15 @@ btf.addGlobalFn('pjaxComplete', () => {
   isHighlightShrink: false,
   isToc: false,
   pageType: 'home'
-}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
-  const $loadingBox = document.getElementById('loading-box')
-  const $body = document.body
-  const preloader = {
-    endLoading: () => {
-      if ($loadingBox.classList.contains('loaded')) return
-      $body.style.overflow = ''
-      $loadingBox.classList.add('loaded')
-    },
-    initLoading: () => {
-      $body.style.overflow = 'hidden'
-      $loadingBox.classList.remove('loaded')
-    }
-  }
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
 
-  preloader.initLoading()
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
 
-  if (document.readyState === 'complete') {
-    preloader.endLoading()
-  } else {
-    window.addEventListener('load', preloader.endLoading)
-    document.addEventListener('DOMContentLoaded', preloader.endLoading)
-    // Add timeout protection: force end after 7 seconds
-    setTimeout(preloader.endLoading, 7000)
-  }
-
-  if (false) {
-    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
-    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
-  }
-})()</script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://picsum.photos/1920/400);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div></div></nav><div id="site-info"><h1 id="site-title">XiaoMiao's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-git-advanced-notes/" title="Git 进阶笔记">Git 进阶笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/DevOps/">DevOps</a></span></div><div class="content"> [!NOTE] 本文档为原始笔记，内容待补充。建议参考 Git 官方文档获取更详细的内容。  Git 分支管理创建和切换分支git branch &lt;branch-name>      # 创建分支 git checkout &lt;branch-name>    # 切换分支 git checkout -b &lt;branch-name> # 创建并切换  合并分支git merge &lt;branch-name>  删除分支git branch -d &lt;branch-name>   # 删除本地分支 git branch -D &lt;branch-name>   # 强制删除 git push origin --delete &lt;branch-name> # 删除远程分支  Git 远程操作git remote add origin &lt;url>   # 添加远程仓库 git remote -v                 # 查看远程仓库 git remote rm origin          # 删除远程仓库  Git 撤销操作git c...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-javascript-basic-notes/" title="JavaScript 基础学习笔记">JavaScript 基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content">JavaScript 用于做交互式网页，用 JavaScript 引擎运行。 把 &lt;script&gt; 标签放在 &lt;body&gt; 标签的末尾，在 &lt;body&gt; 中所有其他标签之后，因为浏览器解析是自顶向下的。 基本示例&lt;!DOCTYPE html> &lt;html lang="en"> &lt;head>     &lt;meta charset="UTF-8">     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">     &lt;title>Document&lt;/title> &lt;/head> &lt;body>     &lt;h1>hello&lt;/h1>     &lt;script>         console.log('hello world')     &lt;/script> &lt;/body> &lt;/html>  分成不同文件： index.js console.log('hello world')  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-kalman-filter-notes/" title="卡尔曼滤波学习笔记">卡尔曼滤波学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Algorithm/">Algorithm</a></span></div><div class="content">入门引入滤波：去掉噪声，使信号更趋于真实值 卡尔曼滤波是有多个不确定的结果，经过分析、推理和计算，获得相对准确的结果。  多个是指数据来源可以是模型推理得出，也可以是通过仪器测量获得。 不确定是指由于模型本身是一种近似，或者是测量仪器本身的精度误差，或者测量过程不可避免地引入了噪声，甚至因为所需要的特征无法直接获取，只能间接推导获得。 分析、推理和计算，则指的是卡尔曼滤波算法。 相对准确，指的是经过卡尔曼滤波算法获得的结果，比原有的多个不确定的结果更逼近客观真实值，但依然存在误差。  适用系统线性高斯系统  线性  叠加性 —— $f(a+b) &#x3D; f(a)+f(b)$ 齐次性 —— $f(kx) &#x3D; kf(x)$   高斯——噪声满足正态分布   宏观意义滤波即加权 理想状态：信号 x1 + 噪声 x0 卡尔曼滤波：估计值 xX + 观测值 xY 因为估计值和观测值都有一定的误差，所以二者加权能够相对准确，权重取决于二者的方差，方差大的说明不可靠，权重应该给的小一点，反之亦然。 进阶状态空间表达式基本假设：  当前时刻状态只和上一时刻状态有关。 模型和系统均...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-linux-system-notes/" title="Linux 系统学习笔记">Linux 系统学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Linux/">Linux</a></span></div><div class="content">Shell 的简要介绍操作系统主要负责系统内存管理、软件程序管理、硬件设备管理和文件系统管理。在用户与操作系统之间需要应用程序作为桥梁，帮助用户与操作系统进行交互，实现各种功能。 应用程序与用户的交互有两种表现形式，一种是我们常见的 GUI（Graphical User Interface），即图形用户界面，可以用鼠标点击操作；另一种是 CLI（Command Line Interface），即命令行界面。 Terminal，终端，是人与计算机进行交互的接口。一台大型机可以连接很多终端机，用户在这些终端机上跟计算机进行交互，这些早期终端一般是电传打字机（TTY）。随着个人计算机的普及和进化，大型机时代的专门的终端硬件早已消失，我们只用自己的键盘、鼠标来控制计算机。但是终端的思想保留了下来，变成了操作系统中的软件——终端模拟器（如 Win32 控制台）。终端模拟器可以捕获你的键盘输入，发送至命令行程序，拿到输出结果后再调用图形接口，将输出渲染至屏幕上。由于人们除了在博物馆再也见不到 TTY 这样的终端硬件了，于是就直接称终端模拟器为终端。 Shell，即”壳层”，是帮助用户与内核交...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-how-to-ask-questions/" title="高效提问的艺术">高效提问的艺术</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Soft-Skills/">Soft-Skills</a></span></div><div class="content"> 本文基于《提问的智慧》(How To Ask Questions The Smart Way) 整理  引言在技术社区中，你所提问题的解答很大程度上取决于你提问的方式。本文教你如何提问才更有可能得到满意的答复。 提问前在通过电邮、新闻组或论坛提技术问题以前，做以下事情：  尝试在你准备提问论坛的历史文档中搜索答案 尝试搜索互联网以找到答案 尝试阅读手册以找到答案 尝试阅读”常见问题文档”（FAQ）以找到答案 尝试自己检查或试验以找到答案 尝试请教懂行的朋友以找到答案 如果你是程序员，尝试阅读源代码以找到答案  提问时，请先表明你已做了上述事情，这将有助于建立你不是寄生虫与浪费别人时间的印象。最好再表述你从中学到的东西。 提问时仔细挑选论坛要对在哪提问留心，如果你做了下述事情，多半会被一笔勾销或被看成”失败者”：  张贴与论坛主题无关的问题 在面向高级技术问题的论坛上张贴肤浅的问题，或者反之 在太多不同的新闻组同时张贴 给既非熟人也没有义务解决你问题的人发送你私人的电邮  使用有意义且明确的主题主题是你在五十个或更少的字以内吸引有资格专家注意的黄金机会。使用主题的好惯例是”对象─...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-makefile-notes/" title="Makefile 学习笔记">Makefile 学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content"> [!NOTE] 本文档为原始笔记，内容待补充。建议参考 Makefile 官方文档获取更详细的内容。  Makefile 基本结构target: prerequisites 	command   target: 目标文件 prerequisites: 依赖文件 command: 构建命令（必须以 Tab 开头）  示例CC = gcc CFLAGS = -Wall -g  target: main.o utils.o 	$(CC) $(CFLAGS) -o target main.o utils.o  main.o: main.c 	$(CC) $(CFLAGS) -c main.c  utils.o: utils.c 	$(CC) $(CFLAGS) -c utils.c  clean: 	rm -f *.o target  常用变量 $@: 目标文件名 $&lt;: 第一个依赖文件名 $^: 所有依赖文件名 $?: 比目标新的依赖文件  伪目标.PHONY: clean all  clean: 	rm -f *.o target  all: target </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-led-animation/" title="LED 与动画模块 - NeoPixel 灯带控制">LED 与动画模块 - NeoPixel 灯带控制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">一、LED 控制模块1.1 引言本模块为用户提供了一个直接、手动的界面来控制 NeoPixel（WS2812B）可寻址 LED 灯带。用户可以通过旋转编码器精确地调节灯带的整体亮度和颜色。 1.2 实现思路双模式控制：通过 ControlMode 枚举决定当前旋转编码器的输入应该用于调整亮度还是颜色。 HSV 颜色空间：通过控制 HSV 颜色空间中的 H（色相）值来改变颜色，strip.ColorHSV(hue) 函数将 0-65535 范围的色相值转换为 RGB 颜色。 可视化反馈：使用两个水平进度条分别展示亮度和颜色，颜色条的填充色实时根据当前色相变化。 1.3 核心代码#include &lt;Adafruit_NeoPixel.h>  Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);  enum ControlMode &#123; BRIGHTNESS_MODE, COLOR_MODE &#125;;  void LEDMenu() &#123;  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-mechanical-electrical-notes/" title="机电系统笔记">机电系统笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Engineering/">Engineering</a></span></div><div class="content">评估 - 测量 删除&#x2F;添加几何关系可进行约束 打孔用异形孔向导 草图上作为定位辅助的线可以选构造线 插入 - 注解 - 装饰螺纹线 新建 - 从零件装配体新建工程图 布尔运算：特征——组合 装配体可以做爆炸图和动画  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-markdown-syntax-notes/" title="Markdown 语法学习笔记">Markdown 语法学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Markdown/">Markdown</a></span></div><div class="content">一、基本语法1. 标题# 一级标题 ## 二级标题 ### 三级标题  2. 加粗**要加粗的**  要加粗的 没加粗的 或者按下 control + B 3. 斜体*要斜体的*  要斜体的 没斜体的 或者按下 control + I 4. 删除线~~要删除的~~  要删除的 5. 高亮==要高亮的==  &#x3D;&#x3D;要高亮的&#x3D;&#x3D; 6. 代码`一个代码`  一个代码 7. 代码框```c int main() &#123;     for(int i = 0;i&lt;n;i++)     return 1; &#125; ```  esc 下面那个按键 8. 引用> 引用文本 (可以嵌套)   引用文本    111   9. 无序列表- 第一行   第一行 按下 enter 后自动出列表黑点 按下 tab 后变成空心的   按下 shift+tab 又可以变回来  10. 有序列表（数字+”.”+空格）1. 111 2. 222 3. 333   111 222 333  11. 上标x^上标^  x^上标^ 12. 下标x~下标~  x下标 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-matlab-basic-notes/" title="MATLAB 基础学习笔记">MATLAB 基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/MATLAB/">MATLAB</a></span></div><div class="content">基本命令 clc 清屏 clear + [变量名] 清除变量 a:[b]:c 从 a 开始，公差为 b，最多到 c save 文件名 [变量名] 保存变量 load 文件名 [变量名] 导入变量 inf 无穷大 语句后加 ; 不显示结果 who 列出变量 whos 列出变量和类型  矩阵操作 矩阵用 [] 包围，; 分列，, 分行 数组索引：一个数字，两个数字均可如 A(2),A(1,2) 矩阵除法：A\B = A^-1^*B(左除) A/B = A*B^-1^ 矩阵乘法：A*B A.*B:相对应位置的元素运算 A./B,A.^B,A.\B 同理  注释注释前加 % 绘图 plot(x,y) x 当横轴，y 当纵轴 plot(x,y,&#39;r--&#39;,&#39;linewidth&#39;,2) 红色虚线，线宽为 2 hold on 在现有的图窗中添加曲线 plot(x,y2,&#39;b-&#39;) 蓝色实线 legend(&#39;sin&#39;,&#39;cos&#39;) 添加图例 xlabel(&#39;111&#39;) 标记 x 轴 ylabel(&#...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XiaoMiao</div><div class="author-info-description">XiaoMiao 的技术博客 - 分享 ESP32、嵌入式开发、Git 教程、Linux 学习笔记等编程技术内容</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">92</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">30</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/13/2025-07-13-git-version-control-tutorial/" title="Git 版本控制入门教程">Git 版本控制入门教程</a><time datetime="2026-07-13T14:59:00.000Z" title="Created 2026-07-13 22:59:00">2026-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/15/hello-world/" title="Hello World">Hello World</a><time datetime="2026-03-15T14:50:02.233Z" title="Created 2026-03-15 22:50:02">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-alarm-module/" title="闹钟模块 - 多组定时与持久化存储">闹钟模块 - 多组定时与持久化存储</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-altium-designer-20-notes/" title="Altium Designer 20 学习笔记">Altium Designer 20 学习笔记</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-aiot-project-report/" title="智能物联网（AIot）系统设计大作业实验报告">智能物联网（AIot）系统设计大作业实验报告</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+</script><link rel="stylesheet" href="/css/pace-loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://picsum.photos/1920/400);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div></div></nav><div id="site-info"><h1 id="site-title">XiaoMiao's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-kalman-filter-notes/" title="卡尔曼滤波学习笔记">卡尔曼滤波学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Algorithm/">Algorithm</a></span></div><div class="content">入门引入滤波：去掉噪声，使信号更趋于真实值 卡尔曼滤波是有多个不确定的结果，经过分析、推理和计算，获得相对准确的结果。  多个是指数据来源可以是模型推理得出，也可以是通过仪器测量获得。 不确定是指由于模型本身是一种近似，或者是测量仪器本身的精度误差，或者测量过程不可避免地引入了噪声，甚至因为所需要的特征无法直接获取，只能间接推导获得。 分析、推理和计算，则指的是卡尔曼滤波算法。 相对准确，指的是经过卡尔曼滤波算法获得的结果，比原有的多个不确定的结果更逼近客观真实值，但依然存在误差。  适用系统线性高斯系统  线性  叠加性 —— $f(a+b) &#x3D; f(a)+f(b)$ 齐次性 —— $f(kx) &#x3D; kf(x)$   高斯——噪声满足正态分布   宏观意义滤波即加权 理想状态：信号 x1 + 噪声 x0 卡尔曼滤波：估计值 xX + 观测值 xY 因为估计值和观测值都有一定的误差，所以二者加权能够相对准确，权重取决于二者的方差，方差大的说明不可靠，权重应该给的小一点，反之亦然。 进阶状态空间表达式基本假设：  当前时刻状态只和上一时刻状态有关。 模型和系统均...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-led-animation/" title="LED 与动画模块 - NeoPixel 灯带控制">LED 与动画模块 - NeoPixel 灯带控制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a></span></div><div class="content">一、LED 控制模块1.1 引言本模块为用户提供了一个直接、手动的界面来控制 NeoPixel（WS2812B）可寻址 LED 灯带。用户可以通过旋转编码器精确地调节灯带的整体亮度和颜色。 1.2 实现思路双模式控制：通过 ControlMode 枚举决定当前旋转编码器的输入应该用于调整亮度还是颜色。 HSV 颜色空间：通过控制 HSV 颜色空间中的 H（色相）值来改变颜色，strip.ColorHSV(hue) 函数将 0-65535 范围的色相值转换为 RGB 颜色。 可视化反馈：使用两个水平进度条分别展示亮度和颜色，颜色条的填充色实时根据当前色相变化。 1.3 核心代码#include &lt;Adafruit_NeoPixel.h>  Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);  enum ControlMode &#123; BRIGHTNESS_MODE, COLOR_MODE &#125;;  void LEDMenu() &#123;  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-makefile-notes/" title="Makefile 学习笔记">Makefile 学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Programming/">Programming</a></span></div><div class="content"> [!NOTE] 本文档为原始笔记，内容待补充。建议参考 Makefile 官方文档获取更详细的内容。  Makefile 基本结构target: prerequisites 	command   target: 目标文件 prerequisites: 依赖文件 command: 构建命令（必须以 Tab 开头）  示例CC = gcc CFLAGS = -Wall -g  target: main.o utils.o 	$(CC) $(CFLAGS) -o target main.o utils.o  main.o: main.c 	$(CC) $(CFLAGS) -c main.c  utils.o: utils.c 	$(CC) $(CFLAGS) -c utils.c  clean: 	rm -f *.o target  常用变量 $@: 目标文件名 $&lt;: 第一个依赖文件名 $^: 所有依赖文件名 $?: 比目标新的依赖文件  伪目标.PHONY: clean all  clean: 	rm -f *.o target  all: target </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-how-to-ask-questions/" title="高效提问的艺术">高效提问的艺术</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Soft-Skills/">Soft-Skills</a></span></div><div class="content"> 本文基于《提问的智慧》(How To Ask Questions The Smart Way) 整理  引言在技术社区中，你所提问题的解答很大程度上取决于你提问的方式。本文教你如何提问才更有可能得到满意的答复。 提问前在通过电邮、新闻组或论坛提技术问题以前，做以下事情：  尝试在你准备提问论坛的历史文档中搜索答案 尝试搜索互联网以找到答案 尝试阅读手册以找到答案 尝试阅读”常见问题文档”（FAQ）以找到答案 尝试自己检查或试验以找到答案 尝试请教懂行的朋友以找到答案 如果你是程序员，尝试阅读源代码以找到答案  提问时，请先表明你已做了上述事情，这将有助于建立你不是寄生虫与浪费别人时间的印象。最好再表述你从中学到的东西。 提问时仔细挑选论坛要对在哪提问留心，如果你做了下述事情，多半会被一笔勾销或被看成”失败者”：  张贴与论坛主题无关的问题 在面向高级技术问题的论坛上张贴肤浅的问题，或者反之 在太多不同的新闻组同时张贴 给既非熟人也没有义务解决你问题的人发送你私人的电邮  使用有意义且明确的主题主题是你在五十个或更少的字以内吸引有资格专家注意的黄金机会。使用主题的好惯例是”对象─...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-markdown-syntax-notes/" title="Markdown 语法学习笔记">Markdown 语法学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Markdown/">Markdown</a></span></div><div class="content">一、基本语法1. 标题# 一级标题 ## 二级标题 ### 三级标题  2. 加粗**要加粗的**  要加粗的 没加粗的 或者按下 control + B 3. 斜体*要斜体的*  要斜体的 没斜体的 或者按下 control + I 4. 删除线~~要删除的~~  要删除的 5. 高亮==要高亮的==  &#x3D;&#x3D;要高亮的&#x3D;&#x3D; 6. 代码`一个代码`  一个代码 7. 代码框```c int main() &#123;     for(int i = 0;i&lt;n;i++)     return 1; &#125; ```  esc 下面那个按键 8. 引用> 引用文本 (可以嵌套)   引用文本    111   9. 无序列表- 第一行   第一行 按下 enter 后自动出列表黑点 按下 tab 后变成空心的   按下 shift+tab 又可以变回来  10. 有序列表（数字+”.”+空格）1. 111 2. 222 3. 333   111 222 333  11. 上标x^上标^  x^上标^ 12. 下标x~下标~  x下标 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-linux-system-notes/" title="Linux 系统学习笔记">Linux 系统学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Linux/">Linux</a></span></div><div class="content">Shell 的简要介绍操作系统主要负责系统内存管理、软件程序管理、硬件设备管理和文件系统管理。在用户与操作系统之间需要应用程序作为桥梁，帮助用户与操作系统进行交互，实现各种功能。 应用程序与用户的交互有两种表现形式，一种是我们常见的 GUI（Graphical User Interface），即图形用户界面，可以用鼠标点击操作；另一种是 CLI（Command Line Interface），即命令行界面。 Terminal，终端，是人与计算机进行交互的接口。一台大型机可以连接很多终端机，用户在这些终端机上跟计算机进行交互，这些早期终端一般是电传打字机（TTY）。随着个人计算机的普及和进化，大型机时代的专门的终端硬件早已消失，我们只用自己的键盘、鼠标来控制计算机。但是终端的思想保留了下来，变成了操作系统中的软件——终端模拟器（如 Win32 控制台）。终端模拟器可以捕获你的键盘输入，发送至命令行程序，拿到输出结果后再调用图形接口，将输出渲染至屏幕上。由于人们除了在博物馆再也见不到 TTY 这样的终端硬件了，于是就直接称终端模拟器为终端。 Shell，即”壳层”，是帮助用户与内核交...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-matlab-basic-notes/" title="MATLAB 基础学习笔记">MATLAB 基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/MATLAB/">MATLAB</a></span></div><div class="content">基本命令 clc 清屏 clear + [变量名] 清除变量 a:[b]:c 从 a 开始，公差为 b，最多到 c save 文件名 [变量名] 保存变量 load 文件名 [变量名] 导入变量 inf 无穷大 语句后加 ; 不显示结果 who 列出变量 whos 列出变量和类型  矩阵操作 矩阵用 [] 包围，; 分列，, 分行 数组索引：一个数字，两个数字均可如 A(2),A(1,2) 矩阵除法：A\B = A^-1^*B(左除) A/B = A*B^-1^ 矩阵乘法：A*B A.*B:相对应位置的元素运算 A./B,A.^B,A.\B 同理  注释注释前加 % 绘图 plot(x,y) x 当横轴，y 当纵轴 plot(x,y,&#39;r--&#39;,&#39;linewidth&#39;,2) 红色虚线，线宽为 2 hold on 在现有的图窗中添加曲线 plot(x,y2,&#39;b-&#39;) 蓝色实线 legend(&#39;sin&#39;,&#39;cos&#39;) 添加图例 xlabel(&#39;111&#39;) 标记 x 轴 ylabel(&#...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-machine-learning-notes/" title="机器学习基础学习笔记">机器学习基础学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/AI/">AI</a></span></div><div class="content">机器学习定义让计算机在没有明确编程的情况下学习 监督学习 (Supervised Learning)用的最多，给定输入 x 的正确标签 y 来训练模型 例如：  回归学习：给出房子的面积和售价用来训练，得到面积与售价的映射，再给出面积，预测售价  分类问题：不同大小的肿瘤，有的是良性，有的是恶性。与回归不同，输出结果的个数是有限的，而不是所有的数字。可以有更多的输入，如病人的年龄，算法试图把边界线拟合到这些点上   无监督学习聚类只给出了患者的数据，没有标签 (肿瘤良性还是恶性)，为了找到一些结构或模式 比如把给出的数据分为两类，即把未标记的数据放入不同的集群中 例如：  新闻和相关推荐 把人按基因分类 把客户分成不同群体  异常检测识别数据中的异常点或异常模式 压缩数据压缩和降维 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-mqtt-protocol-notes/" title="MQTT 协议学习笔记">MQTT 协议学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/IoT/">IoT</a></span></div><div class="content">什么是 MQTTMQTT（Message Queuing Telemetry Transport）是一种轻量级、基于发布 - 订阅模式的消息传输协议，适用于资源受限的设备和低带宽、高延迟或不稳定的网络环境。它在物联网应用中广受欢迎，能够实现传感器、执行器和其它设备之间的高效通信。 工作原理MQTT 采用的是异步通讯：  发送者（如小智）把语音转换成消息，并附带这个消息关联的订阅主题信息 MQTT 中转服务器 接收消息 订阅者（如设备）从服务器接收消息  使用步骤 搭建 MQTT 服务器 配置发布者和订阅者 定义主题（Topic） 开始消息传递  核心概念 发布&#x2F;订阅模式：消息发送者（发布者）和接收者（订阅者）之间解耦 主题（Topic）：消息的分类标识 消息代理（Broker）：负责消息转发的中间件 服务质量（QoS）：消息传递的可靠性级别  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/14/2026-03-14-menu-system-design/" title="多功能时钟菜单系统设计">多功能时钟菜单系统设计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/">Tutorial</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/">Embedded</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tutorial/Embedded/UI/">UI</a></span></div><div class="content">一、前言菜单系统是多功能时钟的核心交互界面，它为用户提供了一个统一的入口来访问设备的所有功能，如时钟、倒计时、天气等。本模块的目标是实现一个响应快速、滚动平滑、易于扩展的横向菜单。用户通过旋转编码器在不同功能间切换，并通过旋转编码器的按键确认选择。 二、实现思路2.1 表驱动设计为了达成设计目标，我们首先解决了菜单项的数据结构问题。需求是需要一种统一的方式来管理每个菜单项的名称、图标和对应的执行逻辑，对此我们采用了 struct 数组结合函数指针的方案。这种”表驱动”的方法非常适合嵌入式项目，它将数据和行为绑定，同时保持了高度的模块化，可维护性很高。 struct MenuItem &#123;     const char *name;              // 菜单项名称     const uint16_t *image;         // 指向图标图像数据的指针     void (*action)();              // 指向功能入口函数的指针 &#125;;  const MenuItem menuItems[] = &#123;     &#...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XiaoMiao</div><div class="author-info-description">XiaoMiao's technical blog </div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">92</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">30</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/13/2025-07-13-git-version-control-tutorial/" title="Git 版本控制入门教程">Git 版本控制入门教程</a><time datetime="2026-07-13T14:59:00.000Z" title="Created 2026-07-13 22:59:00">2026-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/15/hello-world/" title="Hello World">Hello World</a><time datetime="2026-03-15T14:50:02.233Z" title="Created 2026-03-15 22:50:02">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-alarm-module/" title="闹钟模块 - 多组定时与持久化存储">闹钟模块 - 多组定时与持久化存储</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-aiot-project-report/" title="智能物联网（AIot）系统设计大作业实验报告">智能物联网（AIot）系统设计大作业实验报告</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/2026-03-14-altium-designer-20-notes/" title="Altium Designer 20 学习笔记">Altium Designer 20 学习笔记</a><time datetime="2026-03-13T16:00:00.000Z" title="Created 2026-03-14 00:00:00">2026-03-14</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>Categories</span>
             <a class="card-more-btn" href="/categories/" title="View More">
@@ -187,7 +165,7 @@ btf.addGlobalFn('pjaxComplete', () => {
           </div>
           <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/"><span class="card-category-list-name">Embedded</span><span class="card-category-list-count">6</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/Arduino/"><span class="card-category-list-name">Arduino</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Embedded/Circuit/"><span class="card-category-list-name">Circuit</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/OS/"><span class="card-category-list-name">OS</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/OS/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Project/"><span class="card-category-list-name">Project</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Project/Report/"><span class="card-category-list-name">Report</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Tools/"><span class="card-category-list-name">Tools</span><span class="card-category-list-count">1</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/3d-modeling/" style="font-size: 1.1em; color: #999">3d-modeling</a> <a href="/tags/aht20/" style="font-size: 1.1em; color: #999">aht20</a> <a href="/tags/latex/" style="font-size: 1.1em; color: #999">latex</a> <a href="/tags/stm32/" style="font-size: 1.1em; color: #999">stm32</a> <a href="/tags/eda/" style="font-size: 1.18em; color: #999ca1">eda</a> <a href="/tags/hardware/" style="font-size: 1.1em; color: #999">hardware</a> <a href="/tags/electrical/" style="font-size: 1.1em; color: #999">electrical</a> <a href="/tags/ds18b20/" style="font-size: 1.1em; color: #999">ds18b20</a> <a href="/tags/iot/" style="font-size: 1.18em; color: #999ca1">iot</a> <a href="/tags/sensor/" style="font-size: 1.34em; color: #99a3b0">sensor</a> <a href="/tags/temperature/" style="font-size: 1.18em; color: #999ca1">temperature</a> <a href="/tags/ws2812/" style="font-size: 1.1em; color: #999">ws2812</a> <a href="/tags/virtualization/" style="font-size: 1.1em; color: #999">virtualization</a> <a href="/tags/circuit/" style="font-size: 1.18em; color: #999ca1">circuit</a> <a href="/tags/git/" style="font-size: 1.26em; color: #999fa8">git</a> <a href="/tags/input/" style="font-size: 1.1em; color: #999">input</a> <a href="/tags/mcu/" style="font-size: 1.18em; color: #999ca1">mcu</a> <a href="/tags/display/" style="font-size: 1.1em; color: #999">display</a> <a href="/tags/pcb/" style="font-size: 1.26em; color: #999fa8">pcb</a> <a href="/tags/eeprom/" style="font-size: 1.1em; color: #999">eeprom</a> <a href="/tags/games/" style="font-size: 1.1em; color: #999">games</a> <a href="/tags/version-control/" style="font-size: 1.26em; color: #999fa8">version-control</a> <a href="/tags/shell/" style="font-size: 1.18em; color: #999ca1">shell</a> <a href="/tags/container/" style="font-size: 1.1em; color: #999">container</a> <a href="/tags/esp32/" style="font-size: 1.5em; color: #99a9bf">esp32</a> <a href="/tags/http/" style="font-size: 1.1em; color: #999">http</a> <a href="/tags/operating-system/" style="font-size: 1.1em; color: #999">operating-system</a> <a href="/tags/timer/" style="font-size: 1.1em; color: #999">timer</a> <a href="/tags/linux/" style="font-size: 1.26em; color: #999fa8">linux</a> <a href="/tags/build-tool/" style="font-size: 1.26em; color: #999fa8">build-tool</a> <a href="/tags/c-language/" style="font-size: 1.18em; color: #999ca1">c-language</a> <a href="/tags/writing/" style="font-size: 1.1em; color: #999">writing</a> <a href="/tags/communication/" style="font-size: 1.26em; color: #999fa8">communication</a> <a href="/tags/st7789/" style="font-size: 1.1em; color: #999">st7789</a> <a href="/tags/embedded/" style="font-size: 1.34em; color: #99a3b0">embedded</a> <a href="/tags/encoder/" style="font-size: 1.1em; color: #999">encoder</a> <a href="/tags/tutorial/" style="font-size: 1.18em; color: #999ca1">tutorial</a> <a href="/tags/ai/" style="font-size: 1.1em; color: #999">ai</a> <a href="/tags/arduino/" style="font-size: 1.42em; color: #99a6b7">arduino</a> <a href="/tags/cpp/" style="font-size: 1.1em; color: #999">cpp</a></div></div><div class="card-widget card-archives">
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/performance/" style="font-size: 1.1em; color: #999">performance</a> <a href="/tags/adc/" style="font-size: 1.1em; color: #999">adc</a> <a href="/tags/linux/" style="font-size: 1.3em; color: #99a1ac">linux</a> <a href="/tags/protocol/" style="font-size: 1.2em; color: #999da3">protocol</a> <a href="/tags/mechanical/" style="font-size: 1.1em; color: #999">mechanical</a> <a href="/tags/operating-system/" style="font-size: 1.1em; color: #999">operating-system</a> <a href="/tags/latex/" style="font-size: 1.1em; color: #999">latex</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/ntp/" style="font-size: 1.1em; color: #999">ntp</a> <a href="/tags/aht20/" style="font-size: 1.1em; color: #999">aht20</a> <a href="/tags/encoder/" style="font-size: 1.1em; color: #999">encoder</a> <a href="/tags/tcp-ip/" style="font-size: 1.1em; color: #999">tcp-ip</a> <a href="/tags/eeprom/" style="font-size: 1.1em; color: #999">eeprom</a> <a href="/tags/kalman-filter/" style="font-size: 1.1em; color: #999">kalman-filter</a> <a href="/tags/iot/" style="font-size: 1.2em; color: #999da3">iot</a> <a href="/tags/build-tool/" style="font-size: 1.3em; color: #99a1ac">build-tool</a> <a href="/tags/communication/" style="font-size: 1.3em; color: #99a1ac">communication</a> <a href="/tags/algorithm/" style="font-size: 1.1em; color: #999">algorithm</a> <a href="/tags/graphics/" style="font-size: 1.1em; color: #999">graphics</a> <a href="/tags/circuit/" style="font-size: 1.2em; color: #999da3">circuit</a> <a href="/tags/cpp/" style="font-size: 1.1em; color: #999">cpp</a> <a href="/tags/mqtt/" style="font-size: 1.2em; color: #999da3">mqtt</a> <a href="/tags/solidworks/" style="font-size: 1.1em; color: #999">solidworks</a> <a href="/tags/mcu/" style="font-size: 1.2em; color: #999da3">mcu</a> <a href="/tags/ai/" style="font-size: 1.1em; color: #999">ai</a> <a href="/tags/matlab/" style="font-size: 1.1em; color: #999">matlab</a> <a href="/tags/weather/" style="font-size: 1.1em; color: #999">weather</a> <a href="/tags/altium-designer/" style="font-size: 1.2em; color: #999da3">altium-designer</a> <a href="/tags/esp32/" style="font-size: 1.5em; color: #99a9bf">esp32</a> <a href="/tags/javascript/" style="font-size: 1.1em; color: #999">javascript</a> <a href="/tags/drawing/" style="font-size: 1.1em; color: #999">drawing</a> <a href="/tags/programming/" style="font-size: 1.4em; color: #99a5b6">programming</a> <a href="/tags/easyeda/" style="font-size: 1.1em; color: #999">easyeda</a> <a href="/tags/control-theory/" style="font-size: 1.1em; color: #999">control-theory</a> <a href="/tags/container/" style="font-size: 1.1em; color: #999">container</a> <a href="/tags/i2c/" style="font-size: 1.1em; color: #999">i2c</a> <a href="/tags/pomodoro/" style="font-size: 1.1em; color: #999">pomodoro</a> <a href="/tags/raspberry-pi/" style="font-size: 1.1em; color: #999">raspberry-pi</a> <a href="/tags/ui/" style="font-size: 1.3em; color: #99a1ac">ui</a> <a href="/tags/git/" style="font-size: 1.3em; color: #99a1ac">git</a></div></div><div class="card-widget card-archives">
     <div class="item-headline">
       <i class="fas fa-archive"></i>
       <span>Archives</span>
@@ -233,7 +211,7 @@ btf.addGlobalFn('pjaxComplete', () => {
         </li>
       
     </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">52</div></div><div class="webinfo-item"><div class="item-name">Total Word Count :</div><div class="item-count">65.4k</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-03-16T08:36:19.881Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">52</div></div><div class="webinfo-item"><div class="item-name">Total Word Count :</div><div class="item-count">65.4k</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-03-17T04:46:28.548Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: str => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
@@ -244,7 +222,7 @@ btf.addGlobalFn('pjaxComplete', () => {
     }, null))
   },
   run: subtitleType => {
-    if (true) {
+    if () {
       if (typeof Typed === 'function') {
         subtitleType()
       } else {
@@ -255,7 +233,7 @@ btf.addGlobalFn('pjaxComplete', () => {
     }
   },
   processSubtitle: (content, extraContents = []) => {
-    if (true) {
+    if () {
       const sub = [].slice()
 
       if (extraContents.length > 0) {
@@ -277,16 +255,345 @@ btf.addGlobalFn('pjaxComplete', () => {
 }
 btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
 </script><script>function subtitleType () {
-  fetch('https://v1.hitokoto.cn')
-    .then(response => response.json())
-    .then(data => {
-      const from = '出自 ' + data.from
-      typedJSFn.processSubtitle(data.hitokoto, [from])
+  btf.getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js')
+    .then(() => {
+      jinrishici.load(result => {
+        if (result && result.data && result.data.content) {
+          typedJSFn.processSubtitle(result.data.content)
+        } else {
+          throw new Error('Failed to parse the return value of Jinrishici API')
+        }
+      })
     })
     .catch(err => {
-      console.error('Failed to get the Hitokoto API:', err)
-      typedJSFn.processSubtitle([])
+      console.error('Failed to get the Jinrishici API:', err)
+      typedJSFn.processSubtitle(0)
     })
 }
 typedJSFn.run(subtitleType)
-</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
+</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
