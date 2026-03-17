@@ -26,9 +26,9 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> CAD </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -86,6 +86,12 @@
           
           <category> Learning </category>
           
+          <category> Embedded </category>
+          
+          <category> MCU </category>
+          
+          <category> STM32 </category>
+          
       </categories>
       
       
@@ -111,9 +117,11 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> Programming </category>
+          <category> Language </category>
+          
+          <category> Cpp </category>
           
       </categories>
       
@@ -140,9 +148,13 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
           <category> Embedded </category>
+          
+          <category> MCU </category>
+          
+          <category> ESP32 </category>
           
       </categories>
       
@@ -173,9 +185,13 @@
       
       <categories>
           
+          <category> Learning </category>
+          
           <category> Embedded </category>
           
-          <category> Arduino </category>
+          <category> MCU </category>
+          
+          <category> ESP32 </category>
           
       </categories>
       
@@ -206,9 +222,13 @@
       
       <categories>
           
+          <category> Learning </category>
+          
           <category> Embedded </category>
           
-          <category> Arduino </category>
+          <category> MCU </category>
+          
+          <category> ESP32 </category>
           
       </categories>
       
@@ -241,9 +261,13 @@
       
       <categories>
           
+          <category> Learning </category>
+          
           <category> Embedded </category>
           
-          <category> Arduino </category>
+          <category> MCU </category>
+          
+          <category> ESP32 </category>
           
       </categories>
       
@@ -276,9 +300,13 @@
       
       <categories>
           
+          <category> Learning </category>
+          
           <category> Embedded </category>
           
-          <category> Arduino </category>
+          <category> MCU </category>
+          
+          <category> ESP32 </category>
           
       </categories>
       
@@ -311,9 +339,13 @@
       
       <categories>
           
+          <category> Learning </category>
+          
           <category> Embedded </category>
           
-          <category> Arduino </category>
+          <category> MCU </category>
+          
+          <category> ESP32 </category>
           
       </categories>
       
@@ -375,9 +407,9 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> Control </category>
+          <category> Algorithm </category>
           
       </categories>
       
@@ -404,11 +436,13 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
           <category> Embedded </category>
           
-          <category> UI </category>
+          <category> MCU </category>
+          
+          <category> ESP32 </category>
           
       </categories>
       
@@ -439,20 +473,24 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
           <category> Embedded </category>
+          
+          <category> MCU </category>
+          
+          <category> STM32 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> mcu </tag>
-            
             <tag> stm32 </tag>
             
             <tag> embedded </tag>
+            
+            <tag> mcu </tag>
             
         </tags>
       
@@ -472,7 +510,9 @@
           
           <category> Learning </category>
           
-          <category> Programming </category>
+          <category> Language </category>
+          
+          <category> JavaScript </category>
           
       </categories>
       
@@ -501,16 +541,16 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> Programming </category>
+          <category> Language </category>
+          
+          <category> JavaScript </category>
           
       </categories>
       
       
         <tags>
-            
-            <tag> tutorial </tag>
             
             <tag> html </tag>
             
@@ -536,9 +576,9 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> DevOps </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -567,9 +607,9 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> Communication </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -600,9 +640,9 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> LaTeX </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -631,9 +671,9 @@
       
       <categories>
           
-          <category> OS </category>
+          <category> Learning </category>
           
-          <category> Linux </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -641,8 +681,6 @@
         <tags>
             
             <tag> linux </tag>
-            
-            <tag> tutorial </tag>
             
             <tag> shell </tag>
             
@@ -664,6 +702,8 @@
       
       <categories>
           
+          <category> Learning </category>
+          
           <category> Embedded </category>
           
           <category> Circuit </category>
@@ -673,11 +713,9 @@
       
         <tags>
             
-            <tag> communication </tag>
-            
             <tag> circuit </tag>
             
-            <tag> mcu </tag>
+            <tag> communication </tag>
             
         </tags>
       
@@ -695,9 +733,9 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> EDA </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -724,7 +762,11 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
+          
+          <category> Embedded </category>
+          
+          <category> MCU </category>
           
           <category> RaspberryPi </category>
           
@@ -757,7 +799,7 @@
           
           <category> Learning </category>
           
-          <category> Programming </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -786,7 +828,7 @@
           
           <category> Learning </category>
           
-          <category> Programming </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -813,9 +855,9 @@
       
       <categories>
           
-          <category> Tools </category>
+          <category> Learning </category>
           
-          <category> DevOps </category>
+          <category> Tools </category>
           
       </categories>
       
@@ -827,8 +869,6 @@
             <tag> version-control </tag>
             
             <tag> github </tag>
-            
-            <tag> tutorial </tag>
             
         </tags>
       
@@ -846,7 +886,9 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
+          
+          <category> Language </category>
           
           <category> MATLAB </category>
           
@@ -875,9 +917,9 @@
       
       <categories>
           
-          <category> Tutorial </category>
+          <category> Learning </category>
           
-          <category> Markdown </category>
+          <category> Tools </category>
           
       </categories>
       
