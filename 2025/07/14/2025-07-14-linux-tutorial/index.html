@@ -1102,7 +1102,7 @@ export a # 将子进程中变量公开给父进程(此处为shell)</code></pre>
   }
 
   const loadMermaid = () => {
-    if (false) codeToMermaid()
+    if (!false) codeToMermaid()
     const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
     if ($mermaid.length === 0) return
 

@@ -340,9 +340,9 @@
             
             <tag> ESP32 </tag>
             
-            <tag> display </tag>
-            
             <tag> Arduino </tag>
+            
+            <tag> display </tag>
             
         </tags>
       
@@ -474,9 +474,9 @@
             
             <tag> ESP32 </tag>
             
-            <tag> Arduino </tag>
-            
             <tag> animation </tag>
+            
+            <tag> Arduino </tag>
             
         </tags>
       
