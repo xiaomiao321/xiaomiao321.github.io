@@ -5814,6 +5814,9 @@ pre[class*='language-'] .token.italic {
 .mermaid-wrap > svg:active {
   cursor: grabbing;
 }
+pre > code.mermaid {
+  display: none;
+}
 .utterances,
 .fb-comments iframe {
   width: 100% !important;
