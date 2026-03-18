@@ -812,7 +812,7 @@ padding: 10px 20px 30px 40px; &#x2F;* 上 10px，右 20px，下 30px，左 40px 
   }
 
   const codeToMermaid = () => {
-    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    const codeMermaidEle = document.querySelectorAll('pre > code.language-mermaid, pre > code.mermaid')
     if (codeMermaidEle.length === 0) return
 
     codeMermaidEle.forEach(ele => {
