@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>无人机阶段成果及学习笔记</title>
+      <link href="/2026/03/18/2026-02-15-Drone-Result/"/>
+      <url>/2026/03/18/2026-02-15-Drone-Result/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="驱动电机"><a href="#驱动电机" class="headerlink" title="驱动电机"></a>驱动电机</h2><h3 id="接线图"><a href="#接线图" class="headerlink" title="接线图"></a>接线图</h3><pre class="line-numbers language-mermaid" data-language="mermaid" data-start="1"><code class="language-mermaid">flowchart TD    A[3S锂电池] --&gt;|XT60| B[分电板]    B --&gt; C[无刷电调]    C --&gt; D[无刷电机]    C --&gt; E[信号发生器&#x2F;单片机PWM输出口]    subgraph 电源部分        A        B    end    subgraph 控制与驱动        C        E    end    subgraph 执行机构        D    end    %% 标注引脚和连线说明    A -- VCC&#x2F;GND --&gt; B    B -- VCC&#x2F;GND --&gt; C    C -- SIGNAL(白线), VCC(红线), GND(黑线) --&gt; E    C -- 三相交流电 --&gt; D    %% 可选：添加样式美化    style A fill:#4a5b7c,stroke:#fff,color:white    style B fill:#4a5b7c,stroke:#fff,color:white    style C fill:#4a5b7c,stroke:#fff,color:white    style D fill:#4a5b7c,stroke:#fff,color:white    style E fill:#4a5b7c,stroke:#fff,color:white</code></pre><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol><li><p>按照接线图接线</p></li><li><p>接入电源，此时电机没有接收到PWM信号，每经过3秒之后进行一次短鸣。除接收3秒以上的50% PWM信号之外，不对任何PWM输入做响应，处于电机保护状态。</p></li><li><p>信号发生器输出500Hz，3秒以上50%的PWM信号，根据当前锂电池的节数短鸣 n 次(3S电池是3次)，再长鸣 1 次，表示初始化完成，解除电机保护，进入工作状态。</p></li><li><p>在工作状态下接收50%到100%的PWM信号，控制电机由停转到最大转速之间变化。</p></li></ol><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/undefined003cfdbd5f9fad6ac356f2396c8103b3.jpg" alt="003cfdbd5f9fad6ac356f2396c8103b3"></p><blockquote><p>[!NOTE]</p><p>上电后如果有持续的两声短蜂鸣，说明电池电量不足，其他可参考说明书</p></blockquote><h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><pre class="line-numbers language-c" data-language="c" data-start="1"><code class="language-c">HAL_TIM_PWM_Start(&amp;htim4, TIM_CHANNEL_4);HAL_Delay(4000);for (int i &#x3D; 0; i &lt; 1000; i++) &#123;__HAL_TIM_SET_COMPARE(&amp;htim4, TIM_CHANNEL_4, 1000 + i); &#x2F;&#x2F; PB9对应TIM4的CH4HAL_Delay(100);&#125;</code></pre><h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><video controls width="100%" poster="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/undefined003cfdbd5f9fad6ac356f2396c8103b3.jpg">  <source src="/video/drone_demo.mp4" type="video/mp4">  您的浏览器不支持视频播放，请升级浏览器或下载视频观看。</video><!-- 本地视频使用说明：1. 将视频文件放入 source/video/ 目录（如果没有该目录请创建）2. 修改 src 路径为你的视频文件名3. poster 可以设置为视频封面图（可选）4. 支持多个格式源，例如同时提供 webm 格式：     <source src="/video/drone_demo.webm" type="video/webm">--><h2 id="组装电机和螺旋桨"><a href="#组装电机和螺旋桨" class="headerlink" title="组装电机和螺旋桨"></a>组装电机和螺旋桨</h2><p>顺序：</p><p>电机-&gt;垫片-&gt;桨叶-&gt;子弹头&#x2F;螺母</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Project </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Drone </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>莱仕达 PXN V9Gen2 方向盘使用教程</title>
       <link href="/2026/03/18/2026-03-18-PXN-V9Gen2-Steering-Wheel/"/>
       <url>/2026/03/18/2026-03-18-PXN-V9Gen2-Steering-Wheel/</url>
@@ -21,6 +46,31 @@
         <tags>
             
             <tag> PXN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MacOS 使用</title>
+      <link href="/2026/03/18/2026-03-20-Macbook-usage/"/>
+      <url>/2026/03/18/2026-03-20-Macbook-usage/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="使用差异"><a href="#使用差异" class="headerlink" title="使用差异"></a>使用差异</h2><h3 id="界面操作逻辑"><a href="#界面操作逻辑" class="headerlink" title="界面操作逻辑"></a>界面操作逻辑</h3><table><thead><tr><th>Windows</th><th>MacOS</th></tr></thead><tbody><tr><td>此电脑</td><td>访达</td></tr><tr><td>回收站</td><td>废纸篓</td></tr></tbody></table><p>关闭按钮在左上角</p><blockquote><p>[!NOTE]<br>关闭按钮只是关闭了当前窗口，但是软件仍在后台运行</p></blockquote><p>想要退出软件，可以：</p><ol><li><code>Command</code> + <code>Q</code></li><li>菜单栏退出</li><li>右键程序坞对应软件图标退出</li></ol><p><strong>全屏</strong>：不同于 Windows 的最大化，而是会隐藏菜单栏和程序坞，相当于显示在一个新的桌面，此时可以通过三指滑动来切换桌面</p><p><strong>分屏</strong>：</p><ol><li>两个程序都已经全屏：四指上推，然后三指将需要用到的两个桌面拖动到一起，两个桌面会自动结合</li><li>两个程序未全屏：点击绿色全屏按钮 → 将窗口拼贴到屏幕左侧</li></ol><p><strong>最大化窗口</strong>：</p><ol><li>按住键盘 <code>Option</code>，再点全屏按钮</li><li>双击软件标题栏</li><li>双击软件窗口边缘</li></ol><hr><h3 id="输入设备"><a href="#输入设备" class="headerlink" title="输入设备"></a>输入设备</h3><h4 id="鼠标与触控板"><a href="#鼠标与触控板" class="headerlink" title="鼠标与触控板"></a>鼠标与触控板</h4><ul><li><strong>官方鼠标</strong>：Magic Mouse（无物理滚轮）</li><li><strong>普通鼠标</strong>：滚动方向是反的<ul><li>解决：系统设置 → 触控板 → 滚动缩放 → 关闭「自然滚动」</li><li>建议下载 <a href="https://mos.caldis.me/">Mos</a> 优化滚动体验</li></ul></li></ul><p><strong>触控板手势</strong>：</p><table><thead><tr><th>手势</th><th>功能</th></tr></thead><tbody><tr><td>轻点</td><td>点按（需在设置中开启）</td></tr><tr><td>三指向上轻扫</td><td>打开调度中心</td></tr><tr><td>拇指与其余三指合拢</td><td>打开启动台</td></tr><tr><td>拇指与其余三指张开</td><td>显示桌面</td></tr></tbody></table><h4 id="键盘"><a href="#键盘" class="headerlink" title="键盘"></a>键盘</h4><p>左下角按键不同于 Windows，依次是：<code>fn</code>、<code>control</code>、<code>option</code>、<code>command</code>，大部分快捷键与 <code>Command</code> 有关。</p><ul><li><strong>Windows 键盘</strong>：接入后可通过 <code>Fn</code> + <code>M</code> 打开 Mac 模式</li><li><strong>自定义修饰键</strong>：设置 → 键盘 → 修饰键</li></ul><hr><h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><h4 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h4><table><thead><tr><th>快捷键</th><th>功能</th><th>说明</th></tr></thead><tbody><tr><td><code>Command</code> + <code>A</code></td><td>全选</td><td></td></tr><tr><td><code>Command</code> + <code>C</code></td><td>拷贝</td><td>和 Windows 的复制一样</td></tr><tr><td><code>Command</code> + <code>V</code></td><td>粘贴</td><td></td></tr><tr><td><code>Command</code> + <code>X</code></td><td>剪切</td><td>仅支持文本，不支持文件</td></tr><tr><td><code>Command</code> + <code>D</code></td><td>复制</td><td>生成一个相同的副本在旁边</td></tr></tbody></table><h4 id="窗口管理"><a href="#窗口管理" class="headerlink" title="窗口管理"></a>窗口管理</h4><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td><code>Command</code> + <code>W</code></td><td>关闭当前窗口</td></tr><tr><td><code>Command</code> + <code>Q</code></td><td>关闭当前程序</td></tr><tr><td><code>Command</code> + <code>M</code></td><td>最小化当前窗口</td></tr><tr><td><code>Command</code> + <code>H</code></td><td>隐藏当前程序</td></tr><tr><td><code>Command</code> + <code>Option</code> + <code>H</code></td><td>隐藏所有后台程序</td></tr><tr><td><code>Command</code> + <code>N</code></td><td>新建当前程序的文件</td></tr><tr><td><code>Command</code> + <code>,</code></td><td>打开偏好设置</td></tr></tbody></table><h4 id="应用切换"><a href="#应用切换" class="headerlink" title="应用切换"></a>应用切换</h4><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td><code>Command</code> + <code>Tab</code></td><td>切换到下一个应用程序</td></tr><tr><td><code>Command</code> + <code>Shift</code> + <code>Tab</code></td><td>切换到上一个应用程序</td></tr><tr><td><code>Command</code> + <code>~</code></td><td>在同一程序的不同窗口间切换（Safari 使用频率高）</td></tr></tbody></table><h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td><code>Command</code> + <code>C</code> → <code>Command</code> + <code>Option</code> + <code>V</code></td><td>文件剪切</td></tr><tr><td><code>空格</code></td><td>快速预览文件</td></tr></tbody></table><h4 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h4><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td><code>Shift</code> + <code>Command</code> + <code>3</code></td><td>全屏截图</td></tr><tr><td><code>Shift</code> + <code>Command</code> + <code>4</code></td><td>框选截图</td></tr><tr><td><code>Shift</code> + <code>Command</code> + <code>4</code> + <code>空格</code></td><td>窗口截图</td></tr><tr><td><code>Shift</code> + <code>Command</code> + <code>5</code></td><td>打开截图工具，可选择截图方式</td></tr></tbody></table><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td><code>Command</code> + <code>Space</code></td><td>聚焦搜索</td></tr><tr><td><code>Control</code> + <code>空格</code></td><td>切换输入法</td></tr><tr><td><code>Command</code> + <code>L</code></td><td>Safari 浏览器网址栏聚焦</td></tr><tr><td><code>Command</code> + <code>P</code></td><td>打印</td></tr><tr><td><code>Command</code> + <code>Shift</code> + <code>P</code></td><td>页面设置</td></tr></tbody></table><hr><h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h3 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h3><ol><li><strong>官网下载</strong>：下载 <code>.dmg</code>（Disk Image）文件</li><li><strong>App Store</strong>：直接在应用商店下载</li></ol><h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol><li>打开 <code>.dmg</code> 文件</li><li>将应用拖到 <code>Applications</code> 文件夹</li><li>退出临时挂载的磁盘</li></ol><h3 id="允许安装第三方应用"><a href="#允许安装第三方应用" class="headerlink" title="允许安装第三方应用"></a>允许安装第三方应用</h3><p>有时系统会限制安装非 App Store 应用：</p><ol><li>打开 系统偏好设置 → 安全与隐私 → 允许任何来源</li><li>若没有该选项，在终端输入：</li></ol><pre class="line-numbers language-bash" data-language="bash" data-start="1"><code class="language-bash">sudo spctl --master-disable</code></pre><blockquote><p>[!TIP]<br>推荐工具：DaisyDisk（磁盘清理）、柠檬清理</p></blockquote><hr><h2 id="自定义菜单栏"><a href="#自定义菜单栏" class="headerlink" title="自定义菜单栏"></a>自定义菜单栏</h2><ul><li><strong>调整顺序</strong>：按住 <code>Command</code> 拖动菜单栏图标可改变顺序</li><li><strong>删除图标</strong>：按住 <code>Command</code> 拖动图标到菜单栏外即可删除</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tools </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MacOS </tag>
             
         </tags>
       
@@ -538,11 +588,11 @@
       
         <tags>
             
+            <tag> javascript </tag>
+            
             <tag> web </tag>
             
             <tag> frontend </tag>
-            
-            <tag> javascript </tag>
             
         </tags>
       
@@ -569,13 +619,13 @@
       
         <tags>
             
-            <tag> html </tag>
-            
-            <tag> css </tag>
-            
             <tag> web </tag>
             
             <tag> frontend </tag>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
             
         </tags>
       
