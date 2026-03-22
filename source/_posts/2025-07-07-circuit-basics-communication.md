@@ -5,6 +5,7 @@ categories: [Learning, Embedded, Circuit]
 tags: [circuit, communication]
 description: 电路基础知识详解，包含电路调试、GPIO、USB 接口、电源管理以及常见通信协议（UART、I2C、SPI、CAN）
 toc: true
+sticky: 70
 ---
 
 # 电路基础与通信协议详解

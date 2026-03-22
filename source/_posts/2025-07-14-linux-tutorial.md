@@ -5,6 +5,7 @@ categories: [Learning, Tools]
 tags: [Linux]
 description: Linux 入门教程，包含 Shell 介绍、系统目录结构、文件操作、用户管理等核心概念
 toc: true
+sticky: 80
 ---
 
 # Linux 入门教程

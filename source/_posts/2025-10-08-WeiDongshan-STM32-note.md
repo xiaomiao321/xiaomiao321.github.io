@@ -4,6 +4,7 @@ date: 2025-10-08 21:55:00
 categories: [Learning, Embedded, Platform, STM32]
 tags: [HAL, embedded, STM32]
 description: 韦东山STM32HAL库笔记，包括GPIO、UART、I2C、SPI、TIM等外设
+sticky: 90
 ---
 
 ## C语言补充
