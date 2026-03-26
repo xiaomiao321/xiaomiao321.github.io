@@ -207,9 +207,9 @@
             
             <tag> embedded </tag>
             
-            <tag> STM32 </tag>
-            
             <tag> HAL </tag>
+            
+            <tag> STM32 </tag>
             
         </tags>
       
@@ -555,9 +555,9 @@
             
             <tag> ESP32 </tag>
             
-            <tag> animation </tag>
-            
             <tag> Arduino </tag>
+            
+            <tag> animation </tag>
             
         </tags>
       
@@ -619,11 +619,11 @@
       
         <tags>
             
-            <tag> javascript </tag>
-            
             <tag> web </tag>
             
             <tag> frontend </tag>
+            
+            <tag> javascript </tag>
             
         </tags>
       
@@ -650,13 +650,13 @@
       
         <tags>
             
-            <tag> web </tag>
-            
-            <tag> frontend </tag>
-            
             <tag> html </tag>
             
             <tag> css </tag>
+            
+            <tag> web </tag>
+            
+            <tag> frontend </tag>
             
         </tags>
       
