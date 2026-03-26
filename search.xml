@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>欧洲卡车模拟 2 驾驶指南（PXN V9Gen2 方向盘）</title>
+      <link href="/2026/03/26/2026-03-26-euro-truck-simulator-2-guide/"/>
+      <url>/2026/03/26/2026-03-26-euro-truck-simulator-2-guide/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="PXN-V9Gen2方向盘使用方法"><a href="#PXN-V9Gen2方向盘使用方法" class="headerlink" title="PXN V9Gen2方向盘使用方法"></a>PXN V9Gen2方向盘使用方法</h1><h2 id="方向盘参数"><a href="#方向盘参数" class="headerlink" title="方向盘参数"></a>方向盘参数</h2><ul><li><strong>旋转角度</strong>：900°</li><li><strong>力反馈</strong>：双电机力反馈</li><li><strong>兼容平台</strong>：PC &#x2F; PS4 &#x2F; PS5 &#x2F; Xbox One &#x2F; Xbox Series X|S &#x2F; Switch</li><li><strong>连接方式</strong>：USB 有线连接</li><li><strong>踏板</strong>：三踏板（油门、刹车、离合）</li><li><strong>换挡方式</strong>：支持 H 档和序列档</li></ul><h2 id="接线"><a href="#接线" class="headerlink" title="接线"></a>接线</h2><p>把档、踏板都接入方向盘对应插口，再把方向盘接到电脑。</p><blockquote><p>[!NOTE]</p><p>方向盘的灯光应该是红色而非紫色，可以通过长按 mode 键调整</p></blockquote><h2 id="驱动安装"><a href="#驱动安装" class="headerlink" title="驱动安装"></a>驱动安装</h2><ol><li>访问莱仕达官网下载对应驱动</li><li>安装完成后连接方向盘自动识别</li></ol><h2 id="游戏设置"><a href="#游戏设置" class="headerlink" title="游戏设置"></a>游戏设置</h2><p>以欧卡 2 为例，进入设置——控制，依次设定方向控制、油门控制、制动控制、离合控制。</p><p>设定方法：点击要设定的项目并操作对应外设。</p><h3 id="游戏按键映射"><a href="#游戏按键映射" class="headerlink" title="游戏按键映射"></a>游戏按键映射</h3><h4 id="灯光控制"><a href="#灯光控制" class="headerlink" title="灯光控制"></a>灯光控制</h4><table><thead><tr><th>功能</th><th>键盘</th><th>方向盘</th></tr></thead><tbody><tr><td>近光灯</td><td>L</td><td>L2</td></tr><tr><td>远光灯</td><td>K</td><td>L3</td></tr><tr><td>雨刮器</td><td>P</td><td>L1</td></tr></tbody></table><h4 id="车辆控制"><a href="#车辆控制" class="headerlink" title="车辆控制"></a>车辆控制</h4><table><thead><tr><th>功能</th><th>键盘</th><th>方向盘</th></tr></thead><tbody><tr><td>点火</td><td>X</td><td>E</td></tr></tbody></table><h3 id="档位设置"><a href="#档位设置" class="headerlink" title="档位设置"></a>档位设置</h3><p>游戏内可选择不同档位类型，包括无级式等。</p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/8078bc42b8c6a1f356aadac895a8c970.jpg" alt="档位设置"></p><h3 id="方向盘设置"><a href="#方向盘设置" class="headerlink" title="方向盘设置"></a>方向盘设置</h3><p>方向盘建议设置为居中模式，其他设置保持默认即可</p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/ff3080dfb6b0087c794c4ef028875e95.jpg" alt="方向盘设置"></p><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="方向盘无法识别"><a href="#方向盘无法识别" class="headerlink" title="方向盘无法识别"></a>方向盘无法识别</h3><ul><li>检查 USB 连接是否牢固</li><li>尝试更换 USB 接口</li><li>重新安装驱动</li></ul><h3 id="力反馈效果弱"><a href="#力反馈效果弱" class="headerlink" title="力反馈效果弱"></a>力反馈效果弱</h3><ul><li>在游戏设置中调高力反馈强度</li><li>检查电源适配器是否连接正常</li></ul><h3 id="踏板无响应"><a href="#踏板无响应" class="headerlink" title="踏板无响应"></a>踏板无响应</h3><ul><li>检查踏板线是否插入方向盘对应接口</li><li>在驱动软件中校准踏板</li></ul><h1 id="变速箱系统"><a href="#变速箱系统" class="headerlink" title="变速箱系统"></a>变速箱系统</h1><h2 id="变速箱核心机制"><a href="#变速箱核心机制" class="headerlink" title="变速箱核心机制"></a>变速箱核心机制</h2><p>为了获得最优化的功率输出表现：</p><p>$$<br>功率 &#x3D; 扭矩 \times 转速<br>$$</p><p>$$<br>Gear Ratio &#x3D; \frac{n_1}{n_2} &#x3D; \frac{d_2}{d_1} &#x3D; \frac{T_2}{T_1}<br>$$</p><p>其中：</p><ul><li>$n$：转速</li><li>$d$：直径</li><li>$T$：扭矩</li></ul><p>齿轮比就是在扭矩和转速之间做取舍。</p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/373d016b962ab0ea58ff007c23dc72a5.jpg" alt="变速箱原理"></p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/30764aefacad46c39b6dd63137f47339.jpg" alt="齿轮比示意"></p><h2 id="变速箱类型"><a href="#变速箱类型" class="headerlink" title="变速箱类型"></a>变速箱类型</h2><h3 id="MT-Manual-Transmission-手动挡变速箱"><a href="#MT-Manual-Transmission-手动挡变速箱" class="headerlink" title="MT (Manual Transmission) 手动挡变速箱"></a>MT (Manual Transmission) 手动挡变速箱</h3><p>手动操作离合和挂档来改变不同齿轮之间的组合。</p><ul><li><strong>家用车</strong>：大部分 6 档</li><li><strong>半挂车</strong>：12 档、18 档</li></ul><h4 id="档位多的好处"><a href="#档位多的好处" class="headerlink" title="档位多的好处"></a>档位多的好处</h4><ol><li>改善动力分配</li><li>换挡更加平顺</li><li>燃油经济性</li></ol><p>家用车通常 1 档起步，2 档提速——舍弃扭矩，获得转速。</p><h4 id="半挂车档位系统"><a href="#半挂车档位系统" class="headerlink" title="半挂车档位系统"></a>半挂车档位系统</h4><p>半挂车有两个拨片——<strong>预选阀</strong>和<strong>高低速拨片</strong>。</p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/c9e0611e1c6813a51736d12bc4d3273c.jpg" alt="半挂车档位"></p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/41fd6e6e6be0beb41a55f6022879497d.jpg" alt="档位拨片"></p><ul><li><strong>高低速（Splitter）</strong>：把一个档位分为高低两档</li><li><strong>预选阀（Range Selector）</strong>：把 1-6 改成 7-12</li></ul><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/2298faac3e469d59ff789a94468eee5f.jpg" alt="高低速拨片"></p><p>部分车辆有两个挡把，相当于 1 个主档有四个分档，共 6×4&#x3D;24 个档位。</p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/b127cfa6a3d977bb7e772f20070c8be8.jpg" alt="双挡把"></p><h3 id="AT-Automatic-Transmission-自动挡变速箱"><a href="#AT-Automatic-Transmission-自动挡变速箱" class="headerlink" title="AT (Automatic Transmission) 自动挡变速箱"></a>AT (Automatic Transmission) 自动挡变速箱</h3><p>自动换挡，无需手动操作离合。</p><h3 id="AMT-Automatic-Manual-Transmission-手自一体变速箱"><a href="#AMT-Automatic-Manual-Transmission-手自一体变速箱" class="headerlink" title="AMT (Automatic Manual Transmission) 手自一体变速箱"></a>AMT (Automatic Manual Transmission) 手自一体变速箱</h3><p>与手动变速箱基本一致，只是由电脑选择档位和离合时机。</p><ul><li><strong>优点</strong>：方便、经济性</li><li><strong>缺点</strong>：如长下坡不一定合适</li></ul><h1 id="离合系统"><a href="#离合系统" class="headerlink" title="离合系统"></a>离合系统</h1><h2 id="离合的目的"><a href="#离合的目的" class="headerlink" title="离合的目的"></a>离合的目的</h2><p>如果车轮是停止的，要是没有离合，引擎也会被迫停止。</p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/fd1b69b81f9f62484192c24335662e15.jpg" alt="离合原理 1"></p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/1bcba2486f4a7516b63bb5114384aa42.jpg" alt="离合原理 2"></p><p>在车辆停之前，通过踩离合使得引擎与变速箱完全脱离，这样车子停住后，引擎仍可以保持最低转速运行。</p><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/img/8c8b3a230d36d74b41d68e359801442d.jpg" alt="离合原理 3"></p><p>因此，减速停车需要刹车离合一起踩。</p><p>作用就是在必要情况下把输出动力的引擎与变速箱隔开，如换挡时要断开和发动机的链接来改变变速箱的齿轮组合。</p><h2 id="离合的工作原理"><a href="#离合的工作原理" class="headerlink" title="离合的工作原理"></a>离合的工作原理</h2><p><img src="https://imgs.icauto.com.cn/allimg/220211/59-2202111955202P.gif" alt="离合工作原理"></p><ul><li><strong>不踩离合</strong>：红色部分被连接在引擎上，飞轮巨大的摩擦力带动，从而带动其上主动轴一起转动</li><li><strong>踩离合</strong>：黄色、红色与主动轴脱离</li></ul><h1 id="换挡技巧"><a href="#换挡技巧" class="headerlink" title="换挡技巧"></a>换挡技巧</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ol><li>先踩离合，再换挡</li><li>挂档注意横平竖直</li></ol><h2 id="升档方法"><a href="#升档方法" class="headerlink" title="升档方法"></a>升档方法</h2><p>踩离合，挂高挡位，慢慢松离合，半联动时候稳住离合，轻点油门。</p><blockquote><p>[!IMPORTANT]</p><p>离合在<strong>半触点稳住 1-2 秒再松</strong>，不可越级加挡</p></blockquote><h3 id="两脚离合"><a href="#两脚离合" class="headerlink" title="两脚离合"></a>两脚离合</h3><ol><li>第一次：松油门的时候踩离合，挂空挡</li><li>第二次：挂新档</li></ol><p><strong>升档</strong>：1000-1500 转之间（1500 转左右最常见）</p><h3 id="不踩离合换挡"><a href="#不踩离合换挡" class="headerlink" title="不踩离合换挡"></a>不踩离合换挡</h3><p>1400 转挂空挡，掉到 1100 再升档。</p><h2 id="降档方法"><a href="#降档方法" class="headerlink" title="降档方法"></a>降档方法</h2><p>先踩刹车减速再降档，可以跨级降档。</p><p><strong>降档转速</strong>：1000-1100 转</p><p>操作步骤：</p><ol><li>加点油门</li><li>等到感觉发动机声音响亮</li><li>左脚踩离合，右脚松油门</li><li>离合在半触点稳住 1-2 秒再松</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Game </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 欧卡 2 </tag>
+            
+            <tag> PXN </tag>
+            
+            <tag> 驾驶教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>FPC 软板设计</title>
       <link href="/2026/03/21/2026-03-21-FPC-Design/"/>
       <url>/2026/03/21/2026-03-21-FPC-Design/</url>
@@ -48,31 +77,6 @@
         <tags>
             
             <tag> MacOS </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>莱仕达 PXN V9Gen2 方向盘使用教程</title>
-      <link href="/2026/03/18/2026-03-18-PXN-V9Gen2-Steering-Wheel/"/>
-      <url>/2026/03/18/2026-03-18-PXN-V9Gen2-Steering-Wheel/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h1><ul><li><strong>旋转角度</strong>：900°</li><li><strong>力反馈</strong>：双电机力反馈</li><li><strong>兼容平台</strong>：PC &#x2F; PS4 &#x2F; PS5 &#x2F; Xbox One &#x2F; Xbox Series X|S &#x2F; Switch</li><li><strong>连接方式</strong>：USB 有线连接</li><li><strong>踏板</strong>：三踏板（油门、刹车、离合）</li><li><strong>换挡方式</strong>：支持 H 档和序列档</li></ul><h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="接线"><a href="#接线" class="headerlink" title="接线"></a>接线</h2><p>把档、踏板都接入方向盘对应插口，再把方向盘接到电脑</p><blockquote><p>[!NOTE]</p><p>方向盘的灯光应该是红色而非紫色，可以通过长按 mode 键调整</p></blockquote><h2 id="驱动安装"><a href="#驱动安装" class="headerlink" title="驱动安装"></a>驱动安装</h2><ol><li>访问莱仕达官网下载对应驱动</li><li>安装完成后连接方向盘自动识别</li></ol><h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>以欧卡 2 为例，进入设置——控制，依次设定方向控制、油门控制、制动控制、离合控制。</p><p>设定方法：点击要设定的项目并操作对应外设</p><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="方向盘无法识别"><a href="#方向盘无法识别" class="headerlink" title="方向盘无法识别"></a>方向盘无法识别</h3><ul><li>检查 USB 连接是否牢固</li><li>尝试更换 USB 接口</li><li>重新安装驱动</li></ul><h3 id="力反馈效果弱"><a href="#力反馈效果弱" class="headerlink" title="力反馈效果弱"></a>力反馈效果弱</h3><ul><li>在游戏设置中调高力反馈强度</li><li>检查电源适配器是否连接正常</li></ul><h3 id="踏板无响应"><a href="#踏板无响应" class="headerlink" title="踏板无响应"></a>踏板无响应</h3><ul><li>检查踏板线是否插入方向盘对应接口</li><li>在驱动软件中校准踏板</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Game </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> PXN </tag>
             
         </tags>
       
