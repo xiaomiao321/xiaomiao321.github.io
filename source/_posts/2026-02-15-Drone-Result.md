@@ -13,10 +13,10 @@ comments: true
 
 ```mermaid
 flowchart TD
-    A[3S锂电池] -->|XT60| B[分电板]
+    A[3S 锂电池] -->|XT60| B[分电板]
     B --> C[无刷电调]
     C --> D[无刷电机]
-    C --> E[信号发生器/单片机PWM输出口]
+    C --> E[信号发生器/单片机 PWM 输出口]
 
     subgraph 电源部分
         A
@@ -49,11 +49,11 @@ flowchart TD
 
 1. 按照接线图接线
 
-2. 接入电源，此时电机没有接收到PWM信号，每经过3秒之后进行一次短鸣。除接收3秒以上的50% PWM信号之外，不对任何PWM输入做响应，处于电机保护状态。
+2. 接入电源，此时电机没有接收到 PWM 信号，每经过 3 秒之后进行一次短鸣。除接收 3 秒以上的 50% PWM 信号之外，不对任何 PWM 输入做响应，处于电机保护状态。
 
-3. 信号发生器输出500Hz，3秒以上50%的PWM信号，根据当前锂电池的节数短鸣 n 次(3S电池是3次)，再长鸣 1 次，表示初始化完成，解除电机保护，进入工作状态。
+3. 信号发生器输出 500Hz，3 秒以上 50% 的 PWM 信号，根据当前锂电池的节数短鸣 n 次 (3S 电池是 3 次)，再长鸣 1 次，表示初始化完成，解除电机保护，进入工作状态。
 
-4. 在工作状态下接收50%到100%的PWM信号，控制电机由停转到最大转速之间变化。
+4. 在工作状态下接收 50% 到 100% 的 PWM 信号，控制电机由停转到最大转速之间变化。
 
 ![003cfdbd5f9fad6ac356f2396c8103b3](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/undefined003cfdbd5f9fad6ac356f2396c8103b3.jpg)
 
@@ -67,7 +67,7 @@ flowchart TD
 HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4);
 HAL_Delay(4000);
 for (int i = 0; i < 1000; i++) {
-__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_4, 1000 + i); // PB9对应TIM4的CH4
+__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_4, 1000 + i); // PB9 对应 TIM4 的 CH4
 HAL_Delay(100);
 }
 ```
@@ -90,9 +90,12 @@ HAL_Delay(100);
   您的浏览器不支持视频播放，请升级浏览器或下载视频观看。
 </video>
 
+
 <video controls width="100%" >
-  <source src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/undefined启动.mp4">
+  <source src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/undefined%E5%90%AF%E5%8A%A8.mp4">
   您的浏览器不支持视频播放，请升级浏览器或下载视频观看。
 </video>
 
-【龙翔LX450四轴无人机架组装教学视频】 https://www.bilibili.com/video/BV1TZ4y1W7RR/?share_source=copy_web
+## 组装视频
+
+{% bilibili BV1TZ4y1W7RR %}

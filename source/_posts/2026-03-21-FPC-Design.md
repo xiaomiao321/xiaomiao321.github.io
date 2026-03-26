@@ -10,11 +10,17 @@ comments: true
 
 ![FPC 成品展示](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/undefinedb12963f5-9738-4909-aa30-eab89a8a0ee6.png)
 
+
+
 ![FPC 设计效果](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/undefinedfba6c82c-d329-49ce-82cb-f27d6ba189da.png)
+
+https://www.bilibili.com/video/BV1iz421r7Bd/?spm_id_from=333.1387.favlist.content.click&vd_source=874630e91467e1633f1fdf72a9ae2262
 
 ## 前言
 
 FPC（Flexible Printed Circuit，柔性印刷电路板）因其轻薄、可弯曲的特性，在可穿戴设备、折叠屏手机、无人机等领域得到广泛应用。本文将介绍如何使用嘉立创 EDA 进行 FPC 软板设计。
+
+
 
 ---
 
@@ -52,6 +58,8 @@ FPC 的原理图设计与普通 PCB 基本相同，主要区别在于后续的 P
 ### 4. 添加 FPC 补强板
 
 ![微信图片_2026-03-21_141112_208](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/undefined%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2026-03-21_141112_208.png)
+
+![img](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/place-fpc-stiffener_20250315_104250.jpg)
 
 芯片底部最好用钢片，便于焊接
 
@@ -92,7 +100,29 @@ FPC 的铺铜需要特殊设置：
 - 提高 FPC 柔韧性
 - 避免直角走线带来的信号完整性问题
 
----
+### 6. 金手指
+
+![img](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/4984a9810ffa4f10bab7ffdb72f6d280-9d87ef6d-1692-49f3-9f7e-b6893d7fadef-image.png)
+
+https://m.jlc.com/portal/server_guide_43493.html
+
+注意：
+
+1. 焊盘距离板框中心至少0.2mm
+
+![](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/b12d4008b300486f9f66932c74114a3e-e32b911f-3a1e-48a1-86c8-ec780f8faf42-image.png)
+
+2. 在焊盘的背面绘制一个补强区域。并且选择好你需要的对应材质，插拔金手指一般选用PI补强
+
+    ![img](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/f1b0196df9ec42f19ed507fdf54f46f0-8e14c843-9197-43c2-a785-af93a234b8b9-image.png)
+
+3. 补强区域远离板框的一方需要超过焊盘最小1mm的距离
+
+    ![img](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/5fb2f7427e414edf9ccfa4a7c96896b0-c0c4484a-230d-48fd-aa18-3570e003d74e-4.gif)
+
+4. 绘制顶层与底层的阻焊区域进行开窗，同时需要边缘盖油避免导线跟焊盘交接处折断。
+
+    ![img](https://photos-1355819942.cos.ap-shanghai.myqcloud.com/5de5c842ab5743a4b1270fd1158c4df0-36310f83-babf-416b-b263-87b8676801de-5.gif)
 
 ## 设计检查清单
 
