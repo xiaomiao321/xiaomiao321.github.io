@@ -207,9 +207,9 @@
             
             <tag> embedded </tag>
             
-            <tag> HAL </tag>
-            
             <tag> STM32 </tag>
+            
+            <tag> HAL </tag>
             
         </tags>
       
@@ -555,9 +555,9 @@
             
             <tag> ESP32 </tag>
             
-            <tag> Arduino </tag>
-            
             <tag> animation </tag>
+            
+            <tag> Arduino </tag>
             
         </tags>
       
