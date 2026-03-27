@@ -460,9 +460,9 @@
             
             <tag> Arduino </tag>
             
-            <tag> sensor </tag>
-            
             <tag> adc </tag>
+            
+            <tag> sensor </tag>
             
         </tags>
       
@@ -619,11 +619,11 @@
       
         <tags>
             
-            <tag> javascript </tag>
-            
             <tag> web </tag>
             
             <tag> frontend </tag>
+            
+            <tag> javascript </tag>
             
         </tags>
       
@@ -650,13 +650,13 @@
       
         <tags>
             
-            <tag> web </tag>
-            
-            <tag> frontend </tag>
-            
             <tag> html </tag>
             
             <tag> css </tag>
+            
+            <tag> web </tag>
+            
+            <tag> frontend </tag>
             
         </tags>
       
