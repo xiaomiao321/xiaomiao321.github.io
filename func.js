@@ -2,18 +2,26 @@
 function get_elements(){
 	colors=['#9BE9A8','#3FC463','#31A14E','#216E39']
 	// 获取 DOM 元素
-	p= document.querySelector('body');//前面什么都没加const var的为全局变量
-	footer=document.querySelector('body footer')
+	p= document.querySelector('body');
+	// 尝试插入到 main 内容区域后面
+	main = document.querySelector('#content-inner');
+	footer=document.querySelector('body footer');
 	together=document.createElement('div');
 	together.classList.add('together');
-	if(footer)p.insertBefore(together, footer);
-	else p.appendChild(together);
+	if(main){
+		// 插入到 main 内容后面
+		main.insertAdjacentElement('afterend', together);
+	}else if(footer && footer.parentNode === p){
+		p.insertBefore(together, footer);
+	}else{
+		p.appendChild(together);
+	}
 	console.log(together);
 
 	inline=document.createElement('div');
 	inline.id='header';
 	together.appendChild(inline);
-	
+
 	title=document.getElementsByClassName('c_title')[0];
 	if (title===undefined){//==会进行类型转换 ===不会
 	  title=document.createElement('span');
@@ -81,9 +89,9 @@ function get_elements(){
 	  fireworks.classList.add('fireworks');
 	  together.appendChild(fireworks);
 	}
-	
+
   }
-  
+
   // 渲染年份选择器
   function renderYearSelect(currentYear) {
 	for (let i = currentYear - 5; i <= currentYear; i++) {
@@ -94,7 +102,7 @@ function get_elements(){
 	}
 	yearSelect.value = currentYear; // 默认选中当前年份
   }
-  
+
   // 获取某个年份每个月的天数
   function getDaysInMonth(month, year) {
 	const date = new Date(year, month + 1, 0);/*当月最后一天 */
@@ -116,7 +124,7 @@ function getRandomColor() {
 
   // 渲染打卡墙
   function renderCalendar(year=currentYear) {
-	
+
 	  const daytip = document.createElement('div');
 	  daytip.classList.add('tooltip');
 	  together.appendChild(daytip);
@@ -132,7 +140,7 @@ function getRandomColor() {
 			monthHeader.textContent = month_text[month];
 			month_float.appendChild(monthHeader);
 		 }
-		  
+
 		  // 渲染每个月的打卡格子
 		  const daysInMonth = getDaysInMonth(month, year);
 		  for (let day = 1; day <= daysInMonth; day++) {
@@ -143,7 +151,7 @@ function getRandomColor() {
 			  //dayElement.textContent = day;
 			  dayElement.setAttribute('block_date',`${thisday} : ${checkedDays[thisday]?? 'no'} ${checkedDays[thisday]===1?'post':'posts'}`);
 			  monthContainer.appendChild(dayElement);
-  
+
 			  if (thisday in checkedDays) {
 				  dayElement.classList.add('checked');
 				  switch (checkedDays[thisday]){
@@ -162,17 +170,17 @@ function getRandomColor() {
 			  } else {
 				  dayElement.classList.add('unchecked');
 			  }
-  
+
 			  // 点击格子打卡
 			  dayElement.addEventListener('click', (event) => {
 				const rect = event.target.getBoundingClientRect();
-				
+
 				let numParticles = 10; // 粒子的数量
 				container=document.getElementsByClassName('fireworks')[0];
 				for (let i = 0; i < numParticles; i++) {
 					let firework = document.createElement('div');
 					firework.classList.add('firework');
-			
+
 					// 随机设置颜色
 					let color = getRandomColor();
 					firework.style.backgroundColor = color;
@@ -193,7 +201,7 @@ function getRandomColor() {
 						firework.style.height = '1vw';
 						factor=1
 					}
-					
+
 					firework.style.zIndex='10';
 					firework.style.display='block';
 					console.log(Math.PI/180)
@@ -208,7 +216,7 @@ function getRandomColor() {
 					// firework.style.animationName = 'explode';
 					// firework.style.animationTimingFunction = 'ease-out';
 					//console.log(firework)
-					
+
 					container.appendChild(firework);
 					console.log(firework.style.transform);
 					// 或者使用这种方法触发样式更新
@@ -222,32 +230,32 @@ function getRandomColor() {
 				}
 			  });
 		  }
-		  
+
 		  calendarElement.appendChild(monthContainer);
 	}
 	//console.log(month_float);
 	func_tooltip();
   }
-  
+
   // 获取本地存储的打卡日期
   // function getCheckedDays() {
   //   const checkedDays = JSON.parse(localStorage.getItem('checkedDays')) || [];
   //   func_tooltip();
   //   return checkedDays;
   // }
-  
+
   // // 更新本地存储中的打卡日期
   // function updateCheckedDays(checkedDays) {
   //   console.log(hexo.locals.get("posts"));
   //   localStorage.setItem('checkedDays', JSON.stringify(checkedDays));
   // }
-  
+
   // 取消切换打卡状态
   //烟花
   //function toggleCheckIn(year, month, day) {
     // const checkedDays = getCheckedDays();
     // const dayString = `${year}-${month}-${day}`;
-  
+
     // // 如果已打卡，则移除
     // if (checkedDays.includes(dayString)) {
     //   const index = checkedDays.indexOf(dayString);
@@ -256,18 +264,18 @@ function getRandomColor() {
     //   // 否则，添加打卡
     //   checkedDays.push(dayString);
     // }
-  
+
     // updateCheckedDays(checkedDays);
     // renderCalendar(year);  // 重新渲染
-	
+
   //}
-  
+
   function func_tooltip(){
 	  // 获取所有的日期块
 	const dateBlocks = document.querySelectorAll('.grid-item');
 	dateBlocks.forEach(block =>{
 		block.addEventListener('mouseenter', (e) => {
-		// 获取data-date属性的值
+		// 获取 data-date 属性的值
 		const date = e.target.getAttribute('block_date');
 		daytip=document.getElementsByClassName('tooltip')[0];
 		daytip.textContent=date;
@@ -279,7 +287,7 @@ function getRandomColor() {
 		daytip.style.left=`${rect.left + scrollX-30}px`;
 		daytip.style.top=`${rect.top+scrollY -60}px`;
 		daytip.style.display='block';
-		
+
 		})
 		// 当鼠标离开时隐藏 tooltip
 	  block.addEventListener('mouseleave', () => {
@@ -289,8 +297,8 @@ function getRandomColor() {
   }
 
   function all(){
-	//这里插入checkedDays变量
-	checkedDays = {"2025-01-25":1,"2025-04-06":1,"2025-03-24":1,"2025-07-03":1,"2025-07-04":1,"2025-03-17":1,"2025-02-17":1,"2025-07-07":1,"2025-07-14":3,"2025-07-15":1,"2025-07-16":2,"2025-08-16":1,"2025-08-27":2,"2025-09-02":2,"2025-07-21":1,"2025-09-03":3,"2025-09-05":1,"2025-09-15":1,"2025-10-08":1,"2025-11-13":1,"2026-01-26":1,"2026-02-14":1,"2026-03-19":1,"2026-03-20":1,"2026-03-15":1,"2026-03-29":1,"2026-03-25":1};
+	//这里插入 checkedDays 变量
+	checkedDays = {"2025-01-25":1,"2025-03-24":1,"2025-02-17":1,"2025-07-03":1,"2025-04-06":1,"2025-07-04":1,"2025-07-07":1,"2025-03-17":1,"2025-07-14":3,"2025-07-15":1,"2025-07-16":2,"2025-08-16":1,"2025-08-27":2,"2025-09-03":3,"2025-09-02":2,"2025-07-21":1,"2025-09-05":1,"2025-10-08":1,"2025-09-15":1,"2025-11-13":1,"2026-01-26":1,"2026-03-19":1,"2026-03-20":1,"2026-02-14":1,"2026-03-25":1,"2026-03-29":1,"2026-03-15":1};
 	currentYear=new Date().getFullYear();
 	//默认今年
 	get_elements();
@@ -304,16 +312,15 @@ function getRandomColor() {
 	});
 	renderCalendar();
   }
-  
+
   document.addEventListener('DOMContentLoaded', function() {
 	// DOM 渲染完成后执行的代码
-	console.log('DOM已完全加载，可以执行 JS 文件');
+	console.log('DOM 已完全加载，可以执行 JS 文件');
 	let link=document.createElement('link');
 	link.rel = 'stylesheet';
 	link.type = 'text/css';
-	link.href = './style.css';  // CSS 文件的路径
+	link.href = '/style.css';  // CSS 文件的路径
 	// 将 <link> 标签添加到 <head> 中
 	document.head.appendChild(link);
 	all();
   });
-
