@@ -1,22 +1,22 @@
 .c_title{
-  font-size: 3vw;
+  font-size: 1.8rem;
   font-weight: bold;
+  color: var(--theme-color);
 }
   .together{
-    display: block;
+    display: block !important;
     font-family: "微软雅黑",  sans-serif !important;
-    width:100vw;
+    width: 90%;
+    max-width: 900px;
     text-align: center;
-    box-sizing: border-box;/*盒模型*/
+    box-sizing: border-box;
     height: max-content;
-    padding:1vw 0vw;
-    border-top:0.1vw dashed #d1d9e0;
-    border-bottom:0.1vw dashed #d1d9e0;
-    border-radius: 5vw;
-    margin: 1vw auto;
-    background-color:  rgba(255, 255, 255, 0.9);
-    padding-right: 2vw;
-    padding-bottom: 1.5vw;
+    padding: 1.5rem 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    margin: 2rem auto;
+    background-color: var(--card-bg) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
   #header{
     width: max-content;
