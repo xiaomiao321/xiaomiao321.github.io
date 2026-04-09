@@ -1,0 +1,977 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DIY 模拟外设制作指南 | XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="收集整理了赛车和飞行模拟外设的 DIY 教程资源，包括转向灯拨杆、中控盒、力反馈方向盘、排挡杆、飞行摇杆等制作方案，附带完整资料包下载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DIY 模拟外设制作指南">
+<meta property="og:url" content="https://xiaomiao321.github.io/2026/04/06/2026-04-06-DIY%E5%A4%96%E8%AE%BE/index.html">
+<meta property="og:site_name" content="XiaoMiao&#39;s Blog">
+<meta property="og:description" content="收集整理了赛车和飞行模拟外设的 DIY 教程资源，包括转向灯拨杆、中控盒、力反馈方向盘、排挡杆、飞行摇杆等制作方案，附带完整资料包下载">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xiaomiao321.github.io/img/avatar.png">
+<meta property="article:published_time" content="2026-04-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-08T05:07:37.458Z">
+<meta property="article:author" content="XiaoMiao">
+<meta property="article:tag" content="模拟外设，方向盘，中控盒，飞行摇杆，FreeJoy">
+<meta property="article:tag" content="转向灯拨杆">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaomiao321.github.io/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DIY 模拟外设制作指南",
+  "url": "https://xiaomiao321.github.io/2026/04/06/2026-04-06-DIY%E5%A4%96%E8%AE%BE/",
+  "image": "https://xiaomiao321.github.io/img/avatar.png",
+  "datePublished": "2026-04-05T16:00:00.000Z",
+  "dateModified": "2026-04-08T05:07:37.458Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XiaoMiao",
+      "url": "https://xiaomiao321.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://xiaomiao321.github.io/2026/04/06/2026-04-06-DIY%E5%A4%96%E8%AE%BE/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-YEX7FDZ26Z"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-YEX7FDZ26Z')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-YEX7FDZ26Z', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'medium-zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DIY 模拟外设制作指南',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/calendar-override.css"/><link rel="stylesheet" href="/style.css"/><!-- hexo injector head_end start --><!-- calendar injected via theme config --><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/css/pace-loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/daily-summary/"><i class="fa-fw fas fa-calendar-day"></i><span> Daily</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://picsum.photos/1920/400);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">DIY 模拟外设制作指南</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/daily-summary/"><i class="fa-fw fas fa-calendar-day"></i><span> Daily</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DIY 模拟外设制作指南<a class="post-edit-link" href="https://github.com/xiaomiao321/xiaomiao321.github.io/edit/source/source/_posts/2026-04-06-DIY外设.md" title="Edit" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-04-05T16:00:00.000Z" title="Created 2026-04-06 00:00:00">2026-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-04-08T05:07:37.458Z" title="Updated 2026-04-08 13:07:37">2026-04-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DIY/">DIY</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DIY/Gaming/">Gaming</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>6mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="DIY-模拟外设制作指南"><a href="#DIY-模拟外设制作指南" class="headerlink" title="DIY 模拟外设制作指南"></a>DIY 模拟外设制作指南</h1><blockquote>
+<p>[!TIP] 最终方案推荐</p>
+<ul>
+<li><strong>转向灯拨杆</strong>：<a target="_blank" rel="noopener" href="https://b23.tv/rpMSENN">50 元欧卡转向灯拨杆</a> - 成本低，沉浸感强</li>
+<li><strong>转向灯雨刮器</strong>：<a target="_blank" rel="noopener" href="https://b23.tv/at5C9oe">65-299 元转向灯雨刮器 DIY</a> - 支持转向机械回正功能</li>
+<li><strong>中控盒</strong>：<a target="_blank" rel="noopener" href="https://b23.tv/8pXmgHS">带有车窗开关和钥匙点火的欧卡 2 中控盒</a></li>
+</ul>
+<p>📁 <strong>完整资料包</strong>：本文所有教程的相关资料已整理在 <a href="#%E8%B5%84%E6%96%99%E4%B8%8B%E8%BD%BD">资料下载区</a>，包含物料清单、接线图、代码修改步骤等。</p>
+</blockquote>
+<h2 id="赛车模拟外设"><a href="#赛车模拟外设" class="headerlink" title="赛车模拟外设"></a>赛车模拟外设</h2><h3 id="转向灯拨杆-雨刮器"><a href="#转向灯拨杆-雨刮器" class="headerlink" title="转向灯拨杆 &amp; 雨刮器"></a>转向灯拨杆 &amp; 雨刮器</h3><p>使用真车转向灯拨杆和雨刮器控制杆，可以大幅提升欧卡&#x2F;美卡的沉浸感。</p>
+<p><strong>推荐教程：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://b23.tv/rpMSENN">50 元欧卡转向灯拨杆，diy 成本价，沉浸感强 - 哔哩哔哩</a></li>
+<li><a target="_blank" rel="noopener" href="https://b23.tv/at5C9oe">[07-固定方案] 65 元 -299 元转向灯雨刮器 DIY，支持转向机械回正功能 - 哔哩哔哩</a></li>
+</ul>
+<p><strong>制作要点：</strong></p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>转向灯拨杆</td>
+<td>真车拆件或二手市场购买（约 50 元）</td>
+</tr>
+<tr>
+<td>雨刮器控制杆</td>
+<td>真车拆件，用于雨刮&#x2F;缓速器控制</td>
+</tr>
+<tr>
+<td>主控板</td>
+<td>FreeJoy 或 Arduino，负责信号转换</td>
+</tr>
+<tr>
+<td>固定支架</td>
+<td>3D 打印或不锈钢定制</td>
+</tr>
+</tbody></table>
+<p><strong>功能实现：</strong></p>
+<ul>
+<li>转向灯：上下拨动控制左右转向</li>
+<li>机械回正：拨杆自动回弹到中间位置</li>
+<li>灯光反馈：可同步游戏内灯光状态</li>
+</ul>
+<hr>
+<h3 id="中控盒"><a href="#中控盒" class="headerlink" title="中控盒"></a>中控盒</h3><p><strong>推荐教程：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://b23.tv/8pXmgHS">制作带有车窗开关和钥匙点火的欧卡 2 中控盒 - 哔哩哔哩</a></li>
+</ul>
+<p>按钮直径：22mm</p>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/c3b64a8b08b79f8d23d9a2c1d06c3856.png" alt="中控盒布局"></p>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/0a6d7d8effb215636bdd19d19a132f31.png" alt="中控盒成品展示"></p>
+<h4 id="仪表盘"><a href="#仪表盘" class="headerlink" title="仪表盘"></a>仪表盘</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://b23.tv/7qq9NvN">将真车仪表盘接入到游戏中，小白 0 基础也能实现！- 哔哩哔哩</a></li>
+<li>SimHub 软件</li>
+<li>仪表盘文件来源：<a target="_blank" rel="noopener" href="https://www.overtake.gg/downloads/">https://www.overtake.gg/downloads/</a></li>
+</ul>
+<h4 id="方案一：手机-平板模拟仪表盘"><a href="#方案一：手机-平板模拟仪表盘" class="headerlink" title="方案一：手机&#x2F;平板模拟仪表盘"></a>方案一：手机&#x2F;平板模拟仪表盘</h4><p>最经济的方案是利用闲置的手机或平板电脑，通过专用软件实现仪表盘功能。</p>
+<p><strong>推荐教程：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zt421b7CT/">欧卡 2 免费仪表盘中控盒分享（只需一部手机或平板电脑）</a></li>
+</ul>
+<h4 id="方案二：FreeJoy-主控板"><a href="#方案二：FreeJoy-主控板" class="headerlink" title="方案二：FreeJoy 主控板"></a>方案二：FreeJoy 主控板</h4><p>FreeJoy 是一款开源的游戏外设控制器，支持按钮、轴、编码器、苦力帽等多种输入方式，是 DIY 中控盒的核心选择之一。</p>
+<p><strong>推荐教程：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1e5BtBcE6B/">模拟竞速 DIY：如何制作自己的外设（软件篇）</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13Z4y147Rx/">[长视频] FreeJoy 简单设置分享（按钮设置，轴设置，编码器设置，苦力帽设置）</a></li>
+</ul>
+<h4 id="方案三：成品参考"><a href="#方案三：成品参考" class="headerlink" title="方案三：成品参考"></a>方案三：成品参考</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1j54y1a7zL/">低成本自制中控盒，档杆头，摇杆，家里有点乱</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18Y4y1f7mo/">欧卡 2 新手自制 DIY 中控盒心得详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NGqnBxEHo/">模拟竞速 DIY：欧卡中控盒完工！</a></li>
+</ul>
+<h4 id="重点参考：接线教程"><a href="#重点参考：接线教程" class="headerlink" title="重点参考：接线教程"></a>重点参考：接线教程</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://b23.tv/KPUHocj">欧卡中控盒接线教程，模拟器中控盒，包含欧卡转向打拨杆接线原理 - 哔哩哔哩</a></li>
+</ul>
+<hr>
+<h3 id="力反馈方向盘"><a href="#力反馈方向盘" class="headerlink" title="力反馈方向盘"></a>力反馈方向盘</h3><p><strong>推荐教程：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1n44y1t7m1/">自制力回馈方向盘，G29 不香了</a></li>
+</ul>
+<p><strong>补充资源：</strong></p>
+<ul>
+<li>百度贴吧讨论帖：<a target="_blank" rel="noopener" href="https://tieba.baidu.com/p/6789006451">自制力反馈方向盘</a></li>
+<li>UP 主：<strong>夏夜-XiaYe</strong>（该系列视频教程作者）</li>
+</ul>
+<p><strong>核心组件：</strong></p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电机</td>
+<td>通常使用无刷电机或直流电机，提供力反馈扭矩</td>
+</tr>
+<tr>
+<td>驱动板</td>
+<td>控制电机运转，实现力反馈效果</td>
+</tr>
+<tr>
+<td>角度传感器</td>
+<td>检测方向盘转角位置（如编码器、电位器等）</td>
+</tr>
+<tr>
+<td>主控板</td>
+<td>处理 USB 通信和力反馈算法</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>[!WARNING]<br>力反馈方向盘涉及电机控制和强电流，制作时请注意用电安全。</p>
+</blockquote>
+<h3 id="卡车排挡杆"><a href="#卡车排挡杆" class="headerlink" title="卡车排挡杆"></a>卡车排挡杆</h3><p><strong>推荐教程：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NNv4BBERJ/">模拟竞速 DIY：H 档预告（概述设计图纸）</a></li>
+</ul>
+<p><strong>设计要点：</strong></p>
+<ul>
+<li>档位检测：通常使用编码器或微动开关检测档杆位置</li>
+<li>档位图：建议先绘制档位布局图，确保符合真实卡车排挡逻辑</li>
+<li>外壳：可 3D 打印或 CNC 加工</li>
+</ul>
+<hr>
+<h2 id="飞行模拟外设"><a href="#飞行模拟外设" class="headerlink" title="飞行模拟外设"></a>飞行模拟外设</h2><h3 id="飞行摇杆与油门"><a href="#飞行摇杆与油门" class="headerlink" title="飞行摇杆与油门"></a>飞行摇杆与油门</h3><p>飞行模拟需要精确的摇杆和油门控制，用于操纵飞机的姿态和推力。以下教程展示了如何用极低成本制作一套完整的飞行外设。</p>
+<p><strong>推荐教程：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AoVwzFEQv/">低成本自制模飞外设 200 元预算制作 DCS 飞行摇杆油门套装</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UsEwzUEfx/">超低预算自制模飞套装 教学篇</a></li>
+</ul>
+<p><strong>配套资源：</strong></p>
+<ul>
+<li>最新文件下载：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1NTkClx529qM7uOGC_r7sjg">百度网盘</a> 提取码：<code>73cx</code></li>
+</ul>
+<p><strong>制作清单：</strong></p>
+<ul>
+<li>Arduino 或 FreeJoy 主控板</li>
+<li>摇杆组件（可用游戏机拆机件）</li>
+<li>油门滑轨</li>
+<li>按钮和旋钮（用于配平、襟翼等控制）</li>
+<li>外壳材料（木板、亚克力或 3D 打印）</li>
+</ul>
+<blockquote>
+<p>[!TIP]<br>200 元预算确实可以完成基础套装，但如果想要更好的手感和更多功能，建议适当增加预算购买质量更好的摇杆和电位器。</p>
+</blockquote>
+<hr>
+<h3 id="CDU（控制显示单元）"><a href="#CDU（控制显示单元）" class="headerlink" title="CDU（控制显示单元）"></a>CDU（控制显示单元）</h3><p>CDU 是民航机上的飞行管理计算机界面，用于输入航路点、设置自动驾驶参数等。对于波音系列飞机模拟尤为重要。</p>
+<p><strong>推荐教程：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Uv411k76D/">自制 CDU 演示</a></li>
+</ul>
+<p><strong>实现方案：</strong></p>
+<ul>
+<li>屏幕：LCD 或 OLED 显示屏</li>
+<li>输入：薄膜键盘或机械按键</li>
+<li>通信：通过 USB 连接电脑，使用配套软件与模拟飞行软件通信</li>
+<li>支持游戏：X-Plane、MSFS、P3D 等</li>
+</ul>
+<hr>
+<h2 id="常用工具和材料"><a href="#常用工具和材料" class="headerlink" title="常用工具和材料"></a>常用工具和材料</h2><p>在开始 DIY 之前，建议准备以下基础工具：</p>
+<h3 id="电子工具"><a href="#电子工具" class="headerlink" title="电子工具"></a>电子工具</h3><ul>
+<li>电烙铁及焊锡丝</li>
+<li>万用表</li>
+<li>杜邦线（公对公、公对母、母对母）</li>
+<li>热缩管</li>
+<li>面包板（用于原型测试）</li>
+</ul>
+<h3 id="机械工具"><a href="#机械工具" class="headerlink" title="机械工具"></a>机械工具</h3><ul>
+<li>螺丝刀套装</li>
+<li>热熔胶枪</li>
+<li>手锯或电磨</li>
+<li>3D 打印机（可选，用于外壳制作）</li>
+</ul>
+<h3 id="常用材料"><a href="#常用材料" class="headerlink" title="常用材料"></a>常用材料</h3><table>
+<thead>
+<tr>
+<th>材料</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>亚克力板</td>
+<td>面板、外壳</td>
+</tr>
+<tr>
+<td>木板</td>
+<td>底座、支架</td>
+</tr>
+<tr>
+<td>3D 打印件</td>
+<td>复杂形状外壳</td>
+</tr>
+<tr>
+<td>铝合金型材</td>
+<td>框架结构</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="资料下载"><a href="#资料下载" class="headerlink" title="资料下载"></a>资料下载</h2><p>本文所有教程的相关资料已打包整理好，包含物料清单、接线图、代码修改步骤、固定方案等。</p>
+<h3 id="📦-转向灯-雨刮器-DIY-资料"><a href="#📦-转向灯-雨刮器-DIY-资料" class="headerlink" title="📦 转向灯 &amp; 雨刮器 DIY 资料"></a>📦 转向灯 &amp; 雨刮器 DIY 资料</h3><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[01-物料表-DIY 转向灯雨刮器.xls](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;01-物料表-DIY 转向灯雨刮器 - 江平 learning.xls)</td>
+<td>完整物料清单</td>
+</tr>
+<tr>
+<td>[物料表 - 只有必要的.xls](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;物料表 - 只有必要的.xls)</td>
+<td>精简版物料清单</td>
+</tr>
+<tr>
+<td>[02-接线图.jpg](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;02-接线图.jpg)</td>
+<td>接线示意图</td>
+</tr>
+<tr>
+<td>[左侧拨杆电线接线示意图.jpg](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;02-左侧拨杆电线接线示意图.jpg)</td>
+<td>左侧拨杆接线图</td>
+</tr>
+<tr>
+<td>[3mm 厚黑色不锈钢固定方案.dwg](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;3mm 厚黑色不锈钢固定方案.dwg)</td>
+<td>CAD 固定支架图纸</td>
+</tr>
+</tbody></table>
+<h4 id="子文件夹"><a href="#子文件夹" class="headerlink" title="子文件夹"></a>子文件夹</h4><table>
+<thead>
+<tr>
+<th>文件夹</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[固定方案（升级款）](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;固定方案（升级款）&#x2F;)</td>
+<td>升级款固定方案资料</td>
+</tr>
+<tr>
+<td>[欧卡 2 美卡代码修改步骤](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;欧卡 2 美卡代码修改步骤&#x2F;)</td>
+<td>游戏代码修改教程</td>
+</tr>
+<tr>
+<td>[软件映射方案](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;软件映射方案&#x2F;)</td>
+<td>软件按键映射配置</td>
+</tr>
+<tr>
+<td>[AHK 方案](&#x2F;files&#x2F;@转向灯雨刮器 DIY 资料&#x2F;AHK 方案&#x2F;)</td>
+<td>AutoHotKey 脚本方案</td>
+</tr>
+</tbody></table>
+<h3 id="📦-摇杆资料"><a href="#📦-摇杆资料" class="headerlink" title="📦 摇杆资料"></a>📦 摇杆资料</h3><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="/files/%E6%91%87%E6%9D%86/BOM250515.xlsx">BOM250515.xlsx</a></td>
+<td>物料清单</td>
+</tr>
+<tr>
+<td>[arduino 代码 (旧-up 自用).zip](&#x2F;files&#x2F;摇杆&#x2F;arduino 代码 (旧-up 自用).zip)</td>
+<td>Arduino 控制代码</td>
+</tr>
+<tr>
+<td>[arduino 手柄库文件 25.6 新增.zip](&#x2F;files&#x2F;摇杆&#x2F;arduino 手柄库文件 25.6 新增.zip)</td>
+<td>Arduino 手柄库</td>
+</tr>
+<tr>
+<td><a href="/files/%E6%91%87%E6%9D%86/%E6%A8%A1%E5%9E%8B%E9%83%A8%E5%88%86.zip">模型部分.zip</a></td>
+<td>3D 模型文件</td>
+</tr>
+</tbody></table>
+<h4 id="子文件夹-1"><a href="#子文件夹-1" class="headerlink" title="子文件夹"></a>子文件夹</h4><table>
+<thead>
+<tr>
+<th>文件夹</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[代码接线图 BOM_V2](&#x2F;files&#x2F;摇杆&#x2F;代码接线图 BOM_V2&#x2F;)</td>
+<td>V2 版接线图</td>
+</tr>
+<tr>
+<td>[开源的 f16 摇杆](&#x2F;files&#x2F;摇杆&#x2F;开源的 f16 摇杆&#x2F;)</td>
+<td>F16 风格摇杆开源项目</td>
+</tr>
+<tr>
+<td><a href="/files/%E6%91%87%E6%9D%86/%E6%A8%A1%E5%9E%8B%E9%83%A8%E5%88%86/">模型部分</a></td>
+<td>摇杆 3D 模型源文件</td>
+</tr>
+</tbody></table>
+<h3 id="📦-STM32-烧录-FreeJoy-资料"><a href="#📦-STM32-烧录-FreeJoy-资料" class="headerlink" title="📦 STM32 烧录 FreeJoy 资料"></a>📦 STM32 烧录 FreeJoy 资料</h3><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[FreeJoy_v1_5_1b4.hex](&#x2F;files&#x2F;stm32 烧录 freejoy&#x2F;FreeJoy_v1_5_1b4.hex)</td>
+<td>FreeJoy 固件文件</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>[!NOTE]<br>如链接无法下载，请检查文件路径或联系作者获取最新资料包。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://xiaomiao321.github.io">XiaoMiao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://xiaomiao321.github.io/2026/04/06/2026-04-06-DIY%E5%A4%96%E8%AE%BE/">https://xiaomiao321.github.io/2026/04/06/2026-04-06-DIY%E5%A4%96%E8%AE%BE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A8%A1%E6%8B%9F%E5%A4%96%E8%AE%BE%EF%BC%8C%E6%96%B9%E5%90%91%E7%9B%98%EF%BC%8C%E4%B8%AD%E6%8E%A7%E7%9B%92%EF%BC%8C%E9%A3%9E%E8%A1%8C%E6%91%87%E6%9D%86%EF%BC%8CFreeJoy/">模拟外设，方向盘，中控盒，飞行摇杆，FreeJoy</a><a class="post-meta__tags" href="/tags/%E8%BD%AC%E5%90%91%E7%81%AF%E6%8B%A8%E6%9D%86/">转向灯拨杆</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/03/29/2026-03-29-%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/" title="2026-03-29 每日总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">2026-03-29 每日总结</div></div><div class="info-2"><div class="info-item-1">今日完成 为博客添加每日总结模块 安装并配置 hexo-everyday-calendar 插件 创建每日总结页面和导航菜单 部署博客更新   今日学习 学习了 Hexo 插件开发机制 了解了 Butterfly 主题的结构 学习了如何通过 inject 功能注入自定义样式   今日思考博客是记录学习过程的好工具，通过每日总结可以更好地回顾和巩固所学知识。日历可视化功能可以激励自己保持写作的习惯。  明日计划 继续完善博客功能 学习新的技术内容 保持每日总结的习惯   打卡 日期：2026-03-29 写作时长：15 分钟 字数：约 200 字  </div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XiaoMiao</div><div class="author-info-description">XiaoMiao's technical blog </div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Welcome! I'm XiaoMiao, EE sophomore @ ZJU. Love embedded systems, circuits, 3D printing & DIY. Sharing my learning journey here.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DIY-%E6%A8%A1%E6%8B%9F%E5%A4%96%E8%AE%BE%E5%88%B6%E4%BD%9C%E6%8C%87%E5%8D%97"><span class="toc-number">1.</span> <span class="toc-text">DIY 模拟外设制作指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%9B%E8%BD%A6%E6%A8%A1%E6%8B%9F%E5%A4%96%E8%AE%BE"><span class="toc-number">1.1.</span> <span class="toc-text">赛车模拟外设</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%90%91%E7%81%AF%E6%8B%A8%E6%9D%86-%E9%9B%A8%E5%88%AE%E5%99%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text">转向灯拨杆 &amp; 雨刮器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%8E%A7%E7%9B%92"><span class="toc-number">1.1.2.</span> <span class="toc-text">中控盒</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%AA%E8%A1%A8%E7%9B%98"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">仪表盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E6%89%8B%E6%9C%BA-%E5%B9%B3%E6%9D%BF%E6%A8%A1%E6%8B%9F%E4%BB%AA%E8%A1%A8%E7%9B%98"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">方案一：手机&#x2F;平板模拟仪表盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9AFreeJoy-%E4%B8%BB%E6%8E%A7%E6%9D%BF"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">方案二：FreeJoy 主控板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%89%EF%BC%9A%E6%88%90%E5%93%81%E5%8F%82%E8%80%83"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">方案三：成品参考</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E7%82%B9%E5%8F%82%E8%80%83%EF%BC%9A%E6%8E%A5%E7%BA%BF%E6%95%99%E7%A8%8B"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">重点参考：接线教程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9B%E5%8F%8D%E9%A6%88%E6%96%B9%E5%90%91%E7%9B%98"><span class="toc-number">1.1.3.</span> <span class="toc-text">力反馈方向盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%A1%E8%BD%A6%E6%8E%92%E6%8C%A1%E6%9D%86"><span class="toc-number">1.1.4.</span> <span class="toc-text">卡车排挡杆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F%E5%A4%96%E8%AE%BE"><span class="toc-number">1.2.</span> <span class="toc-text">飞行模拟外设</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A3%9E%E8%A1%8C%E6%91%87%E6%9D%86%E4%B8%8E%E6%B2%B9%E9%97%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">飞行摇杆与油门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDU%EF%BC%88%E6%8E%A7%E5%88%B6%E6%98%BE%E7%A4%BA%E5%8D%95%E5%85%83%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">CDU（控制显示单元）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%92%8C%E6%9D%90%E6%96%99"><span class="toc-number">1.3.</span> <span class="toc-text">常用工具和材料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E5%B7%A5%E5%85%B7"><span class="toc-number">1.3.1.</span> <span class="toc-text">电子工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E6%A2%B0%E5%B7%A5%E5%85%B7"><span class="toc-number">1.3.2.</span> <span class="toc-text">机械工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%9D%90%E6%96%99"><span class="toc-number">1.3.3.</span> <span class="toc-text">常用材料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%96%99%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.4.</span> <span class="toc-text">资料下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%A6-%E8%BD%AC%E5%90%91%E7%81%AF-%E9%9B%A8%E5%88%AE%E5%99%A8-DIY-%E8%B5%84%E6%96%99"><span class="toc-number">1.4.1.</span> <span class="toc-text">📦 转向灯 &amp; 雨刮器 DIY 资料</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">子文件夹</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%A6-%E6%91%87%E6%9D%86%E8%B5%84%E6%96%99"><span class="toc-number">1.4.2.</span> <span class="toc-text">📦 摇杆资料</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9-1"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">子文件夹</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%A6-STM32-%E7%83%A7%E5%BD%95-FreeJoy-%E8%B5%84%E6%96%99"><span class="toc-number">1.4.3.</span> <span class="toc-text">📦 STM32 烧录 FreeJoy 资料</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/06/2026-04-06-DIY%E5%A4%96%E8%AE%BE/" title="DIY 模拟外设制作指南">DIY 模拟外设制作指南</a><time datetime="2026-04-05T16:00:00.000Z" title="Created 2026-04-06 00:00:00">2026-04-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/29/2026-03-29-%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/" title="2026-03-29 每日总结">2026-03-29 每日总结</a><time datetime="2026-03-29T06:22:44.000Z" title="Created 2026-03-29 14:22:44">2026-03-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/26/2026-03-26-euro-truck-simulator-2-guide/" title="欧洲卡车模拟 2 驾驶指南（PXN V9Gen2 方向盘）">欧洲卡车模拟 2 驾驶指南（PXN V9Gen2 方向盘）</a><time datetime="2026-03-25T16:00:00.000Z" title="Created 2026-03-26 00:00:00">2026-03-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/21/2026-03-21-FPC-Design/" title="FPC 软板设计">FPC 软板设计</a><time datetime="2026-03-20T16:00:00.000Z" title="Created 2026-03-21 00:00:00">2026-03-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/20/2026-03-20-Macbook-usage/" title="MacOS 使用">MacOS 使用</a><time datetime="2026-03-19T16:00:00.000Z" title="Created 2026-03-20 00:00:00">2026-03-20</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'forest'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.language-mermaid, pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (!false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'xiaomiao321/xiaomiao321.github.io',
+      'data-repo-id': 'R_kgDORnsYMw',
+      'data-category-id': 'DIC_kwDORnsYM84C4feo',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script>(() => {
+  window.Prism = window.Prism || {}
+  window.Prism.manual = true
+
+  const highlightAll = () => {
+    window.Prism.highlightAll()
+  }
+
+  window.addEventListener('load', highlightAll)
+  btf.addGlobalFn('pjaxComplete', highlightAll, 'prismjs')
+  btf.addGlobalFn('encrypt', highlightAll, 'prismjs')
+})()
+</script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.js" defer="defer"></script><script src="/func.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
