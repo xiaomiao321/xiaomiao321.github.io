@@ -234,7 +234,7 @@ uset g_developer 0
 
 进入游戏后，按 `~` 键调出控制台，输入以下指令：
 
-```
+```bash
 g_minicon 1                    # 顶端显示信息
 g_fps 1                        # 显示FPS（需：g_minicon 1）
 g_flyspeed #                   # 设置自由视角速度（#默认是100），如调到1000则是10倍速度
@@ -261,3 +261,17 @@ g_set_climate albedo           # 天亮代码
 
 输完指令后按 `Enter` 即可生效。
 
+# 常用模组安装
+
+## 画质类
+
+分享文件：26-03-23 欧卡2 雪月 ReShade PNG 完美搭配
+https://pan.xunlei.com/s/VOoQ4qJM0IMunTtMvS1nCBWLA1?pwd=e6as#
+
+可参考这个视频
+
+## DLC
+
+【【欧卡2】全dlc补丁下载＋完美运行（带切换版本） 1.58.1.4版本补丁-哔哩哔哩】 https://b23.tv/6L7eodY
+
+注意要关闭Steam云同步，无论是存档还是游戏本身
