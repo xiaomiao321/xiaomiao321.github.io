@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xiaomiao321.github.io/2026/07/13/2026-07-13-%E4%BD%A0%E5%A5%BD%E6%94%BE%E5%A4%A7%E5%99%A8/</loc>
+    
+    <lastmod>2026-07-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://xiaomiao321.github.io/chat-stats/index.html</loc>
     
     <lastmod>2026-07-12</lastmod>
@@ -416,21 +425,14 @@
 
   
   <url>
-    <loc>https://xiaomiao321.github.io/tags/MATLAB/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/Makefile/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaomiao321.github.io/tags/Markdown/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/MATLAB/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -444,42 +446,7 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/tags/raspberry-pi/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/embedded/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/Linux/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/git/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/github/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/protocol/</loc>
+    <loc>https://xiaomiao321.github.io/tags/Makefile/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -507,6 +474,27 @@
   </url>
   
   <url>
+    <loc>https://xiaomiao321.github.io/tags/raspberry-pi/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/embedded/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/Linux/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://xiaomiao321.github.io/tags/circuit/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -521,6 +509,34 @@
   </url>
   
   <url>
+    <loc>https://xiaomiao321.github.io/tags/git/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/github/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/Docker/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/protocol/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://xiaomiao321.github.io/tags/TikZ/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -529,13 +545,6 @@
   
   <url>
     <loc>https://xiaomiao321.github.io/tags/LaTex/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/Docker/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -577,7 +586,28 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/tags/STM32/</loc>
+    <loc>https://xiaomiao321.github.io/tags/ESP32/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/animation/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/Arduino/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/display/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -612,28 +642,7 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/tags/ESP32/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/animation/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/Arduino/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/display/</loc>
+    <loc>https://xiaomiao321.github.io/tags/sensor/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -654,14 +663,14 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/tags/sensor/</loc>
+    <loc>https://xiaomiao321.github.io/tags/adc/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/tags/adc/</loc>
+    <loc>https://xiaomiao321.github.io/tags/STM32/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -676,6 +685,34 @@
   
   <url>
     <loc>https://xiaomiao321.github.io/tags/programming/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/HAL/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/AIoT/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/Drone/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/tags/MacOS/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -703,28 +740,7 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/tags/Drone/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/HAL/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/AIoT/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/tags/MacOS/</loc>
+    <loc>https://xiaomiao321.github.io/tags/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -780,13 +796,6 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/tags/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaomiao321.github.io/tags/%E7%94%B5%E9%98%BB%EF%BC%8C%E7%94%B5%E5%AE%B9%EF%BC%8C%E7%94%B5%E6%84%9F%EF%BC%8C%E4%BA%8C%E6%9E%81%E7%AE%A1%EF%BC%8C%E5%85%83%E5%99%A8%E4%BB%B6/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -824,13 +833,6 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/categories/Learning/Language/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -838,7 +840,7 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/categories/Learning/Language/JavaScript/</loc>
+    <loc>https://xiaomiao321.github.io/categories/Learning/Language/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -852,7 +854,42 @@
   </url>
   
   <url>
+    <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/Circuit/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/categories/Learning/Language/JavaScript/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/Platform/RaspberryPi/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/Platform/ESP32/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://xiaomiao321.github.io/categories/Learning/Algorithm/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/Platform/STM32/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -873,13 +910,6 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/Circuit/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaomiao321.github.io/categories/Tools/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -887,7 +917,7 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/Platform/RaspberryPi/</loc>
+    <loc>https://xiaomiao321.github.io/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -908,28 +938,7 @@
   </url>
   
   <url>
-    <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/Platform/STM32/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaomiao321.github.io/categories/Learning/Circuit/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaomiao321.github.io/categories/Learning/Embedded/Platform/ESP32/</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
