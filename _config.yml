@@ -113,3 +113,10 @@ deploy:
 # Sitemap
 sitemap:
   path: sitemap.xml
+
+# 文章加密 (hexo-blog-encrypt)
+# 全局默认值；具体加密由每篇文章 front matter 里的 password 触发
+encrypt:
+  # PBKDF2 迭代次数：OWASP 2023 推荐 600000，越高越抗暴力破解（浏览器解密会略慢，仍在毫秒级）
+  kdf:
+    iterations: 600000

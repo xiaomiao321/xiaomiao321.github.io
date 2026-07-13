@@ -6,3 +6,18 @@ node_modules/
 public/
 .deploy*/
 _multiconfig.yml
+
+# 敏感文章：源码只留本地，绝不推送到公开仓库（hexo 构建出的加密版仍会正常部署）
+source/_posts/2026-06-01-油管视频.md
+
+# 聊天统计：原始记录 + 含明文密码的页面 + 含真名路径的解析脚本 + 自动部署监听器，均只留本地
+# （构建出的 /chat-stats/ 加密页面仍会正常部署）
+Wechat/
+source/chat-stats/index.md
+scripts/chat-stats.js
+tools/watch-chat-stats.js
+tools/watch-chat-stats-hidden.vbs
+tools/.watch.lock
+tools/.deploy-now
+tools/.building
+tools/tray-chat-stats.ps1

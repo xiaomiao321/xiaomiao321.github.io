@@ -24,6 +24,7 @@ menu:
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder-open
   Music: /music/ || fas fa-music
+  Wechat: /chat-stats/ || fas fa-comments
 
 # --------------------------------------
 # Code Blocks Settings
