@@ -1,0 +1,66 @@
+name: Build & Deploy Hexo
+
+# 每次 push 到 source 分支就自动构建，并把产物部署到 master 分支
+# （master 就是 GitHub Pages 对外提供服务的分支）。
+# 元器件页面在线编辑会 commit 到 source 分支的 source/data/parts.json，
+# 从而触发这条流水线，约 1~2 分钟后线上生效。
+
+on:
+  push:
+    branches: [source]
+  workflow_dispatch:
+
+# GITHUB_TOKEN 需要写权限才能推送到 master
+permissions:
+  contents: write
+
+# 同一时刻只跑一个部署，新的推送会取消正在跑的旧构建
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source (+ butterfly submodule)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive   # 拉取 themes/butterfly 主题（pin 在 .gitmodules 记录的提交）
+          fetch-depth: 0          # 需要完整历史来还原文章的 updated 时间
+
+      # _config.yml 里 updated_option: 'mtime'，靠文件修改时间决定文章“更新于”。
+      # CI 全新 checkout 会把所有文件时间重置成当前，这里用每个文件最后一次提交时间还原。
+      - name: Restore post mtimes from git
+        run: |
+          git ls-files -z source/_posts | while IFS= read -r -d '' f; do
+            t=$(git log -1 --format=%cI -- "$f")
+            [ -n "$t" ] && touch -d "$t" "$f"
+          done
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: |
+          npm run clean
+          npm run build
+
+      - name: Deploy public/ to master
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          touch public/.nojekyll        # 关闭 GitHub Pages 的 Jekyll 处理
+          cd public
+          git init -q -b master
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "deploy: build from ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master:master

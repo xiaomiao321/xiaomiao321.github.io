@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "model": "STM32G031K8U6",
+    "name": "MCU Cortex-M0+",
+    "category": "IC",
+    "package": "QFN-32",
+    "location": "A1-1",
+    "qty": 8,
+    "low": 3,
+    "link": "https://item.szlcsc.com/",
+    "note": "台灯项目备用主控"
+  },
+  {
+    "id": 2,
+    "model": "AMS1117-3.3",
+    "name": "LDO 稳压器",
+    "category": "电源",
+    "package": "SOT-223",
+    "location": "A1-3",
+    "qty": 42,
+    "low": 10,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 3,
+    "model": "10kΩ ±1%",
+    "name": "贴片电阻",
+    "category": "阻容",
+    "package": "0603",
+    "location": "R-盒2",
+    "qty": null,
+    "low": null,
+    "link": "",
+    "note": "整盘常备"
+  },
+  {
+    "id": 4,
+    "model": "SS8050",
+    "name": "NPN 三极管",
+    "category": "分立器件",
+    "package": "SOT-23",
+    "location": "B2-4",
+    "qty": 15,
+    "low": 20,
+    "link": "",
+    "note": "快用完了，下次凑单补"
+  }
+]

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元器件库 · Parts DB</title>
+<style>
+  :root{
+    --bg:#F3F6F4;
+    --surface:#FFFFFF;
+    --ink:#18211C;
+    --muted:#5F6E65;
+    --mask:#0E5E46;      /* 阻焊绿 */
+    --mask-deep:#093D2E;
+    --pad:#C9A227;       /* 沉金 */
+    --line:#DBE3DD;
+    --warn:#B4531F;
+    --warn-bg:#FBF1E9;
+    --mono:ui-monospace,SFMono-Regular,'Cascadia Mono',Menlo,Consolas,'Noto Sans Mono',monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;padding:0 16px 80px}
+  .wrap{max-width:1080px;margin:0 auto}
+
+  /* ---- 头部：丝印风格 ---- */
+  header{padding:34px 0 18px}
+  .ref{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--mask);text-transform:uppercase}
+  h1{font-size:26px;font-weight:700;letter-spacing:.01em;margin:2px 0 10px}
+  h1 .en{font-family:var(--mono);font-size:14px;font-weight:400;color:var(--muted);margin-left:10px}
+  .gold-rule{height:3px;background:linear-gradient(90deg,var(--pad) 0 120px,var(--line) 120px 100%);border-radius:2px}
+  .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .stats b{color:var(--ink);font-weight:600}
+  .stats .low b{color:var(--warn)}
+
+  /* ---- 工具栏 ---- */
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0 14px}
+  .search{flex:1 1 240px;position:relative}
+  .search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:14px;font-family:var(--sans);color:var(--ink)}
+  .search input:focus{outline:2px solid var(--mask);outline-offset:-1px;border-color:var(--mask)}
+  .search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2}
+  select{padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:14px;color:var(--ink);font-family:var(--sans)}
+  select:focus{outline:2px solid var(--mask);outline-offset:-1px}
+  .btn{padding:9px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:14px;color:var(--ink);cursor:pointer;font-family:var(--sans);white-space:nowrap}
+  .btn:hover{border-color:var(--mask);color:var(--mask)}
+  .btn:focus-visible{outline:2px solid var(--mask);outline-offset:1px}
+  .btn.primary{background:var(--mask);border-color:var(--mask);color:#fff}
+  .btn.primary:hover{background:var(--mask-deep)}
+  .btn.warn{border-color:var(--warn);color:var(--warn)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+
+  /* ---- 表格（桌面） ---- */
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  thead th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);background:#FAFCFA;cursor:pointer;user-select:none;white-space:nowrap}
+  thead th .arrow{opacity:.5}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#F6FAF7}
+  .pn{font-family:var(--mono);font-size:13.5px;font-weight:600}
+  .pn a{color:var(--mask);text-decoration:none;border-bottom:1px dashed var(--pad)}
+  .pn a:hover{color:var(--mask-deep)}
+  .sub{font-size:12.5px;color:var(--muted);margin-top:1px}
+  .chip{display:inline-block;font-size:12px;padding:2px 8px;border-radius:5px;background:#EEF3EF;color:var(--mask-deep);white-space:nowrap}
+  .loc{font-family:var(--mono);font-size:12px;padding:2px 7px;border:1px solid var(--line);border-radius:5px;background:#FAFCFA;color:var(--ink);white-space:nowrap}
+  .qty{font-family:var(--mono);font-size:14px;font-weight:600;text-align:right;white-space:nowrap}
+  .qty .pad-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px;background:var(--mask)}
+  .qty.low{color:var(--warn)}
+  .qty.low .pad-dot{background:var(--warn)}
+  .qty.stock .pad-dot{background:var(--pad)}
+  .rowact{white-space:nowrap;text-align:right}
+  .rowact button{border:none;background:none;cursor:pointer;font-size:13px;color:var(--muted);padding:3px 6px;border-radius:5px;font-family:var(--sans)}
+  .rowact button:hover{color:var(--mask);background:#EEF3EF}
+  .rowact button.del:hover{color:var(--warn);background:var(--warn-bg)}
+  .empty{padding:44px 20px;text-align:center;color:var(--muted)}
+  .empty .en{font-family:var(--mono);font-size:12px;margin-top:4px}
+
+  /* ---- 卡片（移动端） ---- */
+  .cards{display:none}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .card .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .card .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+  .card .note{font-size:13px;color:var(--muted);margin-top:6px}
+  .card .actions{margin-top:8px;text-align:right}
+  .card .actions button{border:none;background:none;color:var(--muted);font-size:13px;padding:4px 8px;cursor:pointer}
+
+  @media (max-width:720px){
+    .panel{display:none}
+    .cards{display:block}
+    header{padding-top:22px}
+  }
+
+  /* ---- 编辑模式提示条 ---- */
+  .editbar{display:none;align-items:center;gap:10px;flex-wrap:wrap;background:#FFFDF3;border:1px solid var(--pad);border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:13.5px}
+  .editbar.on{display:flex}
+  .editbar .n{font-family:var(--mono);font-weight:700;color:var(--mask)}
+  .editbar .spacer{flex:1}
+
+  /* ---- 弹窗 ---- */
+  dialog{border:none;border-radius:12px;padding:0;max-width:460px;width:calc(100% - 32px);box-shadow:0 12px 40px rgba(9,61,46,.18)}
+  dialog::backdrop{background:rgba(24,33,28,.35)}
+  .dlg-head{padding:16px 20px 0;font-weight:700;font-size:17px}
+  .dlg-body{padding:14px 20px 20px;display:grid;gap:10px}
+  .field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .field input,.field textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;font-size:14px;font-family:var(--sans);color:var(--ink)}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--mask);outline-offset:-1px}
+  .field .mono{font-family:var(--mono)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .dlg-foot{display:flex;justify-content:flex-end;gap:10px;padding:0 20px 18px}
+  .hint{font-size:12.5px;color:var(--muted)}
+  .hint code{font-family:var(--mono);background:#EEF3EF;padding:1px 5px;border-radius:4px}
+
+  /* ---- 提示 toast ---- */
+  #toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:8px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;max-width:90vw}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  #toast.err{background:var(--warn)}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="ref">REF: PARTS-DB &nbsp;·&nbsp; REV: <span id="rev">—</span></div>
+    <h1>元器件库<span class="en">component inventory</span></h1>
+    <div class="gold-rule"></div>
+    <div class="stats">
+      <span>共 <b id="statTotal">0</b> 种</span>
+      <span>在库 <b id="statQty">0</b> 件</span>
+      <span class="low">低库存 <b id="statLow">0</b> 种</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="搜索型号 / 名称 / 参数 / 备注…" autocomplete="off">
+    </div>
+    <select id="fCat"><option value="">全部分类</option></select>
+    <select id="fLoc"><option value="">全部位置</option></select>
+    <button class="btn" id="btnEdit">编辑模式</button>
+    <button class="btn primary" id="btnAdd" hidden>+ 新增</button>
+  </div>
+
+  <div class="editbar" id="editbar">
+    <span>编辑模式：改动先暂存在本地，点提交才写回 GitHub。</span>
+    <span>待提交 <span class="n" id="pendingN">0</span> 项</span>
+    <span class="spacer"></span>
+    <button class="btn" id="btnLogout">退出编辑</button>
+    <button class="btn primary" id="btnCommit" disabled>提交到 GitHub</button>
+  </div>
+
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th data-k="model">型号 / 名称 <span class="arrow"></span></th>
+          <th data-k="category">分类 <span class="arrow"></span></th>
+          <th data-k="package">封装 <span class="arrow"></span></th>
+          <th data-k="location">位置 <span class="arrow"></span></th>
+          <th data-k="qty" style="text-align:right">数量 <span class="arrow"></span></th>
+          <th class="act-col" hidden></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty" id="emptyMsg" hidden>没有匹配的元器件<div class="en">no parts found</div></div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+</div>
+
+<!-- 新增/编辑弹窗 -->
+<dialog id="dlgPart">
+  <div class="dlg-head" id="dlgPartTitle">新增元器件</div>
+  <div class="dlg-body">
+    <div class="grid2">
+      <div class="field"><label>型号 *</label><input id="pModel" class="mono" placeholder="STM32G031K8U6"></div>
+      <div class="field"><label>名称</label><input id="pName" placeholder="MCU / 电源芯片…"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label>分类</label><input id="pCat" list="catList" placeholder="IC / 阻容 / 连接器…"><datalist id="catList"></datalist></div>
+      <div class="field"><label>封装</label><input id="pPkg" class="mono" placeholder="QFN-32 / 0603"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label>位置</label><input id="pLoc" list="locList" class="mono" placeholder="A3-2"><datalist id="locList"></datalist></div>
+      <div class="field"><label>数量（留空 = 常备不计数）</label><input id="pQty" type="number" min="0" class="mono" placeholder="10"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label>低库存阈值</label><input id="pLow" type="number" min="0" class="mono" placeholder="5"></div>
+      <div class="field"><label>购买链接</label><input id="pLink" type="url" placeholder="https://…"></div>
+    </div>
+    <div class="field"><label>备注</label><textarea id="pNote" rows="2" placeholder="参数、代替料、坑…"></textarea></div>
+  </div>
+  <div class="dlg-foot">
+    <button class="btn" id="pCancel">取消</button>
+    <button class="btn primary" id="pSave">保存</button>
+  </div>
+</dialog>
+
+<!-- Token 弹窗 -->
+<dialog id="dlgToken">
+  <div class="dlg-head">进入编辑模式</div>
+  <div class="dlg-body">
+    <p class="hint">需要一个 GitHub Fine-grained PAT（仅授权博客源码仓库的 <code>Contents: Read &amp; Write</code>）。Token 只存在本机浏览器 localStorage，不会上传到任何第三方。</p>
+    <div class="field"><label>GitHub Token</label><input id="tokenInput" type="password" class="mono" placeholder="github_pat_…"></div>
+  </div>
+  <div class="dlg-foot">
+    <button class="btn" id="tCancel">取消</button>
+    <button class="btn primary" id="tSave">确认</button>
+  </div>
+</dialog>
+
+<div id="toast" role="status"></div>
+
+<script>
+/* ================== 配置：改成你自己的 ================== */
+const GH = {
+  owner:  "xiaomiao321",             // GitHub 用户名
+  repo:   "xiaomiao321.github.io",   // 博客【源码】仓库名（源码在 source 分支）
+  branch: "source",                  // 源码分支
+  path:   "source/data/parts.json"   // 数据文件在源码仓库中的路径
+};
+const LOCAL_JSON = "../data/parts.json"; // 部署后 JSON 的相对路径
+/* ======================================================== */
+
+let parts = [];          // 当前数据
+let fileSha = null;      // GitHub 文件 sha（编辑模式用）
+let pending = 0;         // 未提交改动数
+let editMode = false;
+let sortKey = "model", sortAsc = true;
+const $ = id => document.getElementById(id);
+const token = () => localStorage.getItem("parts_gh_token") || "";
+
+/* ---------- 加载数据 ---------- */
+async function load(){
+  // 有 token 时优先从源码仓库读最新版（部署可能滞后）
+  if (token()) {
+    try { await loadFromGitHub(); render(); return; } catch(e){ console.warn(e); }
+  }
+  try {
+    const r = await fetch(LOCAL_JSON + "?t=" + Date.now());
+    if (!r.ok) throw new Error(r.status);
+    parts = await r.json();
+  } catch(e) {
+    parts = [];
+    toast("加载 parts.json 失败，请检查 " + LOCAL_JSON, true);
+  }
+  render();
+}
+
+async function loadFromGitHub(){
+  const url = `https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}?ref=${GH.branch}`;
+  const r = await fetch(url, { headers: ghHeaders() });
+  if (!r.ok) throw new Error("GitHub API " + r.status);
+  const j = await r.json();
+  fileSha = j.sha;
+  parts = JSON.parse(decodeB64(j.content));
+}
+
+function ghHeaders(){
+  return { "Authorization": "Bearer " + token(), "Accept": "application/vnd.github+json" };
+}
+function decodeB64(b64){
+  const bin = atob(b64.replace(/\n/g,""));
+  return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0)));
+}
+function encodeB64(str){
+  const bytes = new TextEncoder().encode(str);
+  let bin = ""; bytes.forEach(b => bin += String.fromCharCode(b));
+  return btoa(bin);
+}
+
+/* ---------- 渲染 ---------- */
+function isLow(p){
+  if (p.qty === null || p.qty === undefined || p.qty === "") return false;
+  const th = (p.low === null || p.low === undefined || p.low === "") ? 0 : Number(p.low);
+  return th > 0 && Number(p.qty) <= th;
+}
+function qtyHTML(p){
+  if (p.qty === null || p.qty === undefined || p.qty === "")
+    return `<span class="qty stock"><span class="pad-dot"></span>常备</span>`;
+  const cls = isLow(p) ? "qty low" : "qty";
+  return `<span class="${cls}"><span class="pad-dot"></span>${p.qty}</span>`;
+}
+function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function filtered(){
+  const q = $("q").value.trim().toLowerCase();
+  const fc = $("fCat").value, fl = $("fLoc").value;
+  let list = parts.filter(p => {
+    if (fc && p.category !== fc) return false;
+    if (fl && p.location !== fl) return false;
+    if (!q) return true;
+    return [p.model, p.name, p.category, p.package, p.location, p.note]
+      .some(v => String(v ?? "").toLowerCase().includes(q));
+  });
+  list.sort((a,b) => {
+    let va = a[sortKey], vb = b[sortKey];
+    if (sortKey === "qty") { va = va ?? Infinity; vb = vb ?? Infinity; return sortAsc ? va-vb : vb-va; }
+    va = String(va ?? ""); vb = String(vb ?? "");
+    return sortAsc ? va.localeCompare(vb, "zh") : vb.localeCompare(va, "zh");
+  });
+  return list;
+}
+
+function render(){
+  const list = filtered();
+  // 统计
+  $("statTotal").textContent = parts.length;
+  $("statQty").textContent = parts.reduce((s,p) => s + (Number(p.qty) || 0), 0);
+  $("statLow").textContent = parts.filter(isLow).length;
+  $("rev").textContent = new Date().toISOString().slice(0,10);
+  // 筛选器选项
+  fillSelect("fCat", [...new Set(parts.map(p=>p.category).filter(Boolean))].sort());
+  fillSelect("fLoc", [...new Set(parts.map(p=>p.location).filter(Boolean))].sort());
+  fillDatalist("catList", [...new Set(parts.map(p=>p.category).filter(Boolean))]);
+  fillDatalist("locList", [...new Set(parts.map(p=>p.location).filter(Boolean))]);
+  // 表格
+  const tb = $("tbody"); tb.innerHTML = "";
+  list.forEach(p => {
+    const tr = document.createElement("tr");
+    const modelHTML = p.link
+      ? `<a href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.model)}</a>`
+      : esc(p.model);
+    tr.innerHTML = `
+      <td><div class="pn">${modelHTML}</div><div class="sub">${esc(p.name)}${p.note ? " · " + esc(p.note) : ""}</div></td>
+      <td>${p.category ? `<span class="chip">${esc(p.category)}</span>` : ""}</td>
+      <td class="pn" style="font-weight:400">${esc(p.package)}</td>
+      <td>${p.location ? `<span class="loc">${esc(p.location)}</span>` : ""}</td>
+      <td style="text-align:right">${qtyHTML(p)}</td>
+      <td class="rowact" ${editMode ? "" : "hidden"}>
+        <button data-edit="${p.id}">改</button><button class="del" data-del="${p.id}">删</button>
+      </td>`;
+    tb.appendChild(tr);
+  });
+  // 卡片
+  const cd = $("cards"); cd.innerHTML = "";
+  list.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "card";
+    const modelHTML = p.link
+      ? `<a href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.model)}</a>`
+      : esc(p.model);
+    div.innerHTML = `
+      <div class="top"><span class="pn">${modelHTML}</span>${qtyHTML(p)}</div>
+      <div class="sub">${esc(p.name)}</div>
+      <div class="meta">
+        ${p.category ? `<span class="chip">${esc(p.category)}</span>` : ""}
+        ${p.package ? `<span class="pn" style="font-weight:400;font-size:12px">${esc(p.package)}</span>` : ""}
+        ${p.location ? `<span class="loc">${esc(p.location)}</span>` : ""}
+      </div>
+      ${p.note ? `<div class="note">${esc(p.note)}</div>` : ""}
+      <div class="actions" ${editMode ? "" : "hidden"}>
+        <button data-edit="${p.id}">编辑</button><button class="del" data-del="${p.id}" style="color:var(--warn)">删除</button>
+      </div>`;
+    cd.appendChild(div);
+  });
+  $("emptyMsg").hidden = list.length > 0;
+  document.querySelectorAll(".act-col").forEach(el => el.hidden = !editMode);
+}
+
+function fillSelect(id, arr){
+  const sel = $(id), cur = sel.value;
+  sel.length = 1;
+  arr.forEach(v => sel.add(new Option(v, v)));
+  sel.value = cur;
+}
+function fillDatalist(id, arr){
+  $(id).innerHTML = arr.map(v => `<option value="${esc(v)}">`).join("");
+}
+
+/* ---------- 编辑 ---------- */
+function markDirty(){ pending++; $("pendingN").textContent = pending; $("btnCommit").disabled = false; }
+
+$("btnEdit").onclick = () => {
+  if (editMode) return;
+  if (token()) enterEdit();
+  else $("dlgToken").showModal();
+};
+$("tSave").onclick = async () => {
+  const t = $("tokenInput").value.trim();
+  if (!t) return;
+  localStorage.setItem("parts_gh_token", t);
+  $("dlgToken").close();
+  enterEdit();
+};
+$("tCancel").onclick = () => $("dlgToken").close();
+
+async function enterEdit(){
+  try {
+    await loadFromGitHub();
+  } catch(e) {
+    localStorage.removeItem("parts_gh_token");
+    toast("Token 无效或仓库配置错误：" + e.message, true);
+    return;
+  }
+  editMode = true;
+  $("editbar").classList.add("on");
+  $("btnAdd").hidden = false;
+  $("btnEdit").hidden = true;
+  render();
+  toast("已进入编辑模式（数据来自源码仓库最新版）");
+}
+$("btnLogout").onclick = () => {
+  if (pending > 0 && !confirm("有未提交的改动，确定放弃并退出？")) return;
+  editMode = false; pending = 0; fileSha = null;
+  localStorage.removeItem("parts_gh_token");
+  $("editbar").classList.remove("on");
+  $("btnAdd").hidden = true;
+  $("btnEdit").hidden = false;
+  $("pendingN").textContent = "0";
+  $("btnCommit").disabled = true;
+  load();
+};
+
+let editingId = null;
+$("btnAdd").onclick = () => openPartDlg(null);
+document.body.addEventListener("click", e => {
+  const ed = e.target.closest("[data-edit]"), dl = e.target.closest("[data-del]");
+  if (ed) openPartDlg(ed.dataset.edit);
+  if (dl) {
+    const p = parts.find(x => String(x.id) === dl.dataset.del);
+    if (p && confirm(`删除 ${p.model}？`)) {
+      parts = parts.filter(x => x !== p);
+      markDirty(); render();
+    }
+  }
+});
+
+function openPartDlg(id){
+  editingId = id;
+  const p = id ? parts.find(x => String(x.id) === String(id)) : null;
+  $("dlgPartTitle").textContent = p ? "编辑元器件" : "新增元器件";
+  $("pModel").value = p?.model ?? "";
+  $("pName").value  = p?.name ?? "";
+  $("pCat").value   = p?.category ?? "";
+  $("pPkg").value   = p?.package ?? "";
+  $("pLoc").value   = p?.location ?? "";
+  $("pQty").value   = (p?.qty ?? "") === null ? "" : (p?.qty ?? "");
+  $("pLow").value   = p?.low ?? "";
+  $("pLink").value  = p?.link ?? "";
+  $("pNote").value  = p?.note ?? "";
+  $("dlgPart").showModal();
+  $("pModel").focus();
+}
+$("pCancel").onclick = () => $("dlgPart").close();
+$("pSave").onclick = () => {
+  const model = $("pModel").value.trim();
+  if (!model) { toast("型号不能为空", true); return; }
+  const obj = {
+    id: editingId ?? Date.now(),
+    model,
+    name: $("pName").value.trim(),
+    category: $("pCat").value.trim(),
+    package: $("pPkg").value.trim(),
+    location: $("pLoc").value.trim(),
+    qty: $("pQty").value === "" ? null : Number($("pQty").value),
+    low: $("pLow").value === "" ? null : Number($("pLow").value),
+    link: $("pLink").value.trim(),
+    note: $("pNote").value.trim()
+  };
+  if (editingId) {
+    const i = parts.findIndex(x => String(x.id) === String(editingId));
+    parts[i] = obj;
+  } else {
+    parts.unshift(obj);
+  }
+  $("dlgPart").close();
+  markDirty(); render();
+};
+
+/* ---------- 提交到 GitHub ---------- */
+$("btnCommit").onclick = async () => {
+  $("btnCommit").disabled = true;
+  $("btnCommit").textContent = "提交中…";
+  try {
+    const url = `https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`;
+    const body = {
+      message: `parts: 更新元器件库存（${pending} 项改动）`,
+      content: encodeB64(JSON.stringify(parts, null, 2) + "\n"),
+      branch: GH.branch
+    };
+    if (fileSha) body.sha = fileSha;
+    const r = await fetch(url, { method:"PUT", headers:{...ghHeaders(),"Content-Type":"application/json"}, body: JSON.stringify(body) });
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      throw new Error(j.message || r.status);
+    }
+    const j = await r.json();
+    fileSha = j.content.sha;
+    pending = 0;
+    $("pendingN").textContent = "0";
+    toast("已提交，等 Pages 重新构建后线上生效");
+  } catch(e) {
+    toast("提交失败：" + e.message, true);
+    $("btnCommit").disabled = false;
+  }
+  $("btnCommit").textContent = "提交到 GitHub";
+  if (pending === 0) $("btnCommit").disabled = true;
+};
+
+/* ---------- 排序 / 筛选 / 搜索 ---------- */
+document.querySelectorAll("thead th[data-k]").forEach(th => {
+  th.onclick = () => {
+    const k = th.dataset.k;
+    if (sortKey === k) sortAsc = !sortAsc;
+    else { sortKey = k; sortAsc = true; }
+    document.querySelectorAll("thead .arrow").forEach(a => a.textContent = "");
+    th.querySelector(".arrow").textContent = sortAsc ? "▲" : "▼";
+    render();
+  };
+});
+$("q").oninput = render;
+$("fCat").onchange = render;
+$("fLoc").onchange = render;
+
+/* ---------- toast ---------- */
+let toastTimer;
+function toast(msg, err){
+  const t = $("toast");
+  t.textContent = msg;
+  t.className = err ? "show err" : "show";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.className = "", 3200);
+}
+
+load();
+</script>
+</body>
+</html>
