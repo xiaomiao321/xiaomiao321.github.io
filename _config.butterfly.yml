@@ -24,6 +24,7 @@ menu:
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder-open
   Music: /music/ || fas fa-music
+  Component: /parts/ || fas fa-microchip
   Wechat: /chat-stats/ || fas fa-comments
 
 # --------------------------------------
