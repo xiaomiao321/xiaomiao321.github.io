@@ -1,0 +1,32 @@
+extends includes/layout.pug
+
+block content
+  #recent-posts.recent-posts
+    .recent-post-items
+      each article in site.posts.data
+        - const isDaily = article.tags && article.tags.data && article.tags.data.some(function(tag) { return tag.name === '每日总结'; })
+        if isDaily
+          .recent-post-item
+            - const link = article.path
+            - const title = article.title || '无标题'
+            .recent-post-info.no-cover
+              a.article-title(href=url_for(link) title=title)
+                = title
+              .article-meta-wrap
+                span.post-meta-date
+                  i.far.fa-calendar-alt
+                  time(datetime=date_xml(article.date) title=date(article.date))= date(article.date, config.date_format)
+                if article.categories && article.categories.data && article.categories.data.length > 0
+                  span.article-meta
+                    each item, index in article.categories.data
+                      i.fas.fa-inbox
+                      a(href=url_for(item.path)).article-meta__categories= item.name
+                if article.tags && article.tags.data && article.tags.data.length > 0
+                  span.article-meta.tags
+                    each item, index in article.tags.data
+                      i.fas.fa-tag
+                      a(href=url_for(item.path)).article-meta__tags= item.name
+                      if index < article.tags.data.length - 1
+                        span.article-meta-link
+
+  include includes/pagination.pug

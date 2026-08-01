@@ -23,11 +23,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source (+ butterfly submodule)
+      - name: Checkout source
         uses: actions/checkout@v4
         with:
-          submodules: recursive   # 拉取 themes/butterfly 主题（pin 在 .gitmodules 记录的提交）
           fetch-depth: 0          # 需要完整历史来还原文章的 updated 时间
+                                  # （butterfly 主题已随源码一起提交，无需子模块）
 
       # _config.yml 里 updated_option: 'mtime'，靠文件修改时间决定文章“更新于”。
       # CI 全新 checkout 会把所有文件时间重置成当前，这里用每个文件最后一次提交时间还原。
