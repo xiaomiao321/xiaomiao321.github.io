@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>元器件库 · Parts DB</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,10 +254,10 @@
   html[data-style="terminal"] .location-guide{color:var(--dim);border-color:var(--line);background:rgba(0,0,0,.2)}html[data-style="terminal"] .location-guide summary{color:var(--green)}
   html[data-style="minimal"] .location-guide{color:#111;border:1.5px solid #000;border-radius:0}
   html[data-style="modern"] .location-guide{color:var(--text);border-color:var(--line2);background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .location-guide summary{color:var(--acc2)}
-  .loc-picker{position:relative}.loc-results{display:none;position:absolute;z-index:200;left:0;right:0;top:calc(100% + 5px);max-height:210px;overflow:auto;padding:4px;background:#fff;border:1px solid #cfd6df;border-radius:8px;box-shadow:0 14px 30px rgba(15,23,42,.2)}.loc-results.show{display:grid}.loc-result{display:flex;justify-content:space-between;align-items:center;gap:10px;border:0;border-radius:6px;background:transparent;padding:8px 10px;text-align:left;cursor:pointer;color:#172033;font-size:13px}.loc-result:hover{background:#edf8f5}.loc-result span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.loc-result code{flex:none;font-family:var(--mono);font-size:12px;color:#0f766e}
+  .loc-picker{position:relative}.loc-results{display:none;position:absolute;z-index:200;left:0;right:0;top:calc(100% + 5px);max-height:190px;overflow:auto;padding:4px;background:#fff;border:1px solid #cfd6df;border-radius:8px;box-shadow:0 14px 30px rgba(15,23,42,.2)}.loc-results.show{display:grid}.loc-result{display:flex;justify-content:space-between;align-items:center;gap:10px;border:0;border-radius:6px;background:transparent;padding:8px 10px;text-align:left;cursor:pointer;color:#172033;font-size:13px}.loc-result:hover{background:#edf8f5}.loc-result span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.loc-result code{flex:none;font-family:var(--mono);font-size:12px;color:#0f766e}
   html[data-style="terminal"] .loc-results{background:#071009;border-color:var(--green-d);box-shadow:0 0 22px rgba(84,255,176,.2)}html[data-style="terminal"] .loc-result{color:var(--fg);font-family:var(--mono)}html[data-style="terminal"] .loc-result:hover{background:var(--sel)}html[data-style="terminal"] .loc-result code{color:var(--green)}
   html[data-style="minimal"] .loc-results{border:1.5px solid #000;border-radius:0;box-shadow:5px 5px 0 #000}html[data-style="minimal"] .loc-result{border-radius:0;color:#000}html[data-style="minimal"] .loc-result:hover{background:#eee}html[data-style="minimal"] .loc-result code{color:#000}
-  @media(max-width:640px){.guide-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.guide-grid{grid-template-columns:1fr 1fr}.field input,.field textarea,.field select{font-size:16px!important}}
   @keyframes blink{50%{opacity:0}}
 </style>
 </head>
@@ -531,7 +532,7 @@ function selectLocation(loc){$("pLoc").value=loc.code;$("pLocSearch").value=`${l
 function renderLocationResults(query=""){
   const terms=query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const box=$("pLocResults");box.innerHTML="";if(!terms.length){box.classList.remove("show");return;}
-  const list=LOCATIONS.filter(x=>terms.every(t=>(x.code+" "+x.label).toLowerCase().includes(t))).slice(0,6);
+  const list=LOCATIONS.filter(x=>terms.every(t=>(x.code+" "+x.label).toLowerCase().includes(t))).slice(0,5);
   list.forEach(loc=>{const b=document.createElement("button");b.type="button";b.className="loc-result";b.innerHTML=`<span>${esc(loc.label)}</span><code>${esc(loc.code)}</code>`;b.onmousedown=e=>{e.preventDefault();selectLocation(loc);};box.appendChild(b);});box.classList.toggle("show",list.length>0&&document.activeElement===$("pLocSearch"));
 }
 function syncLocationEditor(code){const loc=locationByCode(code);$("pLoc").value=code||"";$("pLocSearch").value=loc?`${loc.code} · ${loc.label}`:(code||"");}
@@ -596,6 +597,7 @@ document.body.addEventListener("click",e=>{const ed=e.target.closest("[data-edit
 function openPartDlg(id){editingId=id;const p=id?parts.find(x=>String(x.id)===String(id)):null;$("dlgPartTitle").textContent=p?"编辑元器件":"新增元器件";[["pModel","model"],["pName","name"],["pCat","category"],["pPkg","package"],["pQty","qty"],["pLow","low"],["pLink","link"],["pNote","note"]].forEach(([el,k])=>$(el).value=p?.[k]??"");syncLocationEditor(p?.location??"");$("dlgPart").showModal();$("pModel").focus();}
 $("pSave").onclick=()=>{const model=$("pModel").value.trim();if(!model){toast("型号不能为空",true);return;}const obj={id:editingId??Date.now(),model,name:$("pName").value.trim(),category:$("pCat").value.trim(),package:$("pPkg").value.trim(),location:$("pLoc").value.trim(),qty:$("pQty").value===""?null:Number($("pQty").value),low:$("pLow").value===""?null:Number($("pLow").value),link:$("pLink").value.trim(),note:$("pNote").value.trim()};if(editingId){parts[parts.findIndex(x=>String(x.id)===String(editingId))]=obj;}else parts.unshift(obj);$("dlgPart").close();markDirty();render();};
 $("pLocSearch").addEventListener("input",e=>{$("pLoc").value="";renderLocationResults(e.target.value);});
+$("pLocSearch").addEventListener("focus",()=>$("pLocResults").classList.remove("show"));
 $("pLocSearch").addEventListener("blur",()=>setTimeout(()=>$("pLocResults").classList.remove("show"),120));
 $("btnCommit").onclick=async()=>{const b=$("btnCommit");b.disabled=true;b.textContent="提交中…";try{const url=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,body={message:`parts: 更新元器件库存（${pending} 项改动）`,content:encodeB64(JSON.stringify(parts,null,2)+"\n"),branch:GH.branch};if(fileSha)body.sha=fileSha;const r=await fetch(url,{method:"PUT",headers:{...ghHeaders(),"Content-Type":"application/json"},body:JSON.stringify(body)});if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.message||r.status);}const j=await r.json();fileSha=j.content.sha;pending=0;$("pendingN").textContent="0";toast("已提交，等待自动部署");}catch(e){toast("提交失败："+e.message,true);b.disabled=false;}b.textContent="提交到 GitHub";};
 let toastTimer;function toast(msg,err){const t=$("toast");t.textContent=msg;t.className=err?"show err":"show";clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.className="",3200);}
