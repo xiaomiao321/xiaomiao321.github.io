@@ -212,14 +212,15 @@
   .detail-grid{display:grid;grid-template-columns:100px 1fr;gap:10px 14px;font-size:14px}.detail-grid dt{color:#64748b}.detail-grid dd{margin:0;font-family:var(--mono)}
   .drawer .dnote{margin-top:22px;padding:14px;background:#f4f6f8;border-left:3px solid #0d9488}
   .editbar{display:none;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 12px;margin:0 0 14px;border:1px solid currentColor;border-radius:8px;font-size:13px}.editbar.on{display:flex}.editbar .spacer{flex:1}
-  dialog{position:fixed;inset:0;margin:auto;border:0;border-radius:12px;padding:0;max-width:760px;width:calc(100% - 40px);max-height:calc(100vh - 48px);overflow:auto;color:#172033;background:#fff;box-shadow:0 15px 50px rgba(0,0,0,.3)}dialog::backdrop{background:rgba(0,0,0,.45)}
-  .dlg-head{padding:23px 28px 17px;font-weight:700;font-size:21px}.dlg-sub{display:block;margin-top:4px;font-size:12px;font-weight:400;opacity:.65}.dlg-body{padding:22px 28px 25px;display:grid;gap:18px;border-top:1px solid #e5e9ef;border-bottom:1px solid #e5e9ef}.form-section{display:grid;gap:13px}.form-section-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64748b}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field label{display:block;font-size:12px;font-weight:600;color:#64748b;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;min-height:42px;padding:10px 12px;border:1px solid #d8dee8;border-radius:7px;background:#fff;font:14px var(--sans);color:#172033}.field textarea{resize:vertical}.dlg-foot{display:flex;justify-content:flex-end;gap:10px;padding:17px 28px 20px}.dlg-foot .btn{min-width:92px;color:#172033}.dlg-foot .primary{color:#fff;background:#0d9488}.hint{font-size:12px;color:#64748b}#toast{position:fixed;z-index:120;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;background:#172033;color:#fff;padding:9px 16px;border-radius:8px;transition:.2s;pointer-events:none}#toast.show{opacity:1;transform:translate(-50%,0)}#toast.err{background:#b42318}
+  dialog{position:fixed;inset:auto;top:50%;left:50%;margin:0;transform:translate(-50%,-50%);border:0;border-radius:18px;padding:0;max-width:780px;width:calc(100% - 40px);max-height:calc(100vh - 48px);overflow:auto;color:#172033;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.32)}dialog::backdrop{background:rgba(7,15,25,.58);backdrop-filter:blur(3px)}
+  .dlg-head{display:flex;align-items:center;gap:13px;padding:22px 28px;font-weight:700;font-size:22px}.dlg-head-ico{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:12px;background:#e9faf6;color:#0f766e}.dlg-head-ico svg{width:23px;height:23px}.dlg-title-wrap{min-width:0}.dlg-sub{display:block;margin-top:3px;font-size:12px;font-weight:400;opacity:.62}.dlg-body{padding:24px 28px 27px;display:grid;gap:18px;border-top:1px solid #e5e9ef;border-bottom:1px solid #e5e9ef;background:#f7f9fb}.form-section{display:grid;gap:14px;padding:17px 18px;background:#fff;border:1px solid #e2e7ee;border-radius:12px}.form-section-title{font-size:13px;font-weight:700;color:#334155}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field label{display:block;font-size:12px;font-weight:600;color:#64748b;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;min-height:43px;padding:10px 12px;border:1px solid #d8dee8;border-radius:8px;background:#fff;font:14px var(--sans);color:#172033;transition:border-color .15s,box-shadow .15s}.field textarea{resize:vertical}.dlg-foot{display:flex;justify-content:flex-end;gap:10px;padding:18px 28px 21px;background:#fff}.dlg-foot .btn{min-width:96px;color:#172033}.dlg-foot .primary{color:#fff;background:#0d9488}.hint{font-size:12px;color:#64748b}#toast{position:fixed;z-index:120;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;background:#172033;color:#fff;padding:9px 16px;border-radius:8px;transition:.2s;pointer-events:none}#toast.show{opacity:1;transform:translate(-50%,0)}#toast.err{background:#b42318}
   html[data-style="terminal"] dialog{border:1px solid var(--green-d);border-radius:8px;background:#071009;color:var(--fg);box-shadow:0 0 34px var(--glow);font-family:var(--mono)}
   html[data-style="terminal"] dialog::backdrop{background:rgba(0,0,0,.78)}
-  html[data-style="terminal"] .dlg-head{color:var(--green);border-bottom:1px solid var(--line);padding:20px 24px 17px;font-family:var(--mono);background:#0b170f}
-  html[data-style="terminal"] .dlg-head::before{content:"> "}
-  html[data-style="terminal"] .dlg-body{padding:22px 24px;border-color:var(--line);background:repeating-linear-gradient(0deg,rgba(84,255,176,.025) 0 1px,transparent 1px 28px)}
-  html[data-style="terminal"] .form-section-title{color:var(--amber);font-family:var(--mono)}
+  html[data-style="terminal"] .dlg-head{color:var(--green);border-bottom:1px solid var(--line);padding:19px 24px;font-family:var(--mono);background:#0b170f}
+  html[data-style="terminal"] .dlg-head-ico{border:1px solid var(--green-d);border-radius:5px;background:#020704;color:var(--green);box-shadow:0 0 13px rgba(84,255,176,.2)}
+  html[data-style="terminal"] .dlg-body{padding:22px 24px;border-color:var(--line);background:#050b07}
+  html[data-style="terminal"] .form-section{border:1px solid var(--line);border-radius:6px;background:#071009}
+  html[data-style="terminal"] .form-section-title{color:var(--amber);font-family:var(--mono);border-bottom:1px dashed var(--line);padding-bottom:9px}
   html[data-style="terminal"] .field label{color:var(--dim);font-family:var(--mono);letter-spacing:.06em}
   html[data-style="terminal"] .field input,html[data-style="terminal"] .field textarea,html[data-style="terminal"] .field select{border:1px solid var(--line);border-radius:5px;background:#020704;color:var(--fg);font-family:var(--mono);caret-color:var(--green)}
   html[data-style="terminal"] .field input:focus,html[data-style="terminal"] .field textarea:focus,html[data-style="terminal"] .field select:focus{outline:none;border-color:var(--green);box-shadow:0 0 10px rgba(84,255,176,.18)}
@@ -229,8 +230,9 @@
   html[data-style="terminal"] .dlg-foot .primary{background:var(--green);color:var(--ink)}
   html[data-style="minimal"] dialog{border:2px solid #000;border-radius:0;box-shadow:10px 10px 0 #000;color:#111}
   html[data-style="minimal"] dialog::backdrop{background:rgba(255,255,255,.72)}
-  html[data-style="minimal"] .dlg-head{padding:22px 26px 18px;border-bottom:2px solid #000;font-size:23px;text-transform:uppercase}
-  html[data-style="minimal"] .dlg-body{border-color:#000;background:#fff}.form-section-title{font-family:var(--mono)}
+  html[data-style="minimal"] .dlg-head{padding:20px 24px;border-bottom:2px solid #000;font-size:23px}
+  html[data-style="minimal"] .dlg-head-ico{border:2px solid #000;border-radius:0;background:#000;color:#fff}
+  html[data-style="minimal"] .dlg-body{border-color:#000;background:#f5f5f5}html[data-style="minimal"] .form-section{border:1.5px solid #000;border-radius:0;box-shadow:4px 4px 0 #000}html[data-style="minimal"] .form-section-title{font-family:var(--mono);color:#000;border-bottom:1.5px solid #000;padding-bottom:8px}
   html[data-style="minimal"] .field label{color:#333;font-weight:700;letter-spacing:.08em}
   html[data-style="minimal"] .field input,html[data-style="minimal"] .field textarea,html[data-style="minimal"] .field select{border:1.5px solid #000;border-radius:0;background:#fff;color:#000}
   html[data-style="minimal"] .field input:focus,html[data-style="minimal"] .field textarea:focus,html[data-style="minimal"] .field select:focus{outline:none;box-shadow:inset 0 0 0 1px #000}
@@ -245,7 +247,7 @@
   html[data-style="modern"] .field input:focus,html[data-style="modern"] .field textarea:focus,html[data-style="modern"] .field select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(13,148,136,.13);background:#fff}
   html[data-style="modern"] .dlg-foot{background:#fbfcfe}
   html[data-style="modern"] .dlg-foot .btn{border-radius:9px;color:var(--text)}html[data-style="modern"] .dlg-foot .primary{background:var(--acc);border-color:var(--acc);color:#fff}
-  @media(max-width:640px){dialog{width:calc(100% - 20px);max-height:calc(100vh - 20px)}.grid2{grid-template-columns:1fr}.dlg-head{padding:18px 18px 14px}.dlg-body{padding:18px}.dlg-foot{padding:14px 18px}}
+  @media(max-width:640px){dialog{width:calc(100% - 20px);max-height:calc(100vh - 20px)}.grid2{grid-template-columns:1fr}.dlg-head{padding:16px 18px}.dlg-body{padding:14px}.form-section{padding:14px}.dlg-foot{padding:14px 18px}}
 
   @keyframes blink{50%{opacity:0}}
 </style>
@@ -322,16 +324,16 @@
   </div>
 </div>
 
-<dialog id="dlgPart"><div class="dlg-head"><span id="dlgPartTitle">新增元器件</span><span class="dlg-sub">COMPONENT RECORD · PARTS DATABASE</span></div><div class="dlg-body">
-  <section class="form-section"><div class="form-section-title">基础信息 · Identity</div>
+<dialog id="dlgPart"><div class="dlg-head"><span class="dlg-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v2M14 3v2M10 19v2M14 19v2M3 10h2M3 14h2M19 10h2M19 14h2"/></svg></span><span class="dlg-title-wrap"><span id="dlgPartTitle">新增元器件</span><span class="dlg-sub">填写器件信息并加入库存</span></span></div><div class="dlg-body">
+  <section class="form-section"><div class="form-section-title">基础信息</div>
     <div class="grid2"><div class="field"><label>型号 *</label><input id="pModel" placeholder="例如 STM32G031K8U6"></div><div class="field"><label>名称</label><input id="pName" placeholder="器件名称或用途"></div></div>
     <div class="grid2"><div class="field"><label>分类</label><select id="pCat"><option value="">未分类</option><option>IC / 芯片</option><option>阻容感</option><option>电源</option><option>分立器件</option><option>连接器</option><option>传感器</option><option>光电器件</option><option>模块</option><option>PCB / 电路板</option><option>线材</option><option>紧固件 / 螺丝</option><option>工具</option><option>耗材</option><option>其他</option></select></div><div class="field"><label>封装 / 规格</label><input id="pPkg" placeholder="例如 QFN-32 / M3×8 / 0603"></div></div>
   </section>
-  <section class="form-section"><div class="form-section-title">库存信息 · Inventory</div>
+  <section class="form-section"><div class="form-section-title">库存信息</div>
     <div class="grid2"><div class="field"><label>存放位置</label><input id="pLoc" list="locList" placeholder="例如 A1-1"><datalist id="locList"></datalist></div><div class="field"><label>数量（留空为常备）</label><input id="pQty" type="number" min="0" placeholder="0"></div></div>
     <div class="grid2"><div class="field"><label>低库存阈值</label><input id="pLow" type="number" min="0" placeholder="0"></div><div class="field"><label>购买 / 资料链接</label><input id="pLink" type="url" placeholder="https://…"></div></div>
   </section>
-  <section class="form-section"><div class="form-section-title">补充信息 · Notes</div><div class="field"><label>备注</label><textarea id="pNote" rows="3" placeholder="参数、替代料、使用注意事项…"></textarea></div></section>
+  <section class="form-section"><div class="form-section-title">补充信息</div><div class="field"><label>备注</label><textarea id="pNote" rows="3" placeholder="参数、替代料、使用注意事项…"></textarea></div></section>
 </div><div class="dlg-foot"><button class="btn" id="pCancel">取消</button><button class="btn primary" id="pSave">保存器件</button></div></dialog>
 <dialog id="dlgToken"><div class="dlg-head">进入编辑模式</div><div class="dlg-body"><p class="hint">Token 仅保存在本机浏览器，需要仓库 Contents 读写权限。</p><div class="field"><label>GitHub Token</label><input id="tokenInput" type="password"></div></div><div class="dlg-foot"><button class="btn" id="tCancel">取消</button><button class="btn primary" id="tSave">确认</button></div></dialog>
 <div id="toast" role="status"></div>
