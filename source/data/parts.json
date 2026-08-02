@@ -1,5 +1,41 @@
 [
   {
+    "id": 1785687232250,
+    "model": "继电器模块",
+    "name": "继电器模块",
+    "category": "模块",
+    "package": "5V DC",
+    "location": "GL-S3-A",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785687082384,
+    "model": "声光蜂鸣器",
+    "name": "声光蜂鸣器",
+    "category": "分立器件",
+    "package": "红色22mm DC24V AC 220V",
+    "location": "GL-S4-A",
+    "qty": 2,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": "1785687004141",
+    "model": "二脚插头",
+    "name": "二脚插头",
+    "category": "连接器",
+    "package": "二脚，市电",
+    "location": "GL-S4-A",
+    "qty": 2,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
     "id": 1785686847643,
     "model": "钮子开关",
     "name": "开关",
