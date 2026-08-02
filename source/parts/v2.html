@@ -31,7 +31,7 @@
   html[data-style="terminal"] body{background:#000;color:var(--fg);font-family:var(--mono);font-size:17px;line-height:1.72;padding:26px 18px 60px;-webkit-font-smoothing:antialiased}
   html[data-style="terminal"] body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px,rgba(0,0,0,.13) 2px 3px);opacity:.5}
   html[data-style="terminal"] ::selection{background:var(--green);color:var(--ink)}
-  html[data-style="terminal"] .wrap{max-width:1160px;margin:0 auto;background:var(--win);border:1px solid var(--line);border-radius:11px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 46px var(--glow)}
+  html[data-style="terminal"] .wrap{max-width:1160px;min-height:calc(100vh - 86px);margin:0 auto;background:var(--win);border:1px solid var(--line);border-radius:11px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 46px var(--glow)}
   html[data-style="terminal"] .term-bar{display:flex;align-items:center;gap:10px;padding:11px 15px;background:var(--bar);border-bottom:1px solid var(--line)}
   html[data-style="terminal"] .dots{display:flex;gap:7px}
   html[data-style="terminal"] .dots i{width:12px;height:12px;border-radius:50%;display:block}
@@ -302,14 +302,6 @@
       </select>
     </div>
     <div class="active-filters" id="activeFilters"></div>
-    <details class="location-guide"><summary>位置编号说明</summary><div class="guide-body"><div>位置代码采用“区域－抽屉/收纳位－分格”的格式，所有编号均从上到下、从左到右。</div><div class="guide-grid">
-      <span class="guide-item"><code>GL</code> 绿林收纳柜</span><span class="guide-item"><code>PD</code> 3D 打印抽屉</span><span class="guide-item"><code>SH</code> 桌面上层书架</span>
-      <span class="guide-item"><code>RU</code> 桌面右侧上部</span><span class="guide-item"><code>RL</code> 桌面右侧下部</span><span class="guide-item"><code>CD</code> 桌面正下方抽屉</span>
-      <span class="guide-item"><code>LD</code> 桌面左下抽屉</span><span class="guide-item"><code>LO</code> 桌面左下开放柜</span><span class="guide-item"><code>RC</code> 桌面右下闭合柜</span>
-      <span class="guide-item"><code>WD1</code> 衣柜下方抽屉 1</span><span class="guide-item"><code>WD2</code> 衣柜下方抽屉 2</span><span class="guide-item"><code>WG</code> 衣柜与墙壁间开放区</span>
-    </div><div class="guide-examples">示例：GL-S12-A（绿林柜小抽屉 12 的 A 格）　PD-L03（3D 打印柜大抽屉 03）</div></div></details>
-    <div class="editbar" id="editbar"><span>编辑模式：改动暂存在本地</span><span>待提交 <b id="pendingN">0</b> 项</span><span class="spacer"></span><button class="btn" id="btnLogout">退出编辑</button><button class="btn primary" id="btnCommit" disabled>提交到 GitHub</button></div>
-
     <div class="panel">
       <table>
         <thead>
@@ -336,6 +328,13 @@
       <span class="spacer"></span>
       <span class="right"><span id="sbCount">0</span> items · <span id="sbLow">0</span> low</span>
     </div>
+    <div class="editbar" id="editbar"><span>编辑模式：改动暂存在本地</span><span>待提交 <b id="pendingN">0</b> 项</span><span class="spacer"></span><button class="btn" id="btnLogout">退出编辑</button><button class="btn primary" id="btnCommit" disabled>提交到 GitHub</button></div>
+    <details class="location-guide"><summary>位置代码对照表</summary><div class="guide-body"><div>位置代码采用“区域－抽屉/收纳位－分格”的格式，所有编号均从上到下、从左到右。</div><div class="guide-grid">
+      <span class="guide-item"><code>GL</code> 绿林收纳柜</span><span class="guide-item"><code>PD</code> 3D 打印抽屉</span><span class="guide-item"><code>SH</code> 桌面上层书架</span>
+      <span class="guide-item"><code>RU</code> 桌面右侧上部</span><span class="guide-item"><code>RL</code> 桌面右侧下部</span><span class="guide-item"><code>CD</code> 桌面正下方抽屉</span>
+      <span class="guide-item"><code>LD</code> 桌面左下抽屉</span><span class="guide-item"><code>LO</code> 桌面左下开放柜</span><span class="guide-item"><code>RC</code> 桌面右下闭合柜</span>
+      <span class="guide-item"><code>WD1</code> 衣柜下方抽屉 1</span><span class="guide-item"><code>WD2</code> 衣柜下方抽屉 2</span><span class="guide-item"><code>WG</code> 衣柜与墙壁间开放区</span>
+    </div><div class="guide-examples">示例：GL-S12-A（绿林柜小抽屉 12 的 A 格）　PD-L03（3D 打印柜大抽屉 03）</div></div></details>
   </div>
 </div>
 
