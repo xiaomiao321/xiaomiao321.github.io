@@ -249,6 +249,14 @@
   html[data-style="modern"] .dlg-foot .btn{border-radius:9px;color:var(--text)}html[data-style="modern"] .dlg-foot .primary{background:var(--acc);border-color:var(--acc);color:#fff}
   @media(max-width:640px){dialog{width:calc(100% - 20px);max-height:calc(100vh - 20px)}.grid2{grid-template-columns:1fr}.dlg-head{padding:16px 18px}.dlg-body{padding:14px}.form-section{padding:14px}.dlg-foot{padding:14px 18px}}
 
+  .location-guide{margin:0 0 15px;border:1px solid currentColor;border-radius:9px;overflow:hidden;font-size:13px}.location-guide summary{padding:10px 14px;cursor:pointer;font-weight:700;list-style:none}.location-guide summary::-webkit-details-marker{display:none}.location-guide summary::before{content:"＋ ";font-family:var(--mono)}.location-guide[open] summary::before{content:"－ "}.guide-body{padding:3px 14px 14px}.guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 16px;margin:9px 0}.guide-item code{font-family:var(--mono);font-weight:700}.guide-examples{font-family:var(--mono);font-size:12px;opacity:.8;margin-top:9px}
+  html[data-style="terminal"] .location-guide{color:var(--dim);border-color:var(--line);background:rgba(0,0,0,.2)}html[data-style="terminal"] .location-guide summary{color:var(--green)}
+  html[data-style="minimal"] .location-guide{color:#111;border:1.5px solid #000;border-radius:0}
+  html[data-style="modern"] .location-guide{color:var(--text);border-color:var(--line2);background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .location-guide summary{color:var(--acc2)}
+  .loc-picker{position:relative}.loc-selected{margin-top:6px;min-height:20px;font:12px var(--mono);color:#0f766e}.loc-results{display:none;position:absolute;z-index:140;left:0;right:0;top:calc(100% - 22px);max-height:230px;overflow:auto;padding:5px;background:#fff;border:1px solid #cfd6df;border-radius:8px;box-shadow:0 14px 30px rgba(15,23,42,.2)}.loc-results.show{display:grid}.loc-result{display:flex;justify-content:space-between;gap:12px;border:0;border-radius:6px;background:transparent;padding:9px 10px;text-align:left;cursor:pointer;color:#172033}.loc-result:hover{background:#edf8f5}.loc-result code{flex:none;font-family:var(--mono);color:#0f766e}
+  html[data-style="terminal"] .loc-selected{color:var(--green)}html[data-style="terminal"] .loc-results{background:#071009;border-color:var(--green-d);box-shadow:0 0 22px rgba(84,255,176,.2)}html[data-style="terminal"] .loc-result{color:var(--fg);font-family:var(--mono)}html[data-style="terminal"] .loc-result:hover{background:var(--sel)}html[data-style="terminal"] .loc-result code{color:var(--green)}
+  html[data-style="minimal"] .loc-selected{color:#000}html[data-style="minimal"] .loc-results{border:1.5px solid #000;border-radius:0;box-shadow:5px 5px 0 #000}html[data-style="minimal"] .loc-result{border-radius:0;color:#000}html[data-style="minimal"] .loc-result:hover{background:#eee}html[data-style="minimal"] .loc-result code{color:#000}
+  @media(max-width:640px){.guide-grid{grid-template-columns:1fr 1fr}}
   @keyframes blink{50%{opacity:0}}
 </style>
 </head>
@@ -293,6 +301,12 @@
       </select>
     </div>
     <div class="active-filters" id="activeFilters"></div>
+    <details class="location-guide"><summary>位置编号说明</summary><div class="guide-body"><div>位置代码采用“区域－抽屉/收纳位－分格”的格式，所有编号均从上到下、从左到右。</div><div class="guide-grid">
+      <span class="guide-item"><code>GL</code> 绿林收纳柜</span><span class="guide-item"><code>PD</code> 3D 打印抽屉</span><span class="guide-item"><code>SH</code> 桌面上层书架</span>
+      <span class="guide-item"><code>RU</code> 桌面右侧上部</span><span class="guide-item"><code>RL</code> 桌面右侧下部</span><span class="guide-item"><code>CD</code> 桌面正下方抽屉</span>
+      <span class="guide-item"><code>LD</code> 桌面左下抽屉</span><span class="guide-item"><code>LO</code> 桌面左下开放柜</span><span class="guide-item"><code>RC</code> 桌面右下闭合柜</span>
+      <span class="guide-item"><code>WD1</code> 衣柜下方抽屉 1</span><span class="guide-item"><code>WD2</code> 衣柜下方抽屉 2</span><span class="guide-item"><code>WG</code> 衣柜与墙壁间开放区</span>
+    </div><div class="guide-examples">示例：GL-S12-A（绿林柜小抽屉 12 的 A 格）　PD-L03（3D 打印柜大抽屉 03）</div></div></details>
     <div class="editbar" id="editbar"><span>编辑模式：改动暂存在本地</span><span>待提交 <b id="pendingN">0</b> 项</span><span class="spacer"></span><button class="btn" id="btnLogout">退出编辑</button><button class="btn primary" id="btnCommit" disabled>提交到 GitHub</button></div>
 
     <div class="panel">
@@ -330,7 +344,7 @@
     <div class="grid2"><div class="field"><label>分类</label><select id="pCat"><option value="">未分类</option><option>IC / 芯片</option><option>阻容感</option><option>电源</option><option>分立器件</option><option>连接器</option><option>传感器</option><option>光电器件</option><option>模块</option><option>PCB / 电路板</option><option>线材</option><option>紧固件 / 螺丝</option><option>工具</option><option>耗材</option><option>其他</option></select></div><div class="field"><label>封装 / 规格</label><input id="pPkg" placeholder="例如 QFN-32 / M3×8 / 0603"></div></div>
   </section>
   <section class="form-section"><div class="form-section-title">库存信息</div>
-    <div class="grid2"><div class="field"><label>存放位置</label><input id="pLoc" list="locList" placeholder="例如 A1-1"><datalist id="locList"></datalist></div><div class="field"><label>数量（留空为常备）</label><input id="pQty" type="number" min="0" placeholder="0"></div></div>
+    <div class="grid2"><div class="field loc-picker"><label>存放位置</label><input id="pLocSearch" autocomplete="off" placeholder="输入区域、抽屉或编号进行搜索"><input id="pLoc" type="hidden"><div class="loc-selected" id="pLocSelected">尚未选择位置</div><div class="loc-results" id="pLocResults"></div></div><div class="field"><label>数量（留空为常备）</label><input id="pQty" type="number" min="0" placeholder="0"></div></div>
     <div class="grid2"><div class="field"><label>低库存阈值</label><input id="pLow" type="number" min="0" placeholder="0"></div><div class="field"><label>购买 / 资料链接</label><input id="pLink" type="url" placeholder="https://…"></div></div>
   </section>
   <section class="form-section"><div class="form-section-title">补充信息</div><div class="field"><label>备注</label><textarea id="pNote" rows="3" placeholder="参数、替代料、使用注意事项…"></textarea></div></section>
@@ -361,6 +375,16 @@ const GH={owner:"xiaomiao321",repo:"xiaomiao321.github.io",branch:"source",path:
 const LOCAL_JSON="../data/parts.json";
 let parts=[],fileSha=null,pending=0,editMode=false,editingId=null;
 const token=()=>localStorage.getItem("parts_gh_token")||"";
+const pad2=n=>String(n).padStart(2,"0");
+const LOCATION_AREAS=[
+  ["SH","桌面上层书架"],["RU","桌面右侧上部"],["RL","桌面右侧下部"],["CD","桌面正下方抽屉"],
+  ["LD","桌面左下抽屉"],["LO","桌面左下开放柜"],["RC","桌面右下闭合柜"],["WD1","衣柜下方抽屉 1"],
+  ["WD2","衣柜下方抽屉 2"],["WG","衣柜与墙壁间开放区"]
+];
+const LOCATIONS=[];
+for(const [code,name] of LOCATION_AREAS){LOCATIONS.push({code,label:`${name} · 区域本体`});for(let i=1;i<=12;i++)LOCATIONS.push({code:`${code}-${pad2(i)}`,label:`${name} · 收纳位 ${pad2(i)}`});}
+for(const [type,count,label] of [["S",30,"小抽屉"],["L",9,"大抽屉"]])for(let i=1;i<=count;i++)for(const slot of ["A","B"])LOCATIONS.push({code:`GL-${type}${pad2(i)}-${slot}`,label:`绿林收纳柜 · ${label} ${pad2(i)} · ${slot} 格`});
+for(const [type,count,label] of [["S",16,"小抽屉"],["L",4,"大抽屉"]])for(let i=1;i<=count;i++)LOCATIONS.push({code:`PD-${type}${pad2(i)}`,label:`3D 打印抽屉 · ${label} ${pad2(i)}`});
 function isLow(p){if(p.qty===null||p.qty===undefined||p.qty==="")return false;const th=(p.low===null||p.low===undefined||p.low==="")?0:Number(p.low);return th>0&&Number(p.qty)<=th;}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function hi(s){
@@ -499,11 +523,17 @@ function render(){
   });
   $("emptyMsg").hidden=list.length>0;
   document.querySelectorAll(".act-col").forEach(x=>x.hidden=!editMode);
-  fillDatalist("locList",[...new Set(parts.map(p=>p.location).filter(Boolean))]);
   renderFilterChips();saveView();updateSuggestions();
 }
 function fillSelect(id,arr){const sel=$(id),cur=sel.value;sel.length=1;arr.forEach(v=>sel.add(new Option(v,v)));sel.value=cur;}
-function fillDatalist(id,arr){$(id).innerHTML=arr.map(v=>`<option value="${esc(v)}">`).join("");}
+function locationByCode(code){return LOCATIONS.find(x=>x.code===code);}
+function selectLocation(loc){$("pLoc").value=loc.code;$("pLocSearch").value=loc.label;$("pLocSelected").textContent=`已选择：${loc.code}`;$("pLocResults").classList.remove("show");}
+function renderLocationResults(query=""){
+  const terms=query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const list=LOCATIONS.filter(x=>terms.every(t=>(x.code+" "+x.label).toLowerCase().includes(t))).slice(0,18),box=$("pLocResults");box.innerHTML="";
+  list.forEach(loc=>{const b=document.createElement("button");b.type="button";b.className="loc-result";b.innerHTML=`<span>${esc(loc.label)}</span><code>${esc(loc.code)}</code>`;b.onmousedown=e=>{e.preventDefault();selectLocation(loc);};box.appendChild(b);});box.classList.toggle("show",list.length>0&&document.activeElement===$("pLocSearch"));
+}
+function syncLocationEditor(code){const loc=locationByCode(code);$("pLoc").value=code||"";$("pLocSearch").value=loc?.label||code||"";$("pLocSelected").textContent=code?`已选择：${code}`:"尚未选择位置";}
 
 function renderFilterChips(){
   const items=[];
@@ -562,8 +592,11 @@ async function enterEdit(){try{await loadFromGitHub();}catch(e){localStorage.rem
 $("btnLogout").onclick=()=>{if(pending&& !confirm("有未提交的改动，确定放弃？"))return;editMode=false;pending=0;fileSha=null;localStorage.removeItem("parts_gh_token");$("editbar").classList.remove("on");$("btnAdd").hidden=true;$("btnEdit").hidden=false;$("pendingN").textContent="0";$("btnCommit").disabled=true;load();};
 $("btnAdd").onclick=()=>openPartDlg(null);$("pCancel").onclick=()=>$("dlgPart").close();
 document.body.addEventListener("click",e=>{const ed=e.target.closest("[data-edit]"),dl=e.target.closest("[data-del]");if(ed){e.stopPropagation();openPartDlg(ed.dataset.edit);}if(dl){e.stopPropagation();const p=parts.find(x=>String(x.id)===dl.dataset.del);if(p&&confirm(`删除 ${p.model}？`)){parts=parts.filter(x=>x!==p);markDirty();render();}}});
-function openPartDlg(id){editingId=id;const p=id?parts.find(x=>String(x.id)===String(id)):null;$("dlgPartTitle").textContent=p?"编辑元器件":"新增元器件";[["pModel","model"],["pName","name"],["pCat","category"],["pPkg","package"],["pLoc","location"],["pQty","qty"],["pLow","low"],["pLink","link"],["pNote","note"]].forEach(([el,k])=>$(el).value=p?.[k]??"");$("dlgPart").showModal();$("pModel").focus();}
+function openPartDlg(id){editingId=id;const p=id?parts.find(x=>String(x.id)===String(id)):null;$("dlgPartTitle").textContent=p?"编辑元器件":"新增元器件";[["pModel","model"],["pName","name"],["pCat","category"],["pPkg","package"],["pQty","qty"],["pLow","low"],["pLink","link"],["pNote","note"]].forEach(([el,k])=>$(el).value=p?.[k]??"");syncLocationEditor(p?.location??"");$("dlgPart").showModal();$("pModel").focus();}
 $("pSave").onclick=()=>{const model=$("pModel").value.trim();if(!model){toast("型号不能为空",true);return;}const obj={id:editingId??Date.now(),model,name:$("pName").value.trim(),category:$("pCat").value.trim(),package:$("pPkg").value.trim(),location:$("pLoc").value.trim(),qty:$("pQty").value===""?null:Number($("pQty").value),low:$("pLow").value===""?null:Number($("pLow").value),link:$("pLink").value.trim(),note:$("pNote").value.trim()};if(editingId){parts[parts.findIndex(x=>String(x.id)===String(editingId))]=obj;}else parts.unshift(obj);$("dlgPart").close();markDirty();render();};
+$("pLocSearch").addEventListener("focus",e=>renderLocationResults(e.target.value));
+$("pLocSearch").addEventListener("input",e=>{$("pLoc").value="";$("pLocSelected").textContent="请从候选位置中选择";renderLocationResults(e.target.value);});
+$("pLocSearch").addEventListener("blur",()=>setTimeout(()=>$("pLocResults").classList.remove("show"),120));
 $("btnCommit").onclick=async()=>{const b=$("btnCommit");b.disabled=true;b.textContent="提交中…";try{const url=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,body={message:`parts: 更新元器件库存（${pending} 项改动）`,content:encodeB64(JSON.stringify(parts,null,2)+"\n"),branch:GH.branch};if(fileSha)body.sha=fileSha;const r=await fetch(url,{method:"PUT",headers:{...ghHeaders(),"Content-Type":"application/json"},body:JSON.stringify(body)});if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.message||r.status);}const j=await r.json();fileSha=j.content.sha;pending=0;$("pendingN").textContent="0";toast("已提交，等待自动部署");}catch(e){toast("提交失败："+e.message,true);b.disabled=false;}b.textContent="提交到 GitHub";};
 let toastTimer;function toast(msg,err){const t=$("toast");t.textContent=msg;t.className=err?"show err":"show";clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.className="",3200);}
 
