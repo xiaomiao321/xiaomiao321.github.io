@@ -250,14 +250,14 @@
   html[data-style="modern"] .dlg-foot .btn{border-radius:9px;color:var(--text)}html[data-style="modern"] .dlg-foot .primary{background:var(--acc);border-color:var(--acc);color:#fff}
   @media(max-width:640px){dialog{width:calc(100% - 20px);max-height:calc(100vh - 20px)}.grid2{grid-template-columns:1fr}.dlg-head{padding:16px 18px}.dlg-body{padding:14px}.form-section{padding:14px}.dlg-foot{padding:14px 18px}}
 
-  .location-guide{margin:0 0 15px;border:1px solid currentColor;border-radius:9px;overflow:hidden;font-size:13px}.location-guide summary{padding:10px 14px;cursor:pointer;font-weight:700;list-style:none}.location-guide summary::-webkit-details-marker{display:none}.location-guide summary::before{content:"＋ ";font-family:var(--mono)}.location-guide[open] summary::before{content:"－ "}.guide-body{padding:3px 14px 14px}.guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 16px;margin:9px 0}.guide-item code{font-family:var(--mono);font-weight:700}.guide-examples{font-family:var(--mono);font-size:12px;opacity:.8;margin-top:9px}
+  .location-guide{margin:0 0 15px;border:1px solid currentColor;border-radius:9px;overflow:hidden;font-size:13px}.location-guide summary{padding:10px 14px;cursor:pointer;font-weight:700;list-style:none}.location-guide summary::-webkit-details-marker{display:none}.location-guide summary::before{content:"＋ ";font-family:var(--mono)}.location-guide[open] summary::before{content:"－ "}.guide-body{padding:3px 14px 14px}.guide-intro{margin-bottom:10px}.guide-grid{display:grid;gap:0;border-top:1px solid currentColor}.guide-item{display:grid;grid-template-columns:62px minmax(140px,1fr) minmax(260px,2fr);gap:12px;padding:8px 4px;border-bottom:1px solid currentColor}.guide-item code{font-family:var(--mono);font-weight:700}.guide-range{opacity:.78}.guide-examples{font-family:var(--mono);font-size:12px;opacity:.8;margin-top:11px}
   html[data-style="terminal"] .location-guide{color:var(--dim);border-color:var(--line);background:rgba(0,0,0,.2)}html[data-style="terminal"] .location-guide summary{color:var(--green)}
   html[data-style="minimal"] .location-guide{color:#111;border:1.5px solid #000;border-radius:0}
   html[data-style="modern"] .location-guide{color:var(--text);border-color:var(--line2);background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .location-guide summary{color:var(--acc2)}
   .loc-picker{position:relative}.loc-desc{display:block;min-height:18px;margin-top:5px;font-size:12px;line-height:18px;color:#64748b}.loc-results{display:none;position:absolute;z-index:200;left:0;right:0;top:calc(100% - 18px);max-height:190px;overflow:auto;padding:4px;background:#fff;border:1px solid #cfd6df;border-radius:8px;box-shadow:0 14px 30px rgba(15,23,42,.2)}.loc-results.show{display:grid}.loc-result{display:block;border:0;border-radius:6px;background:transparent;padding:8px 10px;text-align:left;cursor:pointer;color:#0f766e;font:13px var(--mono)}.loc-result:hover{background:#edf8f5}
   html[data-style="terminal"] .loc-desc{color:var(--dim)}html[data-style="terminal"] .loc-results{background:#071009;border-color:var(--green-d);box-shadow:0 0 22px rgba(84,255,176,.2)}html[data-style="terminal"] .loc-result{color:var(--green)}html[data-style="terminal"] .loc-result:hover{background:var(--sel)}
   html[data-style="minimal"] .loc-desc{color:#444}html[data-style="minimal"] .loc-results{border:1.5px solid #000;border-radius:0;box-shadow:5px 5px 0 #000}html[data-style="minimal"] .loc-result{border-radius:0;color:#000}html[data-style="minimal"] .loc-result:hover{background:#eee}
-  @media(max-width:640px){.guide-grid{grid-template-columns:1fr 1fr}.field input,.field textarea,.field select{font-size:16px!important}}
+  @media(max-width:640px){.guide-item{grid-template-columns:52px 1fr;gap:3px 9px}.guide-range{grid-column:2}.field input,.field textarea,.field select{font-size:16px!important}}
   @keyframes blink{50%{opacity:0}}
 </style>
 </head>
@@ -329,12 +329,20 @@
       <span class="right"><span id="sbCount">0</span> items · <span id="sbLow">0</span> low</span>
     </div>
     <div class="editbar" id="editbar"><span>编辑模式：改动暂存在本地</span><span>待提交 <b id="pendingN">0</b> 项</span><span class="spacer"></span><button class="btn" id="btnLogout">退出编辑</button><button class="btn primary" id="btnCommit" disabled>提交到 GitHub</button></div>
-    <details class="location-guide"><summary>位置代码对照表</summary><div class="guide-body"><div>位置代码采用“区域－抽屉/收纳位－分格”的格式，所有编号均从上到下、从左到右。</div><div class="guide-grid">
-      <span class="guide-item"><code>GL</code> 绿林收纳柜</span><span class="guide-item"><code>PD</code> 3D 打印抽屉</span><span class="guide-item"><code>SH</code> 桌面上层书架</span>
-      <span class="guide-item"><code>RU</code> 桌面右侧上部</span><span class="guide-item"><code>RL</code> 桌面右侧下部</span><span class="guide-item"><code>CD</code> 桌面正下方抽屉</span>
-      <span class="guide-item"><code>LD</code> 桌面左下抽屉</span><span class="guide-item"><code>LO</code> 桌面左下开放柜</span><span class="guide-item"><code>RC</code> 桌面右下闭合柜</span>
-      <span class="guide-item"><code>WD1</code> 衣柜下方抽屉 1</span><span class="guide-item"><code>WD2</code> 衣柜下方抽屉 2</span><span class="guide-item"><code>WG</code> 衣柜与墙壁间开放区</span>
-    </div><div class="guide-examples">示例：GL-S12-A（绿林柜小抽屉 12 的 A 格）　PD-L03（3D 打印柜大抽屉 03）</div></div></details>
+    <details class="location-guide"><summary>位置代码与编号范围</summary><div class="guide-body"><div class="guide-intro">编号统一按从上到下、从左到右排列。带挡板的抽屉再用 A、B 表示左右两格。</div><div class="guide-grid">
+      <div class="guide-item"><code>GL</code><span>绿林收纳柜</span><span class="guide-range">小抽屉 S01–S30，每个分 A/B；大抽屉 L01–L09，每个分 A/B</span></div>
+      <div class="guide-item"><code>PD</code><span>3D 打印抽屉</span><span class="guide-range">小抽屉 S01–S16；大抽屉 L01–L04</span></div>
+      <div class="guide-item"><code>SH</code><span>桌面上层书架</span><span class="guide-range">区域本身用 SH；细分收纳位可用 SH-01–SH-12</span></div>
+      <div class="guide-item"><code>RU</code><span>桌面右侧上部</span><span class="guide-range">区域本身用 RU；细分收纳位可用 RU-01–RU-12</span></div>
+      <div class="guide-item"><code>RL</code><span>桌面右侧下部</span><span class="guide-range">区域本身用 RL；细分收纳位可用 RL-01–RL-12</span></div>
+      <div class="guide-item"><code>CD</code><span>桌面正下方抽屉</span><span class="guide-range">区域本身用 CD；细分收纳位可用 CD-01–CD-12</span></div>
+      <div class="guide-item"><code>LD</code><span>桌面左下抽屉</span><span class="guide-range">区域本身用 LD；细分收纳位可用 LD-01–LD-12</span></div>
+      <div class="guide-item"><code>LO</code><span>桌面左下开放式柜子</span><span class="guide-range">区域本身用 LO；细分收纳位可用 LO-01–LO-12</span></div>
+      <div class="guide-item"><code>RC</code><span>桌面右下闭合式柜子</span><span class="guide-range">区域本身用 RC；细分收纳位可用 RC-01–RC-12</span></div>
+      <div class="guide-item"><code>WD1</code><span>衣柜下方抽屉 1</span><span class="guide-range">区域本身用 WD1；细分收纳位可用 WD1-01–WD1-12</span></div>
+      <div class="guide-item"><code>WD2</code><span>衣柜下方抽屉 2</span><span class="guide-range">区域本身用 WD2；细分收纳位可用 WD2-01–WD2-12</span></div>
+      <div class="guide-item"><code>WG</code><span>衣柜左侧与墙壁之间的开放区域</span><span class="guide-range">区域本身用 WG；细分收纳位可用 WG-01–WG-12</span></div>
+    </div><div class="guide-examples">示例：GL-S12-A = 绿林柜小抽屉 12 的 A 格　｜　PD-L03 = 3D 打印柜大抽屉 03</div></div></details>
   </div>
 </div>
 
