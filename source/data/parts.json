@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "1785686152188",
+    "model": "继电器",
+    "name": "继电器",
+    "category": "分立器件",
+    "package": "12VDC 5脚",
+    "location": "GL-S1-B",
+    "qty": 2,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785686070629,
+    "model": "3位8段数码管",
+    "name": "数码管",
+    "category": "分立器件",
+    "package": "0.8寸 共阴极 3位 红色",
+    "location": "GL-S1-B",
+    "qty": 2,
+    "low": 0,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": "1785685911096",
+    "model": "碳钢弹簧",
+    "name": "弹簧",
+    "category": "其他",
+    "package": "线径1.0毫米 长度10-50mm",
+    "location": "GL-S1-A",
+    "qty": 9,
+    "low": 0,
+    "link": "",
+    "note": ""
+  }
+]
