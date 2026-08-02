@@ -202,9 +202,6 @@
   html[data-style="terminal"] .filter-chip,html[data-style="terminal"] .clear-filters{color:var(--dim)}
   html[data-style="minimal"] .filter-chip,html[data-style="minimal"] .clear-filters{color:#111}
   html[data-style="modern"] .filter-chip,html[data-style="modern"] .clear-filters{color:var(--acc2)}
-  .columns{position:relative}.columns summary{list-style:none}.columns summary::-webkit-details-marker{display:none}
-  .column-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:20;min-width:150px;padding:10px;background:#fff;color:#111;border:1px solid #bbb;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-  .column-menu label{display:block;padding:5px;white-space:nowrap;font-size:13px}
   .low-toggle.active{font-weight:700}
   tbody tr{cursor:pointer}
   .drawer-mask{display:none;position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:80}
@@ -214,10 +211,35 @@
   .drawer h2{font:700 23px var(--mono);margin:28px 0 4px}.drawer .dname{color:#64748b;margin-bottom:22px}
   .detail-grid{display:grid;grid-template-columns:100px 1fr;gap:10px 14px;font-size:14px}.detail-grid dt{color:#64748b}.detail-grid dd{margin:0;font-family:var(--mono)}
   .drawer .dnote{margin-top:22px;padding:14px;background:#f4f6f8;border-left:3px solid #0d9488}
-  .col-hidden{display:none!important}
   .editbar{display:none;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 12px;margin:0 0 14px;border:1px solid currentColor;border-radius:8px;font-size:13px}.editbar.on{display:flex}.editbar .spacer{flex:1}
   dialog{border:0;border-radius:12px;padding:0;max-width:480px;width:calc(100% - 32px);color:#172033;background:#fff;box-shadow:0 15px 50px rgba(0,0,0,.3)}dialog::backdrop{background:rgba(0,0,0,.45)}
   .dlg-head{padding:18px 20px 0;font-weight:700;font-size:17px}.dlg-body{padding:14px 20px 20px;display:grid;gap:11px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:11px;color:#64748b;margin-bottom:4px}.field input,.field textarea{width:100%;padding:9px 10px;border:1px solid #d8dee8;border-radius:7px;font:14px var(--sans)}.dlg-foot{display:flex;justify-content:flex-end;gap:9px;padding:0 20px 18px}.dlg-foot .btn{color:#172033}.dlg-foot .primary{color:#fff;background:#0d9488}.hint{font-size:12px;color:#64748b}#toast{position:fixed;z-index:120;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;background:#172033;color:#fff;padding:9px 16px;border-radius:8px;transition:.2s;pointer-events:none}#toast.show{opacity:1;transform:translate(-50%,0)}#toast.err{background:#b42318}
+  html[data-style="terminal"] dialog{border:1px solid var(--green-d);border-radius:8px;background:#071009;color:var(--fg);box-shadow:0 0 34px var(--glow);font-family:var(--mono)}
+  html[data-style="terminal"] dialog::backdrop{background:rgba(0,0,0,.78)}
+  html[data-style="terminal"] .dlg-head{color:var(--green);border-bottom:1px solid var(--line);padding:15px 18px;font-family:var(--mono)}
+  html[data-style="terminal"] .dlg-head::before{content:"> "}
+  html[data-style="terminal"] .dlg-body{padding:17px 18px}
+  html[data-style="terminal"] .field label{color:var(--dim);font-family:var(--mono);letter-spacing:.06em}
+  html[data-style="terminal"] .field input,html[data-style="terminal"] .field textarea{border:1px solid var(--line);border-radius:5px;background:#020704;color:var(--fg);font-family:var(--mono);caret-color:var(--green)}
+  html[data-style="terminal"] .field input:focus,html[data-style="terminal"] .field textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 10px rgba(84,255,176,.18)}
+  html[data-style="terminal"] .dlg-foot .btn{border-color:var(--green-d);background:transparent;color:var(--green);font-family:var(--mono)}
+  html[data-style="terminal"] .dlg-foot .btn::before{content:"[ "}html[data-style="terminal"] .dlg-foot .btn::after{content:" ]"}
+  html[data-style="terminal"] .dlg-foot .primary{background:var(--green);color:var(--ink)}
+  html[data-style="minimal"] dialog{border:2px solid #000;border-radius:0;box-shadow:10px 10px 0 #000;color:#111}
+  html[data-style="minimal"] dialog::backdrop{background:rgba(255,255,255,.72)}
+  html[data-style="minimal"] .dlg-head{padding:17px 20px;border-bottom:2px solid #000;font-size:19px}
+  html[data-style="minimal"] .field label{color:#333;font-weight:700;letter-spacing:.08em}
+  html[data-style="minimal"] .field input,html[data-style="minimal"] .field textarea{border:1.5px solid #000;border-radius:0;background:#fff;color:#000}
+  html[data-style="minimal"] .field input:focus,html[data-style="minimal"] .field textarea:focus{outline:none;box-shadow:inset 0 0 0 1px #000}
+  html[data-style="minimal"] .dlg-foot .btn{border:1.5px solid #000;border-radius:0;background:#fff;color:#000}
+  html[data-style="minimal"] .dlg-foot .primary{background:#000;color:#fff}
+  html[data-style="modern"] dialog{border:1px solid var(--line2);border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 20px 60px rgba(15,23,42,.22)}
+  html[data-style="modern"] .dlg-head{padding:20px 22px 0;font-size:19px;color:var(--ink)}
+  html[data-style="modern"] .dlg-body{padding:16px 22px 22px}
+  html[data-style="modern"] .field label{color:var(--muted);font-weight:600}
+  html[data-style="modern"] .field input,html[data-style="modern"] .field textarea{border:1px solid var(--line2);border-radius:9px;background:#fbfcfe;color:var(--ink)}
+  html[data-style="modern"] .field input:focus,html[data-style="modern"] .field textarea:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(13,148,136,.13);background:#fff}
+  html[data-style="modern"] .dlg-foot .btn{border-radius:9px;color:var(--text)}html[data-style="modern"] .dlg-foot .primary{background:var(--acc);border-color:var(--acc);color:#fff}
 
   @keyframes blink{50%{opacity:0}}
 </style>
@@ -256,12 +278,6 @@
       <button class="btn low-toggle" id="btnLow" aria-pressed="false">低库存</button>
       <button class="btn" id="btnEdit">编辑模式</button>
       <button class="btn primary" id="btnAdd" hidden>+ 新增</button>
-      <details class="columns"><summary class="btn">列</summary><div class="column-menu">
-        <label><input type="checkbox" data-col="category" checked> 分类</label>
-        <label><input type="checkbox" data-col="package" checked> 封装</label>
-        <label><input type="checkbox" data-col="location" checked> 位置</label>
-        <label><input type="checkbox" data-col="qty" checked> 数量</label>
-      </div></details>
       <select id="styleSel" class="stylesel" title="切换样式">
         <option value="terminal">◈ 复古终端</option>
         <option value="minimal">▢ 黑白极简</option>
@@ -318,7 +334,6 @@
 <script>
 const $=id=>document.getElementById(id);
 let queryStr="", sortKey="model", sortAsc=true, lowOnly=false;
-let hiddenCols=new Set();
 
 /* 样式切换 */
 function setStyle(s){
@@ -472,7 +487,7 @@ function render(){
   $("emptyMsg").hidden=list.length>0;
   document.querySelectorAll(".act-col").forEach(x=>x.hidden=!editMode);
   fillDatalist("catList",[...new Set(parts.map(p=>p.category).filter(Boolean))]);fillDatalist("locList",[...new Set(parts.map(p=>p.location).filter(Boolean))]);
-  renderFilterChips();applyColumns();saveView();updateSuggestions();
+  renderFilterChips();saveView();updateSuggestions();
 }
 function fillSelect(id,arr){const sel=$(id),cur=sel.value;sel.length=1;arr.forEach(v=>sel.add(new Option(v,v)));sel.value=cur;}
 function fillDatalist(id,arr){$(id).innerHTML=arr.map(v=>`<option value="${esc(v)}">`).join("");}
@@ -488,12 +503,8 @@ function renderFilterChips(){
   if(items.length>1){const b=document.createElement("button");b.className="clear-filters";b.textContent="清除全部";b.onclick=clearFilters;box.appendChild(b);}
 }
 function clearFilters(){queryStr="";$("q").value="";$("fCat").value="";$("fLoc").value="";lowOnly=false;syncCommandFromControls();render();}
-function applyColumns(){
-  document.querySelectorAll("thead th[data-k]").forEach(th=>{if(th.dataset.k!=="model")th.dataset.col=th.dataset.k;});
-  document.querySelectorAll("table [data-col]").forEach(el=>el.classList.toggle("col-hidden",hiddenCols.has(el.dataset.col)));
-}
-function saveView(){try{localStorage.setItem("parts_view",JSON.stringify({sortKey,sortAsc,queryStr,cat:$("fCat").value,loc:$("fLoc").value,lowOnly,hidden:[...hiddenCols]}));}catch(e){}}
-function loadView(){try{const v=JSON.parse(localStorage.getItem("parts_view")||"null");if(!v)return;sortKey=v.sortKey||sortKey;sortAsc=v.sortAsc??sortAsc;queryStr=v.queryStr||"";lowOnly=!!v.lowOnly;hiddenCols=new Set(v.hidden||[]);$("q").value=queryStr;document.querySelectorAll(".column-menu input[data-col]").forEach(cb=>cb.checked=!hiddenCols.has(cb.dataset.col));setTimeout(()=>{$("fCat").value=v.cat||"";$("fLoc").value=v.loc||"";syncCommandFromControls();render();},0);}catch(e){}}
+function saveView(){try{localStorage.setItem("parts_view",JSON.stringify({sortKey,sortAsc,queryStr,cat:$("fCat").value,loc:$("fLoc").value,lowOnly}));}catch(e){}}
+function loadView(){try{const v=JSON.parse(localStorage.getItem("parts_view")||"null");if(!v)return;sortKey=v.sortKey||sortKey;sortAsc=v.sortAsc??sortAsc;queryStr=v.queryStr||"";lowOnly=!!v.lowOnly;$("q").value=queryStr;setTimeout(()=>{$("fCat").value=v.cat||"";$("fLoc").value=v.loc||"";syncCommandFromControls();render();},0);}catch(e){}}
 function openDetail(p){
   $("drawerTitle").textContent=p.model;$("drawerName").textContent=p.name||"";
   $("detailGrid").innerHTML=`<dt>分类</dt><dd>${esc(p.category||"—")}</dd><dt>封装</dt><dd>${esc(p.package||"—")}</dd><dt>位置</dt><dd>${esc(p.location||"—")}</dd><dt>数量</dt><dd>${p.qty??"常备"}</dd><dt>预警值</dt><dd>${p.low??"—"}</dd>${p.link?`<dt>链接</dt><dd><a href="${esc(p.link)}" target="_blank" rel="noopener">打开资料</a></dd>`:""}`;
@@ -526,7 +537,6 @@ $("cmdLine").onclick=e=>{if(e.target!==$("cmdInput")){$("cmdInput").focus();$("c
 $("fCat").onchange=()=>{syncCommandFromControls();render();};
 $("fLoc").onchange=()=>{syncCommandFromControls();render();};
 $("btnLow").onclick=()=>{lowOnly=!lowOnly;syncCommandFromControls();render();};
-document.querySelectorAll(".column-menu input[data-col]").forEach(cb=>cb.onchange=()=>{cb.checked?hiddenCols.delete(cb.dataset.col):hiddenCols.add(cb.dataset.col);applyColumns();saveView();});
 $("drawerClose").onclick=()=>$("drawerMask").classList.remove("open");
 $("drawerMask").onclick=e=>{if(e.target===$("drawerMask"))$("drawerMask").classList.remove("open");};
 $("styleSel").onchange=()=>setStyle($("styleSel").value);
