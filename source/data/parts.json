@@ -1,5 +1,65 @@
 [
   {
+    "id": 1785762121750,
+    "model": "SCD41模块",
+    "name": "二氧化碳传感器模块",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-B",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785761862009,
+    "model": "PT100传感器",
+    "name": "温度传感器",
+    "category": "传感器",
+    "package": "",
+    "location": "PD-S19",
+    "qty": 4,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785761843547,
+    "model": "大号声光报警器",
+    "name": "",
+    "category": "分立器件",
+    "package": "",
+    "location": "PD-S19",
+    "qty": 0,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785761639886,
+    "model": "螺旋桨",
+    "name": "无人机螺旋桨",
+    "category": "其他",
+    "package": "",
+    "location": "RC",
+    "qty": 2,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": "1785761508944",
+    "model": "游泳用品",
+    "name": "泳裤泳帽等",
+    "category": "生活用品",
+    "package": "",
+    "location": "RC",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
     "id": 1785761329237,
     "model": "元器件袋子",
     "name": "盛放元器件",
