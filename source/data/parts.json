@@ -1,5 +1,113 @@
 [
   {
+    "id": 1785762894101,
+    "model": "超声波模块",
+    "name": "",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-A",
+    "qty": 0,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785762852096,
+    "model": "直流电机驱动模块",
+    "name": "",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-B",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785762746764,
+    "model": "RGB模块",
+    "name": "",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-A",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785762711156,
+    "model": "光敏电阻模块",
+    "name": "",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-B",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785762675026,
+    "model": "红外发射模块",
+    "name": "红外发射模块",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-B",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785762636063,
+    "model": "DS18B20温度传感器模块",
+    "name": "温度传感器模块",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-A",
+    "qty": 0,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": "1785762591019",
+    "model": "DHT11温度传感器模块",
+    "name": "温度传感器模块",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-A",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": "1785762551924",
+    "model": "MPU6050模块",
+    "name": "IMU模块",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-A",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785762250018,
+    "model": "nRF24L01m模块",
+    "name": "2.4G通讯模块",
+    "category": "模块",
+    "package": "",
+    "location": "GL-S11-A",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
     "id": 1785762121750,
     "model": "SCD41模块",
     "name": "二氧化碳传感器模块",
@@ -1032,13 +1140,13 @@
     "note": ""
   },
   {
-    "id": 1785736318998,
+    "id": "1785736318998",
     "model": "红外避障模块",
     "name": "小车避障传感器/黑白线识别",
     "category": "传感器",
     "package": "规格待确认",
     "location": "GL-S11-B",
-    "qty": 1,
+    "qty": 2,
     "low": 0,
     "link": "",
     "note": ""
@@ -1068,13 +1176,13 @@
     "note": ""
   },
   {
-    "id": 1785735957554,
+    "id": "1785735957554",
     "model": "W25Q64模块",
     "name": "FLASH存储模块",
     "category": "模块",
     "package": "64Mbit，SPI，工作电压2.7-3.6V",
     "location": "GL-S11-B",
-    "qty": 1,
+    "qty": 2,
     "low": 0,
     "link": "",
     "note": ""
@@ -1164,13 +1272,13 @@
     "note": ""
   },
   {
-    "id": 1785735119810,
+    "id": "1785735119810",
     "model": "红外接收模块",
     "name": "红外接收",
     "category": "模块",
     "package": "模块",
     "location": "GL-S11-B",
-    "qty": 1,
+    "qty": 2,
     "low": 0,
     "link": "",
     "note": ""
