@@ -332,6 +332,7 @@
     <details class="location-guide"><summary>位置代码与编号范围</summary><div class="guide-body"><div class="guide-intro">编号统一按从上到下、从左到右排列。带挡板的抽屉中，A 表示靠里，B 表示靠外。</div><div class="guide-table-wrap"><table class="guide-table"><thead><tr><th>代码</th><th>位置名称</th><th>编号范围</th></tr></thead><tbody>
       <tr><td><code>GL</code></td><td>绿林收纳柜</td><td class="guide-range">GL-S1–GL-S39；每个抽屉分两格：A 靠里，B 靠外</td></tr>
       <tr><td><code>PD</code></td><td>3D 打印抽屉</td><td class="guide-range">PD-S1–PD-S20</td></tr>
+      <tr><td><code>PS</code></td><td>3D 打印小柜子</td><td class="guide-range">PS-C1–C2；每柜 D1–D4 共 4 个抽屉；每个抽屉 S1–S5 共 5 格</td></tr>
       <tr><td><code>SH</code></td><td>桌面上层书架</td><td class="guide-range">区域本身用 SH；细分收纳位可用 SH-01–SH-12</td></tr>
       <tr><td><code>RU</code></td><td>桌面右侧上部</td><td class="guide-range">区域本身用 RU；细分收纳位可用 RU-01–RU-12</td></tr>
       <tr><td><code>RL</code></td><td>桌面右侧下部</td><td class="guide-range">区域本身用 RL；细分收纳位可用 RL-01–RL-12</td></tr>
@@ -342,7 +343,7 @@
       <tr><td><code>WD1</code></td><td>衣柜下方抽屉 1</td><td class="guide-range">区域本身用 WD1；细分收纳位可用 WD1-01–WD1-12</td></tr>
       <tr><td><code>WD2</code></td><td>衣柜下方抽屉 2</td><td class="guide-range">区域本身用 WD2；细分收纳位可用 WD2-01–WD2-12</td></tr>
       <tr><td><code>WG</code></td><td>衣柜左侧与墙壁之间的开放区域</td><td class="guide-range">区域本身用 WG；细分收纳位可用 WG-01–WG-12</td></tr>
-    </tbody></table></div><div class="guide-examples">示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　GL-S12-B = 同一抽屉靠外的一格　｜　PD-S3 = 3D 打印柜第 3 个抽屉</div></div></details>
+    </tbody></table></div><div class="guide-examples">示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　PD-S3 = 3D 打印柜第 3 个抽屉　｜　PS-C2-D3-S4 = 3D 打印小柜子第 2 柜、第 3 抽屉、第 4 格</div></div></details>
   </div>
 </div>
 
@@ -393,6 +394,7 @@ const LOCATIONS=[];
 for(const [code,name] of LOCATION_AREAS){LOCATIONS.push({code,label:`${name} · 区域本体`});for(let i=1;i<=12;i++)LOCATIONS.push({code:`${code}-${pad2(i)}`,label:`${name} · 收纳位 ${pad2(i)}`});}
 for(let i=1;i<=39;i++)for(const slot of ["A","B"])LOCATIONS.push({code:`GL-S${i}-${slot}`,label:`绿林收纳柜 · 第 ${i} 个抽屉 · ${slot} 格`});
 for(let i=1;i<=20;i++)LOCATIONS.push({code:`PD-S${i}`,label:`3D 打印抽屉 · 第 ${i} 个抽屉`});
+for(let cabinet=1;cabinet<=2;cabinet++)for(let drawer=1;drawer<=4;drawer++)for(let slot=1;slot<=5;slot++)LOCATIONS.push({code:`PS-C${cabinet}-D${drawer}-S${slot}`,label:`3D 打印小柜子 · 第 ${cabinet} 柜 · 第 ${drawer} 抽屉 · 第 ${slot} 格`});
 function isLow(p){if(p.qty===null||p.qty===undefined||p.qty==="")return false;const th=(p.low===null||p.low===undefined||p.low==="")?0:Number(p.low);return th>0&&Number(p.qty)<=th;}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function hi(s){
