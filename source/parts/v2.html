@@ -357,16 +357,16 @@
       <tr><td><code>GL</code></td><td>绿林收纳柜</td><td class="guide-range">GL-S1–GL-S39；每个抽屉分两格：A 靠里，B 靠外</td></tr>
       <tr><td><code>PD</code></td><td>3D 打印抽屉</td><td class="guide-range">PD-S1–PD-S20</td></tr>
       <tr><td><code>PS</code></td><td>3D 打印小柜子</td><td class="guide-range">PS-C1–C2；每柜 D1–D4 共 4 个抽屉；每个抽屉 S1–S5 共 5 格</td></tr>
-      <tr><td><code>SH</code></td><td>桌面上层书架</td><td class="guide-range">区域本身用 SH；细分收纳位可用 SH-01–SH-12</td></tr>
-      <tr><td><code>RU</code></td><td>桌面右侧上部</td><td class="guide-range">区域本身用 RU；细分收纳位可用 RU-01–RU-12</td></tr>
-      <tr><td><code>RL</code></td><td>桌面右侧下部</td><td class="guide-range">区域本身用 RL；细分收纳位可用 RL-01–RL-12</td></tr>
-      <tr><td><code>CD</code></td><td>桌面正下方抽屉</td><td class="guide-range">区域本身用 CD；细分收纳位可用 CD-01–CD-12</td></tr>
-      <tr><td><code>LD</code></td><td>桌面左下抽屉</td><td class="guide-range">区域本身用 LD；细分收纳位可用 LD-01–LD-12</td></tr>
-      <tr><td><code>LO</code></td><td>桌面左下开放式柜子</td><td class="guide-range">区域本身用 LO；细分收纳位可用 LO-01–LO-12</td></tr>
-      <tr><td><code>RC</code></td><td>桌面右下闭合式柜子</td><td class="guide-range">区域本身用 RC；细分收纳位可用 RC-01–RC-12</td></tr>
-      <tr><td><code>WD1</code></td><td>衣柜下方抽屉 1</td><td class="guide-range">区域本身用 WD1；细分收纳位可用 WD1-01–WD1-12</td></tr>
-      <tr><td><code>WD2</code></td><td>衣柜下方抽屉 2</td><td class="guide-range">区域本身用 WD2；细分收纳位可用 WD2-01–WD2-12</td></tr>
-      <tr><td><code>WG</code></td><td>衣柜左侧与墙壁之间的开放区域</td><td class="guide-range">区域本身用 WG；细分收纳位可用 WG-01–WG-12</td></tr>
+      <tr><td><code>SH</code></td><td>桌面上层书架</td><td class="guide-range">仅使用 SH，区域内部不再细分</td></tr>
+      <tr><td><code>RU</code></td><td>桌面右侧上部</td><td class="guide-range">仅使用 RU，区域内部不再细分</td></tr>
+      <tr><td><code>RL</code></td><td>桌面右侧下部</td><td class="guide-range">仅使用 RL，区域内部不再细分</td></tr>
+      <tr><td><code>CD</code></td><td>桌面正下方抽屉</td><td class="guide-range">仅使用 CD，区域内部不再细分</td></tr>
+      <tr><td><code>LD</code></td><td>桌面左下抽屉</td><td class="guide-range">仅使用 LD，区域内部不再细分</td></tr>
+      <tr><td><code>LO</code></td><td>桌面左下开放式柜子</td><td class="guide-range">仅使用 LO，区域内部不再细分</td></tr>
+      <tr><td><code>RC</code></td><td>桌面右下闭合式柜子</td><td class="guide-range">仅使用 RC，区域内部不再细分</td></tr>
+      <tr><td><code>WD1</code></td><td>衣柜下方抽屉 1</td><td class="guide-range">仅使用 WD1，区域内部不再细分</td></tr>
+      <tr><td><code>WD2</code></td><td>衣柜下方抽屉 2</td><td class="guide-range">仅使用 WD2，区域内部不再细分</td></tr>
+      <tr><td><code>WG</code></td><td>衣柜左侧与墙壁之间的开放区域</td><td class="guide-range">仅使用 WG，区域内部不再细分</td></tr>
     </tbody></table></div><div class="guide-examples">示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　PD-S3 = 3D 打印柜第 3 个抽屉　｜　PS-C2-D3-S4 = 3D 打印小柜子第 2 柜、第 3 抽屉、第 4 格</div></div></details>
   </div>
 </div>
@@ -374,7 +374,7 @@
 <dialog id="dlgPart"><div class="dlg-head"><span class="dlg-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v2M14 3v2M10 19v2M14 19v2M3 10h2M3 14h2M19 10h2M19 14h2"/></svg></span><span class="dlg-title-wrap"><span id="dlgPartTitle">新增元器件</span><span class="dlg-sub">填写器件信息并加入库存</span></span></div><div class="dlg-body">
   <section class="form-section"><div class="form-section-title">基础信息</div>
     <div class="grid2"><div class="field"><label>名称 *</label><input id="pModel" placeholder="例如 ESP32 开发板 / 壁纸刀"></div><div class="field"><label>用途</label><input id="pName" placeholder="它是什么、主要用来做什么"></div></div>
-    <div class="grid2"><div class="field"><label>分类</label><select id="pCat"><option value="">未分类</option><option>IC / 芯片</option><option>阻容感</option><option>电源</option><option>分立器件</option><option>连接器</option><option>传感器</option><option>光电器件</option><option>模块</option><option>PCB / 电路板</option><option>线材</option><option>紧固件 / 螺丝</option><option>工具</option><option>耗材</option><option>生活用品</option><option>其他</option></select></div><div class="field"><label>封装 / 规格</label><input id="pPkg" placeholder="例如 QFN-32 / M3×8 / 0603"></div></div>
+    <div class="grid2"><div class="field"><label>分类</label><select id="pCat"><option>芯片 / IC</option><option>开发板 / 核心板</option><option>电源与电池</option><option>传感器与测量</option><option>通信与接口</option><option>显示与光电</option><option>音频与声学</option><option>电机与执行器</option><option>存储</option><option>开关与输入</option><option>无源器件</option><option>分立半导体</option><option>连接器与线材</option><option>PCB / 电路板</option><option>紧固与结构件</option><option>工具</option><option>耗材</option><option>生活用品</option><option>待分类</option></select></div><div class="field"><label>封装 / 规格</label><input id="pPkg" placeholder="例如 QFN-32 / M3×8 / 0603"></div></div>
   </section>
   <section class="form-section"><div class="form-section-title">库存信息</div>
     <div class="grid2"><div class="field loc-picker"><label>存放位置 *</label><input id="pLocSearch" autocomplete="off" placeholder="输入名称或代码后选择，如：GL-S12-A" required><input id="pLoc" type="hidden"><span class="loc-desc" id="pLocDesc">必填：输入后选择位置代码</span><div class="loc-results" id="pLocResults"></div></div><div class="field"><label>数量（留空为常备）</label><input id="pQty" type="number" min="0" placeholder="0"></div></div>
@@ -423,7 +423,7 @@ const AREA_META=[
   ["WD1","衣柜下方抽屉 1",null],["WD2","衣柜下方抽屉 2",null],["WG","衣柜与墙壁间开放区",null]
 ];
 const LOCATIONS=[];
-for(const [code,name] of LOCATION_AREAS){LOCATIONS.push({code,label:`${name} · 区域本体`});for(let i=1;i<=12;i++)LOCATIONS.push({code:`${code}-${pad2(i)}`,label:`${name} · 收纳位 ${pad2(i)}`});}
+for(const [code,name] of LOCATION_AREAS)LOCATIONS.push({code,label:name});
 for(let i=1;i<=39;i++)for(const slot of ["A","B"])LOCATIONS.push({code:`GL-S${i}-${slot}`,label:`绿林收纳柜 · 第 ${i} 个抽屉 · ${slot} 格`});
 for(let i=1;i<=20;i++)LOCATIONS.push({code:`PD-S${i}`,label:`3D 打印抽屉 · 第 ${i} 个抽屉`});
 for(let cabinet=1;cabinet<=2;cabinet++)for(let drawer=1;drawer<=4;drawer++)for(let slot=1;slot<=5;slot++)LOCATIONS.push({code:`PS-C${cabinet}-D${drawer}-S${slot}`,label:`3D 打印小柜子 · 第 ${cabinet} 柜 · 第 ${drawer} 抽屉 · 第 ${slot} 格`});
