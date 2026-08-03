@@ -1,5 +1,77 @@
 [
   {
+    "id": 1785746483315,
+    "model": "耳机护套",
+    "name": "",
+    "category": "生活用品",
+    "package": "",
+    "location": "PD-S13",
+    "qty": 4,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": "1785746425959",
+    "model": "接线PCB",
+    "name": "用于PT100传感器接线的板子",
+    "category": "PCB / 电路板",
+    "package": "",
+    "location": "PD-S13",
+    "qty": 3,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785746335562,
+    "model": "AB胶",
+    "name": "全透明环氧树脂AB胶",
+    "category": "耗材",
+    "package": "",
+    "location": "PD-S13",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785746010988,
+    "model": "双排排针",
+    "name": "20*2",
+    "category": "连接器",
+    "package": "",
+    "location": "GL-S24-B",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785745818644,
+    "model": "胶棒",
+    "name": "",
+    "category": "耗材",
+    "package": "",
+    "location": "PD-S13",
+    "qty": 0,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785745792868,
+    "model": "免打孔挂钩",
+    "name": "挂钩",
+    "category": "生活用品",
+    "package": "",
+    "location": "PD-S13",
+    "qty": 3,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
     "id": 1785744654166,
     "model": "大透明胶、双面胶、电工胶",
     "name": "",
