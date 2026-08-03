@@ -1,5 +1,77 @@
 [
   {
+    "id": 1785737182000,
+    "model": "四脚按键与拨码开关",
+    "name": "",
+    "category": "",
+    "package": "直插",
+    "location": "GL-S14-A",
+    "qty": null,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785737091873,
+    "model": "钮子电源开关",
+    "name": "",
+    "category": "分立器件",
+    "package": "12mm 红色钮子带保护罩",
+    "location": "GL-S14-B",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785736903103,
+    "model": "电解电容",
+    "name": "铝电解电容",
+    "category": "阻容感",
+    "package": "直插；1000UF, 10V",
+    "location": "",
+    "qty": 20,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785736842768,
+    "model": "电解电容",
+    "name": "铝电解电容",
+    "category": "阻容感",
+    "package": "直插；470UF, 50V；470UF, 25V",
+    "location": "GL-S13-A",
+    "qty": null,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785736669754,
+    "model": "钥匙开关",
+    "name": "钥匙开关",
+    "category": "分立器件",
+    "package": "",
+    "location": "GL-S12-B",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785736631909,
+    "model": "烙铁头",
+    "name": "烙铁头",
+    "category": "工具",
+    "package": "刀头、箭头",
+    "location": "GL-S12-A",
+    "qty": 0,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
     "id": 1785736514830,
     "model": "蜂鸣器模块",
     "name": "",
