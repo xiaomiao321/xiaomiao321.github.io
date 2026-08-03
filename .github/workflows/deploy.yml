@@ -29,6 +29,16 @@ jobs:
           fetch-depth: 0          # 需要完整历史来还原文章的 updated 时间
                                   # （butterfly 主题已随源码一起提交，无需子模块）
 
+      # chat-stats 的 Markdown 源码和原始聊天记录只保留在本机，避免泄露隐私。
+      # 自动部署整站时先保存 master 上已有的加密成品，构建后再放回 public，
+      # 防止元器件数据等普通更新把私密页面从线上删除。
+      - name: Preserve private generated pages
+        run: |
+          mkdir -p .preserved-private/chat-stats
+          if git cat-file -e origin/master:chat-stats/index.html 2>/dev/null; then
+            git show origin/master:chat-stats/index.html > .preserved-private/chat-stats/index.html
+          fi
+
       # _config.yml 里 updated_option: 'mtime'，靠文件修改时间决定文章“更新于”。
       # CI 全新 checkout 会把所有文件时间重置成当前，这里用每个文件最后一次提交时间还原。
       - name: Restore post mtimes from git
@@ -51,6 +61,13 @@ jobs:
         run: |
           npm run clean
           npm run build
+
+      - name: Restore private generated pages
+        run: |
+          if [ -f .preserved-private/chat-stats/index.html ]; then
+            mkdir -p public/chat-stats
+            cp .preserved-private/chat-stats/index.html public/chat-stats/index.html
+          fi
 
       - name: Deploy public/ to master
         env:
