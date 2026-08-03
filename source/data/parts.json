@@ -1,5 +1,65 @@
 [
   {
+    "id": 1785731119163,
+    "model": "排母",
+    "name": "15pin排母",
+    "category": "连接器",
+    "package": "间距2.54mm",
+    "location": "GL-S10-A",
+    "qty": 10,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785730913843,
+    "model": "排母",
+    "name": "7pin排母",
+    "category": "连接器",
+    "package": "间距2.54mm直角",
+    "location": "GL-S9-A",
+    "qty": 11,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": "1785730856048",
+    "model": "排母",
+    "name": "4pin排母",
+    "category": "连接器",
+    "package": "间距2.54mm，直角弯角都有",
+    "location": "GL-S9-B",
+    "qty": null,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785730706817,
+    "model": "DC头",
+    "name": "DC头带接线端子",
+    "category": "连接器",
+    "package": "",
+    "location": "GL-S8-B",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785730668013,
+    "model": "KF301-2P",
+    "name": "接线柱",
+    "category": "连接器",
+    "package": "5.0mm",
+    "location": "GL-S8-B",
+    "qty": 11,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
     "id": 1785730475739,
     "model": "马达",
     "name": "马达（配扇叶）",
