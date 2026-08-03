@@ -194,6 +194,10 @@
   html[data-style="terminal"] .stats{border:1px solid var(--line);gap:0}html[data-style="terminal"] .stat{padding:12px 14px;border-right:1px solid var(--line)}html[data-style="terminal"] .stat:last-child{border-right:0}html[data-style="terminal"] .stat .num{color:var(--green);font:700 23px var(--mono)}html[data-style="terminal"] .stat .lab{color:var(--dim);font-size:12px}html[data-style="terminal"] .category-stats{border:1px solid var(--line);background:rgba(0,0,0,.18)}html[data-style="terminal"] .category-stats-title{color:var(--green)}html[data-style="terminal"] .category-track{background:var(--line)}html[data-style="terminal"] .category-fill{background:var(--green);box-shadow:0 0 8px var(--glow)}html[data-style="terminal"] .category-count{color:var(--amber)}
   html[data-style="minimal"] .category-stats{border:1.5px solid #000}html[data-style="minimal"] .category-stats-head{border-bottom:1.5px solid #000;padding-bottom:10px}html[data-style="minimal"] .category-track{background:#e5e5e5;border:1px solid #000}html[data-style="minimal"] .category-fill{background:#000}
   html[data-style="modern"] .category-stats{border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .category-stats-title{color:var(--ink)}html[data-style="modern"] .category-track{border-radius:99px;background:#e8edf2}html[data-style="modern"] .category-fill{border-radius:99px;background:var(--acc)}html[data-style="modern"] .category-count{color:var(--acc2)}
+  .insights{display:grid;gap:12px;margin:16px 0 24px}.insight-panel{margin:0;padding:0;overflow:hidden;border:1px solid currentColor}.insight-panel>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;cursor:pointer;font-weight:700;list-style:none}.insight-panel>summary::-webkit-details-marker{display:none}.insight-panel>summary::after{content:"＋";font-family:var(--mono)}.insight-panel[open]>summary::after{content:"－"}.insight-panel>summary small{margin-left:auto;font-weight:400;font-size:12px;opacity:.62}.insight-body{padding:4px 16px 15px}.category-bars{display:block}.category-row{display:grid;grid-template-columns:minmax(100px,160px) minmax(150px,1fr) 46px 60px 46px;align-items:center;gap:12px;padding:7px 2px;font-size:12.5px}.category-row:not(.category-head){cursor:pointer}.category-head{padding-top:2px;font-weight:700;opacity:.65}.category-head span:nth-last-child(-n+3),.category-number{text-align:right}.insight-list{display:grid;gap:8px}.location-row{display:grid;grid-template-columns:minmax(130px,210px) 1fr auto;align-items:center;gap:14px;padding:9px 2px;cursor:pointer}.location-title code{display:inline-block;min-width:42px;font-family:var(--mono);font-weight:700}.location-title small{display:block;margin-left:46px;opacity:.62}.location-track{height:8px;overflow:hidden;background:rgba(127,127,127,.18)}.location-fill{display:block;height:100%;min-width:3px;background:currentColor}.location-metrics{min-width:150px;text-align:right;font:12px var(--mono)}.status-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.status-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid currentColor;background:transparent;color:inherit;text-align:left;cursor:pointer}.status-number{font:700 22px var(--mono)}.status-copy{display:grid}.status-copy small{opacity:.62}.insight-panel button:hover,.category-row:not(.category-head):hover,.location-row:hover{filter:brightness(.92)}
+  html[data-style="terminal"] .insight-panel{border-color:var(--line);background:rgba(0,0,0,.18)}html[data-style="terminal"] .insight-panel>summary{color:var(--green);border-bottom:1px solid transparent}html[data-style="terminal"] .insight-panel[open]>summary{border-bottom-color:var(--line)}html[data-style="terminal"] .status-item{border-color:var(--line)}html[data-style="terminal"] .status-number{color:var(--amber)}html[data-style="terminal"] .location-fill{background:var(--green);box-shadow:0 0 8px var(--glow)}
+  html[data-style="minimal"] .insight-panel{border:1.5px solid #000}html[data-style="minimal"] .insight-panel>summary{border-bottom:0}html[data-style="minimal"] .insight-panel[open]>summary{border-bottom:1.5px solid #000}html[data-style="minimal"] .status-item{border:1.5px solid #000}html[data-style="minimal"] .location-track{border:1px solid #000;background:#eee}html[data-style="minimal"] .location-fill{background:#000}
+  html[data-style="modern"] .insight-panel{border-color:var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .insight-panel>summary{color:var(--ink)}html[data-style="modern"] .insight-panel[open]>summary{border-bottom:1px solid var(--line)}html[data-style="modern"] .status-item{border-color:var(--line2);border-radius:10px;background:#fbfcfe}html[data-style="modern"] .status-number{color:var(--acc2)}html[data-style="modern"] .location-track{border-radius:99px;background:#e8edf2}html[data-style="modern"] .location-fill{border-radius:99px;background:var(--acc)}
   .cards{display:none;flex-direction:column}
   .empty{padding:56px 20px;text-align:center}
   .empty .en{font-family:var(--mono);font-size:12.5px;margin-top:5px;opacity:.6}
@@ -265,7 +269,7 @@
   .loc-picker{position:relative}.loc-desc{display:block;min-height:18px;margin-top:5px;font-size:12px;line-height:18px;color:#64748b}.loc-results{display:none;position:absolute;z-index:200;left:0;right:0;top:calc(100% - 18px);max-height:190px;overflow:auto;padding:4px;background:#fff;border:1px solid #cfd6df;border-radius:8px;box-shadow:0 14px 30px rgba(15,23,42,.2)}.loc-results.show{display:grid}.loc-result{display:block;border:0;border-radius:6px;background:transparent;padding:8px 10px;text-align:left;cursor:pointer;color:#0f766e;font:13px var(--mono)}.loc-result:hover{background:#edf8f5}
   html[data-style="terminal"] .loc-desc{color:var(--dim)}html[data-style="terminal"] .loc-results{background:#071009;border-color:var(--green-d);box-shadow:0 0 22px rgba(84,255,176,.2)}html[data-style="terminal"] .loc-result{color:var(--green)}html[data-style="terminal"] .loc-result:hover{background:var(--sel)}
   html[data-style="minimal"] .loc-desc{color:#444}html[data-style="minimal"] .loc-results{border:1.5px solid #000;border-radius:0;box-shadow:5px 5px 0 #000}html[data-style="minimal"] .loc-result{border-radius:0;color:#000}html[data-style="minimal"] .loc-result:hover{background:#eee}
-  @media(max-width:760px){.stats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;max-width:none!important}.category-bars{grid-template-columns:1fr}}
+  @media(max-width:760px){.stats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;max-width:none!important}.category-head{display:none}.category-row{grid-template-columns:minmax(90px,130px) 1fr 32px}.category-row .category-stock,.category-row .category-permanent{display:none}.location-row{grid-template-columns:1fr auto}.location-track{grid-column:1/-1;grid-row:2}.location-metrics{min-width:0}.status-grid{grid-template-columns:1fr}.insight-panel>summary small{display:none}}
   @media(max-width:640px){.guide-body{padding-left:10px;padding-right:10px}.field input,.field textarea,.field select{font-size:16px!important}}
   @keyframes blink{50%{opacity:0}}
 </style>
@@ -294,12 +298,17 @@
     <div class="stats">
       <div class="stat"><div class="num" id="statTotal">0</div><div class="lab">种类</div></div>
       <div class="stat"><div class="num" id="statQty">0</div><div class="lab">在库件数</div></div>
-      <div class="stat low"><div class="num" id="statLow">0</div><div class="lab">低库存</div></div>
-      <div class="stat"><div class="num" id="statCategories">0</div><div class="lab">分类</div></div>
-      <div class="stat"><div class="num" id="statLocations">0</div><div class="lab">已用位置</div></div>
       <div class="stat"><div class="num" id="statPermanent">0</div><div class="lab">常备项目</div></div>
+      <div class="stat low"><div class="num" id="statLow">0</div><div class="lab">低库存</div></div>
+      <div class="stat"><div class="num" id="statLocations">0</div><div class="lab">已用位置</div></div>
+      <div class="stat"><div class="num" id="statIncomplete">0</div><div class="lab">待完善资料</div></div>
     </div>
-    <section class="category-stats" aria-labelledby="categoryStatsTitle"><div class="category-stats-head"><span class="category-stats-title" id="categoryStatsTitle">分类分布</span><span class="category-stats-sub">按器件种类统计</span></div><div class="category-bars" id="categoryStats"></div></section>
+    <div class="insights">
+      <details class="category-stats insight-panel" open><summary><span>分类详细统计</span><small>种类、库存、常备与占比</small></summary><div class="insight-body"><div class="category-head category-row"><span>分类</span><span>种类占比</span><span>种类</span><span>库存</span><span>常备</span></div><div class="category-bars" id="categoryStats"></div></div></details>
+      <details class="insight-panel" open><summary><span>存储区域使用情况</span><small>已用位置与容量</small></summary><div class="insight-body insight-list" id="locationStats"></div></details>
+      <details class="insight-panel"><summary><span>库存状态</span><small>点击状态筛选列表</small></summary><div class="insight-body status-grid" id="stockStats"></div></details>
+      <details class="insight-panel"><summary><span>数据完整度</span><small>不统计链接与备注</small></summary><div class="insight-body status-grid" id="qualityStats"></div></details>
+    </div>
 
     <div class="toolbar">
       <div class="search"><span class="ico"></span><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="搜索型号 / 名称 / 参数 / 备注…" autocomplete="off"></div>
@@ -383,7 +392,7 @@
 
 <script>
 const $=id=>document.getElementById(id);
-let queryStr="", sortKey="model", sortAsc=true, lowOnly=false, currentPage=1, lastFilterKey="";
+let queryStr="", sortKey="model", sortAsc=true, lowOnly=false, insightFilter=null, currentPage=1, lastFilterKey="";
 const PAGE_SIZE=10;
 
 /* 样式切换 */
@@ -405,12 +414,20 @@ const LOCATION_AREAS=[
   ["LD","桌面左下抽屉"],["LO","桌面左下开放柜"],["RC","桌面右下闭合柜"],["WD1","衣柜下方抽屉 1"],
   ["WD2","衣柜下方抽屉 2"],["WG","衣柜与墙壁间开放区"]
 ];
+const AREA_META=[
+  ["GL","绿林收纳柜",78],["PD","3D 打印抽屉",20],["PS","3D 打印小柜子",40],
+  ["SH","桌面上层书架",null],["RU","桌面右侧上部",null],["RL","桌面右侧下部",null],["CD","桌面正下方抽屉",null],
+  ["LD","桌面左下抽屉",null],["LO","桌面左下开放柜",null],["RC","桌面右下闭合柜",null],
+  ["WD1","衣柜下方抽屉 1",null],["WD2","衣柜下方抽屉 2",null],["WG","衣柜与墙壁间开放区",null]
+];
 const LOCATIONS=[];
 for(const [code,name] of LOCATION_AREAS){LOCATIONS.push({code,label:`${name} · 区域本体`});for(let i=1;i<=12;i++)LOCATIONS.push({code:`${code}-${pad2(i)}`,label:`${name} · 收纳位 ${pad2(i)}`});}
 for(let i=1;i<=39;i++)for(const slot of ["A","B"])LOCATIONS.push({code:`GL-S${i}-${slot}`,label:`绿林收纳柜 · 第 ${i} 个抽屉 · ${slot} 格`});
 for(let i=1;i<=20;i++)LOCATIONS.push({code:`PD-S${i}`,label:`3D 打印抽屉 · 第 ${i} 个抽屉`});
 for(let cabinet=1;cabinet<=2;cabinet++)for(let drawer=1;drawer<=4;drawer++)for(let slot=1;slot<=5;slot++)LOCATIONS.push({code:`PS-C${cabinet}-D${drawer}-S${slot}`,label:`3D 打印小柜子 · 第 ${cabinet} 柜 · 第 ${drawer} 抽屉 · 第 ${slot} 格`});
 function isLow(p){if(p.qty===null||p.qty===undefined||p.qty==="")return false;const th=(p.low===null||p.low===undefined||p.low==="")?0:Number(p.low);return th>0&&Number(p.qty)<=th;}
+function isPermanent(p){return p.qty===null||p.qty===undefined||p.qty==="";}
+function needsWork(p){return !String(p.name||"").trim()||!String(p.category||"").trim()||!String(p.location||"").trim()||!String(p.package||"").trim()||p.package==="规格待确认";}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function hi(s){
   const raw=String(s??""),q=queryStr.trim();if(!q)return esc(raw);
@@ -494,6 +511,17 @@ function filtered(){
     if(fc&&p.category!==fc)return false;
     if(fl&&p.location!==fl)return false;
     if(lowOnly&&!isLow(p))return false;
+    if(insightFilter){
+      const {kind,value}=insightFilter;
+      if(kind==="area"&&!(p.location===value||String(p.location||"").startsWith(value+"-")))return false;
+      if(kind==="stock"&&value==="low"&&!isLow(p))return false;
+      if(kind==="stock"&&value==="known"&&(isPermanent(p)||isLow(p)))return false;
+      if(kind==="stock"&&value==="permanent"&&!isPermanent(p))return false;
+      if(kind==="quality"&&value==="all"&&!needsWork(p))return false;
+      if(kind==="quality"&&value==="location"&&String(p.location||"").trim())return false;
+      if(kind==="quality"&&value==="package"&&String(p.package||"").trim()&&p.package!=="规格待确认")return false;
+      if(kind==="quality"&&value==="threshold"&&Number(p.low)>0)return false;
+    }
     if(!q)return true;
     return [p.model,p.name,p.category,p.package,p.location,p.note].some(v=>String(v??"").toLowerCase().includes(q));
   });
@@ -507,22 +535,21 @@ function filtered(){
 }
 function render(){
   const list=filtered();
-  const filterKey=JSON.stringify([queryStr,$("fCat").value,$("fLoc").value,lowOnly]);
+  const filterKey=JSON.stringify([queryStr,$("fCat").value,$("fLoc").value,lowOnly,insightFilter]);
   if(filterKey!==lastFilterKey){currentPage=1;lastFilterKey=filterKey;}
   const pageCount=Math.max(1,Math.ceil(list.length/PAGE_SIZE));
   currentPage=Math.min(Math.max(1,currentPage),pageCount);
   const pageList=list.slice((currentPage-1)*PAGE_SIZE,currentPage*PAGE_SIZE);
   const total=parts.length, inStock=parts.reduce((s,p)=>s+(Number(p.qty)||0),0), lowN=parts.filter(isLow).length;
-  const categoryN=new Set(parts.map(p=>p.category).filter(Boolean)).size;
   const locationN=new Set(parts.map(p=>p.location).filter(Boolean)).size;
-  const permanentN=parts.filter(p=>p.qty===null||p.qty===undefined||p.qty==="").length;
+  const permanentN=parts.filter(isPermanent).length,incompleteN=parts.filter(needsWork).length;
   ["statTotal","cmtTotal"].forEach(i=>$(i).textContent=total);
   ["statQty","cmtQty"].forEach(i=>$(i).textContent=inStock);
   ["statLow","cmtLow"].forEach(i=>$(i).textContent=lowN);
-  $("statCategories").textContent=categoryN;$("statLocations").textContent=locationN;$("statPermanent").textContent=permanentN;
-  renderCategoryStats();
+  $("statLocations").textContent=locationN;$("statPermanent").textContent=permanentN;$("statIncomplete").textContent=incompleteN;
+  renderCategoryStats();renderLocationStats();renderStockStats();renderQualityStats();
   $("sbCount").textContent=list.length;$("sbLow").textContent=lowN;
-  $("cmtHint").textContent = (queryStr.trim()||$("fCat").value||$("fLoc").value||lowOnly) ? `　· 匹配 ${list.length} 项` : "　· 键入以搜索";
+  $("cmtHint").textContent = (queryStr.trim()||$("fCat").value||$("fLoc").value||lowOnly||insightFilter) ? `　· 匹配 ${list.length} 项` : "　· 键入以搜索";
   $("btnLow").classList.toggle("active",lowOnly);$("btnLow").setAttribute("aria-pressed",String(lowOnly));
   fillSelect("fCat",[...new Set(parts.map(p=>p.category).filter(Boolean))].sort());
   fillSelect("fLoc",[...new Set(parts.map(p=>p.location).filter(Boolean))].sort());
@@ -570,10 +597,28 @@ function renderPagination(total,pageCount){
   add("下一页",currentPage+1,currentPage===pageCount);
 }
 function renderCategoryStats(){
-  const counts=new Map();parts.forEach(p=>{const category=p.category||"未分类";counts.set(category,(counts.get(category)||0)+1);});
-  const rows=[...counts].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],"zh")),max=Math.max(1,...rows.map(x=>x[1]));
-  $("categoryStats").innerHTML=rows.map(([name,count])=>`<div class="category-row"><span class="category-name" title="${esc(name)}">${esc(name)}</span><span class="category-track"><span class="category-fill" style="width:${count/max*100}%"></span></span><span class="category-count">${count}</span></div>`).join("");
+  const stats=new Map();parts.forEach(p=>{const name=p.category||"未分类",s=stats.get(name)||{count:0,qty:0,permanent:0};s.count++;s.qty+=Number(p.qty)||0;if(isPermanent(p))s.permanent++;stats.set(name,s);});
+  const rows=[...stats].sort((a,b)=>b[1].count-a[1].count||a[0].localeCompare(b[0],"zh")),max=Math.max(1,...rows.map(x=>x[1].count));
+  $("categoryStats").innerHTML=rows.map(([name,s])=>`<div class="category-row" data-category="${esc(name)}"><span class="category-name" title="${esc(name)}">${esc(name)}</span><span class="category-track"><span class="category-fill" style="width:${s.count/max*100}%"></span></span><span class="category-count">${s.count}</span><span class="category-number category-stock">${s.qty}</span><span class="category-number category-permanent">${s.permanent}</span></div>`).join("");
+  $("categoryStats").querySelectorAll("[data-category]").forEach(row=>row.onclick=()=>{$("fCat").value=row.dataset.category;insightFilter=null;syncCommandFromControls();render();});
 }
+function renderLocationStats(){
+  const rows=AREA_META.map(([code,name,capacity])=>{const items=parts.filter(p=>p.location===code||String(p.location||"").startsWith(code+"-")),used=new Set(items.map(p=>p.location).filter(Boolean)).size,qty=items.reduce((n,p)=>n+(Number(p.qty)||0),0);return{code,name,capacity,items:items.length,used,qty};});
+  const maxItems=Math.max(1,...rows.map(x=>x.items));
+  $("locationStats").innerHTML=rows.map(x=>{const pct=x.capacity?Math.min(100,x.used/x.capacity*100):x.items/maxItems*100,usage=x.capacity?`${x.used}/${x.capacity} 格 · ${Math.round(x.used/x.capacity*100)}%`:`${x.used} 个位置`;return`<div class="location-row" data-area="${x.code}"><span class="location-title"><code>${x.code}</code>${esc(x.name)}<small>${x.items} 种 · ${x.qty} 件</small></span><span class="location-track"><span class="location-fill" style="width:${pct}%"></span></span><span class="location-metrics">${usage}</span></div>`;}).join("");
+  $("locationStats").querySelectorAll("[data-area]").forEach(row=>row.onclick=()=>applyInsightFilter("area",row.dataset.area,`${row.dataset.area} 区域`));
+}
+function statButton(count,title,sub,kind,value,label){return`<button type="button" class="status-item" data-kind="${kind}" data-value="${value}" data-label="${label}"><span class="status-number">${count}</span><span class="status-copy"><b>${title}</b><small>${sub}</small></span></button>`;}
+function renderStockStats(){
+  const low=parts.filter(isLow).length,permanent=parts.filter(isPermanent).length,known=parts.length-low-permanent;
+  $("stockStats").innerHTML=statButton(known,"库存正常","有数量且未触发预警","stock","known","库存正常")+statButton(low,"低库存","达到或低于预警值","stock","low","低库存")+statButton(permanent,"常备项目","不记录具体数量","stock","permanent","常备项目");bindStatButtons($("stockStats"));
+}
+function renderQualityStats(){
+  const all=parts.filter(needsWork).length,location=parts.filter(p=>!String(p.location||"").trim()).length,pkg=parts.filter(p=>!String(p.package||"").trim()||p.package==="规格待确认").length,threshold=parts.filter(p=>!Number(p.low)).length;
+  $("qualityStats").innerHTML=statButton(all,"待完善资料","名称、分类、位置或规格不完整","quality","all","待完善资料")+statButton(location,"缺少位置","尚未填写存放位置","quality","location","缺少位置")+statButton(pkg,"规格待确认","需要查看实物后补充","quality","package","规格待确认")+statButton(threshold,"未启用预警","低库存阈值为 0","quality","threshold","未启用预警");bindStatButtons($("qualityStats"));
+}
+function bindStatButtons(box){box.querySelectorAll("[data-kind]").forEach(b=>b.onclick=()=>applyInsightFilter(b.dataset.kind,b.dataset.value,b.dataset.label));}
+function applyInsightFilter(kind,value,label){insightFilter={kind,value,label};lowOnly=false;syncCommandFromControls();render();}
 function fillSelect(id,arr){const sel=$(id),cur=sel.value;sel.length=1;arr.forEach(v=>sel.add(new Option(v,v)));sel.value=cur;}
 function locationByCode(code){return LOCATIONS.find(x=>x.code===code);}
 function selectLocation(loc){$("pLoc").value=loc.code;$("pLocSearch").value=loc.code;$("pLocDesc").textContent=loc.label;$("pLocResults").classList.remove("show");}
@@ -591,11 +636,12 @@ function renderFilterChips(){
   if($("fCat").value)items.push([`分类: ${$("fCat").value}`,()=>{$("fCat").value="";syncCommandFromControls();render();}]);
   if($("fLoc").value)items.push([`位置: ${$("fLoc").value}`,()=>{$("fLoc").value="";syncCommandFromControls();render();}]);
   if(lowOnly)items.push(["低库存",()=>{lowOnly=false;syncCommandFromControls();render();}]);
+  if(insightFilter)items.push([insightFilter.label,()=>{insightFilter=null;render();}]);
   const box=$("activeFilters");box.innerHTML="";
   items.forEach(([label,fn])=>{const b=document.createElement("button");b.className="filter-chip";b.textContent=label+" ×";b.onclick=fn;box.appendChild(b);});
   if(items.length>1){const b=document.createElement("button");b.className="clear-filters";b.textContent="清除全部";b.onclick=clearFilters;box.appendChild(b);}
 }
-function clearFilters(){queryStr="";$("q").value="";$("fCat").value="";$("fLoc").value="";lowOnly=false;syncCommandFromControls();render();}
+function clearFilters(){queryStr="";$("q").value="";$("fCat").value="";$("fLoc").value="";lowOnly=false;insightFilter=null;syncCommandFromControls();render();}
 function saveView(){try{localStorage.setItem("parts_view",JSON.stringify({sortKey,sortAsc,queryStr,cat:$("fCat").value,loc:$("fLoc").value,lowOnly}));}catch(e){}}
 function loadView(){try{const v=JSON.parse(localStorage.getItem("parts_view")||"null");if(!v)return;sortKey=v.sortKey||sortKey;sortAsc=v.sortAsc??sortAsc;queryStr=v.queryStr||"";lowOnly=!!v.lowOnly;$("q").value=queryStr;setTimeout(()=>{$("fCat").value=v.cat||"";$("fLoc").value=v.loc||"";syncCommandFromControls();render();},0);}catch(e){}}
 function openDetail(p){
