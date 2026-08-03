@@ -1,5 +1,41 @@
 [
   {
+    "id": "1785764933783",
+    "model": "弯排针",
+    "name": "",
+    "category": "",
+    "package": "2*40pin",
+    "location": "GL-S28-B",
+    "qty": 10,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785764752446,
+    "model": "各种各样的PCB板子",
+    "name": "",
+    "category": "PCB / 电路板",
+    "package": "",
+    "location": "LO",
+    "qty": null,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
+    "id": 1785764653145,
+    "model": "接线器",
+    "name": "二进二出",
+    "category": "连接器",
+    "package": "",
+    "location": "GL-S21-B",
+    "qty": 5,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
     "id": 1785764219974,
     "model": "雨伞",
     "name": "遮雨或者遮阳用的",
