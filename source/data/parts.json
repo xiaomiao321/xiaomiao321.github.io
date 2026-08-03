@@ -1,5 +1,17 @@
 [
   {
+    "id": "1785757359020",
+    "model": "接线端子",
+    "name": "4pin，绿色",
+    "category": "连接器",
+    "package": "",
+    "location": "GL-S20-A",
+    "qty": 3,
+    "low": null,
+    "link": "",
+    "note": ""
+  },
+  {
     "id": 1785756255212,
     "model": "疑似信号接收器的USB设备",
     "name": "可能是手柄的",
