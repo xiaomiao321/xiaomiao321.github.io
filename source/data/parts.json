@@ -1,5 +1,37 @@
 [
   {
+    "id": 1785835064856,
+    "model": "耳机接口线",
+    "name": "3.5mm耳机接口转三线",
+    "purpose": "",
+    "category": "通信与接口",
+    "package": "",
+    "location": "WD2",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-08-04T09:17:44.856Z",
+    "updatedAt": "2026-08-04T09:17:44.856Z",
+    "movements": []
+  },
+  {
+    "id": 1785834978639,
+    "model": "各种数据线",
+    "name": "UABA-USBC；USBA-microB；USBC-USBC；Lightning",
+    "purpose": "",
+    "category": "通信与接口",
+    "package": "",
+    "location": "WD1",
+    "qty": null,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-08-04T09:16:18.639Z",
+    "updatedAt": "2026-08-04T09:16:18.639Z",
+    "movements": []
+  },
+  {
     "id": 1785834437891,
     "model": "电源适配器",
     "name": "12V 1A",
