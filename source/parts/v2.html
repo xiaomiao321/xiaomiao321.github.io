@@ -371,6 +371,8 @@
       <tr><td><code>WD1</code></td><td>衣柜下方抽屉 1</td><td class="guide-range">仅使用 WD1，区域内部不再细分</td></tr>
       <tr><td><code>WD2</code></td><td>衣柜下方抽屉 2</td><td class="guide-range">仅使用 WD2，区域内部不再细分</td></tr>
       <tr><td><code>WG</code></td><td>衣柜左侧与墙壁之间的开放区域</td><td class="guide-range">仅使用 WG，区域内部不再细分</td></tr>
+      <tr><td><code>GT</code></td><td>绿林收纳柜上方</td><td class="guide-range">仅使用 GT，区域内部不再细分</td></tr>
+      <tr><td><code>PT</code></td><td>3D 打印柜上方</td><td class="guide-range">仅使用 PT，区域内部不再细分</td></tr>
     </tbody></table></div><div class="guide-examples">示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　PD-S03 = 3D 打印柜第 3 个抽屉　｜　PS-C2-D03-S4 = 3D 打印小柜子第 2 柜、第 3 抽屉、第 4 格</div></div></details>
   </div>
 </div>
@@ -422,13 +424,14 @@ const pad2=n=>String(n).padStart(2,"0");
 const LOCATION_AREAS=[
   ["SH","桌面上层书架"],["RU","桌面右侧上部"],["RL","桌面右侧下部"],["CD","桌面正下方抽屉"],
   ["LD","桌面左下抽屉"],["LO","桌面左下开放柜"],["RC","桌面右下闭合柜"],["WD1","衣柜下方抽屉 1"],
-  ["WD2","衣柜下方抽屉 2"],["WG","衣柜与墙壁间开放区"]
+  ["WD2","衣柜下方抽屉 2"],["WG","衣柜与墙壁间开放区"],["GT","绿林收纳柜上方"],["PT","3D 打印柜上方"]
 ];
 const AREA_META=[
   ["GL","绿林收纳柜",78],["PD","3D 打印抽屉",20],["PS","3D 打印小柜子",40],
   ["SH","桌面上层书架",null],["RU","桌面右侧上部",null],["RL","桌面右侧下部",null],["CD","桌面正下方抽屉",null],
   ["LD","桌面左下抽屉",null],["LO","桌面左下开放柜",null],["RC","桌面右下闭合柜",null],
-  ["WD1","衣柜下方抽屉 1",null],["WD2","衣柜下方抽屉 2",null],["WG","衣柜与墙壁间开放区",null]
+  ["WD1","衣柜下方抽屉 1",null],["WD2","衣柜下方抽屉 2",null],["WG","衣柜与墙壁间开放区",null],
+  ["GT","绿林收纳柜上方",null],["PT","3D 打印柜上方",null]
 ];
 const LOCATIONS=[];
 for(const [code,name] of LOCATION_AREAS)LOCATIONS.push({code,label:name});
