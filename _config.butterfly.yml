@@ -19,6 +19,7 @@ nav:
 
 menu:
   Home: / || fas fa-home
+  Travel: /travel/ || fas fa-suitcase-rolling
   Daily: /daily-summary/ || fas fa-calendar-day
   Archives: /archives/ || fas fa-archive
   Tags: /tags/ || fas fa-tags
