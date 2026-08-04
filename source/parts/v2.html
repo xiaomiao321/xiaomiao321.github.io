@@ -276,6 +276,35 @@
   html[data-style="minimal"] .loc-desc{color:#444}html[data-style="minimal"] .loc-results{border:1.5px solid #000;border-radius:0;box-shadow:5px 5px 0 #000}html[data-style="minimal"] .loc-result{border-radius:0;color:#000}html[data-style="minimal"] .loc-result:hover{background:#eee}
   @media(max-width:760px){.stats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;max-width:none!important}.category-head{display:none}.category-row{grid-template-columns:minmax(90px,130px) 1fr 32px}.category-row .category-stock,.category-row .category-permanent{display:none}.location-row{grid-template-columns:1fr auto}.location-track{grid-column:1/-1;grid-row:2}.location-metrics{min-width:0}.status-grid{grid-template-columns:1fr}.insight-panel>summary small{display:none}}
   @media(max-width:640px){.guide-body{padding-left:10px;padding-right:10px}.field input,.field textarea,.field select{font-size:16px!important}}
+
+  /* 全屏工作台预览：取消悬浮窗口感，让页面直接占满视口。 */
+  html[data-style="terminal"] body{padding:0;min-height:100vh;background:var(--win)}
+  html[data-style="terminal"] .wrap{width:100%;max-width:none;min-height:100vh;margin:0;border:0;border-radius:0;box-shadow:none}
+  html[data-style="minimal"] body,html[data-style="modern"] body{padding-left:0;padding-right:0}
+  html[data-style="minimal"] .wrap,html[data-style="modern"] .wrap{width:100%;max-width:none;margin:0}
+  html[data-style="minimal"] .head,html[data-style="minimal"] .body,html[data-style="modern"] .head,html[data-style="modern"] .body{padding-left:28px;padding-right:28px}
+  html[data-style="modern"] body{background:#f4f6f9}
+
+  /* SaaS 工作台预览：减少模板化圆角、阴影和卡片嵌套。 */
+  html[data-style="modern"] .stats{grid-template-columns:repeat(8,minmax(0,1fr));gap:0;overflow:hidden;border:1px solid var(--line);border-radius:6px;background:#fff}
+  html[data-style="modern"] .stat{border:0;border-right:1px solid var(--line);border-radius:0;padding:14px 16px;box-shadow:none}
+  html[data-style="modern"] .stat:nth-child(1),html[data-style="modern"] .stat:nth-child(2){grid-column:span 2}
+  html[data-style="modern"] .stat:last-child{border-right:0}
+  html[data-style="modern"] .panel,html[data-style="modern"] .category-stats,html[data-style="modern"] .insight-panel,html[data-style="modern"] .cards{border-radius:6px;box-shadow:none}
+  html[data-style="modern"] .search input,html[data-style="modern"] select,html[data-style="modern"] .btn{border-radius:5px;box-shadow:none}
+  html[data-style="modern"] .chip,html[data-style="modern"] .loc,html[data-style="modern"] .page-btn,html[data-style="modern"] .editbar{border-radius:4px;box-shadow:none}
+  html[data-style="modern"] .status-grid{gap:0;border-top:1px solid var(--line)}
+  html[data-style="modern"] .status-item{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:13px 4px}
+  html[data-style="modern"] .status-item:nth-child(odd){border-right:1px solid var(--line);padding-right:16px}
+  html[data-style="modern"] .status-item:nth-child(even){padding-left:16px}
+  html[data-style="modern"] dialog{border-radius:8px;box-shadow:0 18px 48px rgba(15,23,42,.18)}
+  html[data-style="modern"] .dlg-head{background:#fff;border-bottom:1px solid var(--line);padding-top:19px;padding-bottom:19px}
+  html[data-style="modern"] .dlg-head-ico{width:34px;height:34px;border-radius:5px;background:#fff;border:1px solid var(--line2)}
+  html[data-style="modern"] .dlg-body{gap:0;background:#fff;padding-top:8px;padding-bottom:8px}
+  html[data-style="modern"] .form-section{border:0;border-radius:0;background:#fff;padding:18px 0}
+  html[data-style="modern"] .form-section+.form-section{border-top:1px solid var(--line)}
+  html[data-style="modern"] .field input,html[data-style="modern"] .field textarea,html[data-style="modern"] .field select{border-radius:5px;background:#fff}
+  @media(max-width:760px){html[data-style="modern"] .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}html[data-style="modern"] .stat:nth-child(n){grid-column:span 1}html[data-style="modern"] .stat:nth-child(even){border-right:0}}
   @keyframes blink{50%{opacity:0}}
 </style>
 </head>
