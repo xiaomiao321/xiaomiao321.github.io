@@ -430,7 +430,7 @@ for(let i=1;i<=20;i++)LOCATIONS.push({code:`PD-S${i}`,label:`3D 打印抽屉 · 
 for(let cabinet=1;cabinet<=2;cabinet++)for(let drawer=1;drawer<=4;drawer++)for(let slot=1;slot<=5;slot++)LOCATIONS.push({code:`PS-C${cabinet}-D${drawer}-S${slot}`,label:`3D 打印小柜子 · 第 ${cabinet} 柜 · 第 ${drawer} 抽屉 · 第 ${slot} 格`});
 function isLow(p){if(p.qty===null||p.qty===undefined||p.qty==="")return false;const th=(p.low===null||p.low===undefined||p.low==="")?0:Number(p.low);return th>0&&Number(p.qty)<=th;}
 function isPermanent(p){return p.qty===null||p.qty===undefined||p.qty==="";}
-function needsWork(p){return !String(p.name||"").trim()||!String(p.category||"").trim()||!String(p.location||"").trim()||!String(p.package||"").trim()||p.package==="规格待确认";}
+function needsWork(p){return !String(p.purpose||"").trim()||!String(p.category||"").trim()||!String(p.location||"").trim()||!String(p.package||"").trim()||p.package==="规格待确认";}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function hi(s){
   const raw=String(s??""),q=queryStr.trim();if(!q)return esc(raw);
@@ -536,7 +536,7 @@ function filtered(){
       if(kind==="quality"&&value==="threshold"&&Number(p.low)>0)return false;
     }
     if(!q)return true;
-    return [p.model,p.name,p.category,p.package,p.location,p.note].some(v=>String(v??"").toLowerCase().includes(q));
+    return [p.model,p.name,p.purpose,p.category,p.package,p.location,p.note].some(v=>String(v??"").toLowerCase().includes(q));
   });
   list.sort((a,b)=>{
     let va=a[sortKey],vb=b[sortKey];
@@ -571,7 +571,7 @@ function render(){
     const tr=document.createElement("tr");
     if(isLow(p))tr.className="low-row";
     tr.innerHTML=`
-      <td><div class="pn">${modelHTML(p)}</div><div class="sub">${hi(p.name)}${p.note?" · "+hi(p.note):""}</div></td>
+      <td><div class="pn">${modelHTML(p)}</div><div class="sub">${hi(p.purpose||p.name)}${p.note?" · "+hi(p.note):""}</div></td>
       <td data-col="category">${p.category?`<span class="chip">${hi(p.category)}</span>`:""}</td>
       <td data-col="package"><span class="pkg">${hi(p.package)}</span></td>
       <td data-col="location">${p.location?`<span class="loc">${hi(p.location)}</span>`:""}</td>
@@ -585,7 +585,7 @@ function render(){
     const div=document.createElement("div");
     div.className="card"+(isLow(p)?" low-row":"");
     div.innerHTML=`
-      <div class="top"><div><div class="pn">${modelHTML(p)}</div><div class="sub">${hi(p.name)}</div></div>${qtyHTML(p)}</div>
+      <div class="top"><div><div class="pn">${modelHTML(p)}</div><div class="sub">${hi(p.purpose||p.name)}</div></div>${qtyHTML(p)}</div>
       <div class="meta">
         ${p.category?`<span class="chip">${esc(p.category)}</span>`:""}
         ${p.package?`<span class="pkg">${esc(p.package)}</span>`:""}
@@ -627,7 +627,7 @@ function renderStockStats(){
 }
 function renderQualityStats(){
   const all=parts.filter(needsWork).length,location=parts.filter(p=>!String(p.location||"").trim()).length,pkg=parts.filter(p=>!String(p.package||"").trim()||p.package==="规格待确认").length,threshold=parts.filter(p=>!Number(p.low)).length;
-  $("qualityStats").innerHTML=statButton(all,"待完善资料","名称、分类、位置或规格不完整","quality","all","待完善资料")+statButton(location,"缺少位置","尚未填写存放位置","quality","location","缺少位置")+statButton(pkg,"规格待确认","需要查看实物后补充","quality","package","规格待确认")+statButton(threshold,"未启用预警","低库存阈值为 0","quality","threshold","未启用预警");bindStatButtons($("qualityStats"));
+  $("qualityStats").innerHTML=statButton(all,"待完善资料","用途、分类、位置或规格不完整","quality","all","待完善资料")+statButton(location,"缺少位置","尚未填写存放位置","quality","location","缺少位置")+statButton(pkg,"规格待确认","需要查看实物后补充","quality","package","规格待确认")+statButton(threshold,"未启用预警","低库存阈值为 0","quality","threshold","未启用预警");bindStatButtons($("qualityStats"));
 }
 function bindStatButtons(box){box.querySelectorAll("[data-kind]").forEach(b=>b.onclick=()=>applyInsightFilter(b.dataset.kind,b.dataset.value,b.dataset.label));}
 function applyInsightFilter(kind,value,label){insightFilter={kind,value,label};lowOnly=false;syncCommandFromControls();render();}
@@ -657,8 +657,8 @@ function clearFilters(){queryStr="";$("q").value="";$("fCat").value="";$("fLoc")
 function saveView(){try{localStorage.setItem("parts_view",JSON.stringify({sortKey,sortAsc,queryStr,cat:$("fCat").value,loc:$("fLoc").value,lowOnly}));}catch(e){}}
 function loadView(){try{const v=JSON.parse(localStorage.getItem("parts_view")||"null");if(!v)return;sortKey=v.sortKey||sortKey;sortAsc=v.sortAsc??sortAsc;queryStr=v.queryStr||"";lowOnly=!!v.lowOnly;$("q").value=queryStr;setTimeout(()=>{$("fCat").value=v.cat||"";$("fLoc").value=v.loc||"";syncCommandFromControls();render();},0);}catch(e){}}
 function openDetail(p){
-  $("drawerTitle").textContent=p.model;$("drawerName").textContent=p.name||"";
-  $("detailGrid").innerHTML=`<dt>分类</dt><dd>${esc(p.category||"—")}</dd><dt>封装</dt><dd>${esc(p.package||"—")}</dd><dt>位置</dt><dd>${esc(p.location||"—")}</dd><dt>数量</dt><dd>${p.qty??"常备"}</dd><dt>预警值</dt><dd>${p.low??"—"}</dd>${p.link?`<dt>链接</dt><dd><a href="${esc(p.link)}" target="_blank" rel="noopener">打开资料</a></dd>`:""}`;
+  $("drawerTitle").textContent=p.model;$("drawerName").textContent=p.purpose||p.name||"";
+  $("detailGrid").innerHTML=`${p.name?`<dt>补充名称</dt><dd>${esc(p.name)}</dd>`:""}<dt>分类</dt><dd>${esc(p.category||"—")}</dd><dt>封装</dt><dd>${esc(p.package||"—")}</dd><dt>位置</dt><dd>${esc(p.location||"—")}</dd><dt>数量</dt><dd>${p.qty??"常备"}</dd><dt>预警值</dt><dd>${p.low??"—"}</dd>${p.link?`<dt>链接</dt><dd><a href="${esc(p.link)}" target="_blank" rel="noopener">打开资料</a></dd>`:""}`;
   $("drawerNote").textContent=p.note||"暂无备注";$("drawerMask").classList.add("open");
 }
 function updateSuggestions(){
@@ -705,8 +705,8 @@ $("btnAdd").onclick=()=>openPartDlg(null);$("pCancel").onclick=()=>$("dlgPart").
 document.body.addEventListener("click",e=>{const ed=e.target.closest("[data-edit]"),dl=e.target.closest("[data-del]");if(ed){e.stopPropagation();openPartDlg(ed.dataset.edit);}if(dl){e.stopPropagation();const p=parts.find(x=>String(x.id)===dl.dataset.del);if(p&&confirm(`删除 ${p.model}？`)){parts=parts.filter(x=>x!==p);markDirty();render();}}});
 function syncLifeCategory(value=""){const isLife=$("pCat").value==="生活用品";$("pLifeCat").hidden=!isLife;if(isLife&&value)$("pLifeCat").value=value;}
 $("pCat").onchange=()=>syncLifeCategory();
-function openPartDlg(id){editingId=id;const p=id?parts.find(x=>String(x.id)===String(id)):null,cat=String(p?.category||""),life=cat.startsWith("生活用品 / ")?cat.slice(7):"";$("dlgPartTitle").textContent=p?"编辑元器件":"新增元器件";[["pModel","model"],["pName","name"],["pPkg","package"],["pQty","qty"],["pLow","low"],["pLink","link"],["pNote","note"]].forEach(([el,k])=>$(el).value=p?.[k]??"");$("pCat").value=life?"生活用品":cat||"芯片 / IC";syncLifeCategory(life);syncLocationEditor(p?.location??"");$("dlgPart").showModal();$("pModel").focus();}
-$("pSave").onclick=()=>{const model=$("pModel").value.trim(),location=$("pLoc").value.trim(),baseCategory=$("pCat").value.trim(),category=baseCategory==="生活用品"?`生活用品 / ${$("pLifeCat").value}`:baseCategory;if(!model){toast("名称不能为空",true);return;}if(!location){toast("存放位置为必填项，请从提示中选择位置代码",true);$("pLocSearch").focus();return;}const obj={id:editingId??Date.now(),model,name:$("pName").value.trim(),category,package:$("pPkg").value.trim(),location,qty:$("pQty").value===""?null:Number($("pQty").value),low:$("pLow").value===""?null:Number($("pLow").value),link:$("pLink").value.trim(),note:$("pNote").value.trim()};if(editingId){parts[parts.findIndex(x=>String(x.id)===String(editingId))]=obj;}else parts.unshift(obj);$("dlgPart").close();markDirty();render();};
+function openPartDlg(id){editingId=id;const p=id?parts.find(x=>String(x.id)===String(id)):null,cat=String(p?.category||""),life=cat.startsWith("生活用品 / ")?cat.slice(7):"";$("dlgPartTitle").textContent=p?"编辑元器件":"新增元器件";[["pModel","model"],["pName","purpose"],["pPkg","package"],["pQty","qty"],["pLow","low"],["pLink","link"],["pNote","note"]].forEach(([el,k])=>$(el).value=p?.[k]??"");$("pCat").value=life?"生活用品":cat||"芯片 / IC";syncLifeCategory(life);syncLocationEditor(p?.location??"");$("dlgPart").showModal();$("pModel").focus();}
+$("pSave").onclick=()=>{const model=$("pModel").value.trim(),location=$("pLoc").value.trim(),baseCategory=$("pCat").value.trim(),category=baseCategory==="生活用品"?`生活用品 / ${$("pLifeCat").value}`:baseCategory,existing=editingId?parts.find(x=>String(x.id)===String(editingId)):null;if(!model){toast("名称不能为空",true);return;}if(!location){toast("存放位置为必填项，请从提示中选择位置代码",true);$("pLocSearch").focus();return;}const obj={id:editingId??Date.now(),model,name:existing?.name||"",purpose:$("pName").value.trim(),category,package:$("pPkg").value.trim(),location,qty:$("pQty").value===""?null:Number($("pQty").value),low:$("pLow").value===""?null:Number($("pLow").value),link:$("pLink").value.trim(),note:$("pNote").value.trim()};if(editingId){parts[parts.findIndex(x=>String(x.id)===String(editingId))]=obj;}else parts.unshift(obj);$("dlgPart").close();markDirty();render();};
 $("pLocSearch").addEventListener("input",e=>{$("pLoc").value="";$("pLocDesc").textContent="必填：输入后选择位置代码";renderLocationResults(e.target.value);});
 $("pLocSearch").addEventListener("focus",()=>$("pLocResults").classList.remove("show"));
 $("pLocSearch").addEventListener("blur",()=>setTimeout(()=>$("pLocResults").classList.remove("show"),120));
