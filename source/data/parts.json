@@ -1,5 +1,37 @@
 [
   {
+    "id": 1785838862136,
+    "model": "计算器",
+    "name": "TI 计算器",
+    "purpose": "",
+    "category": "生活用品 / 数码配件",
+    "package": "",
+    "location": "LD",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-08-04T10:21:02.136Z",
+    "updatedAt": "2026-08-04T10:21:02.136Z",
+    "movements": []
+  },
+  {
+    "id": 1785838740168,
+    "model": "链锁",
+    "name": "链条锁",
+    "purpose": "",
+    "category": "生活用品 / 穿戴与户外",
+    "package": "",
+    "location": "WD2",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-08-04T10:19:00.168Z",
+    "updatedAt": "2026-08-04T10:19:00.168Z",
+    "movements": []
+  },
+  {
     "id": 1785838242363,
     "model": "502 胶水",
     "name": "得力瞬间胶",
