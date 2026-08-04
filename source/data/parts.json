@@ -1,5 +1,21 @@
 [
   {
+    "id": 1785838242363,
+    "model": "502 胶水",
+    "name": "得力瞬间胶",
+    "purpose": "",
+    "category": "耗材",
+    "package": "",
+    "location": "PD-S13",
+    "qty": 2,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-08-04T10:10:42.363Z",
+    "updatedAt": "2026-08-04T10:10:42.363Z",
+    "movements": []
+  },
+  {
     "id": 1785837670926,
     "model": "手枪弹药",
     "name": "子弹",
@@ -352,19 +368,19 @@
     "movements": []
   },
   {
-    "id": 1785770422144,
+    "id": "1785770422144",
     "model": "滴胶卡",
-    "name": "",
+    "name": "NFC 卡片",
     "purpose": "作为可写入的 NFC 卡片载体，用于复制兼容卡片的数据并测试近场识别；实际可复制范围取决于卡片类型与密钥。",
     "category": "待分类",
     "package": "",
     "location": "PD-S18",
-    "qty": 1,
+    "qty": 20,
     "low": null,
     "link": "",
     "note": "",
     "createdAt": "2026-08-03T00:00:00+08:00",
-    "updatedAt": "2026-08-03T00:00:00+08:00",
+    "updatedAt": "2026-08-04T10:05:11.956Z",
     "movements": []
   },
   {
