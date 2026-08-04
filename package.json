@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo generate",
+    "build": "npm run generate:parts-doc && hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
+    "generate:parts-doc": "node scripts/generate-parts-purpose.js",
     "server": "hexo server"
   },
   "hexo": {
