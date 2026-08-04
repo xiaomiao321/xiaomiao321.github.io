@@ -1,0 +1,1911 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>《PCB 设计秘籍》学习笔记 | XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="《PCB 设计秘籍》学习笔记简介 PCB (Printed Circuit Board)：印制电路板，是电子元器件的支撑体和电气连接的载体，被称为”电子航母”。 广泛应用于：通讯、消费电子、计算机、汽车电子、工业控制、医疗器械、国防及航空航天等领域。 PCB 设计是硬件电路设计的基础，是电子工程师之本。   第一章 印刷电路发展史印刷电路的发明 印刷电路由奥地利电气工程师保·艾斯勒于 20 世纪">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《PCB 设计秘籍》学习笔记">
+<meta property="og:url" content="https://xiaomiao321.github.io/2026/07/30/PCB%E8%AE%BE%E8%AE%A1%E7%A7%98%E7%B1%8D%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="XiaoMiao&#39;s Blog">
+<meta property="og:description" content="《PCB 设计秘籍》学习笔记简介 PCB (Printed Circuit Board)：印制电路板，是电子元器件的支撑体和电气连接的载体，被称为”电子航母”。 广泛应用于：通讯、消费电子、计算机、汽车电子、工业控制、医疗器械、国防及航空航天等领域。 PCB 设计是硬件电路设计的基础，是电子工程师之本。   第一章 印刷电路发展史印刷电路的发明 印刷电路由奥地利电气工程师保·艾斯勒于 20 世纪">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xiaomiao321.github.io/img/avatar.png">
+<meta property="article:published_time" content="2026-07-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-01T06:23:35.000Z">
+<meta property="article:author" content="XiaoMiao">
+<meta property="article:tag" content="PCB">
+<meta property="article:tag" content="硬件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaomiao321.github.io/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "《PCB 设计秘籍》学习笔记",
+  "url": "https://xiaomiao321.github.io/2026/07/30/PCB%E8%AE%BE%E8%AE%A1%E7%A7%98%E7%B1%8D%E7%AC%94%E8%AE%B0/",
+  "image": "https://xiaomiao321.github.io/img/avatar.png",
+  "datePublished": "2026-07-30T16:00:00.000Z",
+  "dateModified": "2026-08-01T06:23:35.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XiaoMiao",
+      "url": "https://xiaomiao321.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://xiaomiao321.github.io/2026/07/30/PCB%E8%AE%BE%E8%AE%A1%E7%A7%98%E7%B1%8D%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-YEX7FDZ26Z"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-YEX7FDZ26Z')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-YEX7FDZ26Z', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'medium-zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '《PCB 设计秘籍》学习笔记',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/calendar-override.css"/><link rel="stylesheet" href="/style.css"/><!-- hexo injector head_end start --><script src="./func.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/css/pace-loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/travel/"><i class="fa-fw fas fa-suitcase-rolling"></i><span> Travel</span></a></div><div class="menus_item"><a class="site-page" href="/daily-summary/"><i class="fa-fw fas fa-calendar-day"></i><span> Daily</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></div><div class="menus_item"><a class="site-page" href="/parts/"><i class="fa-fw fas fa-microchip"></i><span> Component</span></a></div><div class="menus_item"><a class="site-page" href="/chat-stats/"><i class="fa-fw fas fa-comments"></i><span> Wechat</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://picsum.photos/1920/400);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">《PCB 设计秘籍》学习笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/travel/"><i class="fa-fw fas fa-suitcase-rolling"></i><span> Travel</span></a></div><div class="menus_item"><a class="site-page" href="/daily-summary/"><i class="fa-fw fas fa-calendar-day"></i><span> Daily</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></div><div class="menus_item"><a class="site-page" href="/parts/"><i class="fa-fw fas fa-microchip"></i><span> Component</span></a></div><div class="menus_item"><a class="site-page" href="/chat-stats/"><i class="fa-fw fas fa-comments"></i><span> Wechat</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">《PCB 设计秘籍》学习笔记<a class="post-edit-link" href="https://github.com/xiaomiao321/xiaomiao321.github.io/edit/source/source/_posts/PCB设计秘籍笔记.md" title="Edit" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-30T16:00:00.000Z" title="Created 2026-07-31 00:00:00">2026-07-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-08-01T06:23:35.000Z" title="Updated 2026-08-01 14:23:35">2026-08-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A1%AC%E4%BB%B6%E7%AC%94%E8%AE%B0/">硬件笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">23.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>73mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="《PCB-设计秘籍》学习笔记"><a href="#《PCB-设计秘籍》学习笔记" class="headerlink" title="《PCB 设计秘籍》学习笔记"></a>《PCB 设计秘籍》学习笔记</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><strong>PCB (Printed Circuit Board)</strong>：印制电路板，是电子元器件的支撑体和电气连接的载体，被称为”电子航母”。</li>
+<li>广泛应用于：通讯、消费电子、计算机、汽车电子、工业控制、医疗器械、国防及航空航天等领域。</li>
+<li>PCB 设计是硬件电路设计的基础，是电子工程师之本。</li>
+</ul>
+<hr>
+<h2 id="第一章-印刷电路发展史"><a href="#第一章-印刷电路发展史" class="headerlink" title="第一章 印刷电路发展史"></a>第一章 印刷电路发展史</h2><h3 id="印刷电路的发明"><a href="#印刷电路的发明" class="headerlink" title="印刷电路的发明"></a>印刷电路的发明</h3><ul>
+<li><p>印刷电路由<strong>奥地利电气工程师保·艾斯勒</strong>于 20 世纪 30 年代中期发明。</p>
+</li>
+<li><p>艾斯勒 1930 年毕业于维也纳工程学院（电气工程），曾学习印刷技术。</p>
+</li>
+<li><p>核心想法：像印刷书籍或报纸一样，把电路一次印刷在线路板上，免去手工制板和逐根焊线，大幅提高生产效率和可靠性。</p>
+</li>
+<li><p>制版方法（借鉴印刷业照相制版）：</p>
+<ol>
+<li>画出电子线路图；</li>
+<li>把线路图蚀刻在覆铜箔的绝缘板上；</li>
+<li>不需要的铜箔被蚀刻掉，只留下导通线路，元件通过铜箔电路互连。</li>
+</ol>
+</li>
+<li><p>意义：</p>
+<ul>
+<li>使电子设备批量生产简单易行，为机械化、自动化生产奠定基础（20 世纪 50 年代起各类电子产品的发展都离不开印刷电路工艺）。</li>
+<li>可缩小制版，制成面积小、线路复杂而可靠性高的电路板，适用于通信设备和计算机。</li>
+<li>为集成电路的发明奠定了必要的技术基础。</li>
+</ul>
+</li>
+<li><p>线路板发明至今 60 余年。芯片 IC 是电子信息工业的粮食，而半导体（集成电路、IC）的电气互连和装配必须靠线路板。</p>
+</li>
+</ul>
+<h3 id="印刷电路板的种类"><a href="#印刷电路板的种类" class="headerlink" title="印刷电路板的种类"></a>印刷电路板的种类</h3><h4 id="按印刷电路的分布分类（单面板-双面板-多层板）"><a href="#按印刷电路的分布分类（单面板-双面板-多层板）" class="headerlink" title="按印刷电路的分布分类（单面板 &#x2F; 双面板 &#x2F; 多层板）"></a>按印刷电路的分布分类（单面板 &#x2F; 双面板 &#x2F; 多层板）</h4><ul>
+<li><strong>单面板</strong>：厚度 0.2—5mm 的绝缘基板上，只有一个表面敷铜。制造简单、装配方便，适用于一般电路要求（收音机、电视机等）；不适用于高组装密度或复杂电路。</li>
+<li><strong>双面板</strong>：绝缘基板两面均印制电路。适用于一般要求的电子产品（计算机、电子仪器仪表等）；布线密度较单面板高，可减小设备体积。</li>
+<li><strong>多层板</strong>：绝缘基板上印制 3 层以上电路，由几层较薄的单面板或双面板胶合而成，厚度一般 1.2—2.5mm；安装孔需金属化以引出内层电路。特点：<ol>
+<li>与集成电路配合使用，可使整机小型化，减少整机重量；</li>
+<li>提高了布线密度，缩小了元器件间距，缩短了信号传输路径；</li>
+<li>减少了元器件焊接点，降低了故障率；</li>
+<li>增设了屏蔽层，电路的信号失真减少；</li>
+<li>引入了接地散热层，可减少局部过热，提高整机工作可靠性。</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730165929920.png" alt="image-20260730165929920"></p>
+<h4 id="按基材的性质分类（刚性-柔性）"><a href="#按基材的性质分类（刚性-柔性）" class="headerlink" title="按基材的性质分类（刚性 &#x2F; 柔性）"></a>按基材的性质分类（刚性 &#x2F; 柔性）</h4><ul>
+<li><strong>刚性印制板</strong>：具有一定机械强度，装成的部件平整。一般电子产品使用的都是刚性板。</li>
+<li><strong>柔性印制板</strong>：以软层状塑料或其他软质绝缘材料为基材，可弯曲和伸缩。用于特殊场合：可旋转显示屏的数字万用表内部、手机显示屏&#x2F;按键等。<ul>
+<li>手机柔性板示例：基材聚酰亚胺，表面防氧化处理，最小线宽线距 0.1mm。</li>
+<li>突出特点：能弯曲、卷曲、折叠，能连接刚性板及活动部件，可立体布线、三维互连；体积小、重量轻、装配方便，适用于空间小、组装密度高的产品。</li>
+</ul>
+</li>
+</ul>
+<h4 id="按适用范围分类（低频-高频）"><a href="#按适用范围分类（低频-高频）" class="headerlink" title="按适用范围分类（低频 &#x2F; 高频）"></a>按适用范围分类（低频 &#x2F; 高频）</h4><ul>
+<li>电子设备高频化是发展趋势（无线网络、卫星通信等）。</li>
+<li>高频印制板敷箔基材：聚四氟乙烯、聚乙烯、聚苯乙烯、聚四氟乙烯玻璃布等<strong>介质损耗及介电常数小</strong>的材料。</li>
+</ul>
+<h4 id="特殊印制板"><a href="#特殊印制板" class="headerlink" title="特殊印制板"></a>特殊印制板</h4><ul>
+<li><strong>金属芯印制板</strong>：以金属板代替环氧玻璃布板，两面导体电路相互连通且与金属高度绝缘。优点：散热性及尺寸稳定性好（铝、铁等磁性材料有屏蔽作用，防止互相干扰）。</li>
+<li><strong>表面安装印制板</strong>：为满足产品”轻、薄、短、小”需要，配合表面贴装器件工艺开发。特点：孔径小、线宽及间距小、精度高、基板要求高。</li>
+<li><strong>碳膜印制板</strong>：镀铜箔板上制成导体图形后，再印制一层碳膜形成触点或跨接线。特点：工艺简单、成本低、周期短，耐磨性导电性好，使单面板高密度化，适用于电视机、电话机、录像机、电子琴等。</li>
+</ul>
+<hr>
+<h2 id="第二章-良好接地指导原则"><a href="#第二章-良好接地指导原则" class="headerlink" title="第二章 良好接地指导原则"></a>第二章 良好接地指导原则</h2><h3 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h3><ul>
+<li>接地是系统设计中最棘手的问题之一：概念简单、实施复杂，没有一个可用详细步骤描述的方法保证良好效果。</li>
+<li>对线性系统而言，”地”是信号的基准点；在单极性电源系统中，它还是电源电流的回路。接地策略不当可能严重损害高精度线性系统性能。</li>
+<li>高质量接地原理（尤其是接地层）对 PCB 环境固有不变，是基于 PCB 的模拟设计的显著优势之一。</li>
+<li>需管理杂散接地和信号返回电压（来自外部信号耦合、公共电流、接地导线过度 IR 压降），通过适当布线、布线尺寸、差分信号处理和接地隔离技术控制。</li>
+<li>关键结论：<strong>处理接地问题的关键在于理解电流的流动方式</strong>。</li>
+</ul>
+<h3 id="混合信号系统背景"><a href="#混合信号系统背景" class="headerlink" title="混合信号系统背景"></a>混合信号系统背景</h3><ul>
+<li>现代信号处理系统需要混合信号器件：ADC、DAC、DSP。</li>
+<li>“高精度、低速”与”高速”电路的传统区分已经模糊——目前大多数信号处理 IC 真正实现了”高速”，必须按高速器件对待：<ul>
+<li>所有采样 ADC（内置采样保持）都采用快速上升&#x2F;下降时间（数纳秒）的高速时钟工作，即使吞吐量看似较低。例：中速 12 位 SAR ADC 可采用 10MHz 内部时钟，而采样速率仅 500kSPS。</li>
+<li>Σ-Δ 型 ADC 过采样比高，需要高速时钟。即使”低频”工业测量 ADC（如 AD77xx 系列，吞吐 10Hz~7.5kHz）也采用 5MHz 或更高时钟，分辨率高达 24 位。</li>
+</ul>
+</li>
+<li>混合信号 IC 有模拟、数字两种端口；有些数字电流低、有些高，两类 IC 常需不同接地处理。</li>
+</ul>
+<h3 id="星型接地"><a href="#星型接地" class="headerlink" title="星型接地"></a>星型接地</h3><ul>
+<li>理论基础：电路中总有一个点是所有电压的参考点，称为”星型接地”点；多条导线从共同接地点呈辐射状扩展。</li>
+<li>关键特性：<strong>所有电压都相对于接地网上某个特定点测量</strong>，而不是相对于不确定的”地”。</li>
+<li>实施难点：加入电源后会增加不良接地路径，或流入现有接地路径的电源电流大&#x2F;噪声高，破坏信号传输。</li>
+<li>解决办法：为电路不同部分单独供电（单独接地回路）。混合信号应用中，通常将模拟电源与数字电源分开，并将在星型点处相连的模拟地和数字地分开。</li>
+</ul>
+<h3 id="单独的模拟地和数字地"><a href="#单独的模拟地和数字地" class="headerlink" title="单独的模拟地和数字地"></a>单独的模拟地和数字地</h3><ul>
+<li>数字电路有噪声：饱和逻辑（TTL、CMOS）开关时短暂吸入大电流；但逻辑抗扰度达数百毫伏以上，对电源去耦要求不高。</li>
+<li>模拟电路非常容易受噪声影响（电源轨和接地轨上），应把模拟与数字电路分开。</li>
+<li>高精度混合信号系统必须有<strong>单独的模拟地、数字地和单独电源</strong>。</li>
+<li><blockquote>
+<p>事实上，虽然有些模拟电路采用+5 V 单电源供电 运行，但并不意味着该电路可以与微处器、动态 RAM、电扇或其他高电流设备共 用相同+5 V 高噪声电源。模拟部分必须使用类电源以最高性能运行，而不只是保 持运行。这一差别必然要求我们对电源轨和接地接口给予高度注意。</p>
+</blockquote>
+</li>
+<li>模拟电路不能因为同为 +5V 供电就与微处理器、动态 RAM、电扇等高电流设备共用高噪声电源。</li>
+<li><strong>模拟地和数字地必须在某个点相连</strong>（让信号参考相同电位）。该星点（模拟&#x2F;数字公共点）要精心选择，确保数字电流不会流入系统模拟部分的地；在电源处设置公共点通常比较便利。</li>
+</ul>
+<h3 id="AGND-与-DGND-引脚的处理"><a href="#AGND-与-DGND-引脚的处理" class="headerlink" title="AGND 与 DGND 引脚的处理"></a>AGND 与 DGND 引脚的处理</h3><ul>
+<li>许多 ADC&#x2F;DAC 有单独的 AGND 和 DGND 引脚，数据手册通常建议在器件封装处将其连在一起——这与”在电源处&#x2F;单点连接模拟地数字地”的建议<strong>并不冲突</strong>：<ul>
+<li>引脚的”模拟地””数字地”标记指<strong>引脚所连接的转换器内部部分</strong>，而非必须连接的系统地。</li>
+<li>对 ADC，两个引脚通常应连在一起，然后接到<strong>系统模拟地</strong>。</li>
+<li>转换器模拟部分无法耐受数字电流经焊线流至芯片产生的压降，故无法在 IC 内部连接二者，只能在外部相连。</li>
+</ul>
+</li>
+<li>这种接法会使转换器数字噪声抗扰度降低（降幅&#x3D;系统数字地与模拟地间共模噪声量），但数字噪声抗扰度常在数百或数千毫伏水平，一般不成问题。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730182348252.png" alt="image-20260730182348252"></p>
+<ul>
+<li>模拟噪声抗扰度只会因转换器自身的外部数字电流流入模拟地而降低。对策：<ul>
+<li>确保转换器输出没有高负载（在 ADC 输出端使用低输入电流缓冲器，如 CMOS 缓冲器-寄存器 IC）。</li>
+<li>转换器逻辑电源用小电阻隔离并通过 0.1μF (100nF) 电容去耦到模拟地，则所有快速边沿数字电流经该电容流回地，不出现在外部地电路。</li>
+<li>保持低阻抗模拟地，外部数字地电流产生的额外噪声基本不构成问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="接地层"><a href="#接地层" class="headerlink" title="接地层"></a>接地层</h3><ul>
+<li>实施方法：双面 PCB（或多层 PCB 的一层）的一面由连续铜制造并用作地。</li>
+<li>理论基础：大量金属具有可能最低的电阻；大型扁平导体具有可能最低的电感 → 最佳导电性能，最大程度降低导电平面间杂散接地差异电压。</li>
+<li>概念可延伸至<strong>电压层</strong>：提供类似优势（极低阻抗导体），但只用于系统电源电压；系统可有多个电压层和接地层。</li>
+<li>局限：接地层并非灵丹妙药——连续铜箔也有残留电阻和电感，特定情况下足以妨碍电路工作。<strong>不要在接地层注入很高电流</strong>，否则产生压降干扰敏感电路。</li>
+<li>作用：<ul>
+<li>去耦高频电流（源于快速数字逻辑）的低阻抗返回路径；</li>
+<li>将 EMI&#x2F;RFI 辐射降至最低，并屏蔽外部 EMI&#x2F;RFI；</li>
+<li>允许使用传输线路技术（微带线或带状线）传输高速信号（需要可控阻抗）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="为什么不能用总线-bus-wire-作”地”"><a href="#为什么不能用总线-bus-wire-作”地”" class="headerlink" title="为什么不能用总线(bus wire)作”地”"></a>为什么不能用总线(bus wire)作”地”</h4><ul>
+<li>22 标准导线电感约 20 nH&#x2F;in。压摆率 10mA&#x2F;ns 的瞬态电流流经 1 英寸导线：</li>
+</ul>
+<pre class="line-numbers language-none" data-start="1"><code class="language-none">Δv &#x3D; L·(Δi&#x2F;Δt) &#x3D; 20nH × (10mA&#x2F;ns) &#x3D; 200mV</code></pre>
+
+<ul>
+<li><p>对 2V 峰峰值信号，200mV ≈ 10% 误差（约 3.5 位精度）；即使全数字电路，该误差也大幅降低逻辑噪声裕量。</p>
+<p>  <img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730184645273.png" alt="image-20260730184645273"></p>
+</li>
+<li><p>图 2 顶图：数字返回电流调制模拟返回电流（接地返回导线电感与电阻由模拟和数字电路共享 → 相互影响产生误差）。解决方案：让数字返回电流路径直接流向 GND REF（星型&#x2F;单点接地基本概念）。</p>
+</li>
+<li><p>包含多个高频返回路径的系统很难实现真正单点接地（各返回导线物理长度引入寄生电阻和电感）。实际操作中，<strong>电流回路必须由大面积接地层组成</strong>，以获取高频下低阻抗。</p>
+</li>
+<li><p>所有 IC 接地引脚应<strong>直接焊接到低阻抗接地层</strong>，将串联电感和电阻降至最低。</p>
+<ul>
+<li>高速器件不推荐传统 IC 插槽（即使”小尺寸”插槽的额外电感电容也可能破坏性能）。</li>
+<li>制作原型必须用插槽时，可接受个别”引脚插槽”或”笼式插座”（弹簧加载金触点，反复插拔会降低性能）。</li>
+</ul>
+</li>
+<li><p>去耦：用低电感、表面贴装陶瓷电容将电源引脚直接去耦至接地层；通孔式陶瓷电容引脚长度应 &lt; 1mm；电容尽量靠近 IC 电源引脚；噪声过滤还可能需要铁氧体磁珠。</p>
+</li>
+</ul>
+<h4 id="接地层割裂的利与弊"><a href="#接地层割裂的利与弊" class="headerlink" title="接地层割裂的利与弊"></a>接地层割裂的利与弊</h4><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730184846577.png" alt="image-20260730184846577"></p>
+<ul>
+<li>示例：电路板具有 100mm 宽接地层、15A 功率放大器；接地层厚 0.038mm 时，15A 电流流过产生 <strong>68 μV&#x2F;mm</strong> 压降——对共用该 PCB 且以地为参考的精密模拟电路会引起严重问题。</li>
+<li>对策：割裂接地层，让大电流不流入精密电路区域，迫使它环绕割裂位置流动（代价：电流流过的接地层部分电压梯度提高）。</li>
+<li>多接地层系统中，<strong>务必避免接地层交叠</strong>（特别是模拟层和数字层）——会导致层间容性耦合（电容&#x3D;两个导体+中间绝缘体）。</li>
+</ul>
+<h3 id="具有低数字电流的混合信号-IC-的接地和去耦"><a href="#具有低数字电流的混合信号-IC-的接地和去耦" class="headerlink" title="具有低数字电流的混合信号 IC 的接地和去耦"></a>具有低数字电流的混合信号 IC 的接地和去耦</h3><ul>
+<li>敏感模拟元件（放大器、基准电压源）必须参考和去耦至<strong>模拟接地层</strong>。</li>
+<li>具有低数字电流的 ADC&#x2F;DAC（及其他混合信号 IC）一般应视为模拟元件，同样接地并去耦至模拟接地层。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730184928979.png" alt="image-20260730184928979"></p>
+<ul>
+<li>IC 内部（如 ADC&#x2F;DAC）模拟与数字接地通常保持独立，以免数字信号耦合至模拟电路。</li>
+<li>芯片焊盘到封装引脚难免产生线焊电感和电阻（IC 设计人员无能为力）；快速变化的数字电流在 B 点产生电压，必然通过杂散电容 CSTRAY 耦合至模拟电路 A 点；封装每对相邻引脚间约有 0.2pF 杂散电容。</li>
+<li><strong>AGND 和 DGND 应通过最短引线在外部连在一起，并接到模拟接地层</strong>。<ul>
+<li>DGND 连接内任何额外阻抗将在 B 点产生更多数字噪声，继而经杂散电容耦合至模拟电路。</li>
+<li>将 DGND 连接到数字接地层会在 AGND 和 DGND 引脚两端施加 VNOISE，带来严重问题！</li>
+</ul>
+</li>
+<li>“DGND” 表示引脚连接到 IC 的数字地，不意味着必须连到系统数字地；更准确的叫法是 IC 的内部”数字回路”。</li>
+<li>减小影响的措施：<ul>
+<li>确保转换器输出不驱动较大扇出 → 电流小、逻辑转换波形少受振铃影响、减少数字开关电流及对模拟端口的耦合。</li>
+<li>逻辑电源引脚 VD 通过<strong>小型有损铁氧体磁珠</strong>与模拟电源隔离：内部瞬态数字电流在小环路内流动（VD→去耦电容→DGND），不出现在外部模拟接地层。</li>
+<li>VD 引脚去耦电容尽可能靠近转换器安装（降低寄生电感）；用低电感陶瓷型，通常 0.01μF (10nF) ~ 0.1μF (100nF)。</li>
+</ul>
+</li>
+<li>再次强调：<strong>没有任何一种接地方案适用于所有应用</strong>；但通过了解各选项和提前规划，可以最大程度减少问题。</li>
+</ul>
+<h3 id="小心处理-ADC-数字输出"><a href="#小心处理-ADC-数字输出" class="headerlink" title="小心处理 ADC 数字输出"></a>小心处理 ADC 数字输出</h3><ul>
+<li>将数据缓冲器放在转换器旁：隔离数字输出与数据总线噪声、降低转换器数字输出负载、提供法拉第屏蔽。</li>
+<li>很多转换器有三态输出&#x2F;输入，但寄存器仍在芯片上，数据引脚信号可耦合到敏感区，隔离缓冲区依然是良好设计方式；某些情况下甚至需在模拟接地层上紧靠转换器输出提供额外数据缓冲器。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730192954399.png" alt="image-20260730192954399"></p>
+<ul>
+<li>ADC 输出与缓冲寄存器输入间的<strong>串联电阻 R</strong>：<ul>
+<li>将数字瞬态电流降至最低；隔离数字输出驱动器与缓冲寄存器输入电容；与输入电容构成 RC 低通滤波器减缓快速边沿。</li>
+</ul>
+</li>
+<li>典型 CMOS 栅极 + PCB 走线和通孔 ≈ 10pF 负载。无隔离电阻时，1V&#x2F;ns 压摆率产生动态电流：</li>
+</ul>
+<pre class="line-numbers language-none" data-start="1"><code class="language-none">Δi &#x3D; C·(Δv&#x2F;Δt) &#x3D; 10pF × (1V&#x2F;ns) &#x3D; 10mA</code></pre>
+
+<ul>
+<li>驱动 10pF 寄存器输入电容时，500Ω 串联电阻可将瞬态输出电流降至最低，上升&#x2F;下降时间约 11ns：</li>
+</ul>
+<pre class="line-numbers language-none" data-start="1"><code class="language-none">tr &#x3D; 2.2 × t &#x3D; 2.2 × R × C &#x3D; 2.2 × 500Ω × 10pF &#x3D; 11ns</code></pre>
+
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730193112309.png" alt="image-20260730193112309"></p>
+<ul>
+<li>TTL 寄存器输入电容高，会明显增加动态开关电流，应避免使用；缓冲寄存器和其他数字电路应接地并去耦至 PC 板<strong>数字接地层</strong>。</li>
+<li>模拟与数字接地层间的噪声会降低转换器数字接口噪声裕量（一般不成问题，因数字噪声抗扰度在数百&#x2F;数千毫伏水平）。</li>
+<li>若数字接地层噪声（相对模拟接地层）超过数百毫伏，应减小数字接地层阻抗；<strong>任何情况下两个接地层之间电压不得超过 300mV，否则 IC 可能受损</strong>。</li>
+<li>电源：<ul>
+<li>最好为模拟和数字电路提供独立电源；模拟电源用于为转换器供电。</li>
+<li>转换器有指定数字电源引脚 (VD) 时，应采用独立模拟电源供电或滤波。</li>
+<li>所有转换器电源引脚去耦至模拟接地层；所有逻辑电路电源引脚去耦至数字接地层。</li>
+<li>数字电源相对安静时可用于为模拟电路供电，但要特别小心。</li>
+<li>某些高速 IC 模拟部分用 +5V、数字接口用 +3.3V 或更小电源：此时 IC 的 +3.3V 引脚应<strong>直接去耦至模拟接地层</strong>；另建议铁氧体磁珠与电源走线串联接到 +3.3V 数字逻辑电源。</li>
+</ul>
+</li>
+<li>采样时钟产生电路应与模拟电路同样对待：接地并深度去耦至模拟接地层（采样时钟相位噪声会降低系统 SNR）。</li>
+</ul>
+<h3 id="采样时钟考量"><a href="#采样时钟考量" class="headerlink" title="采样时钟考量"></a>采样时钟考量</h3><ul>
+<li>高性能采样系统应使用<strong>低相位噪声晶体振荡器</strong>产生 ADC&#x2F;DAC 采样时钟（时钟抖动调制模拟输入&#x2F;输出信号，提高噪声和失真底）。</li>
+<li>采样时钟发生器应与高噪声数字电路隔离，接地并去耦至模拟接地层。</li>
+<li>采样时钟抖动对 SNR 的影响近似：</li>
+</ul>
+<pre class="line-numbers language-none" data-start="1"><code class="language-none">SNR &#x3D; 20·log10[ 1 &#x2F; (2π·f·tj) ]</code></pre>
+
+<ul>
+<li>f：模拟输入频率；tj：rms 采样时钟抖动（完美无限分辨率 ADC 时唯一噪声源）。</li>
+<li>示例：tj &#x3D; 50ps(rms)、f &#x3D; 100kHz → SNR &#x3D; 90dB，相当于约 15 位动态范围。</li>
+<li>tj 实际是外部时钟抖动与内部 ADC 孔径抖动的方和根 (rss)；大多数高性能 ADC 中内部孔径抖动可忽略。</li>
+<li>要求：采样时钟尽量无噪声、最低相位抖动 → 必须使用晶体振荡器（多家厂商提供 &lt;5ps rms 低抖动 CMOS 兼容输出的小型晶振）。</li>
+<li>理想情况下采样时钟晶振应参考分离接地系统中的<strong>模拟接地层</strong>；若必须从数字接地层上的系统时钟获得并传递至模拟接地层上的 ADC，两层间接地噪声会直接添加到时钟信号，产生过度抖动（降低 SNR、产生干扰谐波）。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730193432680.png" alt="image-20260730193432680"></p>
+<h3 id="混合信号接地的困惑根源"><a href="#混合信号接地的困惑根源" class="headerlink" title="混合信号接地的困惑根源"></a>混合信号接地的困惑根源</h3><ul>
+<li>大多数 ADC&#x2F;DAC 数据手册针对<strong>单个 PCB</strong>（通常是制造商评估板）讨论接地；应用于多卡或多 ADC&#x2F;DAC 系统时令人困惑。</li>
+<li>常见建议：将 PCB 接地层分为模拟层和数字层，转换器 AGND 和 DGND 引脚连在一起，并在同一点连接模拟与数字接地层→ 在混合信号器件上产生系统”星型”接地。<ul>
+<li>所有高噪声数字电流经数字电源流入数字接地层、返回数字电源，与敏感模拟部分隔离。</li>
+<li>系统星型接地点位于混合信号器件中模拟、数字接地层连接处。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730193508024.png" alt="image-20260730193508024"></p>
+<ul>
+<li>适用范围：单 PCB、单 ADC&#x2F;DAC 的简单系统；<strong>不适合多卡混合信号系统</strong>（多个 ADC&#x2F;DAC 时接地层多点连接形成接地环路，单点星型接地不可能）。该方法应当用于具有低数字电流的混合信号 IC。</li>
+</ul>
+<h3 id="针对高频工作的接地"><a href="#针对高频工作的接地" class="headerlink" title="针对高频工作的接地"></a>针对高频工作的接地</h3><ul>
+<li>即便广泛使用接地层也不能保证交流电路的高质量接地参考。</li>
+<li>实验电路：两层板，顶层交直流电流源，一端接过孔1，另一端经 U 形铜走线接过孔2，两孔穿板连到底层接地层。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730193554508.png" alt="image-20260730193554508"></p>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730193623964.png" alt="image-20260730193623964"></p>
+<ul>
+<li><strong>直流电流</strong>：选取接地层中电阻最小的路径（过孔1→过孔2 直线，有少量扩散）。</li>
+<li><strong>交流电流</strong>：选取阻抗最小的路径，取决于电感。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730193710010.png" alt="image-20260730193710010"></p>
+<ul>
+<li>电感与电流环路面积成比例：环路之内电流磁场相互增强，环路之外相互削弱；环路越大电感越大 → 储存磁能 (Li²) 更多、阻抗更高 (XL&#x3D;jωL)、给定频率产生更大电压。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730193824633.png" alt="image-20260730193824633"></p>
+<ul>
+<li>高频交流电流沿所围面积最小的路径流动：即 <strong>U 形顶部走线正下方</strong>的接地层。</li>
+<li>实际中接地层电阻使低中频电流流向直接返回路径与顶部导线正下方之间的某处；但即使频率低至 1~2MHz，返回路径也接近顶部走线下方。</li>
+</ul>
+<h3 id="小心接地层割裂（信号交叉）"><a href="#小心接地层割裂（信号交叉）" class="headerlink" title="小心接地层割裂（信号交叉）"></a>小心接地层割裂（信号交叉）</h3><ul>
+<li>导线下方接地层有割裂时，返回电流必须环绕裂缝流动 → 电路电感增加、更易受外部场影响。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730194416883.png" alt="image-20260730194416883"></p>
+<ul>
+<li>两根垂直导线交叉时，更佳做法：通过<strong>飞线</strong>将第二根信号线跨接在第一根信号线和接地层上方。接地层用作两信号线间的天然屏蔽体；由于集肤效应，两路地返回电流在接地层上下表面各自流动、互不干扰。</li>
+<li>多层板能同时支持信号线交叉和连续接地层：价格较高、调试不如双面板方便，但屏蔽效果更好、信号路由更佳、布局布线选项更多。</li>
+<li><strong>对高性能混合信号电路，使用至少具有一个连续接地层的双面或多层 PCB 是最成功的设计方法之一</strong>。此类接地层阻抗通常足够低，允许模拟和数字部分共用一个接地层——能否实现取决于系统分辨率、带宽要求及数字噪声量。</li>
+</ul>
+<h3 id="其他示例：电流反馈型放大器"><a href="#其他示例：电流反馈型放大器" class="headerlink" title="其他示例：电流反馈型放大器"></a>其他示例：电流反馈型放大器</h3><ul>
+<li>高频电流反馈型放大器对反相输入周围电容非常敏感；接地层旁的输入走线可能具有导致问题的电容。</li>
+<li>对策：接地层应与输入引脚分隔开（如 AD8001 高速电流反馈放大器评估板）。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260730200240276.png" alt="image-20260730200240276"></p>
+<h3 id="接地总结"><a href="#接地总结" class="headerlink" title="接地总结"></a>接地总结</h3><ul>
+<li>没有任何一种接地方法能始终保证最佳性能；实施初始 PC 板布局时提供尽可能多的选项会很有帮助。</li>
+<li><strong>PC 板必须至少有一层专用于接地层</strong>！</li>
+<li>初始布局应提供非重叠的模拟和数字接地层；如需要，在数个位置提供焊盘和过孔以安装背对背肖特基二极管或铁氧体磁珠；需要时可用跳线连接模拟和数字接地层。</li>
+<li>一般而言，混合信号器件的 AGND 引脚应始终连接到模拟接地层。<ul>
+<li>例外：具有内部锁相环 (PLL) 的 DSP（如 ADSP-21160 SHARC）——PLL 接地引脚标记为 AGND，但直接连接到 DSP 的数字接地层。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="第三章-高速-ADC-PCB-布局布线规则"><a href="#第三章-高速-ADC-PCB-布局布线规则" class="headerlink" title="第三章 高速 ADC PCB 布局布线规则"></a>第三章 高速 ADC PCB 布局布线规则</h2><h3 id="第一部分：AGND-和-DGND-接地层应当分离吗？"><a href="#第一部分：AGND-和-DGND-接地层应当分离吗？" class="headerlink" title="第一部分：AGND 和 DGND 接地层应当分离吗？"></a>第一部分：AGND 和 DGND 接地层应当分离吗？</h3><ul>
+<li>简单回答：<strong>视情况而定</strong>。详细回答：<strong>通常不分离</strong>。</li>
+<li>原因：大多数情况下，分离接地层只会增加返回电流的电感，坏处大于好处。<ul>
+<li>由 V &#x3D; L·(di&#x2F;dt)：电感增加 → 电压噪声提高；开关电流增大（采样速率提高）→ 电压噪声同样提高。</li>
+<li><strong>因此接地层应当连在一起。</strong></li>
+</ul>
+</li>
+<li>需要分离的例外情况：为符合传统设计要求，必须将脏乱的总线电源或数字电路放在某些区域，且受尺寸限制无法实现良好布局分割时，分离接地层是实现良好性能的关键。<ul>
+<li>此时必须在电路板某处通过电桥或连接点将接地层连在一起；连接点应均匀分布在分离的接地层上。</li>
+<li>最终 PCB 上往往有一个连接点是返回电流通过而不降低性能的最佳位置——通常位于<strong>转换器附近或下方</strong>。</li>
+</ul>
+</li>
+<li>电源层设计：<ul>
+<li>使用这些层可以使用的所有铜线；勿让这些层共用走线（额外走线和过孔会将电源层分割成小碎块，损害电源层）。</li>
+<li>稀疏电源层会把电流路径挤压到转换器电源引脚附近；挤压过孔与走线间电流提高电阻，导致转换器电源引脚轻微压降。</li>
+<li><strong>切勿将高噪声数字电源层叠放在模拟电源层上</strong>（即使位于不同层仍可能耦合）；应尽可能隔开而不是叠加。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第二部分：输电系统-PDS-设计"><a href="#第二部分：输电系统-PDS-设计" class="headerlink" title="第二部分：输电系统 (PDS) 设计"></a>第二部分：输电系统 (PDS) 设计</h3><ul>
+<li>PDS 设计目标：<strong>将响应电源电流需求而产生的电压纹波降至最低</strong>。<ul>
+<li>例：开关电流 1A、PDS 阻抗 10mΩ → 最大电压纹波 10mV（V&#x3D;IR）。</li>
+</ul>
+</li>
+<li>方法：充分去耦的低阻抗电源层&#x2F;接地层 + 良好的 PCB 层叠。</li>
+<li>层叠设计（支持较大层电容）：<ul>
+<li>六层堆叠示例：顶部信号层、第一接地层、第一电源层、第二电源层、第二接地层、底部信号层。</li>
+<li>规定第一接地层与第一电源层彼此靠近，间距 <strong>2~3 密尔</strong>，形成固有层电容——最大优点是<strong>免费</strong>，只需在 PCB 制造笔记中注明。</li>
+<li>必须分割电源层（同层多个 VDD 电源轨）时，应使用尽可能大的电源层，不留空洞，注意敏感电路 → 使 VDD 层电容最大。</li>
+<li>若允许额外层（六层→八层），应将两个额外接地层放在第一和第二电源层之间；核心间距同为 2~3 密尔时，层叠固有电容加倍。</li>
+</ul>
+</li>
+<li>去耦电容：电源层起始入口点和 DUT 周围均应使用，确保 PDS 阻抗在整个频率范围内均较低；使用若干 0.001μF~100μF 电容覆盖该范围。<ul>
+<li>没有必要各处都配置电容；电容正对着 DUT 对接会破坏所有制造规则——若需要这种严厉措施，说明电路存在其它问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第三部分：裸露焊盘-E-Pad"><a href="#第三部分：裸露焊盘-E-Pad" class="headerlink" title="第三部分：裸露焊盘 (E-Pad)"></a>第三部分：裸露焊盘 (E-Pad)</h3><ul>
+<li>裸露焊盘（引脚 0）：大多数现代高速 IC 下方的焊盘，芯片所有内部接地都通过它连接到器件下方中心点；它的存在使许多转换器和放大器可省去接地引脚。</li>
+<li>关键：将焊盘焊接到 PCB 时形成<strong>稳定可靠的电气连接和散热连接</strong>，否则系统可能遭到严重破坏。</li>
+<li>实现最佳连接的三个步骤：<ol>
+<li><strong>在各 PCB 层上复制裸露焊盘</strong>：为所有接地提供较厚的散热连接、快速散热（高功耗器件尤其重要）；电气上为所有接地层提供良好等电位连接。底层复制时可用作去耦接地点和安装散热器的地方。</li>
+<li><strong>将裸露焊盘分割成多个相同部分</strong>（棋盘状最佳，通过丝网交叉格栅或焊罩实现）：回流焊时无法决定焊膏如何流动，连接可能分布不均、很小甚至位于拐角处；分割后各区域都有连接点，确保器件与 PCB 之间可靠、均匀的连接。</li>
+<li><strong>确保各部分都有过孔连接到地</strong>：各区域通常足够大可放多个过孔；组装前务必用焊膏或环氧树脂填充每个过孔——确保裸露焊盘焊膏不会回流到过孔空洞中，否则降低正确连接的机率。</li>
+</ol>
+</li>
+</ul>
+<h3 id="第四部分：层间交叉耦合"><a href="#第四部分：层间交叉耦合" class="headerlink" title="第四部分：层间交叉耦合"></a>第四部分：层间交叉耦合</h3><ul>
+<li>高速转换器布局中难免出现电路层交叠，敏感模拟层（电源&#x2F;接地&#x2F;信号）可能就在高噪声数字层正上方——大多数设计人员认为位于不同层就无关紧要，实际并非如此。</li>
+<li>简单测试：在相邻层之一注入信号，将交叉耦合层接频谱分析仪 → 耦合到相邻层的信号非常多。<strong>即使间距 40 密尔，相邻层仍会形成电容</strong>，某些频率下信号仍会层间耦合。</li>
+<li>量化示例：高噪声数字层有高速开关的 1V 信号、层间隔离 60dB 时，非受驱层看到 1mV 耦合。<ul>
+<li>对 2Vp-p 满量程的 12 位 ADC：即 2LSB 的耦合。</li>
+<li>分辨率从 12 位提高到 14 位时，灵敏度提高四倍，误差增大到 8LSB。</li>
+</ul>
+</li>
+<li>忽略交叉层耦合可能不会导致设计失败，但必须保持警惕：两层面之间的耦合可能比想象的要多。</li>
+<li>调试敏感系统时记住：<strong>问题可能出在下面一层</strong>。</li>
+</ul>
+<hr>
+<h2 id="第四章-高速-ADC-PCB-布局布线技巧"><a href="#第四章-高速-ADC-PCB-布局布线技巧" class="headerlink" title="第四章 高速 ADC PCB 布局布线技巧"></a>第四章 高速 ADC PCB 布局布线技巧</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>系统电路板布局已成为设计本身的组成部分；设计工程师必须了解影响高速信号链设计性能的机制。</li>
+<li>最终答案各不相同，但所有情况下都应尽量消除最佳做法的误差，而不要过分计较布局布线的每一个细节。</li>
+</ul>
+<h3 id="裸露焊盘-EPAD"><a href="#裸露焊盘-EPAD" class="headerlink" title="裸露焊盘 (EPAD)"></a>裸露焊盘 (EPAD)</h3><ul>
+<li>ADI 称之为<strong>引脚 0</strong>，是目前大多数器件下方的焊盘；芯片所有内部接地通过它连到器件下方中心点。许多转换器和放大器缺少接地引脚，原因就在于裸露焊盘。</li>
+<li>关键是将此引脚妥善固定（焊接）至 PCB，实现牢靠的电气和热连接；连接不牢固设计可能无效。</li>
+</ul>
+<h4 id="实现最佳连接（三步骤）"><a href="#实现最佳连接（三步骤）" class="headerlink" title="实现最佳连接（三步骤）"></a>实现最佳连接（三步骤）</h4><ol>
+<li>在可能的情况下，应在各 PCB 层上复制裸露焊盘：与所有接地和接地层形成密集热连接、快速散热（与高功耗器件及高通道数应用相关）；电气上提供良好等电位连接。甚至可在底层复制裸露焊盘，用作去耦散热接地点和安装底侧散热器。</li>
+</ol>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731113552765.png" alt="image-20260731113552765"></p>
+<ol start="2">
+<li>将裸露焊盘分割成多个相同的部分（如同棋盘），在打开的裸露焊盘上使用丝网交叉格栅或阻焊层，确保器件与 PCB 之间的稳固、均匀连接。</li>
+</ol>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731113650634.png" alt="image-20260731113650634"></p>
+<ol start="3">
+<li>确保各部分都有过孔连接到地；组装之前务必用焊膏或环氧树脂填充每个过孔，确保焊膏不回流到过孔空洞中。</li>
+</ol>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731113723262.png" alt="image-20260731113723262"></p>
+<h3 id="去耦和层电容"><a href="#去耦和层电容" class="headerlink" title="去耦和层电容"></a>去耦和层电容</h3><ul>
+<li>常见误区：仅在电路板上分散大小不同的许多电容。许多文献称必须用大小不同的许多电容降低 PDS 阻抗，<strong>这并不完全正确</strong>——只需选择正确大小和正确种类的电容。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731113813962.png" alt="image-20260731113813962"></p>
+<ul>
+<li>设计 10mΩ 参考层示例：<ul>
+<li>红色曲线（许多不同值电容 0.001μF、0.01μF、0.1μF…）可降低 500MHz 范围内阻抗；</li>
+<li>绿色曲线（仅 0.1μF 和 10μF）效果相同 → 使用正确电容则不需要那么多电容，节省空间和 BOM 成本。</li>
+</ul>
+</li>
+<li>并非所有电容”生而平等”：同一供应商的工艺、尺寸、样式也有差别。电容放置不当或使用不同工艺型号（对频率响应不同）→ 彼此之间可能发生<strong>谐振</strong>、形成电感环路。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731114057385.png" alt="image-20260731114057385"></p>
+<ul>
+<li>了解系统所用电容类型的频率响应很重要；随便选用电容会让低阻抗 PDS 设计付之东流。</li>
+</ul>
+<h3 id="PDS-的高频层电容"><a href="#PDS-的高频层电容" class="headerlink" title="PDS 的高频层电容"></a>PDS 的高频层电容</h3><ul>
+<li>PCB 上典型电容值只能将直流~约 500MHz 范围的阻抗降低；<strong>高于 500MHz 时，电容取决于 PCB 形成的内部电容</strong>。</li>
+<li>电源层和接地层紧密叠置会有帮助：<ul>
+<li>六层堆叠示例同第三章第二部分；第一接地层与第一电源层间距 2~4 密尔形成固有高频层电容（免费，注明在制造笔记即可）。</li>
+<li>分割电源层时使用尽可能大的电源层、不留空洞、注意敏感电路。</li>
+<li>六层→八层：两个额外接地层放在第一和第二电源层之间，核心间距 2~3 密尔时固有电容加倍（图6）。</li>
+</ul>
+</li>
+<li>与添加更多分立高频电容相比，此结构更易于设计。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731114621775.png" alt="image-20260731114621775"></p>
+<ul>
+<li>PDS 任务（重要但常被忽略）：将响应电源电流需求而产生的电压纹波降至最低。V&#x3D;IR：开关电流 1A、阻抗 10mΩ → 最大纹波 10mV。</li>
+<li>完美 PCB 堆叠覆盖高频；电源层入口点和高功率&#x2F;浪涌电流器件周围的传统去耦覆盖低频 (&lt;500MHz) → 确保 PDS 阻抗在整个频率范围内均最低。</li>
+</ul>
+<h3 id="层耦合"><a href="#层耦合" class="headerlink" title="层耦合"></a>层耦合</h3><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731114729639.png" alt="image-20260731114729639"></p>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731114745372.png" alt="image-20260731114745372"></p>
+<ul>
+<li>与第三章第四部分相同结论：即使间距 40 密尔，相邻层仍是电容，某些频率下仍会耦合。</li>
+<li>1V 高速开关信号、60dB 隔离 → 1mV 耦合；12 位 2Vp-p ADC 为 2LSB；14 位时灵敏度提高四倍 → 8LSB。</li>
+<li>忽略此类耦合可能使系统失效或削弱设计。</li>
+</ul>
+<h3 id="分离接地"><a href="#分离接地" class="headerlink" title="分离接地"></a>分离接地</h3><ul>
+<li>最常见问题：使用 ADC 时是否应将接地层分为 AGND 和 DGND？答案：视情况而定，<strong>通常不分离</strong>。</li>
+<li>盲目分离只会增加返回路径电感（V&#x3D;L·di&#x2F;dt）：电压噪声提高、PDS 阻抗增加；ADC 采样速率需求增长而降低开关电流 (di&#x2F;dt) 的方式很有限。<strong>除非需要，否则保持接地连接。</strong></li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731114822346.png" alt="image-20260731114822346"></p>
+<ul>
+<li>关键是<strong>电路分割要合理</strong>，这样就不必分离接地层：布局允许将电路保持在各自区域内时，分割可提供星型接地，将返回电流局限在特定电路部分。</li>
+<li>需要分离接地层的情况：受尺寸限制无法实现良好布局分割（脏乱总线电源或高噪声数字电路必须放在某些区域）。此时分离接地层是实现良好性能的关键，但必须在某处通过电桥&#x2F;连接点连在一起，连接点均匀分布。</li>
+<li>若连接点位于转换器、其附近或下方，则不需要分离接地。</li>
+</ul>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><ul>
+<li>在评估板、模块和系统级别，<strong>简单的单一接地最佳；良好的电路分割是关键</strong>。</li>
+<li>敏感层在高噪声数字层以上时注意交叉耦合。</li>
+<li>组装很重要：制造笔记应善加利用，确保 IC 裸露焊盘和 PCB 之间可靠连接（组装不良常导致系统性能欠佳）。</li>
+<li>靠近电源层入口点和转换器&#x2F;IC 的 VDD 引脚去耦总是有利的；为增加固有高频去耦电容，应使用紧密叠置的电源和接地层（<strong>间距 ≤4 密尔</strong>）——不带来额外成本，只需花几分钟更新 PCB 制造笔记。</li>
+</ul>
+<hr>
+<h2 id="第五章-非隔离式开关电源的-PCB-布局考虑"><a href="#第五章-非隔离式开关电源的-PCB-布局考虑" class="headerlink" title="第五章 非隔离式开关电源的 PCB 布局考虑"></a>第五章 非隔离式开关电源的 PCB 布局考虑</h2><h3 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h3><ul>
+<li>良好布局设计可优化效率、减缓热应力、尽量减小走线与元件间的噪声与相互作用——源于对电源中电流传导路径及信号流的理解。</li>
+<li>开关电源常见问题：”不稳定”的开关波形；波形抖动处于声波段时磁性元件产生音频噪声。问题出在 PCB 布局上时很难找出原因 → <strong>设计初期的正确 PCB 布局非常关键</strong>。</li>
+<li>电源设计者应从项目一开始就与 PCB 布局设计人员就关键性电源布局密切合作。</li>
+</ul>
+<h3 id="布局规划"><a href="#布局规划" class="headerlink" title="布局规划"></a>布局规划</h3><ul>
+<li>嵌入式 dc&#x2F;dc 电源：输出靠近负载器件，尽量减少 PCB 走线互连阻抗和传导压降 → 最佳电压调节、负载瞬态响应和系统效率。</li>
+<li>确保良好空气流、限制热应力；采用强制气冷时将电源靠近风扇。</li>
+<li>大型无源元件（电感、电解电容）不得阻挡气流通过低矮表面封装半导体元件（功率 MOSFET、PWM 控制器）。</li>
+<li>防止开关噪声干扰模拟信号：尽可能避免在电源下方布放敏感信号线；否则需在电源层和小信号层之间放置内部接地层用作屏蔽。</li>
+<li><strong>在系统早期设计和规划阶段就筹划好电源位置及电路板空间需求</strong>；把电源管理当作事后工作、随便放在多余空间，对高效可靠的电源设计十分不利。</li>
+<li>多层板：在大电流功率元件层与敏感小信号走线层之间布放直流地或直流输入&#x2F;输出电压层（提供屏蔽小信号走线的交流地）。</li>
+<li>一般规则：多层 PCB 的接地层或直流电压层均不应被分隔开；若不可避免，尽量减少这些层上走线的数量和长度，走线布放与大电流保持相同方向，使影响最小化。</li>
+<li>a 和 c 分别是六层和四层开关电源 PCB 的不良层结构。这些结构将小信号层夹 在大电流功率层和地层之间,因此增加了大电流&#x2F;电压功率层与模拟小信号层之间耦 合的电容噪声。</li>
+<li>b 和 d 则分别是六层和四层 PCB 设计的良好结构,有助于最大限度减少层 间耦合噪声,地层用于屏蔽小信号层。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731145008296.png" alt="image-20260731145008296"></p>
+<ul>
+<li>要点：一定要挨着外侧功率级层放一个接地层；外部大电流功率层使用厚铜箔，尽量减少 PCB 传导损耗和热阻。</li>
+</ul>
+<h3 id="功率级的布局"><a href="#功率级的布局" class="headerlink" title="功率级的布局"></a>功率级的布局</h3><ul>
+<li>开关电源电路 &#x3D; 功率电路 + 小信号控制电路。<strong>首先布放功率级元件</strong>，然后在特定点上布放小信号控制电路。</li>
+<li>大电流走线应<strong>短而宽</strong>，尽量减少 PCB 电感、电阻和压降；对高 di&#x2F;dt 脉冲电流走线尤其重要。</li>
+<li>同步降压转换器（图2）：实线&#x3D;连续电流路径；虚线&#x3D;脉冲（开关）电流路径。脉冲电流路径包括：输入去耦陶瓷电容 CHF、上部控制 FET QT、下部同步 FET QB（及选接的并联肖特基二极管）的走线。</li>
+<li>寄生电感（图3a）：脉冲电流路径不仅辐射磁场，还在 PCB 走线和 MOSFET 上产生大的电压振铃和尖刺。<strong>脉冲电流回路（热回路）布放时要有最小的圆周，走线短而宽。</strong></li>
+<li>高频去耦电容 CHF：0.1μF~10μF，X5R 或 X7R 电介质陶瓷电容（极低 ESL&#x2F;ESR）；较大电容电介质（如 Y5V）容值在不同电压温度下下降大，不是最佳材料。</li>
+<li>降压转换器布局例（图3b）：<ul>
+<li>为限制电阻压降和过孔数量，功率元件都布放在电路板同一面，功率走线布在同一层。</li>
+<li>需要将电源线走到其它层时，选择在连续电流路径中的走线。</li>
+<li>用过孔连接大电流回路中的 PCB 层时，使用多个过孔以减小阻抗。</li>
+</ul>
+</li>
+<li>升压转换器（图4、图5）：在靠近 MOSFET QB 与升压二极管 D 的输出端放置高频陶瓷电容 CHF；关键是尽量减小由开关管 QB、整流二极管 D 和高频输出电容 CHF 形成的回路。</li>
+<li>LTC3729 双相同步降压电源实例：无负载时开关结点 SW1&#x2F;SW2 波形及输出电感电流稳定；负载超过 13A 时 SW1 波形开始丢失周期，负载更高时恶化。<ul>
+<li>解决：在各通道输入端增加两只 1uF 高频陶瓷电容——隔离并最小化每个通道的热回路面积；30A 最大负载下开关波形仍稳定。</li>
+</ul>
+</li>
+</ul>
+<h3 id="高-dv-dt-开关区"><a href="#高-dv-dt-开关区" class="headerlink" title="高 dv&#x2F;dt 开关区"></a>高 dv&#x2F;dt 开关区</h3><ul>
+<li>SW 结点在 VIN（或 VOUT）与地之间摆幅、高 dv&#x2F;dt 速率，富含高频噪声分量，是强大的 EMI 噪声源。</li>
+<li>权衡：<ul>
+<li>减小 SW 铜箔面积 → 减小与其它噪声敏感走线的耦合电容；</li>
+<li>但要传导大电感电流并为功率 MOSFET 提供散热区，SW 区域又不能太小。</li>
+<li>一般建议在开关结点下布放一个<strong>接地铜箔区</strong>提供额外屏蔽。</li>
+</ul>
+</li>
+<li>无散热器设计中铜箔区必须有足够散热面积；直流电压结点（输入&#x2F;输出电压与电源地）铜箔区尽可能大；多过孔有助于进一步降低热应力。</li>
+</ul>
+<h3 id="功率焊盘形式"><a href="#功率焊盘形式" class="headerlink" title="功率焊盘形式"></a>功率焊盘形式</h3><ul>
+<li>注意低 ESR 电容、MOSFET、二极管和电感的焊盘形式。</li>
+<li>去耦电容：正负极过孔应尽量互相靠近，减少 PCB 的 ESL（对低 ESL 电容尤其有效）。小容值低 ESR 电容较贵，不正确焊盘形式及不良走线会降低其性能、增加整体成本。</li>
+<li>合理焊盘形式：降低 PCB 噪声、减小热阻、最大限度降低走线阻抗及大电流元件压降。</li>
+<li><strong>常见误区：大电流功率元件不正确地采用热风焊盘 (thermal relief)</strong>——非必要情况下使用会增加功率元件间互连阻抗，造成较大功率损耗，降低小 ESR 电容去耦效果。</li>
+<li>布局时用过孔传导大电流：确保数量充足以减少阻抗，且不要对这些过孔使用热风焊盘。</li>
+<li>多个板上电源共享输入电压轨且互相不同步时：将输入电流走线隔离开，避免不同电源间耦合公共阻抗噪声；每个电源有本地输入去耦电容倒不太关键。</li>
+<li>Polyphase 单输出转换器：为每个相做对称布局有助于热应力均衡。</li>
+</ul>
+<h3 id="控制电路布局"><a href="#控制电路布局" class="headerlink" title="控制电路布局"></a>控制电路布局</h3><ul>
+<li>使控制电路远离高噪声的开关铜箔区：降压转换器→控制电路靠近 VOUT+ 端；升压转换器→靠近 VIN+ 端，让功率走线承载连续电流。</li>
+<li>空间允许时，控制 IC 与功率 MOSFET 及电感（高噪声高热量元件）之间保持 <strong>0.5~1 英寸</strong>距离；空间紧张时特别注意用地层或接地走线将控制电路与功率元件隔离。</li>
+<li>控制 IC 外露 GND 焊盘应焊到 PCB 上，尽量减少电气阻抗与热阻；关键去耦电容紧挨 IC 引脚。</li>
+<li>控制电路应有不同于功率级地的独立信号（模拟）地：<ul>
+<li>控制器 IC 有独立 SGND（信号地）和 PGND（功率地）引脚时应分别布放；集成 MOSFET 驱动器的控制 IC，小信号部分引脚使用 SGND。</li>
+<li><strong>信号地与功率地之间只需要一个连接点</strong>；合理方法是使信号地返回到功率地层的一个干净点，只在控制器 IC 下连接两种接地走线。</li>
+<li>IC 外露接地焊盘焊到 PCB，接地焊盘区放置多个过孔。</li>
+</ul>
+</li>
+<li>控制 IC 去耦电容靠近各自引脚；为减少连接阻抗，最好直接接到引脚而不通过过孔。<ul>
+<li>LTC3855 应靠近放置去耦电容的引脚：电流检测引脚 Sense+&#x2F;Sense-、补偿引脚 ITH、信号地 SGND、反馈分压器脚 FB、IC Vcc 电压引脚 IN-TVcc、功率地引脚 PGND。</li>
+</ul>
+</li>
+</ul>
+<h3 id="回路面积与串扰"><a href="#回路面积与串扰" class="headerlink" title="回路面积与串扰"></a>回路面积与串扰</h3><ul>
+<li>邻近导体容性耦合：一个导体上的高 dv&#x2F;dt 通过寄生电容在另一导体上耦合出电流。高噪声开关走线要远离敏感小信号走线；可能的话布放在不同层，用内部地层作噪声屏蔽。</li>
+<li>LTC3855 上高 dv&#x2F;dt 引脚：FET 驱动器 TG、BG、SW 和 BOOST；最敏感小信号结点引脚：Sense+&#x2F;Sense-、FB、ITH 和 SGND。敏感信号走线靠近高 dv&#x2F;dt 结点时，必须在其间插入接地线或接地层屏蔽噪声。</li>
+<li>栅极驱动信号：短而宽的走线尽量减小栅极驱动路径阻抗。<ul>
+<li>高 FET 驱动器走线 TG 与 SW 应有最小回路面积（减小电感与高 dv&#x2F;dt 噪声）；低 FET 驱动器走线 BG 靠近一根 PGND 走线。</li>
+<li>若 BG 走线下布放了 PGND 层，低 FET 交流地返回电流自动耦合到靠近 BG 走线的路径（交流电流流向最小回路&#x2F;阻抗），此时不需要独立 PGND 返回走线。</li>
+<li>最好尽量减少栅极驱动走线通过的层数量，防止噪声传播到其它层。</li>
+</ul>
+</li>
+<li><strong>电流检测走线对噪声最敏感</strong>（信号波幅通常 &lt;100mV，与噪声波幅相当）：<ul>
+<li>Sense+&#x2F;Sense- 走线以最小间距并行布放（Kelvin 检测），减少拾取 di&#x2F;dt 相关噪声。</li>
+<li>滤波电阻与电容尽可能靠近 IC 引脚（对长检测线注入噪声滤波效果最好）。</li>
+<li>电感 DCR 电流检测（RC 网络）：DCR 检测电阻 R 靠近电感，DCR 检测电容 C 靠近 IC。</li>
+<li>Sense- 返回路径使用过孔时，过孔不应接触其它内部 VOUT+ 层（否则过孔传导大 VOUT+ 电流，压降破坏电流检测信号）。</li>
+<li>避免在高噪声开关结点（TG、BG、SW、BOOST 走线）附近布放电流检测走线；如可能，在电流检测走线所在层与功率级走线层之间放置地层。</li>
+</ul>
+</li>
+<li>控制器 IC 有差分电压远程检测引脚时：为正、负远程检测线采用独立走线，同时采用 Kelvin 检测连接。</li>
+</ul>
+<h3 id="走线宽度的选择"><a href="#走线宽度的选择" class="headerlink" title="走线宽度的选择"></a>走线宽度的选择</h3><ul>
+<li>各控制器引脚的电流水平和噪声敏感度都是唯一的，须为不同信号选择特定走线宽度：<ul>
+<li>小信号网络：可窄些，10mil~15mil；</li>
+<li>大电流网络（栅极驱动、Vcc、PGND）：短而宽，建议至少 <strong>20mil</strong> 宽。</li>
+</ul>
+</li>
+</ul>
+<h3 id="布局检查表"><a href="#布局检查表" class="headerlink" title="布局检查表"></a>布局检查表</h3><ul>
+<li>LTC3855 双相电源检查表实例可从网上下载 (http:&#x2F;bit.ly&#x2F;Ruxanc)；采用检查表有助于确保布局严谨的电源设计。</li>
+</ul>
+<hr>
+<h2 id="第六章-关于在开关模式电源印刷电路板上放置电感的指南"><a href="#第六章-关于在开关模式电源印刷电路板上放置电感的指南" class="headerlink" title="第六章 关于在开关模式电源印刷电路板上放置电感的指南"></a>第六章 关于在开关模式电源印刷电路板上放置电感的指南</h2><p><strong>问题：线圈应该放在哪里？</strong></p>
+<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><ul>
+<li>开关稳压器用电感临时存储能量；电感尺寸通常非常大，必须在 PCB 布局中为其安排位置。</li>
+<li>这项任务并不难：通过电感的电流可能变化，但<strong>并非瞬间变化</strong>——变化只可能是连续的、通常相对缓慢。</li>
+<li>开关稳压器在两个不同路径之间来回快速切换电流。开关电流流经的走线称为<strong>热回路（交流电流路径）</strong>：一个开关状态下传导电流，另一状态下不传导。</li>
+<li>布局要求：热回路面积小且路径短，最大限度减小走线寄生电感（寄生电感产生无用的电压失调并导致 EMI）。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731145710569.png" alt="image-20260731145710569"></p>
+<ul>
+<li><strong>线圈 L1 不是热回路的一部分</strong>（降压调节器）→ 电感放置位置是次要的。但仍应遵循一些规则：<ul>
+<li><strong>不得在电感下方（PCB 表面或下方都不行）、内层里或 PCB 背面布设敏感的控制走线</strong>：线圈受电流影响产生磁场，影响信号路径中的微弱信号。</li>
+<li>开关稳压器的关键信号路径：反馈路径（输出电压 → 稳压器 IC &#x2F; 电阻分压器）。</li>
+</ul>
+</li>
+<li>线圈既有电感效应，也有<strong>电容效应</strong>：第一个线圈绕组直接连到开关节点，线圈里电压变化与开关节点一样强烈迅速；开关时间短、输入电压高时，会在 PCB 其他路径上产生相当大的耦合效应 → <strong>敏感走线应远离线圈</strong>。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731145632031.png" alt="image-20260731145632031"></p>
+<ul>
+<li>关于线圈下方是否保留铜层的争论：<ul>
+<li>一些设计者在电感下方提供切口（甚至接地平面层）——防止线圈磁场在下方接地平面形成涡流。</li>
+<li>反方观点（作者赞同接地平面保持完整）：<ul>
+<li>用于屏蔽的接地平面在不中断时效果最佳；</li>
+<li>PCB 的铜越多，散热越好；</li>
+<li>即使产生涡流，也只能局部流动，损耗很小，几乎不影响接地平面功能。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>结论</strong>：线圈虽不是临界热回路的一部分，但不在线圈下方或靠近线圈处布敏感控制走线是明智的；PCB 各种平面（接地平面、VDD 平面）可以连续构造，无需切口。</li>
+</ul>
+<hr>
+<h2 id="第七章-差分滤波器布局八大考虑因素"><a href="#第七章-差分滤波器布局八大考虑因素" class="headerlink" title="第七章 差分滤波器布局八大考虑因素"></a>第七章 差分滤波器布局八大考虑因素</h2><ol>
+<li><strong>成对差分走线的长度须相同</strong><ul>
+<li>差分接收器检测正负信号跨过彼此的点（交越点），信号须同时到达接收器才能正常工作。</li>
+</ul>
+</li>
+<li><strong>差分对内的走线布线须彼此靠近</strong><ul>
+<li>相邻线路间距大于电介质厚度 2 倍时耦合会很小。</li>
+<li>差分信号相等但相反：外部噪声同等干扰两个信号时影响互相抵消；并排布线时差分信号在相邻导线中引起的干扰噪声也会抵消。</li>
+</ul>
+</li>
+<li><strong>同一差分对内的走线间距在全长范围内须保持不变</strong><ul>
+<li>间距影响总阻抗；间距在驱动器与接收器之间变化不定 → 阻抗不匹配 → 反射。</li>
+</ul>
+</li>
+<li><strong>差分对之间的间距应较宽</strong><ul>
+<li>使其间的串扰最小。</li>
+</ul>
+</li>
+<li><strong>如果在同一层上使用铜皮铺地，应加大从差分走线到铜皮铺地之间的间隙</strong><ul>
+<li>推荐最小间隙为走线宽度的 3 倍。</li>
+</ul>
+</li>
+<li><strong>在靠近差分对内偏斜源处引入少量弯弯曲曲的校正</strong>，从而降低这种偏斜。</li>
+</ol>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731145902738.png" alt="image-20260731145902738"></p>
+<ol start="7">
+<li><strong>差分对布线时应避免急转弯 (90°)，应使用对称布线</strong></li>
+</ol>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731145925571.png" alt="image-20260731145925571"></p>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731145935730.png" alt="image-20260731145935730"></p>
+<ol start="8">
+<li><strong>若需要测试点，应避免引入走线分支，且测试点应对称放置</strong></li>
+</ol>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731145954638.png" alt="image-20260731145954638"></p>
+<h3 id="寄生参数控制"><a href="#寄生参数控制" class="headerlink" title="寄生参数控制"></a>寄生参数控制</h3><ul>
+<li>就降低对滤波器元件值的要求、减少 PCB 上的调谐工作量而言，<strong>寄生电容和电感应尽可能小</strong>。</li>
+<li>与滤波器电感设计值相比，寄生电感可能微不足道；<strong>寄生电容对差分 IF 滤波器更为重要</strong>（IF 滤波器电容只有几 pF，寄生电容达到数十分之一 pF 时滤波器响应受相当大影响）。</li>
+<li>良好做法：<strong>避免差分布线区域和电源扼流圈下有任何接地或电源层</strong>。</li>
+<li>示例：ADI 接收器参考设计板——ADL5201 与 AD6649（14 位 250MHz 流水线式 ADC，SNR 性能非常好）之间的五阶滤波器。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731150059436.png" alt="image-20260731150059436"></p>
+<hr>
+<h2 id="第八章-电路散热设计技巧"><a href="#第八章-电路散热设计技巧" class="headerlink" title="第八章 电路散热设计技巧"></a>第八章 电路散热设计技巧</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>处理大功率的 IC 越来越需要达到热管理要求。所有半导体都针对<strong>结温 (TJ)</strong> 规定了安全上限，通常为 <strong>150°C</strong>（有时 175°C）——最差情况限制，不得超过；保守设计留充分安全裕量。</li>
+<li><strong>半导体的寿命与工作结温成反比</strong>：IC 温度越低，越有可能达到最长寿命。</li>
+<li>数据手册示例（AD8017AR，8 引脚 SOIC）：最大安全功耗受结温上升限制；塑封器件安全结温由塑料玻璃化转变温度决定（约 +150°C）；短暂超限可能因封装对芯片应力变化导致参数漂移；长期超过 +175°C 结温可能导致器件失效。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731151425722.png" alt="image-20260731151425722"></p>
+<ul>
+<li>AD8017AR：25°C 环境温度下额定功耗 1.3W（假设 8 引脚 SOIC 配双层 PCB、约 4 in²(~2500mm²) 的 2 盎司铜散热）。</li>
+</ul>
+<h3 id="散热设计基础"><a href="#散热设计基础" class="headerlink" title="散热设计基础"></a>散热设计基础</h3><ul>
+<li>热阻符号 <strong>θ</strong>，单位 <strong>°C&#x2F;W</strong>；除非另有说明，指热量从热 IC 结点传导至环境空气时遇到的阻力（θJA&#x3D;结至环境热阻；另有 θJC、θCA）。</li>
+<li>线性关系：θ&#x3D;100°C&#x2F;W 的器件在 1W 功耗下表现出 100°C 温差。</li>
+<li>AD8017AR：θ≈95°C&#x2F;W → 1.3W 功耗产生约 124°C 结至环境温差；环境 25°C 时允许约 150°C 内部结温（实际多数环境温度 &gt;25°C，可处理功耗稍低）。</li>
+<li>通用公式：</li>
+</ul>
+<pre class="line-numbers language-none" data-start="1"><code class="language-none">ΔT &#x3D; P × θ          （等式1）
+θJA &#x3D; θJC + θCA      （等式2）
+TJ &#x3D; TA + P × θJA</code></pre>
+
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731170622028.png" alt="image-20260731170622028"></p>
+<ul>
+<li>串行热阻模拟器件的总热阻路径：总 θ &#x3D; θJC + θCA。要维持低 TJ，必须使 θ 或功耗（或二者）较低；低 ΔT 是延长半导体寿命的关键。</li>
+<li>温度参照点：TJ（芯片内部最热点）、TC（器件外壳）、TA（周围空气）。</li>
+<li>θJA 通常适用于小型、功耗 ≤1W 的 IC（如运放）；8 引脚 DIP 塑封或更优秀的 SOIC 封装，典型 θJA 处于 <strong>90–100°C&#x2F;W</strong> 水平。</li>
+<li>热阻很大程度取决于封装材料导热性：铜最好，其次是铝、钢等 → 铜引脚架构封装 θ 最低。</li>
+</ul>
+<h3 id="散热"><a href="#散热" class="headerlink" title="散热"></a>散热</h3><ul>
+<li>散热器：附加于 IC 之上的额外低热阻器件（θCA）。考虑散热器安装的器件特征：θJC 远低于 θJA；净 θJA &#x3D; θJC + θCA。</li>
+<li>现代 IC 更普遍的做法：需要消耗大量功率时（≥1W），<strong>以低热阻铜 PCB 走线作为散热器</strong>；制造商提供示例 PCB 布局边界条件及对应 θJA。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731170739541.png" alt="image-20260731170739541"></p>
+<ul>
+<li>减额曲线：容许功耗随环境温度而下降。</li>
+<li>AD8017AR 采用 ADI 专有散热增强型 (Thermal Coastline) IC 封装：不增加 SO-8 尺寸下允许更多功耗；25°C 下容许功耗 1.3W（TJ(max)&#x3D;150°C）。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731170801208.png" alt="image-20260731170801208"></p>
+<ul>
+<li>散热增强型 25°C 容许功耗 1.3W，标准封装仅 0.8W（热传导增强 → θJA 较低）。</li>
+<li>AD8016ADSL 线路驱动器：两种封装选项 25°C 额定功耗分别 5.5W 和 3.5W。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731170821735.png" alt="image-20260731170821735"></p>
+<ul>
+<li>AD8016ARP PSOP3 + 10in²、1 盎司散热层：70°C 环境下可处理最高 3W 功耗（相当于 θJA&#x3D;18°C&#x2F;W，适用于 125°C 最大结温）。</li>
+<li>出色功耗处理能力的原因：大面积铜片，IC 芯片直接置于铜片上、底部表面裸露，直接焊接到 PCB 铜层扩大散热面。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731170840567.png" alt="image-20260731170840567"></p>
+<ul>
+<li>上述热数据适用于不使用定向气流的情况；增加气流会进一步降低热阻。</li>
+</ul>
+<h3 id="低热阻设计注意事项（9-条）"><a href="#低热阻设计注意事项（9-条）" class="headerlink" title="低热阻设计注意事项（9 条）"></a>低热阻设计注意事项（9 条）</h3><ol>
+<li>对于 PCB 散热器，使用面积尽量大的铜片，以”效益递减”点为度；</li>
+<li>与 1 结合，使用多个（外部）PCB 层，用多个过孔连接起来；</li>
+<li>根据实际情况尽量使用质量较重的铜（最好 2 盎司或以上）；</li>
+<li>在系统中提供充足的天然通风出入口，以便热能从热的 PCB 表面自由散开；</li>
+<li>使功耗消散 PCB 层垂直朝向，促进散热器区域的气流对流；</li>
+<li>针对精密运算放大器应用，考虑使用外部功率缓冲级；</li>
+<li>对于需要在有限空间下耗散数瓦特的情况，考虑使用强制通风方法；</li>
+<li>不要在散热走线上覆盖阻焊层；</li>
+<li>不要在供电 IC 上使用过大的电源电压。</li>
+</ol>
+<ul>
+<li>第 9 条说明：应用只需适中电压摆幅时（如标准视频 2Vp-p），即使负载功率恒定，较高电源电压下运放驱动器仍产生较大 IC 功耗。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731170912183.png" alt="image-20260731170912183"></p>
+<ul>
+<li>只要失真性能不恶化，就应为 IC 提供较低电压（如 ±5V 而非 ±15V）。</li>
+<li>直流为基础的计算比正弦波或噪声类波形（如 DMT 信号）功耗更大；一般原则：负载电流高、电压低时，运放功耗就高。</li>
+<li>小型封装趋势：牺牲散热性能换取 PCB 板密度。AD8057&#x2F;AD8058 三种封装 θJA：SOT-23-5 &#x3D; 240°C&#x2F;W、8 引脚 μSOIC &#x3D; 200°C&#x2F;W、标准 SOIC &#x3D; 160°C&#x2F;W。这是<strong>封装限制而非器件限制</strong>（引脚架构是微型封装唯一散热通道）。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731170943740.png" alt="image-20260731170943740"></p>
+<h3 id="数据转换器散热考虑"><a href="#数据转换器散热考虑" class="headerlink" title="数据转换器散热考虑"></a>数据转换器散热考虑</h3><ul>
+<li>许多数据转换器（尤其 CMOS 类）的功耗<strong>高度依赖于输出数据负载和采样时钟频率</strong>（有时还是模拟输入频率和幅度的函数）；许多新型高速转换器最差条件下可能消耗 1.5W~2W。</li>
+<li>MT-031 指南：高性能 ADC（尤其并行输出）数字输出负载不宜过大 (5–10pF)，防止数字瞬变电流导致 SNR 和 SFDR 下降。</li>
+<li>AD9245（14 位、80MSPS、3V CMOS ADC）：模拟输入 2.5MHz、输出负载 5pF 时，采样频率 10MSPS<del>80MSPS 变化 → 总功耗 310mW</del>380mW。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171002758.png" alt="image-20260731171002758"></p>
+<ul>
+<li>AD9245 采用 32 引脚 LFCSP，裸露焊盘应焊接到 PC 板接地层获得最佳热传导。<ul>
+<li>最差情况 θJA &#x3D; 32.5°C&#x2F;W；380mW 时结温比环境高 32.5×0.38&#x3D;12.3°C；最高工作温度 +85°C 时结温 97.3°C。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171025705.png" alt="image-20260731171025705"></p>
+<ul>
+<li>AD9430（12 位、170&#x2F;210MSPS、3.3V BiCMOS ADC）：双通道 105MSPS 解复用 CMOS 输出和 210MSPS LVDS 输出两种模式。<ul>
+<li>LVDS 模式 210MSPS 时总电源电流约 455mA → 总功耗 1.5W。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171044663.png" alt="image-20260731171044663"></p>
+<ul>
+<li>AD9430 采用 100 引脚 TQFP&#x2F;EP（带裸露焊盘）：导电焊盘与芯片接地面相连，应焊接到 PC 板接地层。<ul>
+<li>焊接后静止空气中 θJA&#x3D;25°C&#x2F;W；1.5W 时结温比环境高 37.5°C；+85°C 时结温 122.5°C。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171102200.png" alt="image-20260731171102200"></p>
+<ul>
+<li>AD6645（14 位、80&#x2F;105MSPS ADC，XFCB 工艺，SFDR 89dBc、SNR 75dB）：最大功耗 1.75W，散热增强型 52 引脚 PowerQuad 4 封装带裸露焊盘。<ul>
+<li>裸露中央散热器焊到 PC 板接地层：静止空气 θJA 减至 23°C&#x2F;W；1.75W → 结温比环境高 40.3°C；+85°C 时结温 125.3°C。</li>
+<li>200LFPM 气流可使热阻降至 17°C&#x2F;W，结温降至比环境高 30°C（+85°C 环境 → 结温 115°C）。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171121281.png" alt="image-20260731171121281"></p>
+<ul>
+<li>高速 CMOS DAC（TxDAC 系列）和 DDS IC（AD985x 系列）功耗同样取决于时钟速率。<ul>
+<li>AD9777（16 位 160MSPS 双通道插值 DAC）：功耗是时钟速率、输出频率、PLL 和调制功能使能的函数；3.3V 电源时功耗 380mW（fDAC&#x3D;100MSPS, fOUT&#x3D;1MHz, 无插值无调制）至 1.75W（fDAC&#x3D;400MSPS, fDATA&#x3D;50MHz, fs&#x2F;2 调制, PLL 使能）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>本章讨论运放和数据转换器散热应用问题；未涉及夹式&#x2F;螺栓式散热器和强制通风冷却（一般用于数十瓦特功耗），因其不适用于当今的运放和数据转换器封装。</li>
+</ul>
+<hr>
+<h2 id="第九章-降压调节器的-PCB-布局布线指南"><a href="#第九章-降压调节器的-PCB-布局布线指南" class="headerlink" title="第九章 降压调节器的 PCB 布局布线指南"></a>第九章 降压调节器的 PCB 布局布线指南</h2><blockquote>
+<p>“噪声问题！”——花费数小时实验室测试揪出元凶，最终却发现噪声是开关电源布局不当引起的；解决可能需要设计新布局，导致产品延期和开发成本增加。<br>示例采用双通道同步开关控制器 <strong>ADP1850</strong>。</p>
+</blockquote>
+<h3 id="第一步：确定电流路径"><a href="#第一步：确定电流路径" class="headerlink" title="第一步：确定电流路径"></a>第一步：确定电流路径</h3><ul>
+<li>开关转换器中高电流路径和低电流路径彼此非常靠近：<ul>
+<li>交流 (AC) 路径携带尖峰和噪声；</li>
+<li>高直流 (DC) 路径产生相当大的压降；</li>
+<li>低电流路径往往对噪声很敏感。</li>
+</ul>
+</li>
+<li>关键：确定关键路径 → 安排器件 → 提供足够铜面积以免高电流破坏低电流。性能不佳表现为接地反弹和噪声注入 IC 及系统其余部分。</li>
+<li>同步降压调节器（图1）组成：开关控制器 + 高端开关、低端开关、电感、输入电容、输出电容和旁路电容。必须小心放置电源器件，避免不良寄生电容电感 → 过大噪声、过冲、响铃振荡和接地反弹。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171204777.png" alt="image-20260731171204777"></p>
+<ul>
+<li>DH、DL、BST、SW 等开关电流路径离开控制器后需妥善安排，避免过大寄生电感：这些线路承载的高 δI&#x2F;δt 交流开关脉冲电流可能达 3A 以上并持续数纳秒。<strong>高电流环路必须很小</strong>。</li>
+<li>低值、低幅度信号路径（补偿和反馈器件等）对噪声很敏感：远离开关节点和电源器件。</li>
+</ul>
+<h3 id="第二步：布局物理规划"><a href="#第二步：布局物理规划" class="headerlink" title="第二步：布局物理规划"></a>第二步：布局物理规划</h3><ul>
+<li>PCB 物理规划 (floor plan)：电流环路面积最小；合理安排电源器件使电流顺畅流动，避免尖角和窄小路径 → 减小寄生电容电感、消除接地反弹。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171223245.png" alt="image-20260731171223245"></p>
+<ul>
+<li>同步和异步控制器均可使用这一物理规划技术（异步设计中肖特基二极管取代低端开关）。</li>
+</ul>
+<h3 id="第三步：电源器件——MOSFET-和电容（输入、旁路和输出）"><a href="#第三步：电源器件——MOSFET-和电容（输入、旁路和输出）" class="headerlink" title="第三步：电源器件——MOSFET 和电容（输入、旁路和输出）"></a>第三步：电源器件——MOSFET 和电容（输入、旁路和输出）</h3><ul>
+<li>顶部和底部电源开关处电流波形是非常高 δI&#x2F;δt 的脉冲：连接各开关的路径应尽可能短。</li>
+<li>PCB 一侧使用一对 DPAK 或 SO-8 封装 FET 时：<strong>沿相反方向旋转这两个 FET</strong>，使开关节点位于该对 FET 的一侧，并用合适陶瓷旁路电容将高端漏电流旁路到低端源。</li>
+<li>旁路电容尽可能靠近 MOSFET 放置，尽量减小穿过 FET 和电容的环路周围电感。</li>
+<li>输出滤波器电容负端连接应尽可能靠近低端 MOSFET 的源（减小引起接地反弹的环路电感）。</li>
+<li>Cb1&#x2F;Cb2 陶瓷旁路电容推荐值：<strong>1μF~22μF</strong>；高电流应用额外并联较大值滤波器电容（CIN）。</li>
+</ul>
+<h3 id="散热考虑和接地层"><a href="#散热考虑和接地层" class="headerlink" title="散热考虑和接地层"></a>散热考虑和接地层</h3><ul>
+<li>重载下功率 MOSFET、电感和大电容 ESR 产生大量热：在这些电源器件下面放置大面积铜。</li>
+<li>多层 PCB 散热好于 2 层：标准 1 盎司铜层上使用 2 盎司厚度的铜提高散热导电性能；多个 PGND 层通过过孔连在一起。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171246115.png" alt="image-20260731171246115"></p>
+<ul>
+<li>多接地层方法能够隔离对噪声敏感的信号：<ul>
+<li>补偿器件、软启动电容、偏置输入旁路电容和输出反馈分压器电阻的负端全都连接到 <strong>AGND 层</strong>（安静接地层，无大电流流过）；勿直接将任何高电流或高 δI&#x2F;δt 路径连接到隔离 AGND 层。</li>
+<li>所有电源器件（低端开关、旁路电容、输入输出电容等）负端连接到 <strong>PGND 层</strong>（承载高电流）。</li>
+</ul>
+</li>
+<li>GND 层内压降可能相当大以至影响输出精度：<strong>通过一条宽走线将 AGND 层连接到输出电容的负端</strong>，可显著改善输出精度和负载调节（图4）。</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171300884.png" alt="image-20260731171300884"></p>
+<ul>
+<li>另一种技术：AGND 层通过输出大电容负端附近的过孔连接到 PGND 层。</li>
+</ul>
+<h3 id="电流检测路径"><a href="#电流检测路径" class="headerlink" title="电流检测路径"></a>电流检测路径</h3><ul>
+<li>电流模式开关调节器的电流检测路径布局必须妥当，避免干扰噪声引起精度下降；双通道应用尤其要消除通道间串扰。</li>
+<li>ADP1850 将低端 MOSFET 导通电阻 RDS(ON) 用作控制环路架构一部分：在 SWx 与 PGNDx 引脚之间检测流经低端 MOSFET 的电流。<ul>
+<li>SWx 和 PGNDx 走线尽可能短、靠近 MOSFET；到 SWx 和 PGNDx 节点的连接务必采用<strong>开尔文检测</strong>技术。</li>
+<li>相应 PGNDx 走线连接到低端 MOSFET 的源；<strong>不要随意将 PGND 层连接到 PGNDx 引脚</strong>。</li>
+<li>对比：ADP1829 等双通道电压模式控制器的 PGND1&#x2F;PGND2 引脚直接通过过孔连接到 PGND 层。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/image-20260731171320899.png" alt="image-20260731171320899"></p>
+<h3 id="反馈和限流检测路径"><a href="#反馈和限流检测路径" class="headerlink" title="反馈和限流检测路径"></a>反馈和限流检测路径</h3><ul>
+<li>FB 和 ILIM 引脚是低信号电平输入，对容性和感性噪声干扰敏感：<ul>
+<li>走线避免靠近高 δI&#x2F;δt 走线；注意不要让走线形成环路（不良电感增加）。</li>
+<li>在 ILIM 和 PGND 引脚之间增加一个小 MLCC 去耦电容（如 <strong>22pF</strong>）有助于进一步滤波。</li>
+</ul>
+</li>
+</ul>
+<h3 id="开关节点"><a href="#开关节点" class="headerlink" title="开关节点"></a>开关节点</h3><ul>
+<li>SW 节点是开关调节器电路中<strong>噪声最高</strong>的地方（承载很大交流和直流电压&#x2F;电流）。</li>
+<li>需要较大面积铜降低阻性压降；MOSFET 和电感彼此靠近放在铜层上，使串联电阻和电感最小。</li>
+<li>对 EMI、开关节点噪声和响铃振荡更敏感的应用可使用小<strong>缓冲器 (snubber)</strong>：电阻和电容串联（RSNUB、CSNUB），放在 SW 节点与 PGND 层之间，降低响铃振荡和 EMI。注意：增加缓冲器可能使整体效率略微下降 <strong>0.2%~0.4%</strong>。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E5%9B%BE6" alt="图6. 缓冲器和栅极电阻（RRISE&#x2F;RDH&#x2F;RDL&#x2F;RSNUB&#x2F;CSNUB位置）"></p>
+<h3 id="栅极驱动器路径"><a href="#栅极驱动器路径" class="headerlink" title="栅极驱动器路径"></a>栅极驱动器路径</h3><ul>
+<li>栅极驱动走线（DH 和 DL）处理高 δI&#x2F;δt，往往产生响铃振荡和过冲：<ul>
+<li>走线尽可能短；最好直接布线，避免使用馈通过孔；必须使用过孔时每条走线用<strong>两个过孔</strong>（降低峰值电流密度和寄生电感）。</li>
+</ul>
+</li>
+<li>在 DH 或 DL 引脚上串联小电阻（约 <strong>2Ω~4Ω</strong>）可减慢栅极驱动，降低栅极噪声和过冲；BST 与 SW 引脚之间也可连接电阻。</li>
+<li>布局期间用 0Ω 栅极电阻保留空间，提高日后评估灵活性。注意：增加栅极电阻会延长栅极电荷上升&#x2F;下降时间，导致 MOSFET 开关功率损耗提高。</li>
+</ul>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>了解电流路径、其敏感性以及适当的器件放置，是消除 PCB 布局设计噪声问题的关键。</li>
+<li>ADI 所有电源器件评估板都采用上述指导原则；评估板文件 <strong>UG-204 和 UG-205</strong> 详细说明了 ADP1850 相关布局布线。</li>
+<li>所有开关电源具有相同元件和相似电流路径敏感性：以电流模式降压调节器 ADP1850 为例的原则同样适用于电压模式和&#x2F;或升压开关调节器。</li>
+</ul>
+<hr>
+<h2 id="第十章-开关稳压器的接地处理"><a href="#第十章-开关稳压器的接地处理" class="headerlink" title="第十章 开关稳压器的接地处理"></a>第十章 开关稳压器的接地处理</h2><p><strong>问题：如何使用带有模拟接地层 (AGND) 和功率接地层 (PGND) 的开关稳压器？</strong></p>
+<ul>
+<li>许多开发人员已习惯处理数字&#x2F;模拟接地层，但涉及功率 GND 时经验往往失效；设计师通常直接复制所选开关稳压器的电路板布局。</li>
+<li>定义：<ul>
+<li><strong>PGND</strong>：较高脉冲电流流经的接地连接。根据拓扑结构，指通过功率晶体管的电流或功率驱动器级的脉冲电流；对带外部开关管的开关控制器尤为重要。</li>
+<li><strong>AGND</strong>（有时称 SGND，信号接地层）：其他信号用作参照的接地连接，通常十分平静；包括调节输出电压所需的内部基准电压；软启动和使能电压也以 AGND 为参照。</li>
+</ul>
+</li>
+</ul>
+<h3 id="两种技术观点"><a href="#两种技术观点" class="headerlink" title="两种技术观点"></a>两种技术观点</h3><p><strong>观点一：AGND 和 PGND 在各自引脚旁相互连接</strong></p>
+<ul>
+<li>两引脚间电压偏移保持较低水平 → 保护开关稳压器 IC 免受干扰&#x2F;破坏。</li>
+<li>电路所有接地连接和可能的接地层以<strong>星型拓扑</strong>连接到该公共点。</li>
+<li>实现示例：LTM4600（10A 降压型微型模块）——电路板上独立接地连接彼此靠在一起。</li>
+<li>由于芯片与外壳间焊线寄生电感及引脚电感，已存在一定程度的 PGND&#x2F;AGND 去耦（芯片上电路间存在少量相互干扰）。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E7%AB%A0-%E5%9B%BE1" alt="图1. 焊接触点处PGND和AGND的局部连接（LTM4600布局，蓝色椭圆标注）"></p>
+<p><strong>观点二：电路板上的 AGND 与 PGND 分开，形成两个单独接地层，在某一点相互连接</strong></p>
+<ul>
+<li>干扰信号（电压偏移）主要出现在 PGND 区域，AGND 区域电压非常平静、很好地从 PGND 去耦。</li>
+<li>风险：根据脉冲电流瞬变和电流强度，各自引脚上的 PGND 与 AGND 之间可能存在明显电压偏移 → 可能导致 IC 无法正常工作甚至损坏。</li>
+<li>实现示例：ADP2386（6A 降压型开关稳压器）——分开的 AGND 和 PGND 在接地标签下方利用过孔连接。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E7%AB%A0-%E5%9B%BE2" alt="图2. 分开的AGND和PGND在接地标签下方利用过孔连接（ADP2386布局）"></p>
+<h3 id="权衡与结论"><a href="#权衡与结论" class="headerlink" title="权衡与结论"></a>权衡与结论</h3><ul>
+<li>接地问题其实就是权衡利弊：<ul>
+<li>分开两个接地层：隔离噪音和干扰的优势；</li>
+<li>但两接地层之间可能产生电压偏移 → 损坏芯片、影响功能的风险。</li>
+</ul>
+</li>
+<li>最终决策取决于 IC 设计：开关转换速度、功率电平、焊线和 IC 封装上的寄生电感、每个 IC 设计的闩锁风险（涉及不同半导体工艺）。</li>
+<li><strong>没有简单的答案</strong>，相关讨论仍在继续。实用建议：采用 IC 制造商示例电路中的电路板布局和接地连接类型（通常可假设制造商已利用该配置对各 IC 进行了测试）；各自的 IC 引脚排列适用于 PGND 和 AGND 旁的局部接地连接，或者适用于单独接地。</li>
+</ul>
+<hr>
+<h2 id="第十一章-在密集-PCB-布局中最大限度降低多个-isoPower-器件的辐射"><a href="#第十一章-在密集-PCB-布局中最大限度降低多个-isoPower-器件的辐射" class="headerlink" title="第十一章 在密集 PCB 布局中最大限度降低多个 isoPower 器件的辐射"></a>第十一章 在密集 PCB 布局中最大限度降低多个 isoPower 器件的辐射</h2><h3 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>集成隔离电源 isoPower 的 iCoupler 数字隔离器采用隔离式 DC-DC 转换器，能够在 <strong>125MHz~200MHz</strong> 频率范围内切换相对较大的电流 → 可能增加对电磁辐射和传导噪声的担心。</li>
+<li>应用笔记《isoPower 器件的辐射控制建议》：通过电路优化（降低负载电流和电源电压）和使用<strong>跨隔离栅拼接电容</strong>（通过 PCB 内层电容实现），可把峰值辐射降低 <strong>25dB 以上</strong>。</li>
+<li>本章针对：设计中具有多个 isoPower 器件且布局非常密集的情况。</li>
+</ul>
+<h3 id="指导原则"><a href="#指导原则" class="headerlink" title="指导原则"></a>指导原则</h3><ul>
+<li><strong>内层拼接电容</strong>能构建低电感结构，最具优势；整体 PCB 区域受限时采用多层 PCB。</li>
+<li>采用尽可能多的层数（切实可行前提下），同时尽可能多地交叠电源层和接地层（参考层）。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%9B%BE1" alt="图1. PCB层堆叠示例（初级堆叠&#x2F;次级堆叠：信号、ISOGND、V ISO等六层）"></p>
+<ul>
+<li>埋层（原边 3、4 层，副边 2 至 5 层）可承载电力和接地电流。</li>
+<li>跨越隔离栅的交叠（例如原边第 4 层 GND 和副边第 3 层 V Iso）形成理想的拼接电容；多层 PCB 堆叠形成多个交叠 → 提高整体电容。</li>
+<li>为使电容最大，还必须<strong>减小参考层之间 PCB 电介质材料的厚度</strong>。</li>
+<li>另一个布局技巧：<strong>交叠相邻 isoPower 通道的各层</strong>。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%9B%BE2" alt="图2. 具有交叠拼接电容的四个相邻通道（顶部信号&#x2F;内部参考层×2）"></p>
+<ul>
+<li>每个输出域与其他域隔离，但仍能利用一些交叠电容；每个 isoPower 器件可增加电容以及相邻隔离区连接。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%9B%BE3" alt="图3. 具有交叠拼接电容的四个相邻通道（初级到次级电容交叠&#x2F;次级横向电容交叠）"></p>
+<ul>
+<li>必须确保内部和外部间隙要求符合最终应用。</li>
+<li>还可使用<strong>铁氧体磁珠</strong>在任意电缆连接上提供过滤，减少可能产生辐射的天线效应。</li>
+</ul>
+<h3 id="总结（要点清单）"><a href="#总结（要点清单）" class="headerlink" title="总结（要点清单）"></a>总结（要点清单）</h3><ul>
+<li>最大程度降低每个通道的电源要求</li>
+<li>在多个 PCB 层上构建拼接</li>
+<li>采用尽可能多的 PCB 层（切实可行）</li>
+<li>在各参考层间使用最薄的电介质</li>
+<li>在相邻域之间进行连接</li>
+<li>确保内部和外部爬电距离仍然符合要求</li>
+<li>电缆连接上提供过滤</li>
+</ul>
+<hr>
+<h2 id="第十二章-高温环境下的封装考虑因素"><a href="#第十二章-高温环境下的封装考虑因素" class="headerlink" title="第十二章 高温环境下的封装考虑因素"></a>第十二章 高温环境下的封装考虑因素</h2><ul>
+<li>在高温下进行芯片封装并连接至 PCB 绝非易事——高温时许多因素都会影响封装完整性；高温功能化硅的采用只相当于完成了一半的工作。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9B%BE1" alt="图1. IC封装和贴装元件（1硅片 2芯片粘着 3焊盘金属化 4焊线 5封装 6引脚 7引脚焊料完整性 8PCB走线 9PCB热完整性）"></p>
+<h3 id="芯片粘着"><a href="#芯片粘着" class="headerlink" title="芯片粘着"></a>芯片粘着</h3><ul>
+<li>材料确保将硅连接至封装或基板。许多标准温度范围内稳定的材料<strong>玻璃化转变温度 (TG) 较低</strong>，不适合高温工作。</li>
+<li>对芯片、芯片粘着材料和基板的<strong>热膨胀系数 (CTE)</strong> 进行匹配需特别注意——防止芯片在宽温度范围反复工作时受到应力或断裂。</li>
+<li>芯片上即便少量机械应力也可能导致电气参数变化，达到精密应用不可接受的水平。</li>
+<li>需要热连接和电气连接至封装基板的功率器件，可能需要<strong>金属芯片粘着材料</strong>。</li>
+</ul>
+<h3 id="线焊"><a href="#线焊" class="headerlink" title="线焊"></a>线焊</h3><ul>
+<li>芯片和引脚互连方法：芯片表面上从引脚架构至焊盘用金属线连接。</li>
+<li>高温线焊可靠性的一大问题：<strong>线所用金属与焊盘金属化层的兼容性</strong>。</li>
+<li>焊接金属兼容性差产生的两方面故障：<ol>
+<li>边界接口的<strong>金属间化合物 (IMC) 生长</strong> → 焊接易碎；</li>
+<li><strong>扩散（柯肯达尔效应）</strong> → 接口处产生空洞，减小焊接强度并增加电阻。</li>
+</ol>
+</li>
+<li>业界最常见的金属组合之一（金线 + 铝焊盘金属化层）在高温时就容易产生上述现象。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9B%BE2" alt="图2. 195°C下500小时后的金&#x2F;铝焊接（剖面图显示IMC生长影响焊接完整性）"></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9B%BE3" alt="图3. 产生空洞的金属间化合物生长（高温焊接失败后明显的金&#x2F;铝IMC生长和柯肯达尔空洞）"></p>
+<ul>
+<li>更糟的是：溴和氯等卤素（时见于塑封材料）在高温时也会引起边界接口腐蚀，加速焊接失败（幸而业界已转用”绿色”无卤素塑封材料）。</li>
+<li>对策：焊线和焊盘最好采用<strong>相同金属（单金属焊接）</strong>；不能采用相同金属时，选择 IMC 生长和扩散率足够慢的金属，保证所需寿命内可靠使用。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9B%BE4" alt="图4. 195°C下3000小时后的单金属焊接（剖面未出现IMC生长迹象）"></p>
+<h3 id="IC-封装"><a href="#IC-封装" class="headerlink" title="IC 封装"></a>IC 封装</h3><ul>
+<li>封装必须能承受恶劣环境应力：<ul>
+<li>塑料封装传统上只能在 <strong>150°C</strong> 额定温度下持续使用；近期研究表明可增至 <strong>175°C</strong> 但只能持续较短时间。</li>
+<li>175°C 是某些材料（如塑封材料）超过玻璃化转变温度的温度点；TG 以上工作使关键参数（CTE、弯曲模量）产生显著机械变化，因热应变引起分层及开裂等焊接失败。</li>
+</ul>
+</li>
+<li><strong>高温应用最好选用密封陶瓷封装</strong>：密封防止导致腐蚀的湿气和污染进入。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9B%BE5" alt="图5. 密封侧面钎焊陶瓷DIP封装（ADXL206）"></p>
+<ul>
+<li>密封封装缺点：通常较大较重、价格比同类塑料封装贵得多。</li>
+<li>极端温度要求 (&lt;175°C) 较少的应用中，最好采用塑料封装（减少 PCB 面积、降低成本、更好的振动顺应性）。</li>
+<li>需要密封封装 + 高器件密度的系统：<strong>高温多芯片模块</strong>是较合理的方案（需提供已知合格芯片）。</li>
+</ul>
+<h3 id="封装引脚配置和金属化"><a href="#封装引脚配置和金属化" class="headerlink" title="封装引脚配置和金属化"></a>封装引脚配置和金属化</h3><ul>
+<li>表面贴装器件质量仅取决于焊盘面积以及铜层和预浸材料之间的粘结质量。</li>
+<li><strong>通孔 DIP 配置</strong>（业界最可靠封装之一）提供鲁棒的冲击和振动性能；极端情况下可弯曲电路板底侧引脚并”钉”在 PCB 上进一步提升连接强度。缺点：通孔引脚排列不允许电路板低侧元件密集分布（空间限制严格的井下仪器等应用的问题）。</li>
+<li><strong>鸥翼 SMT</strong> 引脚配置是可行替代；<strong>无引脚 SMT</strong> 在许多高温环境下面临高冲击和振动时不够鲁棒。</li>
+<li>采用 SMT 器件时考虑其高度和质量；高温环氧树脂可提高连接鲁棒性，但增加制造成本、加大维修难度。</li>
+<li>所有情况下，引脚金属化层都必须兼容高温焊料。</li>
+<li>焊料：<ul>
+<li>最常见标准焊料合金熔点低于 200°C；”高熔点”(HMP) 合金熔点远高于 250°C。</li>
+<li>对任何受应力影响的焊料，最高推荐工作温度比其熔点低 <strong>40°C 左右</strong>。</li>
+<li>例：标准 HMP 焊料合金（5% 锡、93.5% 铅、1.5% 银）熔点 294°C，推荐工作温度仅 255°C。</li>
+<li>注意：BGA 封装有工厂粘结的焊料球，熔点可能不会太高。</li>
+</ul>
+</li>
+</ul>
+<h3 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a>PCB</h3><ul>
+<li>PCB 本身也可能是焊接失败的原因：<ul>
+<li>标准 <strong>FR4</strong> 材料在 130°C~180°C 可发生玻璃化转变（依成分而定）；在该温度以上使用（即使时间短）也会出现扩散和分层。</li>
+<li><strong>聚酰亚胺</strong>是可靠替代材料（Kapton 采用），TG 高达 250°C；但吸湿性极强，可能使 PCB 迅速故障——控制湿气暴露至关重要。</li>
+<li>近年业界引进了吸湿性较小且高温时保持完整的新型层压材料。</li>
+</ul>
+</li>
+</ul>
+<h3 id="高温器件的验证测试（以-AD8229-为例）"><a href="#高温器件的验证测试（以-AD8229-为例）" class="headerlink" title="高温器件的验证测试（以 AD8229 为例）"></a>高温器件的验证测试（以 AD8229 为例）</h3><ul>
+<li>实验室验证高温器件并非易事：测试夹具需特殊材料；谨慎操作环境试验箱。</li>
+<li>膨胀系数不匹配时快速温度变化会损害 PCB 焊点、产生翘曲变形、使系统过早故障；业界原则：<strong>温度变化率保持在每分钟 3°C 以下</strong>。</li>
+<li>加速寿命测试：高温下测试并引入加速系数 α（Arrhenius 方程）：</li>
+</ul>
+<pre class="line-numbers language-none" data-start="1"><code class="language-none">α &#x3D; e^[ (Ea&#x2F;k) × (1&#x2F;Ta − 1&#x2F;Ts) ]</code></pre>
+
+<ul>
+<li>Ea：激活能；k：玻尔兹曼常数；Ta：使用时预期工作温度；Ts：应力温度。</li>
+<li>注意：应力温度远高于额定温度可能引起新的故障机制，导致结果不准确。</li>
+<li>AD8229 终身可靠性保证：<strong>210°C 最高额定温度下为期 1000 小时（约六周）的高温工作寿命测试 (HTOL)</strong>；低温情况下预期寿命用加速度关系预测。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9B%BE6" alt="图6. AD8229寿命与工作温度，1000小时(210°C)（预测寿命-工作温度曲线）"></p>
+<ul>
+<li>其他阻碍因素：<ul>
+<li>测试测量系统可靠性取决于最薄弱环节——长期高温下每个要素自身可靠性必须优于 IC；否则数据无法体现器件长期可靠性，过程不断重复既昂贵又耗时。</li>
+<li>统计技术可提高测试成功率（准确加大测试样本、增加误差余量、防止 DUT 故障导致系统过早故障）。</li>
+<li>保证极端情况下性能参数所需的生产环节（测试、探测和调整）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="第十三章-实现数据转换器的最佳接地"><a href="#第十三章-实现数据转换器的最佳接地" class="headerlink" title="第十三章 实现数据转换器的最佳接地"></a>第十三章 实现数据转换器的最佳接地</h2><h3 id="接地回路与误差电压"><a href="#接地回路与误差电压" class="headerlink" title="接地回路与误差电压"></a>接地回路与误差电压</h3><ul>
+<li>信号源与负载之间隔开一段距离时，接地 G1 和 G2 通过一个回路连接。</li>
+<li>理想情况：G1 和 G2 之间接地阻抗为 0 → 接地回路电流不会在 G1 和 G2 之间产生差分电压。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%9B%BE1" alt="图1. 电路中任何一点电流的算术和为0（流出去的必会流回来）；若G1和G2之间阻抗为0，则无差分电压"></p>
+<ul>
+<li>现实：让回流路径保持零阻抗是不可能的——接地回路阻抗在接地电流作用下，在 G1 和 G2 之间产生误差电压 <strong>ΔV</strong>。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%9B%BE2" alt="图2. 接地阻抗中流动的信号和&#x2F;或外部电流产生误差电压ΔV"></p>
+<ul>
+<li>G1 和 G2 之间的连接不仅有电阻，还有电感（本文忽略杂散电容影响）。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%9B%BE3" alt="图3. 采用无焊试验板的电路"></p>
+<ul>
+<li>G1 和 G2 之间流动的电流可以是信号电流或其他电路引起的外部电流。</li>
+<li>接地总线阻抗是否影响电路运行，取决于：电路的直流精度要求 + 模拟信号频率 + 电路中数字开关元件产生的频率分量。<ul>
+<li>最大信号频率 1MHz、仅需几 mA 电流 → 接地总线阻抗可能不是问题；</li>
+<li>信号 100MHz、驱动需要 100mA 的负载 → 阻抗很可能成为问题。</li>
+</ul>
+</li>
+<li>“母线 (buss wire)” 在大多数逻辑转换等效频率下具有阻抗，用作数字接地回路不能接受：<ul>
+<li>#22 标准导线：约 <strong>20nH&#x2F;英寸</strong> 电感、<strong>1mΩ&#x2F;英寸</strong> 电阻。</li>
+<li>压摆率 10mA&#x2F;ns 的瞬态电流流经 1 英寸导线 → <strong>200mV</strong> 无用压降；对 2V 峰峰值信号 ≈ 10% 误差（约 3.5 位精度），即使全数字电路也大幅降低逻辑噪声裕量。</li>
+<li>低频信号：100mA 电流流过 1 英寸 #22 导线 → 压降约 100μV。</li>
+<li>2V 峰峰值信号数字化到 16 位：1 LSB &#x3D; 2V&#x2F;2^16 &#x3D; 30.5μV → 导线电阻引起的 100μV 误差约等于 <strong>3.3 LSB</strong> 误差（16 位精度水平）。</li>
+</ul>
+</li>
+<li>模拟接地回路中流动的高噪声数字电流会在输入模拟电路的电压 VIN 中产生误差；<strong>将模拟电路地和数字电路地连接在同一点</strong>可在某种程度上缓解。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%9B%BE4" alt="图4. 模拟电路和数字电路使用单点接地可降低高噪声数字电路引起的误差效应（Incorrect&#x2F;Correct对比）"></p>
+<h3 id="接地层在当今系统中必不可少"><a href="#接地层在当今系统中必不可少" class="headerlink" title="接地层在当今系统中必不可少"></a>接地层在当今系统中必不可少</h3><ul>
+<li>无焊试验板和总线结构电路板能用来降低接地阻抗的手段并不多。</li>
+<li><strong>实接地层是提供低阻抗回流路径的工业标准方法</strong>；生产用印刷电路板一般有一层或多层专门用于接地（适合最终生产，原型系统中较难实现）。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%9B%BE5" alt="图5. 针对混合信号系统PCB的良好接地解决方案（模拟&#x2F;数字电路分离于各自接地层，混合信号器件横跨两个接地层，系统星形接地为连接点）"></p>
+<ul>
+<li>模拟电路和数字电路在物理上相隔离，分别位于各自的接地层上；混合信号器件横跨两个接地层，系统单点或星形接地是两个接地层的连接点。</li>
+<li>关于模拟接地和数字接地还有其他已被证明有效的接地原理——全都基于同样的概念：<strong>分析模拟和数字电流路径，然后采取措施以最大限度地减少它们之间的相互影响</strong>。</li>
+</ul>
+<hr>
+<h2 id="第十四章-用于测量环境温度的正确-PCB-布局"><a href="#第十四章-用于测量环境温度的正确-PCB-布局" class="headerlink" title="第十四章 用于测量环境温度的正确 PCB 布局"></a>第十四章 用于测量环境温度的正确 PCB 布局</h2><h3 id="热传递基础"><a href="#热传递基础" class="headerlink" title="热传递基础"></a>热传递基础</h3><ul>
+<li>热量通常从高温物体传递到低温物体（强制系统如冰箱可反向传递）。三种基本方法：<ul>
+<li><strong>传导</strong></li>
+<li><strong>对流</strong></li>
+<li><strong>辐射</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E7%83%AD%E4%BC%A0%E9%80%92%E7%A4%BA%E6%84%8F" alt="热传递三种方式示意（传导&#x2F;对流&#x2F;辐射）"></p>
+<ul>
+<li><strong>传导是 PCB 中最普遍的热传递方法</strong>：微观上，激烈&#x2F;快速移动或振动的原子和分子与邻近原子分子相互作用，传递部分能量（热量）。</li>
+<li>PCB 一端温度较高时，能量向温度较低的一端传递；高速粒子碰撞低速粒子时发生净能量传递。传导的传热率：</li>
+</ul>
+<pre class="line-numbers language-none" data-start="1"><code class="language-none">H &#x3D; K × A × (T_HOT − T_COLD) &#x2F; L</code></pre>
+
+<ul>
+<li>H &#x3D; 单位时间传导的能量（焦耳&#x2F;秒）</li>
+<li>K &#x3D; 室温下铜的热传导系数 (385 W&#x2F;(m·K))</li>
+<li>A &#x3D; PCB 上铜的面积</li>
+<li>T &#x3D; 温度</li>
+<li>L &#x3D; 热的物体与冷的物体之间的距离</li>
+<li>结论：导热介质（如铜）面积增加 → 热量传递更快；面积减小 → 传热率减小；两物体距离越远，冷物体变热所需时间越长。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%9B%BE1" alt="图1. 传导的传热率（A、T与H的关系）"></p>
+<ul>
+<li>铜是极好的导热体，很多 PCB 设计中用于热源散热；<strong>银和金刚石是仅有的两个具有更好热传导系数的材料</strong>。</li>
+</ul>
+<h3 id="用于测量-PCB-温度的正确-PCB-布局"><a href="#用于测量-PCB-温度的正确-PCB-布局" class="headerlink" title="用于测量 PCB 温度的正确 PCB 布局"></a>用于测量 PCB 温度的正确 PCB 布局</h3><ul>
+<li><strong>PCB 热量的 60%~65% 通过引脚传递到芯片热传感器</strong>。</li>
+<li>GND 引脚连接到基板 → GND 引脚与温度传感器和热源之间的热阻最小。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%9B%BE2" alt="图2. 测量PCB温度的正确布局（主热源μController与温度传感器共GND平面）"></p>
+<ul>
+<li>有效测量 PCB 温度的技巧：<ul>
+<li>温度传感器和热源要<strong>共用同一个 GND 平面</strong>；</li>
+<li>确保温度传感器所有的 GND 引脚都与热源的 GND 平面相连；</li>
+<li>在 PCB 上，温度传感器与热源应尽可能相互靠近。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%9B%BE3" alt="图3. 数字温度传感器精确地跟踪热源的温度（布局+温度-时间曲线）"></p>
+<h3 id="用于测量环境温度的正确-PCB-布局"><a href="#用于测量环境温度的正确-PCB-布局" class="headerlink" title="用于测量环境温度的正确 PCB 布局"></a>用于测量环境温度的正确 PCB 布局</h3><ul>
+<li>问题：如何防止 PCB 上的热源影响温度传感器对环境温度的测量？</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%9B%BE4" alt="图4. 测量环境温度的正确布局（主热源下实心GND平面，传感器区域散列GND平面）"></p>
+<ul>
+<li>有效测量环境温度的技巧（防止主要热源散热影响传感器）：<ul>
+<li>使用<strong>散列 GND 平面</strong>：减少 GND 平面面积来增加热阻；</li>
+<li>温度传感器尽可能地<strong>远离热源</strong>；</li>
+<li>为温度传感器提供<strong>单独的 GND 平面</strong>，尽量减少与主 GND 平面的连接；</li>
+<li>使用<strong>窄的 GND 连接</strong>来增加热阻；</li>
+<li>主热源下面使用<strong>实心 GND 平面并露出绿色阻焊膜</strong>——使主热源散热的热阻最低。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%9B%BE5" alt="图5. 数字温度传感器精确地跟踪环境温度（布局+温度-时间曲线）"></p>
+<ul>
+<li>小结：<ul>
+<li>要用 IC 温度传感器测量 PCB 或器件温度 → 用图 2、图 3 布局方法；</li>
+<li>要监测空气温度（利用 IC 温度传感器精确、线性、响应快、使用方便的特点）→ 用图 4、图 5 布局方法。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="第十五章-最大程度提高-PCB-对电源变化抗扰度"><a href="#第十五章-最大程度提高-PCB-对电源变化抗扰度" class="headerlink" title="第十五章 最大程度提高 PCB 对电源变化抗扰度"></a>第十五章 最大程度提高 PCB 对电源变化抗扰度</h2><ul>
+<li>对转换器和最终系统而言，必须确保任意给定输入上的噪声不会影响性能。</li>
+</ul>
+<h3 id="电源噪声分析五步骤"><a href="#电源噪声分析五步骤" class="headerlink" title="电源噪声分析五步骤"></a>电源噪声分析五步骤</h3><ol>
+<li><strong>先选择转换器，再选择调节器</strong>（LDO、开关调节器等）——并非所有调节器都适用。<ul>
+<li>查看调节器数据手册中的噪声和纹波指标，以及开关频率（若使用开关调节器）。</li>
+<li>典型调节器在 100kHz 带宽内可能具有 10μV rms 噪声；假设为白噪声，在目标频段内相当于 <strong>31.6 nV rms&#x2F;√Hz</strong> 的噪声密度。</li>
+</ul>
+</li>
+<li><strong>检查转换器的电源抑制指标 (PSRR)</strong>——了解性能何时因电源噪声下降。<ul>
+<li>第一奈奎斯特区 fS&#x2F;2，大多数高速转换器 PSRR 典型值为 <strong>60dB (1mV&#x2F;V)</strong>。</li>
+<li>数据手册未给出该值时，自行测量或询问厂家。</li>
+</ul>
+</li>
+<li><strong>噪底对比计算</strong>（示例：2Vp-p 满量程、78dB SNR、125MSPS 的 16 位 ADC）：<ul>
+<li>ADC 噪底 11.26 nV rms；任何来源噪声必须低于此值。</li>
+<li>第一奈奎斯特区转换器噪声 &#x3D; 11.26 nV rms&#x2F;√Hz × √(125MHz&#x2F;2) &#x3D; <strong>89.02 μV rms</strong>。</li>
+<li>调节器噪声 (31.6 nV&#x2F;√Hz) 虽是转换器两倍以上，但经 60dB PSRR 抑制后为 31.6 nV&#x2F;√Hz × 1mV&#x2F;V &#x3D; <strong>31.6 pV&#x2F;√Hz</strong>，远小于转换器噪底 → 调节器噪声不会降低转换器性能。</li>
+</ul>
+</li>
+<li><strong>电源滤波、接地和布局同样重要</strong>：<ul>
+<li>ADC 电源引脚上增加 0.1μF 电容可使噪声低于前述计算值。</li>
+<li>某些电源引脚吸取电流较多或更敏感：慎用去耦电容，但注意某些引脚可能需要额外去耦电容。</li>
+<li>电源输出端增加简单 LC 滤波器有助降噪；使用开关调节器时，级联滤波器能将噪声抑制到更低水平。</li>
+<li>记住：<strong>每增加一级增益就会每 10 倍频程增加大约 20dB</strong>。</li>
+</ul>
+</li>
+<li><strong>上述分析仅针对单个转换器</strong>；多转换器&#x2F;多通道系统噪声分析不同：<ul>
+<li>例：超声系统采用许多 ADC 通道以数字方式求和提高动态范围。</li>
+<li><strong>通道数量每增加一倍，转换器&#x2F;系统的噪底就会降低 3dB</strong>（两个转换器 −3dB；四个 −6dB）。</li>
+<li>原因：每个转换器可当作不相关的噪声源（彼此独立），可进行 RSS（平方和的平方根）计算。</li>
+<li>随着通道数量增加、系统噪底降低，系统变得更敏感，对电源的设计约束条件也更严格。</li>
+</ul>
+</li>
+</ol>
+<h3 id="有用的提示清单（提高-PCB-对电源变化的抗扰度）"><a href="#有用的提示清单（提高-PCB-对电源变化的抗扰度）" class="headerlink" title="有用的提示清单（提高 PCB 对电源变化的抗扰度）"></a>有用的提示清单（提高 PCB 对电源变化的抗扰度）</h3><ul>
+<li>对到达系统板的<strong>所有电源轨和总线电压去耦</strong>。</li>
+<li>记住：每增加一级增益就会每 10 倍频程增加大约 20dB。</li>
+<li>如果电源引线较长并为特定 IC、器件和&#x2F;或区域供电，则应<strong>再次去耦</strong>。</li>
+<li>对<strong>高频和低频都要去耦</strong>。</li>
+<li>去耦电容接地前的电源入口点常常使用<strong>串联铁氧体磁珠</strong>；对进入系统板的每个电源电压都这样做（无论来自 LDO 还是开关调节器）。</li>
+<li>对于加入的电容，使用<strong>紧密叠置的电源和接地层（间距 ≤4 密尔）</strong>，使 PCB 设计本身具备高频去耦能力。</li>
+<li>电源应<strong>远离敏感的模拟电路</strong>（如 ADC 前端级和时钟电路等）。</li>
+<li><strong>良好的电路分割至关重要</strong>；可将一些元件放在 PCB 背面以增强隔离。</li>
+<li>注意<strong>接地返回路径</strong>（特别是数字侧），确保数字瞬变不会返回到电路板的模拟部分；某些情况下分离接地层也可能有用。</li>
+<li>将模拟和数字参考元件保持在<strong>各自的层面</strong>上——增强对噪声和耦合交互作用的隔离。</li>
+<li><strong>遵循 IC 制造商的建议</strong>；应用笔记或数据手册没有直接说明时研究评估板（非常好的起步工具）。</li>
+</ul>
+<blockquote>
+<p>要想消除应用中的所有电源噪声是不可能的——任何系统都不可能完全不受电源噪声影响。作为 ADC 的用户，必须在电源设计和布局布线阶段就做好积极应对。</p>
+</blockquote>
+<hr>
+<h2 id="第十六章-从-PCB-移除引线框芯片级封装-LFCSP-的正确方法"><a href="#第十六章-从-PCB-移除引线框芯片级封装-LFCSP-的正确方法" class="headerlink" title="第十六章 从 PCB 移除引线框芯片级封装 (LFCSP) 的正确方法"></a>第十六章 从 PCB 移除引线框芯片级封装 (LFCSP) 的正确方法</h2><h3 id="LFCSP-简介"><a href="#LFCSP-简介" class="headerlink" title="LFCSP 简介"></a>LFCSP 简介</h3><ul>
+<li>LFCSP：基于引线框的塑封封装，尺寸接近芯片大小，因而被称为”芯片级”。</li>
+<li>封装内部互连通常由<strong>线焊</strong>实现；外部电气连接通过将外围引脚焊接到 PCB 实现。</li>
+<li>除引脚外，LFCSP 常还有较大的<strong>裸露热焊盘</strong>，可焊接到 PCB 以改善散热。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E5%9B%BE1" alt="图1. LFCSP等比截面图（芯片焊盘&#x2F;金线&#x2F;塑封料&#x2F;裸露热焊盘&#x2F;引脚1标识&#x2F;外围输入输出焊盘）"></p>
+<h3 id="LFCSP-器件返修"><a href="#LFCSP-器件返修" class="headerlink" title="LFCSP 器件返修"></a>LFCSP 器件返修</h3><ul>
+<li>装配到 PCB 后发现缺陷 → 返修移除不良器件并换上正常器件；移除前必须加热不良器件，直至引脚和裸露焊盘（如有焊接）下方的焊料液化。</li>
+<li>常规返修流程七步骤：<ol>
+<li>准备板子</li>
+<li>移除器件</li>
+<li>清洁 PCB 焊盘</li>
+<li>涂敷焊膏</li>
+<li>器件对齐和贴片</li>
+<li>固定器件</li>
+<li>检查</li>
+</ol>
+</li>
+<li>移除器件时可能在 LFCSP 和 PCB 上产生机械应力：小心移除不良器件——避免损伤 PCB、邻近器件及不良器件本身（尤其打算做故障分析时）。</li>
+<li>LFCSP 器件上过大应力（加热到额定峰值温度以上或过度暴露于高温）可能导致<strong>封装分层或外部物理损坏</strong>；移除不当引起的分层会加大找出真正故障机制的难度。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E5%9B%BE2" alt="图2. 移除不当引起LFCSP芯片焊盘分层（通过扫描声学显微镜观测）"></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E5%9B%BE3" alt="图3. LFCSP的低放大率侧视图显示返修设置过大引起的损伤（塑封材料鼓出）"></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E5%9B%BE4" alt="图4. LFCSP的X射线图像显示返修设置过大引起的内部损伤（芯片翘起）"></p>
+<h3 id="板准备"><a href="#板准备" class="headerlink" title="板准备"></a>板准备</h3><ul>
+<li><strong>强烈建议返修开始前对 PCB 组件进行干烘</strong>，消除残留水分（否则回流期间残留水分可能因”爆米花效应”损伤器件）。</li>
+<li>条件：<strong>125°C 下烘烤 PCB 组件至少 4 小时</strong>（只要不超过 PCB 上其他器件的额定限值）；若超过其他器件额定限值，使用联合行业标准 <strong>IPC&#x2F;JEDEC J-STD-033</strong> 中说明的备选烘烤条件。</li>
+</ul>
+<h3 id="移除器件"><a href="#移除器件" class="headerlink" title="移除器件"></a>移除器件</h3><ul>
+<li>加热器件直至焊料回流，在焊料仍处于液态时通过机械手段移除；可编程热空气返修系统提供受控温度和时间设置。</li>
+<li>返修时应<strong>遵循器件装配所用的温度曲线</strong>；返修温度不得超过湿度灵敏度等级 (MSL) 标签上规定的峰值温度。</li>
+<li>加热时间可以缩短（例如针对液化区），只要实现焊料完全回流即可；<strong>焊料回流区处于峰值温度的时间应小于 60 秒</strong>。</li>
+<li>拾取工具的真空压力应<strong>小于 0.5 kg&#x2F;cm²</strong>——防器件在完全回流前顶出，避免焊盘浮离。</li>
+<li><strong>请勿再使用从 PCB 上移除的器件。</strong></li>
+<li>控制返修温度以免损坏 LFCSP 器件和 PCB：<ul>
+<li>用耐热带盖住器件周围区域提供进一步保护；</li>
+<li>建议加热 PCB 下方，降低 PCB 上下两面温差，使板弯曲最小。</li>
+</ul>
+</li>
+<li>定义返修工具设置时应<strong>标定温度曲线</strong>（首次返修特定器件时尤其重要）：<ul>
+<li>需利用不同的主体尺寸、PCB 材料、配置、厚度等对 LFCSP 器件进行标定（可能有不同的热质量）。</li>
+<li>标定必须包括对温度、时间和设备工具其他设置的监控；可将热电偶装配到板组件不同部分（如 LFCSP 器件上部和 PCB 上部）。</li>
+<li>分析温度-时间曲线数据，从评估中获得器件移除的有效参数。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E5%9B%BE5" alt="图5. 器件移除评估的简化流程图（加热→时间和温度监控→移除器件）"></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E5%9B%BE6" alt="图6. 器件移除标定设置示例图（热空气罩&#x2F;拾取工具&#x2F;热电偶&#x2F;预热器&#x2F;可编程温度时间设置&#x2F;温度记录仪）"></p>
+<hr>
+<h2 id="第十七章-PBGA-封装的建议返修程序"><a href="#第十七章-PBGA-封装的建议返修程序" class="headerlink" title="第十七章 PBGA 封装的建议返修程序"></a>第十七章 PBGA 封装的建议返修程序</h2><h3 id="PBGA-简介"><a href="#PBGA-简介" class="headerlink" title="PBGA 简介"></a>PBGA 简介</h3><ul>
+<li>PBGA：主要区别性特征是利用<strong>焊球阵列</strong>与基板（如 PCB）接触。</li>
+<li>优势（相对单列、双列直插、四列型等封装）：能够实现<strong>更高的引脚密度</strong>。</li>
+<li>封装内部互连通过线焊或倒装芯片技术实现；包含集成电路的 PBGA 芯片封装在塑封材料中。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE1" alt="图1. PBGA器件示意图（顶面与底面焊球阵列）"></p>
+<h3 id="PBGA-器件返修"><a href="#PBGA-器件返修" class="headerlink" title="PBGA 器件返修"></a>PBGA 器件返修</h3><ul>
+<li>装配到 PCB 后发现缺陷 → 返修移除不良器件并换上正常器件；移除前加热不良器件直至焊接接头液化。</li>
+<li>常规返修程序：<ol>
+<li>准备板子</li>
+<li>移除器件</li>
+<li>清洁 PCB 焊盘</li>
+<li>涂敷焊膏</li>
+<li>器件对齐和贴片</li>
+<li>固定器件</li>
+<li>检查</li>
+</ol>
+</li>
+<li>移除器件可能在 PBGA 和&#x2F;或 PCB 上产生机械应力：小心移除，避免损伤 PCB、邻近器件及不良器件本身（尤其打算做故障分析时）。</li>
+<li>过大应力（加热超过额定峰值温度或过度暴露于高温）可能导致封装分层或外部物理损坏；移除不当引起的分层会加大找出真正故障机制的难度。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE2" alt="图2. 过度加热引起PBGA器件的基板和塑封材料之间分层（通过扫描声学显微镜观测）"></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE3" alt="图3. 过度加热导致PBGA上出现裂纹的低放大率图像（侧视图，CRACK标注）"></p>
+<h3 id="准备板子"><a href="#准备板子" class="headerlink" title="准备板子"></a>准备板子</h3><ul>
+<li>强烈建议返修前对 PCB 组件进行干烘消除残留水分（防”爆米花效应”）。</li>
+<li><strong>125°C 烘烤至少 4 小时</strong>（不超过其他器件额定限值）；超过时使用 <strong>IPC&#x2F;JEDEC J-STD-033</strong> 备选烘烤条件。</li>
+</ul>
+<h3 id="移除器件-1"><a href="#移除器件-1" class="headerlink" title="移除器件"></a>移除器件</h3><ul>
+<li>加热器件至焊料回流，焊料液态时机械移除；可编程热空气返修系统提供受控温度和时间设置。</li>
+<li>遵循器件装配所用温度曲线；返修温度不得超过 MSL 标签规定的峰值温度。</li>
+<li>加热时间可缩短（针对液化区），只要焊料完全回流；<strong>回流区峰值温度时间 &lt;60 秒</strong>；拾取工具真空压力 <strong>&lt;0.5 kg&#x2F;cm²</strong>。</li>
+<li><strong>请勿再使用从 PCB 上移除的器件。</strong></li>
+<li>控制返修温度以免损坏 PBGA 器件和 PCB：<ul>
+<li><strong>注意热质量差异</strong>：相比基于引线框的封装（如 SOIC 和 LFCSP），PBGA 的加热速度可能更快；</li>
+<li>用耐热带盖住器件周围区域；加热 PCB 下方降低上下两面温差、使板弯曲最小。</li>
+</ul>
+</li>
+<li>标定温度曲线（首次返修特定器件尤其重要）：利用不同主体尺寸、焊料成分或不同 PCB 材料、配置、尺寸和厚度对 PBGA 器件标定（热质量值可能不同）；监控温度、时间和设备工具其他设置；热电偶装配到板组件不同部分（PBGA 器件上部、PCB 上部）；分析时间和温度曲线数据获得有效参数。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE4" alt="图4. 器件移除评估的简化流程图（加热→时间和温度监控→移除器件）"></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE5" alt="图5. 器件移除标定设置示意图（热空气罩&#x2F;拾取工具&#x2F;热电偶&#x2F;PBGA&#x2F;PCB&#x2F;预热器&#x2F;温度记录仪）"></p>
+<h3 id="清洁-PCB-焊盘"><a href="#清洁-PCB-焊盘" class="headerlink" title="清洁 PCB 焊盘"></a>清洁 PCB 焊盘</h3><ul>
+<li>移除 PBGA 后，PCB 焊盘会有过多焊料，必须在安装替换器件前清理。分两步：</li>
+<li><strong>去锡</strong>：<ul>
+<li>利用<strong>吸锡线和刀片型烙铁</strong>去除焊盘上过多的焊料。</li>
+<li>所选刀片宽度应与器件占用的最大宽度相匹配；刀片温度必须足够低以避免损坏电路板。</li>
+<li>可将焊剂涂在焊盘上，然后用吸锡线和烙铁去除过多焊料。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE6" alt="图6. PCB焊盘去锡（吸锡线+刀片型烙铁示意）"></p>
+<ul>
+<li><strong>清洁</strong>：<ul>
+<li>在返修区域上用清洗剂清洁，并用无绒布擦干净；清洗剂取决于原始总成所用的焊膏类型。</li>
+</ul>
+</li>
+</ul>
+<h3 id="涂敷焊膏"><a href="#涂敷焊膏" class="headerlink" title="涂敷焊膏"></a>涂敷焊膏</h3><ul>
+<li>安装替换 PBGA 前应涂敷焊膏（取代最初装配时的焊膏，保证焊接接头可靠性）。</li>
+<li><strong>给每个焊球涂敷的焊膏量必须一致</strong>，以免安装 PBGA 时发生不共面问题。</li>
+<li>方法一：利用<strong>模板</strong>将焊膏涂敷到 PCB 焊盘上：<ul>
+<li>模板对齐精度是回流焊锡处理保持均匀的关键；</li>
+<li>使用与电路板装配相同的 PBGA 孔径几何图形和模板厚度；</li>
+<li>使用<strong>梯形孔径</strong>以确保焊膏均匀释放并减少污点。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE7" alt="图7. 模板孔径几何图形（A比B长，梯形截面）"></p>
+<ul>
+<li>方法二：器件密度高或几何空间紧张、模板难以均匀涂敷在 PCB 焊盘上时，考虑<strong>将焊膏涂敷在器件底部的焊球上</strong>：<ul>
+<li>利用模板将焊膏涂敷在焊球上端，或将焊膏分配给所有焊球；</li>
+<li>可利用专门设计的夹具和&#x2F;或返修设备。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE8" alt="图8. 焊膏模板将焊膏印制到焊球上（刮刀行进方向示意）"></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE9" alt="图9. 将焊膏分配到焊球上（点胶嘴示意）"></p>
+<h3 id="器件对齐和贴片"><a href="#器件对齐和贴片" class="headerlink" title="器件对齐和贴片"></a>器件对齐和贴片</h3><ul>
+<li>将器件精准贴放到电路板上很重要。</li>
+<li><strong>带分光束光学系统的贴片设备</strong>有助于 PBGA 和电路板对齐：将 PBGA 焊球镜像叠放在 PCB 焊盘镜像上。</li>
+<li>贴片机必须具有支持用户沿 x 轴和 y 轴进行微调（包括旋转）的能力。</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%9A%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E5%9B%BE10" alt="图10. 利用分光束光学系统对齐PCB和器件（PCB焊盘视图+器件底面→叠加图像）"></p>
+<ul>
+<li>贴片精度取决于所用设备或工艺：<ul>
+<li>PBGA 封装在回流焊过程中往往会<strong>自动对齐</strong>，但应确保<strong>贴片偏差小于 PCB 焊盘宽度的 50%</strong>。</li>
+<li>若对齐误差过大，焊料桥接可能引起电气短路。</li>
+</ul>
+</li>
+</ul>
+<h3 id="固定器件"><a href="#固定器件" class="headerlink" title="固定器件"></a>固定器件</h3><ul>
+<li>因所有回流参数均经过优化，故应使用<strong>原始装配过程中制定的热曲线</strong>。</li>
+</ul>
+<h3 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h3><ul>
+<li>回流之后检查装配好的 PBGA 有无缺陷（未对齐或受损等）。</li>
+<li>利用 <strong>X 射线</strong>检查有无问题（焊料桥接、锡珠等）。</li>
+<li>如有必要，执行电气验证测试以验证器件功能正常。</li>
+</ul>
+<hr>
+<p><em>笔记完 · 图片占位符格式统一为 <code>![图注](图片占位符：章节-图号)</code>，替换为实际图片路径即可。</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://xiaomiao321.github.io">XiaoMiao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://xiaomiao321.github.io/2026/07/30/PCB%E8%AE%BE%E8%AE%A1%E7%A7%98%E7%B1%8D%E7%AC%94%E8%AE%B0/">https://xiaomiao321.github.io/2026/07/30/PCB%E8%AE%BE%E8%AE%A1%E7%A7%98%E7%B1%8D%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PCB/">PCB</a><a class="post-meta__tags" href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/08/04/2026-07-13-%E4%BD%A0%E5%A5%BD%E6%94%BE%E5%A4%A7%E5%99%A8/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">《你好，放大器》学习笔记（第 1–2 章，P9–28） 第 1 章 放大器定义、分类和选择使用1.1 放大器定义 放大器（Amplifier）：电学中能够实现信号、功率放大的器件（device）。例如一个 3 管脚的晶体管、一个 8 管脚的运放。 放大电路：以放大器为核心，加上电阻电容、线路板、导线等组合而成的、能实现放大功能的电路组合。 两者常被混用，严格区分意义不大，作者态度：不必纠结叫法。  1.2 放大器的全家谱全部放大器分为三大类：  晶体管放大器 运算放大器（运放） 功能放大器  （此外还有电子管放大器，仅在高级音响等特殊领域使用，本书不涉及。）  1.2.1 晶体管分类（符号上共可画出 8 种：双极型 2 种 + 单极型 6 种）：  双极型晶体管 BJT   （Bipolar Junction Transistor）  NPN 型 &#x2F; PNP 型   单极型晶体管 &#x2F; 场效应管 FET   （Field Effect Transistor）  JFET（结型）：N 沟道 &#x2F; P 沟道  MOSFET   （金属氧化物）：  增强型：N...</div></div></div></a><a class="pagination-related" href="/2026/07/08/2026-07-09-MC/" title="MC"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">MC</div></div><div class="info-2"><div class="info-item-1">MChttps://zh.minecraft.wiki/ 快捷键物品操作物品转移 拿起&#x2F;放下整组： 鼠标左键单击 取出一半&#x2F;放下一个： 鼠标右键单击 平均分配： 左键按住拖动 逐一放置： 右键按住拖动 快速堆叠： 鼠标左键双击 快速转移： Shift + 鼠标单击 大量转移： （悬挂物品时）Shift + 左键双击 交换物品位置： （指针对准某格）1~9 数字键 或 F键 快速装备： （手持装备时）右键单击 主副手交换： F键 选择交易项： Tab键 或 &quot;↑&quot; 和 &quot;↓&quot; 交易快速补货： 空格键 或 回车键 批量交易： （对准成品）Shift + 鼠标单击 放入收纳袋： （悬挂物品对准收纳袋）左键单击 或 （悬挂收纳袋对准物品）左键单击 从收纳袋取出： （对准收纳袋）右键单击 或 （悬挂收纳袋对准空格）右键单击 收纳袋内选择物品： （对准收纳袋）鼠标中键滚动  物品丢弃 快捷栏 单个丢弃： Q键（可按住+滚轮滚动） 整组丢弃： Ctrl + Q（可按住+滚轮滚动） 手持收纳袋右键单击丢出其中的物品   物品栏&#x2F...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/05/31/2026-05-31-PCB/" title="PCB 接地设计与层叠结构学习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-05-31</div><div class="info-item-2">PCB 接地设计与层叠结构学习笔记</div></div><div class="info-2"><div class="info-item-1">PCB 接地方式、层叠结构、割地设计及板载天线布局学习笔记</div></div></div></a><a class="pagination-related" href="/2025/07/04/2025-07-04-ad-basic-usage/" title="Altium Designer 基本使用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-04</div><div class="info-item-2">Altium Designer 基本使用</div></div><div class="info-2"><div class="info-item-1">Altium Designer 基本使用学习笔记</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XiaoMiao</div><div class="author-info-description">XiaoMiao's technical blog </div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Welcome! I'm XiaoMiao, EE sophomore @ ZJU. Love embedded systems, circuits, 3D printing & DIY. Sharing my learning journey here.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8APCB-%E8%AE%BE%E8%AE%A1%E7%A7%98%E7%B1%8D%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">《PCB 设计秘籍》学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%8D%B0%E5%88%B7%E7%94%B5%E8%B7%AF%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-number">1.2.</span> <span class="toc-text">第一章 印刷电路发展史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B0%E5%88%B7%E7%94%B5%E8%B7%AF%E7%9A%84%E5%8F%91%E6%98%8E"><span class="toc-number">1.2.1.</span> <span class="toc-text">印刷电路的发明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B0%E5%88%B7%E7%94%B5%E8%B7%AF%E6%9D%BF%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">印刷电路板的种类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E5%8D%B0%E5%88%B7%E7%94%B5%E8%B7%AF%E7%9A%84%E5%88%86%E5%B8%83%E5%88%86%E7%B1%BB%EF%BC%88%E5%8D%95%E9%9D%A2%E6%9D%BF-%E5%8F%8C%E9%9D%A2%E6%9D%BF-%E5%A4%9A%E5%B1%82%E6%9D%BF%EF%BC%89"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">按印刷电路的分布分类（单面板 &#x2F; 双面板 &#x2F; 多层板）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E5%9F%BA%E6%9D%90%E7%9A%84%E6%80%A7%E8%B4%A8%E5%88%86%E7%B1%BB%EF%BC%88%E5%88%9A%E6%80%A7-%E6%9F%94%E6%80%A7%EF%BC%89"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">按基材的性质分类（刚性 &#x2F; 柔性）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4%E5%88%86%E7%B1%BB%EF%BC%88%E4%BD%8E%E9%A2%91-%E9%AB%98%E9%A2%91%EF%BC%89"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">按适用范围分类（低频 &#x2F; 高频）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%8D%B0%E5%88%B6%E6%9D%BF"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">特殊印制板</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%89%AF%E5%A5%BD%E6%8E%A5%E5%9C%B0%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99"><span class="toc-number">1.3.</span> <span class="toc-text">第二章 良好接地指导原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E8%AE%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text">总论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E4%BF%A1%E5%8F%B7%E7%B3%BB%E7%BB%9F%E8%83%8C%E6%99%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text">混合信号系统背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%9F%E5%9E%8B%E6%8E%A5%E5%9C%B0"><span class="toc-number">1.3.3.</span> <span class="toc-text">星型接地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%8B%AC%E7%9A%84%E6%A8%A1%E6%8B%9F%E5%9C%B0%E5%92%8C%E6%95%B0%E5%AD%97%E5%9C%B0"><span class="toc-number">1.3.4.</span> <span class="toc-text">单独的模拟地和数字地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AGND-%E4%B8%8E-DGND-%E5%BC%95%E8%84%9A%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">1.3.5.</span> <span class="toc-text">AGND 与 DGND 引脚的处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%9C%B0%E5%B1%82"><span class="toc-number">1.3.6.</span> <span class="toc-text">接地层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E7%94%A8%E6%80%BB%E7%BA%BF-bus-wire-%E4%BD%9C%E2%80%9D%E5%9C%B0%E2%80%9D"><span class="toc-number">1.3.6.1.</span> <span class="toc-text">为什么不能用总线(bus wire)作”地”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%9C%B0%E5%B1%82%E5%89%B2%E8%A3%82%E7%9A%84%E5%88%A9%E4%B8%8E%E5%BC%8A"><span class="toc-number">1.3.6.2.</span> <span class="toc-text">接地层割裂的利与弊</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E6%9C%89%E4%BD%8E%E6%95%B0%E5%AD%97%E7%94%B5%E6%B5%81%E7%9A%84%E6%B7%B7%E5%90%88%E4%BF%A1%E5%8F%B7-IC-%E7%9A%84%E6%8E%A5%E5%9C%B0%E5%92%8C%E5%8E%BB%E8%80%A6"><span class="toc-number">1.3.7.</span> <span class="toc-text">具有低数字电流的混合信号 IC 的接地和去耦</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E5%BF%83%E5%A4%84%E7%90%86-ADC-%E6%95%B0%E5%AD%97%E8%BE%93%E5%87%BA"><span class="toc-number">1.3.8.</span> <span class="toc-text">小心处理 ADC 数字输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%87%E6%A0%B7%E6%97%B6%E9%92%9F%E8%80%83%E9%87%8F"><span class="toc-number">1.3.9.</span> <span class="toc-text">采样时钟考量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E4%BF%A1%E5%8F%B7%E6%8E%A5%E5%9C%B0%E7%9A%84%E5%9B%B0%E6%83%91%E6%A0%B9%E6%BA%90"><span class="toc-number">1.3.10.</span> <span class="toc-text">混合信号接地的困惑根源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E9%AB%98%E9%A2%91%E5%B7%A5%E4%BD%9C%E7%9A%84%E6%8E%A5%E5%9C%B0"><span class="toc-number">1.3.11.</span> <span class="toc-text">针对高频工作的接地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E5%BF%83%E6%8E%A5%E5%9C%B0%E5%B1%82%E5%89%B2%E8%A3%82%EF%BC%88%E4%BF%A1%E5%8F%B7%E4%BA%A4%E5%8F%89%EF%BC%89"><span class="toc-number">1.3.12.</span> <span class="toc-text">小心接地层割裂（信号交叉）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%A4%BA%E4%BE%8B%EF%BC%9A%E7%94%B5%E6%B5%81%E5%8F%8D%E9%A6%88%E5%9E%8B%E6%94%BE%E5%A4%A7%E5%99%A8"><span class="toc-number">1.3.13.</span> <span class="toc-text">其他示例：电流反馈型放大器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%9C%B0%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.14.</span> <span class="toc-text">接地总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E9%AB%98%E9%80%9F-ADC-PCB-%E5%B8%83%E5%B1%80%E5%B8%83%E7%BA%BF%E8%A7%84%E5%88%99"><span class="toc-number">1.4.</span> <span class="toc-text">第三章 高速 ADC PCB 布局布线规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9AAGND-%E5%92%8C-DGND-%E6%8E%A5%E5%9C%B0%E5%B1%82%E5%BA%94%E5%BD%93%E5%88%86%E7%A6%BB%E5%90%97%EF%BC%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">第一部分：AGND 和 DGND 接地层应当分离吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E8%BE%93%E7%94%B5%E7%B3%BB%E7%BB%9F-PDS-%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.2.</span> <span class="toc-text">第二部分：输电系统 (PDS) 设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E8%A3%B8%E9%9C%B2%E7%84%8A%E7%9B%98-E-Pad"><span class="toc-number">1.4.3.</span> <span class="toc-text">第三部分：裸露焊盘 (E-Pad)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E5%B1%82%E9%97%B4%E4%BA%A4%E5%8F%89%E8%80%A6%E5%90%88"><span class="toc-number">1.4.4.</span> <span class="toc-text">第四部分：层间交叉耦合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E9%AB%98%E9%80%9F-ADC-PCB-%E5%B8%83%E5%B1%80%E5%B8%83%E7%BA%BF%E6%8A%80%E5%B7%A7"><span class="toc-number">1.5.</span> <span class="toc-text">第四章 高速 ADC PCB 布局布线技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="toc-number">1.5.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%B8%E9%9C%B2%E7%84%8A%E7%9B%98-EPAD"><span class="toc-number">1.5.2.</span> <span class="toc-text">裸露焊盘 (EPAD)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%9C%80%E4%BD%B3%E8%BF%9E%E6%8E%A5%EF%BC%88%E4%B8%89%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">实现最佳连接（三步骤）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E8%80%A6%E5%92%8C%E5%B1%82%E7%94%B5%E5%AE%B9"><span class="toc-number">1.5.3.</span> <span class="toc-text">去耦和层电容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PDS-%E7%9A%84%E9%AB%98%E9%A2%91%E5%B1%82%E7%94%B5%E5%AE%B9"><span class="toc-number">1.5.4.</span> <span class="toc-text">PDS 的高频层电容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%82%E8%80%A6%E5%90%88"><span class="toc-number">1.5.5.</span> <span class="toc-text">层耦合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%A6%BB%E6%8E%A5%E5%9C%B0"><span class="toc-number">1.5.6.</span> <span class="toc-text">分离接地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="toc-number">1.5.7.</span> <span class="toc-text">结束语</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E9%9D%9E%E9%9A%94%E7%A6%BB%E5%BC%8F%E5%BC%80%E5%85%B3%E7%94%B5%E6%BA%90%E7%9A%84-PCB-%E5%B8%83%E5%B1%80%E8%80%83%E8%99%91"><span class="toc-number">1.6.</span> <span class="toc-text">第五章 非隔离式开关电源的 PCB 布局考虑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E8%BF%B0"><span class="toc-number">1.6.1.</span> <span class="toc-text">总述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E8%A7%84%E5%88%92"><span class="toc-number">1.6.2.</span> <span class="toc-text">布局规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E7%8E%87%E7%BA%A7%E7%9A%84%E5%B8%83%E5%B1%80"><span class="toc-number">1.6.3.</span> <span class="toc-text">功率级的布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98-dv-dt-%E5%BC%80%E5%85%B3%E5%8C%BA"><span class="toc-number">1.6.4.</span> <span class="toc-text">高 dv&#x2F;dt 开关区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E7%8E%87%E7%84%8A%E7%9B%98%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.6.5.</span> <span class="toc-text">功率焊盘形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E7%94%B5%E8%B7%AF%E5%B8%83%E5%B1%80"><span class="toc-number">1.6.6.</span> <span class="toc-text">控制电路布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E8%B7%AF%E9%9D%A2%E7%A7%AF%E4%B8%8E%E4%B8%B2%E6%89%B0"><span class="toc-number">1.6.7.</span> <span class="toc-text">回路面积与串扰</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B0%E7%BA%BF%E5%AE%BD%E5%BA%A6%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">1.6.8.</span> <span class="toc-text">走线宽度的选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E6%A3%80%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.6.9.</span> <span class="toc-text">布局检查表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%85%B3%E4%BA%8E%E5%9C%A8%E5%BC%80%E5%85%B3%E6%A8%A1%E5%BC%8F%E7%94%B5%E6%BA%90%E5%8D%B0%E5%88%B7%E7%94%B5%E8%B7%AF%E6%9D%BF%E4%B8%8A%E6%94%BE%E7%BD%AE%E7%94%B5%E6%84%9F%E7%9A%84%E6%8C%87%E5%8D%97"><span class="toc-number">1.7.</span> <span class="toc-text">第六章 关于在开关模式电源印刷电路板上放置电感的指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-number">1.7.1.</span> <span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%B7%AE%E5%88%86%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%B8%83%E5%B1%80%E5%85%AB%E5%A4%A7%E8%80%83%E8%99%91%E5%9B%A0%E7%B4%A0"><span class="toc-number">1.8.</span> <span class="toc-text">第七章 差分滤波器布局八大考虑因素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E7%94%9F%E5%8F%82%E6%95%B0%E6%8E%A7%E5%88%B6"><span class="toc-number">1.8.1.</span> <span class="toc-text">寄生参数控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E7%94%B5%E8%B7%AF%E6%95%A3%E7%83%AD%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7"><span class="toc-number">1.9.</span> <span class="toc-text">第八章 电路散热设计技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.9.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E7%83%AD%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80"><span class="toc-number">1.9.2.</span> <span class="toc-text">散热设计基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E7%83%AD"><span class="toc-number">1.9.3.</span> <span class="toc-text">散热</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E7%83%AD%E9%98%BB%E8%AE%BE%E8%AE%A1%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%889-%E6%9D%A1%EF%BC%89"><span class="toc-number">1.9.4.</span> <span class="toc-text">低热阻设计注意事项（9 条）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E5%99%A8%E6%95%A3%E7%83%AD%E8%80%83%E8%99%91"><span class="toc-number">1.9.5.</span> <span class="toc-text">数据转换器散热考虑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.9.6.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E9%99%8D%E5%8E%8B%E8%B0%83%E8%8A%82%E5%99%A8%E7%9A%84-PCB-%E5%B8%83%E5%B1%80%E5%B8%83%E7%BA%BF%E6%8C%87%E5%8D%97"><span class="toc-number">1.10.</span> <span class="toc-text">第九章 降压调节器的 PCB 布局布线指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%A1%AE%E5%AE%9A%E7%94%B5%E6%B5%81%E8%B7%AF%E5%BE%84"><span class="toc-number">1.10.1.</span> <span class="toc-text">第一步：确定电流路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%B8%83%E5%B1%80%E7%89%A9%E7%90%86%E8%A7%84%E5%88%92"><span class="toc-number">1.10.2.</span> <span class="toc-text">第二步：布局物理规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%94%B5%E6%BA%90%E5%99%A8%E4%BB%B6%E2%80%94%E2%80%94MOSFET-%E5%92%8C%E7%94%B5%E5%AE%B9%EF%BC%88%E8%BE%93%E5%85%A5%E3%80%81%E6%97%81%E8%B7%AF%E5%92%8C%E8%BE%93%E5%87%BA%EF%BC%89"><span class="toc-number">1.10.3.</span> <span class="toc-text">第三步：电源器件——MOSFET 和电容（输入、旁路和输出）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E7%83%AD%E8%80%83%E8%99%91%E5%92%8C%E6%8E%A5%E5%9C%B0%E5%B1%82"><span class="toc-number">1.10.4.</span> <span class="toc-text">散热考虑和接地层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E6%B5%81%E6%A3%80%E6%B5%8B%E8%B7%AF%E5%BE%84"><span class="toc-number">1.10.5.</span> <span class="toc-text">电流检测路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E9%A6%88%E5%92%8C%E9%99%90%E6%B5%81%E6%A3%80%E6%B5%8B%E8%B7%AF%E5%BE%84"><span class="toc-number">1.10.6.</span> <span class="toc-text">反馈和限流检测路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%85%B3%E8%8A%82%E7%82%B9"><span class="toc-number">1.10.7.</span> <span class="toc-text">开关节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%85%E6%9E%81%E9%A9%B1%E5%8A%A8%E5%99%A8%E8%B7%AF%E5%BE%84"><span class="toc-number">1.10.8.</span> <span class="toc-text">栅极驱动器路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-number">1.10.9.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E5%BC%80%E5%85%B3%E7%A8%B3%E5%8E%8B%E5%99%A8%E7%9A%84%E6%8E%A5%E5%9C%B0%E5%A4%84%E7%90%86"><span class="toc-number">1.11.</span> <span class="toc-text">第十章 开关稳压器的接地处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%8A%80%E6%9C%AF%E8%A7%82%E7%82%B9"><span class="toc-number">1.11.1.</span> <span class="toc-text">两种技术观点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E8%A1%A1%E4%B8%8E%E7%BB%93%E8%AE%BA"><span class="toc-number">1.11.2.</span> <span class="toc-text">权衡与结论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%9C%A8%E5%AF%86%E9%9B%86-PCB-%E5%B8%83%E5%B1%80%E4%B8%AD%E6%9C%80%E5%A4%A7%E9%99%90%E5%BA%A6%E9%99%8D%E4%BD%8E%E5%A4%9A%E4%B8%AA-isoPower-%E5%99%A8%E4%BB%B6%E7%9A%84%E8%BE%90%E5%B0%84"><span class="toc-number">1.12.</span> <span class="toc-text">第十一章 在密集 PCB 布局中最大限度降低多个 isoPower 器件的辐射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF-1"><span class="toc-number">1.12.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99"><span class="toc-number">1.12.2.</span> <span class="toc-text">指导原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%88%E8%A6%81%E7%82%B9%E6%B8%85%E5%8D%95%EF%BC%89"><span class="toc-number">1.12.3.</span> <span class="toc-text">总结（要点清单）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E9%AB%98%E6%B8%A9%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E5%B0%81%E8%A3%85%E8%80%83%E8%99%91%E5%9B%A0%E7%B4%A0"><span class="toc-number">1.13.</span> <span class="toc-text">第十二章 高温环境下的封装考虑因素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%AF%E7%89%87%E7%B2%98%E7%9D%80"><span class="toc-number">1.13.1.</span> <span class="toc-text">芯片粘着</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%84%8A"><span class="toc-number">1.13.2.</span> <span class="toc-text">线焊</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IC-%E5%B0%81%E8%A3%85"><span class="toc-number">1.13.3.</span> <span class="toc-text">IC 封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E5%BC%95%E8%84%9A%E9%85%8D%E7%BD%AE%E5%92%8C%E9%87%91%E5%B1%9E%E5%8C%96"><span class="toc-number">1.13.4.</span> <span class="toc-text">封装引脚配置和金属化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PCB"><span class="toc-number">1.13.5.</span> <span class="toc-text">PCB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%B8%A9%E5%99%A8%E4%BB%B6%E7%9A%84%E9%AA%8C%E8%AF%81%E6%B5%8B%E8%AF%95%EF%BC%88%E4%BB%A5-AD8229-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.13.6.</span> <span class="toc-text">高温器件的验证测试（以 AD8229 为例）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E5%99%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%8E%A5%E5%9C%B0"><span class="toc-number">1.14.</span> <span class="toc-text">第十三章 实现数据转换器的最佳接地</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%9C%B0%E5%9B%9E%E8%B7%AF%E4%B8%8E%E8%AF%AF%E5%B7%AE%E7%94%B5%E5%8E%8B"><span class="toc-number">1.14.1.</span> <span class="toc-text">接地回路与误差电压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%9C%B0%E5%B1%82%E5%9C%A8%E5%BD%93%E4%BB%8A%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%BF%85%E4%B8%8D%E5%8F%AF%E5%B0%91"><span class="toc-number">1.14.2.</span> <span class="toc-text">接地层在当今系统中必不可少</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E7%94%A8%E4%BA%8E%E6%B5%8B%E9%87%8F%E7%8E%AF%E5%A2%83%E6%B8%A9%E5%BA%A6%E7%9A%84%E6%AD%A3%E7%A1%AE-PCB-%E5%B8%83%E5%B1%80"><span class="toc-number">1.15.</span> <span class="toc-text">第十四章 用于测量环境温度的正确 PCB 布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E4%BC%A0%E9%80%92%E5%9F%BA%E7%A1%80"><span class="toc-number">1.15.1.</span> <span class="toc-text">热传递基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E6%B5%8B%E9%87%8F-PCB-%E6%B8%A9%E5%BA%A6%E7%9A%84%E6%AD%A3%E7%A1%AE-PCB-%E5%B8%83%E5%B1%80"><span class="toc-number">1.15.2.</span> <span class="toc-text">用于测量 PCB 温度的正确 PCB 布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E6%B5%8B%E9%87%8F%E7%8E%AF%E5%A2%83%E6%B8%A9%E5%BA%A6%E7%9A%84%E6%AD%A3%E7%A1%AE-PCB-%E5%B8%83%E5%B1%80"><span class="toc-number">1.15.3.</span> <span class="toc-text">用于测量环境温度的正确 PCB 布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0-%E6%9C%80%E5%A4%A7%E7%A8%8B%E5%BA%A6%E6%8F%90%E9%AB%98-PCB-%E5%AF%B9%E7%94%B5%E6%BA%90%E5%8F%98%E5%8C%96%E6%8A%97%E6%89%B0%E5%BA%A6"><span class="toc-number">1.16.</span> <span class="toc-text">第十五章 最大程度提高 PCB 对电源变化抗扰度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E5%99%AA%E5%A3%B0%E5%88%86%E6%9E%90%E4%BA%94%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.16.1.</span> <span class="toc-text">电源噪声分析五步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E7%94%A8%E7%9A%84%E6%8F%90%E7%A4%BA%E6%B8%85%E5%8D%95%EF%BC%88%E6%8F%90%E9%AB%98-PCB-%E5%AF%B9%E7%94%B5%E6%BA%90%E5%8F%98%E5%8C%96%E7%9A%84%E6%8A%97%E6%89%B0%E5%BA%A6%EF%BC%89"><span class="toc-number">1.16.2.</span> <span class="toc-text">有用的提示清单（提高 PCB 对电源变化的抗扰度）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E4%BB%8E-PCB-%E7%A7%BB%E9%99%A4%E5%BC%95%E7%BA%BF%E6%A1%86%E8%8A%AF%E7%89%87%E7%BA%A7%E5%B0%81%E8%A3%85-LFCSP-%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%96%B9%E6%B3%95"><span class="toc-number">1.17.</span> <span class="toc-text">第十六章 从 PCB 移除引线框芯片级封装 (LFCSP) 的正确方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LFCSP-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.17.1.</span> <span class="toc-text">LFCSP 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LFCSP-%E5%99%A8%E4%BB%B6%E8%BF%94%E4%BF%AE"><span class="toc-number">1.17.2.</span> <span class="toc-text">LFCSP 器件返修</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%BF%E5%87%86%E5%A4%87"><span class="toc-number">1.17.3.</span> <span class="toc-text">板准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E5%99%A8%E4%BB%B6"><span class="toc-number">1.17.4.</span> <span class="toc-text">移除器件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-PBGA-%E5%B0%81%E8%A3%85%E7%9A%84%E5%BB%BA%E8%AE%AE%E8%BF%94%E4%BF%AE%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.18.</span> <span class="toc-text">第十七章 PBGA 封装的建议返修程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PBGA-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.18.1.</span> <span class="toc-text">PBGA 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PBGA-%E5%99%A8%E4%BB%B6%E8%BF%94%E4%BF%AE"><span class="toc-number">1.18.2.</span> <span class="toc-text">PBGA 器件返修</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E6%9D%BF%E5%AD%90"><span class="toc-number">1.18.3.</span> <span class="toc-text">准备板子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E5%99%A8%E4%BB%B6-1"><span class="toc-number">1.18.4.</span> <span class="toc-text">移除器件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E6%B4%81-PCB-%E7%84%8A%E7%9B%98"><span class="toc-number">1.18.5.</span> <span class="toc-text">清洁 PCB 焊盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%82%E6%95%B7%E7%84%8A%E8%86%8F"><span class="toc-number">1.18.6.</span> <span class="toc-text">涂敷焊膏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%99%A8%E4%BB%B6%E5%AF%B9%E9%BD%90%E5%92%8C%E8%B4%B4%E7%89%87"><span class="toc-number">1.18.7.</span> <span class="toc-text">器件对齐和贴片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%99%A8%E4%BB%B6"><span class="toc-number">1.18.8.</span> <span class="toc-text">固定器件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5"><span class="toc-number">1.18.9.</span> <span class="toc-text">检查</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/04/2026-07-13-%E4%BD%A0%E5%A5%BD%E6%94%BE%E5%A4%A7%E5%99%A8/" title="Untitled">Untitled</a><time datetime="2026-08-04T15:44:30.766Z" title="Created 2026-08-04 23:44:30">2026-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/04/hello-world/" title="Hello, World!">Hello, World!</a><time datetime="2026-08-04T15:44:30.766Z" title="Created 2026-08-04 23:44:30">2026-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/30/PCB%E8%AE%BE%E8%AE%A1%E7%A7%98%E7%B1%8D%E7%AC%94%E8%AE%B0/" title="《PCB 设计秘籍》学习笔记">《PCB 设计秘籍》学习笔记</a><time datetime="2026-07-30T16:00:00.000Z" title="Created 2026-07-31 00:00:00">2026-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/08/2026-07-09-MC/" title="MC">MC</a><time datetime="2026-07-08T17:48:46.000Z" title="Created 2026-07-09 01:48:46">2026-07-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/13/%E8%80%81%E6%99%BA(2)/" title="老智">老智</a><time datetime="2026-06-13T13:56:46.000Z" title="Created 2026-06-13 21:56:46">2026-06-13</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'forest'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.language-mermaid, pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (!false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'xiaomiao321/xiaomiao321.github.io',
+      'data-repo-id': 'R_kgDORnsYMw',
+      'data-category-id': 'DIC_kwDORnsYM84C4feo',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script>(() => {
+  window.Prism = window.Prism || {}
+  window.Prism.manual = true
+
+  const highlightAll = () => {
+    window.Prism.highlightAll()
+  }
+
+  window.addEventListener('load', highlightAll)
+  btf.addGlobalFn('pjaxComplete', highlightAll, 'prismjs')
+  btf.addGlobalFn('encrypt', highlightAll, 'prismjs')
+})()
+</script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.js" defer="defer"></script><script src="/func.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>

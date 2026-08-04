@@ -1,0 +1,3561 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>老智 | XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="老智元器件基础手机主板约2000颗元器件 PLC 500-800 航天电子模块 1000+ 分为有源元件和无源元件 有源元件需要外部供电才能工作，能对信号进行放大（输出能量&gt;输入能量，把电源能量转化成信号能量了），如三极管、MOS、运放 无源元件不需要外部电源，只能消耗或者存储能量，不能放大，如电阻、电容、电感、变压器、二极管 常用类别：  无源器件 二极管：整流、稳压、肖特基、TVS、LE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="老智">
+<meta property="og:url" content="https://xiaomiao321.github.io/2026/06/13/%E8%80%81%E6%99%BA(2)/index.html">
+<meta property="og:site_name" content="XiaoMiao&#39;s Blog">
+<meta property="og:description" content="老智元器件基础手机主板约2000颗元器件 PLC 500-800 航天电子模块 1000+ 分为有源元件和无源元件 有源元件需要外部供电才能工作，能对信号进行放大（输出能量&gt;输入能量，把电源能量转化成信号能量了），如三极管、MOS、运放 无源元件不需要外部电源，只能消耗或者存储能量，不能放大，如电阻、电容、电感、变压器、二极管 常用类别：  无源器件 二极管：整流、稳压、肖特基、TVS、LE">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xiaomiao321.github.io/img/avatar.png">
+<meta property="article:published_time" content="2026-06-13T13:56:46.000Z">
+<meta property="article:modified_time" content="2026-07-13T14:54:33.000Z">
+<meta property="article:author" content="XiaoMiao">
+<meta property="article:tag" content="ESP32,embedded development,Arduino,STM32,Git,Linux,programming notes,technical blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaomiao321.github.io/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "老智",
+  "url": "https://xiaomiao321.github.io/2026/06/13/%E8%80%81%E6%99%BA(2)/",
+  "image": "https://xiaomiao321.github.io/img/avatar.png",
+  "datePublished": "2026-06-13T13:56:46.000Z",
+  "dateModified": "2026-07-13T14:54:33.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XiaoMiao",
+      "url": "https://xiaomiao321.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://xiaomiao321.github.io/2026/06/13/%E8%80%81%E6%99%BA(2)/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-YEX7FDZ26Z"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-YEX7FDZ26Z')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-YEX7FDZ26Z', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'medium-zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '老智',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/calendar-override.css"/><link rel="stylesheet" href="/style.css"/><!-- hexo injector head_end start --><script src="./func.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/css/pace-loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/travel/"><i class="fa-fw fas fa-suitcase-rolling"></i><span> Travel</span></a></div><div class="menus_item"><a class="site-page" href="/daily-summary/"><i class="fa-fw fas fa-calendar-day"></i><span> Daily</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></div><div class="menus_item"><a class="site-page" href="/parts/"><i class="fa-fw fas fa-microchip"></i><span> Component</span></a></div><div class="menus_item"><a class="site-page" href="/chat-stats/"><i class="fa-fw fas fa-comments"></i><span> Wechat</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://picsum.photos/1920/400);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">老智</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/travel/"><i class="fa-fw fas fa-suitcase-rolling"></i><span> Travel</span></a></div><div class="menus_item"><a class="site-page" href="/daily-summary/"><i class="fa-fw fas fa-calendar-day"></i><span> Daily</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></div><div class="menus_item"><a class="site-page" href="/parts/"><i class="fa-fw fas fa-microchip"></i><span> Component</span></a></div><div class="menus_item"><a class="site-page" href="/chat-stats/"><i class="fa-fw fas fa-comments"></i><span> Wechat</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">老智<a class="post-edit-link" href="https://github.com/xiaomiao321/xiaomiao321.github.io/edit/source/source/_posts/老智(2).md" title="Edit" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-13T13:56:46.000Z" title="Created 2026-06-13 21:56:46">2026-06-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-13T14:54:33.000Z" title="Updated 2026-07-13 22:54:33">2026-07-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">19.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>69mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="老智"><a href="#老智" class="headerlink" title="老智"></a>老智</h1><h2 id="元器件基础"><a href="#元器件基础" class="headerlink" title="元器件基础"></a>元器件基础</h2><p>手机主板约2000颗元器件</p>
+<p>PLC 500-800</p>
+<p>航天电子模块 1000+</p>
+<p>分为有源元件和无源元件</p>
+<p>有源元件需要外部供电才能工作，能对信号进行放大（输出能量&gt;输入能量，把电源能量转化成信号能量了），如三极管、MOS、运放</p>
+<p>无源元件不需要外部电源，只能消耗或者存储能量，不能放大，如电阻、电容、电感、变压器、二极管</p>
+<p>常用类别：</p>
+<ol>
+<li>无源器件</li>
+<li>二极管：整流、稳压、肖特基、TVS、LED、光耦</li>
+<li>晶体管</li>
+<li>IC</li>
+<li>传感器与机电</li>
+</ol>
+<p>参数</p>
+<ol>
+<li><p>额定值：正常工作的标陈良</p>
+</li>
+<li><p>精度</p>
+</li>
+<li><p>最大额定值</p>
+</li>
+<li><p>温度系数</p>
+</li>
+<li><p>工作温度</p>
+<p>原则：实际工作值小于等于额定值的70%-80%，防止突发状况，保证可靠性</p>
+</li>
+</ol>
+<p>数据手册</p>
+<ol>
+<li>封面+features</li>
+<li>引脚定义</li>
+<li>绝对最大值</li>
+<li>详细电气参数（典型、最小、最大）</li>
+<li>典型应用电路</li>
+<li>封装尺寸图</li>
+</ol>
+<p>不要只看参考设计，要理解工作原理</p>
+<h3 id="单位与参数"><a href="#单位与参数" class="headerlink" title="单位与参数"></a>单位与参数</h3><p>电阻：1-10M</p>
+<p>电容：1pf-10000uf</p>
+<p>电感：1nh-100mh</p>
+<p>以100uF&#x2F;25V 铝电解电容为例—逐行拆解<br>参数名称<br>规格书数值<br>含义解读<br>选<br>Capacitance<br>100uF +20%<br>标称容量及容差（80uF<del>120uF均合格）<br>去耦用途，20%可接受<br>Rated Voltage<br>25V<br>最大持续工作电压<br>A 降额：实际电压≤20V<br>ESR @100Hz,20°C<br>50.50<br>等效串联电阻，越小越好<br>高频场合需≤0.10<br>Leakage Current<br>≤0.01CV HA<br>漏电流（C-容量uF，V&#x3D;电压V）<br>精密保持电路需注意<br>Temp Range<br>-40°C ~ +105°C<br>允许工作温度区间<br>车规场合需-40°C起<br>Lifetime<br>2000hrs @105°C<br>在最高温度下的额定寿命<br>A 降温10°C寿命翻倍<br>Ripple Current<br>300mA @100Hz<br>允许纹波电流有效值<br>电源场合必须核算<br>寿命降额黄金法则（阿伦尼斯模型）：温度每降低10°C，寿命约翻倍<br>2000hrs@105°C-工作在95°C</del>4000hrs | 工作在85°C<del>8000hrs | 工作在65°C</del>32000hrs<br>（约3.7年）</p>
+<ol>
+<li>单位确认</li>
+<li>容差评估</li>
+<li>温度漂移</li>
+<li>降额检查（小于80%最大值）</li>
+</ol>
+<h2 id="电阻"><a href="#电阻" class="headerlink" title="电阻"></a>电阻</h2><p>CH<br>碳膜电阻<br>低成本，噪声较大<br>精度 5%<del>土10%<br>通用消费电路首选<br>山 高频現商大，不适合精密模拟<br>MF<br>金属膜电阻<br>低噪声，精度高<br>‡0.1%</del>土1%<br>精密仪器&#x2F;音频首选<br>WW<br>绕线电阻<br>功率大（1W<del>数百W）<br>精度高<br>大电流场合必选<br>山 有感性，不道合高效<br>SMD<br>贴片电阻<br>体积小，批量焊接<br>0402</del>2512多规格现代PCB主流<br>山 手工埠接需放大<br>SIP&#x2F;DIP<br>排阻&#x2F;网络电阻<br>舒秘<br>多个阻值合封<br>节省PCB面积总线上下拉常用</p>
+<p>实际功率小于等于额定功率的一半</p>
+<p>以下是从图片中提取并整理成的电子元器件（电阻器）学习笔记：</p>
+<hr>
+<h3 id="📘-电子元器件基础-第三课：电阻器深度解析笔记"><a href="#📘-电子元器件基础-第三课：电阻器深度解析笔记" class="headerlink" title="📘 电子元器件基础 - 第三课：电阻器深度解析笔记"></a>📘 电子元器件基础 - 第三课：电阻器深度解析笔记</h3><h4 id="1-关键参数（上）：阻值-功率"><a href="#1-关键参数（上）：阻值-功率" class="headerlink" title="1. 关键参数（上）：阻值 &amp; 功率"></a>1. 关键参数（上）：阻值 &amp; 功率</h4><p><strong>核心公式：</strong></p>
+<ul>
+<li>$P &#x3D; I^2R &#x3D; V^2&#x2F;R &#x3D; V \times I$ （功率计算是选型第一步）</li>
+</ul>
+<p><strong>安全裕量原则：</strong></p>
+<ul>
+<li>实际功率 $\le$ 额定功率 $\times 50%$ （降额使用，延长寿命）</li>
+</ul>
+<p><strong>阻值标称系列 (E系列)：</strong></p>
+<table>
+<thead>
+<tr>
+<th>系列</th>
+<th>精度</th>
+<th>常用阻值数量</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>E6</strong></td>
+<td>±20%</td>
+<td>6个&#x2F;十倍频程</td>
+<td>粗略限流</td>
+</tr>
+<tr>
+<td><strong>E12</strong></td>
+<td>±10%</td>
+<td>12个&#x2F;十倍频程</td>
+<td>一般电路</td>
+</tr>
+<tr>
+<td><strong>E24</strong></td>
+<td>±5%</td>
+<td>24个&#x2F;十倍频程</td>
+<td>通用场合（最常见）</td>
+</tr>
+<tr>
+<td><strong>E48</strong></td>
+<td>±2%</td>
+<td>48个&#x2F;十倍频程</td>
+<td>精密仪器</td>
+</tr>
+<tr>
+<td><strong>E96</strong></td>
+<td>±1%</td>
+<td>96个&#x2F;十倍频程</td>
+<td>高精度设计</td>
+</tr>
+<tr>
+<td><strong>E192</strong></td>
+<td>±0.5%</td>
+<td>192个&#x2F;十倍频程</td>
+<td>顶级精密</td>
+</tr>
+</tbody></table>
+<p><strong>常见功率规格：</strong></p>
+<ul>
+<li>1&#x2F;16 W, 1&#x2F;10 W</li>
+<li>1&#x2F;8 W, 1&#x2F;4 W</li>
+<li>1&#x2F;2 W, 1 W</li>
+<li>2 W, 5 W+</li>
+</ul>
+<hr>
+<h4 id="2-关键参数（下）：精度-温度系数"><a href="#2-关键参数（下）：精度-温度系数" class="headerlink" title="2. 关键参数（下）：精度 &amp; 温度系数"></a>2. 关键参数（下）：精度 &amp; 温度系数</h4><p><strong>精度等级代码：</strong></p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>容差</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>B</strong></td>
+<td>±0.1%</td>
+<td>精密仪器&#x2F;基准</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>±0.25%</td>
+<td>高精度模拟</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>±0.5%</td>
+<td>精密测量</td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td>±1%</td>
+<td>通用高精度（推荐）</td>
+</tr>
+<tr>
+<td><strong>G</strong></td>
+<td>±2%</td>
+<td>一般精度</td>
+</tr>
+<tr>
+<td><strong>J</strong></td>
+<td>±5%</td>
+<td>大多数数字电路</td>
+</tr>
+<tr>
+<td><strong>K</strong></td>
+<td>±10%</td>
+<td>粗略限流&#x2F;滤波</td>
+</tr>
+<tr>
+<td><strong>M</strong></td>
+<td>±20%</td>
+<td>容限宽松场合</td>
+</tr>
+</tbody></table>
+<p><strong>温度系数 (TCR)：</strong></p>
+<ul>
+<li><strong>计算公式：</strong> $TCR &#x3D; (R_2 - R_1) &#x2F; [R_1 \times (T_2 - T_1)] \times 10^6$ (ppm&#x2F;°C)</li>
+</ul>
+<p><strong>不同类型电阻的TCR及应用：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>典型TCR</th>
+<th>应用场合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>精密金属膜</td>
+<td>±25 ppm&#x2F;°C</td>
+<td>精密仪器-基准电路</td>
+</tr>
+<tr>
+<td>普通金属膜</td>
+<td>±100 ppm&#x2F;°C</td>
+<td>通用高精度</td>
+</tr>
+<tr>
+<td>碳膜</td>
+<td>±500 ppm&#x2F;°C</td>
+<td>一般消费电路</td>
+</tr>
+<tr>
+<td>厚膜贴片</td>
+<td>±100~200 ppm&#x2F;°C</td>
+<td>SMD通用</td>
+</tr>
+<tr>
+<td>绕线</td>
+<td>±10~50 ppm&#x2F;°C</td>
+<td>大功率精密</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>注意：</strong> 高温环境下阻值会偏移！设计时需计算最坏情况：$R_{max} &#x3D; R_0 \times (1 + TCR \times \Delta T)$</p>
+</blockquote>
+<hr>
+<h4 id="3-贴片电阻封装尺寸"><a href="#3-贴片电阻封装尺寸" class="headerlink" title="3. 贴片电阻封装尺寸"></a>3. 贴片电阻封装尺寸</h4><p><strong>从0201到2512，怎么选不再靠感觉：</strong></p>
+<table>
+<thead>
+<tr>
+<th>封装代码</th>
+<th>尺寸 (mm)</th>
+<th>额定功率</th>
+<th>特点与建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>0201</strong></td>
+<td>0.6×0.3 mm</td>
+<td>1&#x2F;20W</td>
+<td>最小，需激光焊&#x2F;AOI，量产精密设备</td>
+</tr>
+<tr>
+<td><strong>0402</strong></td>
+<td>1.0×0.5 mm</td>
+<td>1&#x2F;16W</td>
+<td>小批量常用最小封装，贴片机可胜任</td>
+</tr>
+<tr>
+<td><strong>0603</strong></td>
+<td>1.6×0.8 mm</td>
+<td>1&#x2F;10W</td>
+<td>工业设计最常用，平衡尺寸与功率</td>
+</tr>
+<tr>
+<td><strong>0805</strong></td>
+<td>2.0×1.2 mm</td>
+<td>1&#x2F;8W</td>
+<td>需要稍大功率时优选，手焊也容易</td>
+</tr>
+<tr>
+<td><strong>1206</strong></td>
+<td>3.2×1.6 mm</td>
+<td>1&#x2F;4W</td>
+<td>通孔替换首选，手焊友好</td>
+</tr>
+<tr>
+<td><strong>2010</strong></td>
+<td>5.0×2.5 mm</td>
+<td>3&#x2F;4W</td>
+<td>大功率贴片，发热区域注意散热</td>
+</tr>
+<tr>
+<td><strong>2512</strong></td>
+<td>6.4×3.2 mm</td>
+<td>1W</td>
+<td>最大常见贴片，需良好散热层</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="4-三大应用电路"><a href="#4-三大应用电路" class="headerlink" title="4. 三大应用电路"></a>4. 三大应用电路</h4><p><strong>分压 · 限流 · 上下拉 —— 工程师必背公式</strong></p>
+<p><strong>① 分压电路</strong></p>
+<ul>
+<li><strong>公式：</strong> $V_{out} &#x3D; V_{in} \times R_2 &#x2F; (R_1 + R_2)$</li>
+<li><strong>示例：</strong> 5V转3.3V: $R_1&#x3D;1.7k\Omega, R_2&#x3D;3.3k\Omega$ (实际选 E24 标称值)</li>
+<li>要点：<ul>
+<li>$R_2 \le 1&#x2F;10$ 负载阻抗，减少负载效应。</li>
+<li>精度要求高时用 E96 系列 ±1%。</li>
+<li>ADC 采样前分压：注意输出阻抗影响。</li>
+<li>上下臂选相同温度系数，漂移自消。</li>
+</ul>
+</li>
+</ul>
+<p><strong>② 限流电路</strong></p>
+<ul>
+<li><strong>公式：</strong> $R &#x3D; (V_{cc} - V_f) &#x2F; I_f$</li>
+<li><strong>示例：</strong> 3.3V 驱动 LED: $R&#x3D;(3.3-2.0)&#x2F;0.01 &#x3D; 130\Omega \rightarrow$ 取 $150\Omega$</li>
+<li>要点：<ul>
+<li>LED 限流：$V_f \approx 2V, I_f&#x3D;10mA \rightarrow R&#x3D;(5-2)&#x2F;0.01&#x3D;300\Omega$。</li>
+<li>实际取 E24 标称：$330\Omega$ (安全)。</li>
+<li>功率验算：$P &#x3D; I^2 \times R &#x3D; (0.01)^2 \times 330 &#x3D; 33mW &lt; 1&#x2F;16W$ (√)。</li>
+<li>大电流时别忘降额50%。</li>
+</ul>
+</li>
+</ul>
+<p><strong>③ 上下拉电路</strong></p>
+<ul>
+<li>定义：<ul>
+<li>上拉：悬空引脚确保高电平（默认 HIGH），接 $V_{cc}$。</li>
+<li>下拉：悬空引脚确保低电平（默认 LOW），接 GND。</li>
+</ul>
+</li>
+<li>典型值：<ul>
+<li>I²C 上拉 2.2~10kΩ（速率决定）。</li>
+<li>按键下拉：10kΩ（防漏电，降功耗）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="5-电阻选型五步法"><a href="#5-电阻选型五步法" class="headerlink" title="5. 电阻选型五步法"></a>5. 电阻选型五步法</h4><p><strong>系统选型，不再凭感觉：</strong></p>
+<ol>
+<li>确认应用场景<ul>
+<li>限流&#x2F;分压&#x2F;上下拉&#x2F;滤波？</li>
+<li>决定电阻类型（碳膜&#x2F;金属膜&#x2F;贴片）。</li>
+</ul>
+</li>
+<li>计算功率需求<ul>
+<li>$P &#x3D; I^2R$ 或 $P &#x3D; V^2&#x2F;R$。</li>
+<li>额定功率 $\ge$ 实际功率 $\times 2$ （降额50%）。</li>
+</ul>
+</li>
+<li>确定精度等级<ul>
+<li>数字电路：±5% (J级) 够用。</li>
+<li>模拟&#x2F;ADC：±1% (F级)。</li>
+<li>基准：±0.1% (B级)。</li>
+</ul>
+</li>
+<li>选封装尺寸<ul>
+<li>焊接能力 + 板面积 + 功率综合考虑。</li>
+<li>推荐：0603（平衡），1206（大功率手焊）。</li>
+</ul>
+</li>
+<li>验货源与替代料<ul>
+<li>LCSC&#x2F;立创商城查库存。</li>
+<li>确认温度系数 &amp; 品牌一致性。</li>
+<li>准备1~2个替代料型号。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="6-常见误区-避坑指南"><a href="#6-常见误区-避坑指南" class="headerlink" title="6. 常见误区 &amp; 避坑指南"></a>6. 常见误区 &amp; 避坑指南</h4><p><strong>这些错误，老工程师都踩过：</strong></p>
+<ul>
+<li>❌ 功率只算额定，不降额<ul>
+<li>✅ <strong>正解：</strong> 实际功率 $\le$ 额定 $\times 50%$，高温再打折。</li>
+</ul>
+</li>
+<li>❌ 分压忽略负载效应<ul>
+<li>✅ <strong>正解：</strong> $R_{load} \ge 10 \times R_2$，否则 $V_{out}$ 偏低。</li>
+</ul>
+</li>
+<li>❌ I²C 上拉随意选 10kΩ<ul>
+<li>✅ <strong>正解：</strong> 400kHz用 $\le 2.2k\Omega$，100kHz可 $4.7k\Omega$。</li>
+</ul>
+</li>
+<li>❌ 精密电路用碳膜电阻<ul>
+<li>✅ <strong>正解：</strong> 精度需求 &gt; ±2% 必用金属膜或精密厚膜。</li>
+</ul>
+</li>
+<li>❌ 不考虑温度系数漂移<ul>
+<li>✅ <strong>正解：</strong> 高温环境用低TCR电阻，计算漂移量。</li>
+</ul>
+</li>
+<li>❌ 手随便抓一个电阻用<ul>
+<li>✅ <strong>正解：</strong> 看标称色环&#x2F;印字，确认阻值再焊。</li>
+</ul>
+</li>
+</ul>
+<h3 id="📘-电子元器件基础-第四课：特殊电阻器应用笔记"><a href="#📘-电子元器件基础-第四课：特殊电阻器应用笔记" class="headerlink" title="📘 电子元器件基础 - 第四课：特殊电阻器应用笔记"></a>📘 电子元器件基础 - 第四课：特殊电阻器应用笔记</h3><h4 id="1-NTC-热敏电阻"><a href="#1-NTC-热敏电阻" class="headerlink" title="1. NTC 热敏电阻"></a>1. NTC 热敏电阻</h4><p><strong>核心特性：</strong></p>
+<ul>
+<li><p><strong>负温度系数</strong> —— 温度升高，阻值下降。</p>
+</li>
+<li><p>计算公式：</p>
+<p> $R(T) &#x3D; R_0 \times \exp[B \times (1&#x2F;T - 1&#x2F;T_0)]$</p>
+<ul>
+<li>$T$ 单位：开尔文 K</li>
+<li>$T_0$ 通常 &#x3D; 298.15K (25°C)</li>
+<li>B值越大，灵敏度越高</li>
+</ul>
+</li>
+</ul>
+<p><strong>关键参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>典型值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>$R_{25}$</strong></td>
+<td>25°C标称阻值</td>
+<td>1kΩ &#x2F; 10kΩ &#x2F; 100kΩ</td>
+</tr>
+<tr>
+<td><strong>B值</strong></td>
+<td>材料常数（灵敏度）</td>
+<td>3380K &#x2F; 3950K &#x2F; 4250K</td>
+</tr>
+<tr>
+<td><strong>精度</strong></td>
+<td>阻值误差</td>
+<td>±1% &#x2F; ±2% &#x2F; ±5%</td>
+</tr>
+<tr>
+<td><strong>测量范围</strong></td>
+<td>有效温度范围</td>
+<td>-55°C ~ +150°C</td>
+</tr>
+</tbody></table>
+<p><strong>主要应用场景：</strong></p>
+<ol>
+<li><strong>温度检测</strong>：分压 → ADC → MCU查表（或计算B值方程）。</li>
+<li><strong>电池保护</strong>：超温触发保护切断充&#x2F;放电。</li>
+<li><strong>浪涌抑制</strong>：冷态高阻限流 → 热态低阻 → 开机浪涌抑制。</li>
+</ol>
+<hr>
+<h4 id="2-PTC-PPTC-——-自恢复保险丝"><a href="#2-PTC-PPTC-——-自恢复保险丝" class="headerlink" title="2. PTC &#x2F; PPTC —— 自恢复保险丝"></a>2. PTC &#x2F; PPTC —— 自恢复保险丝</h4><p><strong>工作原理：</strong></p>
+<ul>
+<li><strong>正常工作</strong> → 低阻态 ($m\Omega$) → 电流通过。</li>
+<li><strong>过流触发</strong> → 高温 → 阻值暴增 → 限制电流 → 自动保护。</li>
+<li><em>特点：过流保护，断电后自动恢复。</em></li>
+</ul>
+<p><strong>关键参数速查与选型原则：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>选型原则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ihold</strong></td>
+<td>保持电流（不动作）</td>
+<td>$\ge 1.1 \times$ 正常工作电流</td>
+</tr>
+<tr>
+<td><strong>Itrip</strong></td>
+<td>动作电流（触发保护）</td>
+<td>$\le 0.8 \times$ 最小故障电流</td>
+</tr>
+<tr>
+<td><strong>Vmax</strong></td>
+<td>最大工作电压</td>
+<td>$\ge$ 电路最高电压 + 裕量</td>
+</tr>
+<tr>
+<td><strong>Imax</strong></td>
+<td>最大冲击电流</td>
+<td>$\ge$ 预计最大短路电流</td>
+</tr>
+<tr>
+<td><strong>Rmin &#x2F; Rmax</strong></td>
+<td>常温初始阻值范围</td>
+<td>越小串联压降越小</td>
+</tr>
+</tbody></table>
+<p><strong>典型应用：</strong></p>
+<ul>
+<li>USB口 (Ihold&#x3D;500mA~1A)</li>
+<li>锂电保护板</li>
+<li>5V电源 (Ihold按负载电流×1.5)</li>
+</ul>
+<hr>
+<h4 id="3-MOV-压敏电阻-——-瞬态过压保护"><a href="#3-MOV-压敏电阻-——-瞬态过压保护" class="headerlink" title="3. MOV 压敏电阻 —— 瞬态过压保护"></a>3. MOV 压敏电阻 —— 瞬态过压保护</h4><p><strong>工作原理：</strong></p>
+<ul>
+<li>氧化锌压敏电阻，双向对称 V-I 特性。</li>
+<li><strong>正常电压</strong> → 高阻态 ($\mu A$泄漏)。</li>
+<li><strong>过压</strong> → 瞬间低阻（泄放能量到地）。</li>
+<li><strong>撤压</strong> → 恢复高阻。</li>
+</ul>
+<p><strong>关键选型参数 (以220VAC系统为例)：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>220VAC系统选型参考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Varistor Voltage $V_{1mA}$</strong></td>
+<td>标称电压 (1mA时)</td>
+<td>$\ge 275V \times 1.2 \times \sqrt{2} \approx 470V \rightarrow$ 选500V型</td>
+</tr>
+<tr>
+<td><strong>Clamping Voltage $V_c$</strong></td>
+<td>峰值钳位电压</td>
+<td>$\le$ 后级耐压，典型$V_{1mA}$的2~2.5倍</td>
+</tr>
+<tr>
+<td><strong>Vac (Max)</strong></td>
+<td>最大持续交流电压</td>
+<td>220VAC系统选$\ge 275VAC$型号</td>
+</tr>
+<tr>
+<td><strong>Energy (J)</strong></td>
+<td>单次可吸收能量</td>
+<td>按雷击标准留2倍裕量</td>
+</tr>
+<tr>
+<td><strong>Peak Current $I_{peak}$</strong></td>
+<td>最大冲击电流(8&#x2F;20μs)</td>
+<td>$\ge$ 预计最大浪涌电流</td>
+</tr>
+</tbody></table>
+<p><strong>AC入口三级防护架构：</strong> L&#x2F;N线 → [MOV 主吸收] → [GDT 极高压初级] → [TVS 精密钳位] → 负载 <em>(推荐型号：MOV选 14D431K，430V，能量140J)</em></p>
+<hr>
+<h4 id="4-电位器-数字电位器-DigiPOT"><a href="#4-电位器-数字电位器-DigiPOT" class="headerlink" title="4. 电位器 &amp; 数字电位器 (DigiPOT)"></a>4. 电位器 &amp; 数字电位器 (DigiPOT)</h4><p><strong>从机械旋钮到数字接口的进化：</strong></p>
+<ul>
+<li><strong>碳膜旋转</strong>：低成本，寿命10万次（适合音量&#x2F;亮度旋钮）。</li>
+<li><strong>线绕精密</strong>：精度高，功率大（适合精密仪器校准）。</li>
+<li><strong>多圈精密</strong>：360°×N圈，高分辨率（适合基准精密校准）。</li>
+<li><strong>贴片微调</strong>：PCB焊接，一次调整（适合板级参数调整）。</li>
+</ul>
+<p><strong>数字电位器 (DigiPOT) —— SPI&#x2F;I²C 接口程控阻值：</strong></p>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>接口</th>
+<th>步数</th>
+<th>最大阻值</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MCP4131 (Microchip)</td>
+<td>SPI</td>
+<td>128步</td>
+<td>10kΩ&#x2F;50kΩ&#x2F;100kΩ</td>
+<td>音量控制&#x2F;增益调节</td>
+</tr>
+<tr>
+<td>AD5241 (ADI)</td>
+<td>I²C</td>
+<td>256步</td>
+<td>10kΩ&#x2F;100kΩ</td>
+<td>仪器校准&#x2F;偏置调节</td>
+</tr>
+<tr>
+<td>X9C103 (Xicor)</td>
+<td>3线</td>
+<td>100步</td>
+<td>10kΩ</td>
+<td>非易失性，掉电保存</td>
+</tr>
+</tbody></table>
+<p>⚠️ <strong>注意：</strong></p>
+<ul>
+<li><strong>A型电位器 (对数)</strong> → 音频音量。</li>
+<li><strong>B型 (线性)</strong> → 线性控制。</li>
+<li><strong>切勿混用！</strong></li>
+</ul>
+<hr>
+<h4 id="5-综合保护电路设计案例"><a href="#5-综合保护电路设计案例" class="headerlink" title="5. 综合保护电路设计案例"></a>5. 综合保护电路设计案例</h4><p><strong>场景：24V DC工业设备，额定电流3A</strong> 需防：开机浪涌 &#x2F; 过流 &#x2F; 感性反峰 &#x2F; 雷击浪涌</p>
+<p><strong>四级联合防护方案：</strong></p>
+<ol>
+<li><strong>NTC (浪涌抑制)</strong>：$R_{25}&#x3D;5\Omega$, B&#x3D;3950。冷态限开机涌流，热态压降&lt;0.5V。</li>
+<li><strong>PPTC (过流保护)</strong>：Ihold&#x3D;3A, Itrip&#x3D;6A。短路自恢复。</li>
+<li><strong>MOV (过压泄放)</strong>：$V_{1mA}&#x3D;39V$ (选36D391K)。吸收感性反峰。</li>
+<li><strong>TVS (精密钳位)</strong>：双向30V。响应时间ns级，最终精密钳位。</li>
+</ol>
+<p><strong>USB接口保护方案：</strong></p>
+<ul>
+<li><strong>PPTC</strong> (MF-MSMF050-2)：Ihold&#x3D;500mA，串联在USB +5V。</li>
+<li><strong>TVS阵列</strong> (USBL C6-2SC6)：接D+&#x2F;D-数据线，ESD保护。</li>
+<li><strong>22Ω串联电阻</strong>：D+&#x2F;D-各串一颗，阻抗匹配+抑制高频EMI。</li>
+</ul>
+<hr>
+<h4 id="6-选型速查-常见误区"><a href="#6-选型速查-常见误区" class="headerlink" title="6. 选型速查 &amp; 常见误区"></a>6. 选型速查 &amp; 常见误区</h4><p><strong>选型速查表：</strong></p>
+<table>
+<thead>
+<tr>
+<th>需求场景</th>
+<th>选什么</th>
+<th>注意什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>温度测量</strong></td>
+<td>NTC热敏 ($R_{25}$&#x2F;B值匹配)</td>
+<td>B值越大灵敏度越高，精度选≤±1%</td>
+</tr>
+<tr>
+<td><strong>开机浪涌抑制</strong></td>
+<td>NTC (大功率型)</td>
+<td>热态阻值必须足够低，减少损耗</td>
+</tr>
+<tr>
+<td><strong>USB过流保护</strong></td>
+<td>PPTC (Ihold≤额定电流)</td>
+<td>Itrip约为Ihold的2倍，留足裕量</td>
+</tr>
+<tr>
+<td><strong>AC电源防雷</strong></td>
+<td>MOV ($V_{ac} \ge 1.1 \times V_{ac_max}$)</td>
+<td>能量选型→按标准8&#x2F;20μs波形计算</td>
+</tr>
+<tr>
+<td><strong>精密参数调节</strong></td>
+<td>多圈电位器或DigiPOT</td>
+<td>机械型看圈数；DigiPOT看步数分辨率</td>
+</tr>
+</tbody></table>
+<p><strong>常见误区：</strong></p>
+<ul>
+<li>❌ <strong>MOV当TVS用</strong> (用于精密钳位) → ✅ MOV响应慢、钳位电压高，精密钳位用TVS。</li>
+<li>❌ <strong>NTC直接串在大电流回路不算热态阻值</strong> → ✅ 热态阻值需计算，避免压降过大影响输出。</li>
+<li>❌ <strong>PPTC选Ihold&#x3D;工作电流 (无裕量)</strong> → ✅ $I_{hold} \ge 1.2 \times I_{normal}$，防止误动作。</li>
+</ul>
+<hr>
+<h4 id="7-特殊电阻速记口诀"><a href="#7-特殊电阻速记口诀" class="headerlink" title="7. 特殊电阻速记口诀"></a>7. 特殊电阻速记口诀</h4><ul>
+<li>NTC → 温升阻降<ul>
+<li>测温&#x2F;浪涌抑制首选</li>
+<li>$R_{25}$ 配B值查手册</li>
+<li>分压电阻取中间温度</li>
+</ul>
+</li>
+<li>PPTC → 自恢复保险<ul>
+<li>$I_{hold} \ge 1.2 \times I_{normal}$</li>
+<li>$I_{trip} \le 0.8 \times I_{fault_min}$</li>
+<li>断电冷却后自动恢复</li>
+</ul>
+</li>
+<li>MOV → 压浪吸能<ul>
+<li>标称电压 $\ge V_{ac} \times 1.2 \times \sqrt{2}$</li>
+<li>AC 220V选 $\ge 275VAC$型</li>
+<li>能量要留2倍裕量</li>
+</ul>
+</li>
+<li>电位器 A&#x2F;B 勿混<ul>
+<li>A型：对数，用于音频</li>
+<li>B型：线性，用于控制</li>
+<li>精密调节用多圈</li>
+</ul>
+</li>
+<li>DigiPOT 数字调节<ul>
+<li>SPI&#x2F;I²C 程控阻值</li>
+<li>步数决定分辨率</li>
+<li>X9C103非易失性</li>
+</ul>
+</li>
+<li>保护电路优先级<ul>
+<li>MOV→GDT (AC防雷)</li>
+<li>NTC+PPTC (DC防浪&#x2F;过流)</li>
+<li>TVS最后精密钳位</li>
+</ul>
+</li>
+</ul>
+<h2 id="电容"><a href="#电容" class="headerlink" title="电容"></a>电容</h2><p>这是为您整理的《电子元器件基础 - 第五课：电容的选型及应用》学习笔记。内容涵盖了电容的分类、关键参数、选型原则及避坑指南。</p>
+<hr>
+<h3 id="📘-电子元器件基础-第五课：电容的选型及应用笔记"><a href="#📘-电子元器件基础-第五课：电容的选型及应用笔记" class="headerlink" title="📘 电子元器件基础 - 第五课：电容的选型及应用笔记"></a>📘 电子元器件基础 - 第五课：电容的选型及应用笔记</h3><h4 id="1-电容器分类总览"><a href="#1-电容器分类总览" class="headerlink" title="1. 电容器分类总览"></a>1. 电容器分类总览</h4><p><strong>核心公式：</strong></p>
+<ul>
+<li>$Q &#x3D; C \times V$（储荷）</li>
+<li>$E &#x3D; \frac{1}{2}CV^2$（储能）</li>
+</ul>
+<p><strong>四大类型对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>典型容量范围</th>
+<th>耐压</th>
+<th>核心特点</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>铝电解电容</strong></td>
+<td>1µF ~ 47000µF</td>
+<td>6.3V ~ 450V</td>
+<td>大容量、有极性、ESR较高</td>
+<td>电源滤波、储能</td>
+</tr>
+<tr>
+<td><strong>钽电容</strong></td>
+<td>0.1µF ~ 1000µF</td>
+<td>2.5V ~ 50V</td>
+<td>体积小、有极性、ESR低</td>
+<td>便携设备、精密电路</td>
+</tr>
+<tr>
+<td><strong>陶瓷电容 (MLCC)</strong></td>
+<td>1pF ~ 100µF</td>
+<td>6.3V ~ 3kV</td>
+<td>无极性、高频特性好、直流偏压敏感</td>
+<td>去耦、高频滤波</td>
+</tr>
+<tr>
+<td><strong>薄膜电容</strong></td>
+<td>100pF ~ 100µF</td>
+<td>50V ~ 2000V</td>
+<td>低损耗、高稳定性、无极性</td>
+<td>音频、精密、EMI滤波</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>选型五维度：</strong> 容量、耐压、ESR、温度特性、封装。</p>
+</blockquote>
+<hr>
+<h4 id="2-关键参数：容量与容差"><a href="#2-关键参数：容量与容差" class="headerlink" title="2. 关键参数：容量与容差"></a>2. 关键参数：容量与容差</h4><p><strong>标注方式：</strong></p>
+<p>- </p>
+<ul>
+<li><p>单位换算：</p>
+<p> 1F &#x3D; $10^6$µF &#x3D; $10^9$nF &#x3D; $10^{12}$pF</p>
+<ul>
+<li><em>记忆技巧：微(M) → 纳(n) → 皮(p)，每次乘以1000</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>容差等级表：</strong></p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>容差</th>
+<th>常用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>J级</strong></td>
+<td>±5%</td>
+<td>精密电路首选</td>
+</tr>
+<tr>
+<td><strong>K级</strong></td>
+<td>±10%</td>
+<td>通用去耦旁路</td>
+</tr>
+<tr>
+<td><strong>M级</strong></td>
+<td>±20%</td>
+<td>低频滤波、大电容量场合</td>
+</tr>
+<tr>
+<td><strong>Z级</strong></td>
+<td>+80%&#x2F;-20%</td>
+<td>大容量铝电解常见</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="3-MLCC-温度特性代码"><a href="#3-MLCC-温度特性代码" class="headerlink" title="3. MLCC 温度特性代码"></a>3. MLCC 温度特性代码</h4><p><strong>选对才能用对地方（稳定性排序：C0G &gt; X7R &gt; X5R &gt; Y5V）</strong></p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>温度范围</th>
+<th>容量变化率</th>
+<th>稳定性</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>C0G &#x2F; NPO</strong></td>
+<td>-55°C ~ +125°C</td>
+<td>±30ppm&#x2F;°C (极稳定)</td>
+<td>★★★★★</td>
+<td>振荡器、精密滤波、RF电路</td>
+</tr>
+<tr>
+<td><strong>X7R</strong></td>
+<td>-55°C ~ +125°C</td>
+<td>±15%</td>
+<td>★★★★</td>
+<td>通用去耦、旁路电容</td>
+</tr>
+<tr>
+<td><strong>X5R</strong></td>
+<td>-55°C ~ +85°C</td>
+<td>±15%</td>
+<td>★★★</td>
+<td>低温环境去耦，成本较低</td>
+</tr>
+<tr>
+<td><strong>Y5V &#x2F; Z5U</strong></td>
+<td>-30°C ~ +85°C</td>
+<td>-82% ~ +22%</td>
+<td>★</td>
+<td>仅用于非关键场合，不推荐</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>直流偏压效应 (DC Bias Effect)：</strong> X5R&#x2F;X7R在施加直流电压后，实际容量会显著下降。<br><em>示例：标称 10µF&#x2F;10V 的 MLCC，在 5V 工作点实际容量可能只有 3µF！选型时务必查询厂商特性曲线。</em></p>
+</blockquote>
+<hr>
+<h4 id="4-耐压与降额使用"><a href="#4-耐压与降额使用" class="headerlink" title="4. 耐压与降额使用"></a>4. 耐压与降额使用</h4><p><strong>电容器必须降额——这不是选修，而是必修！</strong></p>
+<table>
+<thead>
+<tr>
+<th>电容类型</th>
+<th>降额标准</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>陶瓷电容 (MLCC)</strong></td>
+<td>工作电压 ≤ 额定耐压 × <strong>50%</strong></td>
+<td>直流偏压效应导致容量大幅下降，必须降额</td>
+</tr>
+<tr>
+<td><strong>铝电解电容</strong></td>
+<td>工作电压 ≤ 额定耐压 × <strong>80%</strong></td>
+<td>余量保证超压底底和宿命，5V系统选10V或16V</td>
+</tr>
+<tr>
+<td><strong>钽电容</strong></td>
+<td>工作电压 ≤ 额定耐压 × <strong>50%</strong></td>
+<td>钽电容短路失效会燃烧！降额50%是行业标准</td>
+</tr>
+</tbody></table>
+<p><strong>实战案例 (5V系统)：</strong></p>
+<ul>
+<li><strong>MLCC：</strong> 需10µF，应选10V或16V耐压的X7R&#x2F;X5R（不能直接选5V耐压）。</li>
+<li><strong>铝电解：</strong> 需100µF滤波，应选10V或16V耐压，不得选6.3V。</li>
+</ul>
+<hr>
+<h4 id="5-ESR-与-ESL-——-电容的隐藏参数"><a href="#5-ESR-与-ESL-——-电容的隐藏参数" class="headerlink" title="5. ESR 与 ESL —— 电容的隐藏参数"></a>5. ESR 与 ESL —— 电容的隐藏参数</h4><p><strong>概念：</strong></p>
+<ul>
+<li><strong>ESR (等效串联电阻)：</strong> 越低越好，影响高频滤波和去耦性能。过高会导致发热 ($P &#x3D; I^2 \times ESR$)。</li>
+<li><strong>ESL (等效串联电感)：</strong> 决定高频性能上限。</li>
+</ul>
+<p><strong>不同类型表现：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>ESR 典型值</th>
+<th>ESL</th>
+<th>高频性能</th>
+<th>选型建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>铝电解</strong></td>
+<td>0.1Ω ~ 几Ω</td>
+<td>较高</td>
+<td>差，不适合高频</td>
+<td>配合 MLCC 并联使用</td>
+</tr>
+<tr>
+<td><strong>钽电容</strong></td>
+<td>0.1Ω ~ 0.5Ω</td>
+<td>中等</td>
+<td>较好</td>
+<td>便携设备优选</td>
+</tr>
+<tr>
+<td><strong>MLCC (贴片)</strong></td>
+<td>1mΩ ~ 10mΩ</td>
+<td>极低</td>
+<td>优秀，高频首选</td>
+<td>高频去耦首选，靠近 IC</td>
+</tr>
+<tr>
+<td><strong>薄膜电容</strong></td>
+<td>5mΩ ~ 50mΩ</td>
+<td>低</td>
+<td>好</td>
+<td>音频、精密场合</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>设计技巧：</strong> 电源滤波用铝电解，并联一个 100nF MLCC 弥补高频弱点；IC 电源引脚就近放一个 100nF X7R MLCC，尽量靠近引脚 (&lt;3mm)。</p>
+</blockquote>
+<hr>
+<h4 id="6-电解电容选型要点"><a href="#6-电解电容选型要点" class="headerlink" title="6. 电解电容选型要点"></a>6. 电解电容选型要点</h4><ol>
+<li><strong>注意极性：</strong> 铝电解和钽电容分正负，反接会损坏甚至爆炸&#x2F;燃烧。PCB上必须标注极性。</li>
+<li><strong>寿命与温度：</strong> 铝电解受温度影响极大。<strong>温度每升高10°C，寿命减半</strong>（阿伦尼斯定律）。高温环境必须选105°C级，不能用标准85°C级的。</li>
+<li><strong>纹波电流：</strong> 超过额定纹波电流会加速老化。需计算电源纹波幅度确认在规格范围内。</li>
+<li><strong>低温性能：</strong> 铝电解在低温下ESR大幅上升（-40°C环境可能性能“忙化”）。需在-40°C工作时，选低温型或改用钽电容。</li>
+</ol>
+<hr>
+<h4 id="7-选型速查表"><a href="#7-选型速查表" class="headerlink" title="7. 选型速查表"></a>7. 选型速查表</h4><table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>推荐类型</th>
+<th>容量建议</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>电源输入滤波</strong></td>
+<td>铝电解 + MLCC</td>
+<td>100µF ~ 4700µF + 100nF</td>
+<td>铝解ESR大，必须并联MLCC</td>
+</tr>
+<tr>
+<td><strong>IC 电源去耦</strong></td>
+<td>MLCC X7R</td>
+<td>100nF (0402&#x2F;0603)</td>
+<td>尽量靠近IC电源引脚&lt;3mm</td>
+</tr>
+<tr>
+<td><strong>精密ADC基准去耦</strong></td>
+<td>MLCC C0G</td>
+<td>10nF ~ 100nF</td>
+<td>容量稳定性要求高，必须用C0G</td>
+</tr>
+<tr>
+<td><strong>音频耦合</strong></td>
+<td>薄膜电容</td>
+<td>1µF ~ 10µF</td>
+<td>低失真，不用电解</td>
+</tr>
+<tr>
+<td><strong>大容量储能</strong></td>
+<td>铝电解</td>
+<td>按功率计算</td>
+<td>注意纹波电流和寿命</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>黄金组合策略：</strong> 100nF (高频) + 10µF (中频) + 100µF (低频) 并联 &#x3D; 宽频带覆盖，拒绝部分频率的接地噪声与电源波动。</p>
+</blockquote>
+<hr>
+<h4 id="8-常见误区避坑指南"><a href="#8-常见误区避坑指南" class="headerlink" title="8. 常见误区避坑指南"></a>8. 常见误区避坑指南</h4><ol>
+<li>❌ <strong>容量越大越好</strong> → ✅ 大容量 MLCC 高频特性差，多个小容量并联效果更优。</li>
+<li>❌ <strong>忽视直流偏压效应</strong> → ✅ X5R&#x2F;X7R 实际容量远低于标称，必须降额选型（查厂商曲线）。</li>
+<li>❌ <strong>钽电容不降额</strong> → ✅ 钽电容短路失效会燃烧！工作电压必须 ≤ 额定耐压 × 50%。</li>
+<li>❌ <strong>电解电容方向随意</strong> → ✅ 反接有爆炸风险！PCB 上务必标注极性，并且扫板确认。</li>
+<li>❌ <strong>高温环境仍用标准铝电解</strong> → ✅ 高温环境选 105°C 级，或改用钽电容、薄膜电容。</li>
+</ol>
+<h3 id="旁路电容"><a href="#旁路电容" class="headerlink" title="旁路电容"></a>旁路电容</h3><p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/97e8335213bc5e22465c0c4d6196a50e.jpg" alt="97e8335213bc5e22465c0c4d6196a50e"></p>
+<p><img src="https://photos-1355819942.cos.ap-shanghai.myqcloud.com/f4b7690217828c4822954cc3d2b599b9.jpg" alt="f4b7690217828c4822954cc3d2b599b9"></p>
+<p>电容器的电容值，应根据电路处理信号的频率，按以下标准确定即可。<br>（1）DC～数十 MHz：0.1μF。<br>（2）数十 MHz～数百十 MHz：0.01μF。<br>（3）数百十 MHz～数百 MHz：1000pF。<br>（4）数百 MHz～数 GHz：100pF。</p>
+<p>宽带宽的放大器中，应取上述多个电容器并联。许多陶瓷电容器的电容会因两端所加直流电压而有较大变化，所以有必要确认一下在叠加有直流电时能否确保静电电容值。</p>
+<h4 id="一、旁路电容原理与布局要求"><a href="#一、旁路电容原理与布局要求" class="headerlink" title="一、旁路电容原理与布局要求"></a>一、旁路电容原理与布局要求</h4><ol>
+<li><h5 id="什么是旁路电容？"><a href="#什么是旁路电容？" class="headerlink" title="什么是旁路电容？"></a>什么是旁路电容？</h5></li>
+</ol>
+<ul>
+<li><strong>定义</strong>：并联在电源和地之间的电容。</li>
+<li><strong>作用</strong>：为高频噪声电流提供低阻抗通路，将噪声“旁路”到地，保护敏感电路。</li>
+</ul>
+<h5 id="2-工作原理"><a href="#2-工作原理" class="headerlink" title="2. 工作原理"></a>2. 工作原理</h5><p>当电源线上出现高频纹波或干扰时，旁路电容呈现低阻抗特性，噪声电流优先流经电容到地，而不是进入IC的电源引脚。</p>
+<h5 id="3-核心作用"><a href="#3-核心作用" class="headerlink" title="3. 核心作用"></a>3. 核心作用</h5><ul>
+<li>减小电源线上的纹波电压。</li>
+<li>抑制高速开关产生的共模噪声。</li>
+<li>提供瞬态电流的本地储能。</li>
+<li>提高电源完整性 (PI)。</li>
+</ul>
+<h5 id="4-四大黄金法则（布局要求）"><a href="#4-四大黄金法则（布局要求）" class="headerlink" title="4. 四大黄金法则（布局要求）"></a>4. 四大黄金法则（布局要求）</h5><ul>
+<li><strong>靠近引脚</strong>：电容应尽量靠近芯片的电源引脚，走线长度控制在0.5cm以内。</li>
+<li><strong>短路径优先</strong>：电源线从引脚到电容再到地，走线越短越好，减小寄生电感 (ESL)。</li>
+<li><strong>多过孔接地</strong>：电容的接地过孔应紧邻焊盘，至少使用两个过孔以降低阻抗。</li>
+<li><strong>优先级排序</strong>：小容值电容 (0.1μF) 最靠近芯片，大容值电容可稍远。</li>
+</ul>
+<blockquote>
+<p><strong>警示</strong>：布局不佳会导致旁路电容失效，高频噪声依然窜入IC。</p>
+</blockquote>
+<hr>
+<h4 id="二、去耦电容选型"><a href="#二、去耦电容选型" class="headerlink" title="二、去耦电容选型"></a>二、去耦电容选型</h4><h5 id="1-高频与低频去耦电容的区别"><a href="#1-高频与低频去耦电容的区别" class="headerlink" title="1. 高频与低频去耦电容的区别"></a>1. 高频与低频去耦电容的区别</h5><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>高频去耦电容</th>
+<th>低频去耦电容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>典型容值</strong></td>
+<td>0.01μF ~ 0.1μF</td>
+<td>10μF ~ 100μF</td>
+</tr>
+<tr>
+<td><strong>频率响应</strong></td>
+<td>100kHz ~ 100MHz</td>
+<td>DC ~ 100kHz</td>
+</tr>
+<tr>
+<td><strong>电容类型</strong></td>
+<td>X7R陶瓷电容</td>
+<td>铝电解&#x2F;钽电容</td>
+</tr>
+<tr>
+<td><strong>ESR&#x2F;ESL</strong></td>
+<td>低ESR、低ESL</td>
+<td>ESR较高、ESL大</td>
+</tr>
+<tr>
+<td><strong>应用场景</strong></td>
+<td>数字IC、高速芯片</td>
+<td>电源输入端、大电流</td>
+</tr>
+</tbody></table>
+<h5 id="2-选型原则"><a href="#2-选型原则" class="headerlink" title="2. 选型原则"></a>2. 选型原则</h5><ul>
+<li><strong>容量匹配</strong>：根据IC的动态电流和切换频率计算。通常0.1μF用于高频，10~100μF用于低频。</li>
+<li><strong>耐压选择</strong>：工作电压的1.5~2倍（如3.3V系统选6.3V或10V）。</li>
+<li><strong>ESL考虑</strong>：高频去耦优先选用0402&#x2F;0603封装（ESL更小）。</li>
+<li><strong>温度特性</strong>：X7R陶瓷电容温度特性好 (-55°C~+125°C)，Y5V高温下容量剧降需慎用。</li>
+</ul>
+<hr>
+<h4 id="三、电源滤波电路设计"><a href="#三、电源滤波电路设计" class="headerlink" title="三、电源滤波电路设计"></a>三、电源滤波电路设计</h4><h5 id="1-常见滤波电路类型"><a href="#1-常见滤波电路类型" class="headerlink" title="1. 常见滤波电路类型"></a>1. 常见滤波电路类型</h5><h6 id="C型滤波"><a href="#C型滤波" class="headerlink" title="C型滤波"></a>C型滤波</h6><ul>
+<li><strong>特点</strong>：单纯电容滤波，结构简单、成本低，适用于小功率场合。</li>
+<li><strong>结构</strong>：电源 → 电容 → 地。</li>
+</ul>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">+-----------------------+
+|                       |
+|     电源输入          | 输出
+o--------+--------------o
+         |
+        &#x3D;&#x3D;&#x3D; C
+         |
+---------+--------- GND</code></pre>
+
+<h6 id="LC型滤波"><a href="#LC型滤波" class="headerlink" title="LC型滤波"></a>LC型滤波</h6><ul>
+<li><strong>特点</strong>：电感+电容组合，效果好、频带宽，是常用方案。</li>
+<li><strong>结构</strong>：电源 → 电感 → 电容 → 地。</li>
+</ul>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">+-----------+---------+
+|           |         |
+|   电源    L         | 输出
+o----UUU----+---------o
+            |
+           &#x3D;&#x3D;&#x3D; C
+            |
+------------+--------- GND</code></pre>
+
+<h6 id="π型滤波"><a href="#π型滤波" class="headerlink" title="π型滤波"></a>π型滤波</h6><ul>
+<li><strong>特点</strong>：两电容一电感，效果最佳、体积大，用于敏感电路。</li>
+<li><strong>结构</strong>：电容1 → 电感 → 电容2 → 地。</li>
+</ul>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">+------+-----------+------+
+|      |           |      |
+|     &#x3D;&#x3D;&#x3D; C1       |      | 输出
+o------+           +------o
+       |           |
+       |     L     |
+       +----UUU----+
+       |           |
+      &#x3D;&#x3D;&#x3D; C2       |
+       |           |
+-------+-----------+------ GND</code></pre>
+
+<h5 id="2-关键设计参数"><a href="#2-关键设计参数" class="headerlink" title="2. 关键设计参数"></a>2. 关键设计参数</h5><ul>
+<li><p>截止频率</p>
+<ul>
+<li>C型滤波：$f_c &#x3D; \frac{1}{2\pi RC}$</li>
+<li>LC型滤波：$f_c &#x3D; \frac{1}{2\pi \sqrt{LC}}$</li>
+</ul>
+</li>
+<li><p><strong>ESR影响</strong>：ESR越低，滤波效果越好。陶瓷电容ESR &lt; 10mΩ，电解电容ESR ~ 100mΩ。</p>
+</li>
+<li><p><strong>布局距离</strong>：滤波电容靠近噪声源或敏感器件，走线短而粗。</p>
+</li>
+<li><p><strong>接地方式</strong>：采用星形接地，避免地线回路形成环路噪声。</p>
+</li>
+</ul>
+<hr>
+<h4 id="四、容值组合策略"><a href="#四、容值组合策略" class="headerlink" title="四、容值组合策略"></a>四、容值组合策略</h4><h5 id="1-为什么需要多个电容并联？"><a href="#1-为什么需要多个电容并联？" class="headerlink" title="1. 为什么需要多个电容并联？"></a>1. 为什么需要多个电容并联？</h5><ul>
+<li><strong>频段覆盖</strong>：单个电容无法覆盖全频段，大电容高频阻抗高，小电容容量有限。</li>
+<li><strong>ESL优化</strong>：小电容ESL小，高频阻抗低；大电容ESL大，适合低频储能。</li>
+<li><strong>瞬态响应</strong>：小电容响应快，应对高速切换；大电容储能多，应对大电流。</li>
+</ul>
+<h5 id="2-三级容值组合方案-100nF-10μF-100μF"><a href="#2-三级容值组合方案-100nF-10μF-100μF" class="headerlink" title="2. 三级容值组合方案 (100nF + 10μF + 100μF)"></a>2. 三级容值组合方案 (100nF + 10μF + 100μF)</h5><table>
+<thead>
+<tr>
+<th>级别</th>
+<th>容值</th>
+<th>类型</th>
+<th>频率响应</th>
+<th>作用</th>
+<th>布局位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>第一级</strong></td>
+<td>100nF</td>
+<td>X7R陶瓷</td>
+<td>100kHz~100MHz</td>
+<td>高频去耦</td>
+<td>最靠近芯片</td>
+</tr>
+<tr>
+<td><strong>第二级</strong></td>
+<td>10μF</td>
+<td>钽电容</td>
+<td>10kHz~1MHz</td>
+<td>中频去耦</td>
+<td>芯片电源引脚</td>
+</tr>
+<tr>
+<td><strong>第三级</strong></td>
+<td>100μF</td>
+<td>电解电容</td>
+<td>DC~100kHz</td>
+<td>低频储能</td>
+<td>电源入口处</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="五、实战案例分析"><a href="#五、实战案例分析" class="headerlink" title="五、实战案例分析"></a>五、实战案例分析</h4><p><strong>案例对象</strong>：STM32F103 3.3V供电滤波设计</p>
+<h5 id="设计配置"><a href="#设计配置" class="headerlink" title="设计配置"></a>设计配置</h5><ul>
+<li><strong>100nF 陶瓷电容</strong>：VDD引脚旁，去耦高频，紧贴芯片。</li>
+<li><strong>10μF 钽电容</strong>：VDD引脚旁，中频去耦，100nF外侧。</li>
+<li><strong>100μF 电解电容</strong>：LDO输出端，低频储能，电源入口。</li>
+</ul>
+<h5 id="布局顺序"><a href="#布局顺序" class="headerlink" title="布局顺序"></a>布局顺序</h5><p>LDO输出 → 100μF电解电容 → 10μF钽电容 → 100nF陶瓷电容 → MCU芯片</p>
+<hr>
+<h4 id="六、本课小结"><a href="#六、本课小结" class="headerlink" title="六、本课小结"></a>六、本课小结</h4><ul>
+<li><p>知识点回顾</p>
+<ol>
+<li>旁路电容为高频噪声提供低阻抗路径，布局时必须靠近引脚、走线最短。</li>
+<li>高频去耦电容 (0.1μF) 用于高速切换，低频去耦电容 (10~100μF) 用于大电流。</li>
+<li>电源滤波电路有C型、LC型、π型三种，根据需求选择合适的拓扑。</li>
+<li>三级容值组合 (100nF+10μF+100μF) 覆盖全频段，是常用方案。</li>
+<li>实际设计需通过示波器测量电源纹波，验证滤波效果。</li>
+</ol>
+</li>
+</ul>
+<h2 id="电感"><a href="#电感" class="headerlink" title="电感"></a>电感</h2><h3 id="一、电感器工作原理与核心参数"><a href="#一、电感器工作原理与核心参数" class="headerlink" title="一、电感器工作原理与核心参数"></a>一、电感器工作原理与核心参数</h3><h4 id="1-基本工作原理"><a href="#1-基本工作原理" class="headerlink" title="1. 基本工作原理"></a>1. 基本工作原理</h4><p>电感两端的电压与电流的变化率成正比，阻碍电流的突变。</p>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">V &#x3D; L × di&#x2F;dt</code></pre>
+
+<ul>
+<li>：电感两端电压</li>
+<li>：电感值</li>
+<li>：电流变化率</li>
+</ul>
+<h4 id="2-四大核心参数"><a href="#2-四大核心参数" class="headerlink" title="2. 四大核心参数"></a>2. 四大核心参数</h4><table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>定义&#x2F;物理意义</th>
+<th>典型范围&#x2F;要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>电感值 ($L$)</strong></td>
+<td>存储磁场能量的能力</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>品质因数 ($Q$)</strong></td>
+<td>储能与耗能之比</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>自谐振频率 (SRF)</strong></td>
+<td>电感与寄生电容产生谐振的频率</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>直流电阻 (DCR)</strong></td>
+<td>线圈本身的直流电阻</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>其中，品质因数的计算公式为：</p>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">Q &#x3D; ωL &#x2F; R</code></pre>
+
+<hr>
+<h3 id="二、高频电感选型黄金法则"><a href="#二、高频电感选型黄金法则" class="headerlink" title="二、高频电感选型黄金法则"></a>二、高频电感选型黄金法则</h3><ol>
+<li><strong>SRF 要求</strong>：自谐振频率必须高于工作频率至少 <strong>2 倍</strong>（理想情况为 3-5 倍）。</li>
+<li><strong>Q 值要求</strong>：在目标频率下需大于 <strong>30</strong>（射频应用需 $&gt;50$）。</li>
+<li><strong>电流余量</strong>：额定电流需考虑峰值电流 + <strong>20% 余量</strong>。</li>
+<li><strong>封装选择</strong>：优先选择 <strong>屏蔽电感</strong> 以减少 EMI 辐射；高频应用优选 <strong>多层片式或薄膜电感</strong>。</li>
+</ol>
+<hr>
+<h3 id="三、高频电感-PCB-布局设计要点"><a href="#三、高频电感-PCB-布局设计要点" class="headerlink" title="三、高频电感 PCB 布局设计要点"></a>三、高频电感 PCB 布局设计要点</h3><ol>
+<li><strong>地平面完整性</strong>：电感下方必须有连续地平面，提供良好回流路径。</li>
+<li><strong>避免铜皮耦合</strong>：电感周围 <strong>3mm 内</strong> 避免走信号线，防止磁场耦合干扰。</li>
+<li><strong>去耦电容靠近</strong>：电感的电源端必须紧贴 <strong>100nF + 10μF</strong> 去耦电容组合。</li>
+<li><strong>热设计考虑</strong>：大电流电感需预留散热空间，必要时添加散热孔。</li>
+</ol>
+<hr>
+<h3 id="四、典型应用电路（含-ASCII-图）"><a href="#四、典型应用电路（含-ASCII-图）" class="headerlink" title="四、典型应用电路（含 ASCII 图）"></a>四、典型应用电路（含 ASCII 图）</h3><h4 id="1-LC-滤波电路"><a href="#1-LC-滤波电路" class="headerlink" title="1. LC 滤波电路"></a>1. LC 滤波电路</h4><ul>
+<li><strong>截止频率公式</strong>：</li>
+</ul>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">fc &#x3D; 1 &#x2F; (2π√LC)</code></pre>
+
+<ul>
+<li><strong>滤波器类型</strong>：<ul>
+<li><strong>低通滤波器</strong>：阻止高频，通过低频。</li>
+<li><strong>高通滤波器</strong>：阻止低频，通过高频。</li>
+<li><strong>带通滤波器</strong>：只允许特定频率范围通过。</li>
+<li><strong>带阻滤波器</strong>：阻止特定频率范围。</li>
+</ul>
+</li>
+<li><strong>ASCII 电路图 (LC 二阶低通滤波)</strong>：</li>
+</ul>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">      ┌───[ L ]────────────┐
+IN o──┤                    ├──o OUT
+      │                    │
+      │                   [ C ]
+      │                    │
+GND o─┴────────────────────┴─o GND</code></pre>
+
+<ul>
+<li><strong>设计要点</strong>：L&#x2F;C 值比例需根据阻抗匹配要求确定。</li>
+</ul>
+<h4 id="2-射频匹配网络"><a href="#2-射频匹配网络" class="headerlink" title="2. 射频匹配网络"></a>2. 射频匹配网络</h4><ul>
+<li><strong>功能</strong>：实现阻抗变换（如 $50\Omega \leftrightarrow 75\Omega$），或与天线匹配。</li>
+<li><strong>常见拓扑</strong>：<ul>
+<li><strong>L 型匹配网络</strong>：简单，但带宽较窄。</li>
+<li><strong>T 型匹配网络</strong>：可实现更宽带宽。</li>
+<li>：可实现低通特性。</li>
+<li><strong>变压器匹配</strong>：宽频带，但体积较大。</li>
+</ul>
+</li>
+<li><strong>关键指标</strong>：需使用高频电感，SRF 远高于工作频率。例如：900MHz 射频电路，SRF 需 $&gt;1.8\text{GHz}$（2 倍）。</li>
+<li><strong>ASCII 电路图 (L 型匹配网络示例)</strong>：</li>
+</ul>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">       Zs          L
+Vs o──[ZZ]────[oooooo]────┬────[ZZ]──o VL (Load)
+                          │     ZL
+                         [ C ]
+                          │
+GND o─────────────────────┴──────────o GND</code></pre>
+
+<h4 id="3-DC-DC-转换器"><a href="#3-DC-DC-转换器" class="headerlink" title="3. DC-DC 转换器"></a>3. DC-DC 转换器</h4><ul>
+<li><strong>电感值计算公式</strong>：</li>
+</ul>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">L &#x3D; (Vout × (1-D)) &#x2F; (ΔI × fsw)</code></pre>
+
+<ul>
+<li><strong>参数说明</strong>：<ul>
+<li>：输出电压</li>
+<li>：占空比（$D &#x3D; V_{out} &#x2F; V_{in}$）</li>
+<li>：纹波电流（通常取 20-40% 输出电流）</li>
+<li>：开关频率</li>
+</ul>
+</li>
+<li><h2 id="计算示例-Buck-转换器-："><a href="#计算示例-Buck-转换器-：" class="headerlink" title="计算示例 (Buck 转换器)："></a><strong>计算示例 (Buck 转换器)</strong>：</h2><ul>
+<li><h2 id="计算过程："><a href="#计算过程：" class="headerlink" title="计算过程："></a>计算过程：</h2><ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">L &#x3D; (5V × (1-0.42)) &#x2F; (0.8A × 500kHz) ≈ 7.25μH</code></pre>
+
+<hr>
+<h3 id="五、电感器选型速查表"><a href="#五、电感器选型速查表" class="headerlink" title="五、电感器选型速查表"></a>五、电感器选型速查表</h3><table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>推荐电感类型</th>
+<th>关键指标</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DC-DC 转换器</strong></td>
+<td>功率电感、屏蔽电感</td>
+<td>电流容量、DCR 低</td>
+<td>注意饱和电流</td>
+</tr>
+<tr>
+<td><strong>射频匹配网络</strong></td>
+<td>高频片式电感、薄膜电感</td>
+<td>SRF 高、Q 值高</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EMI 滤波</strong></td>
+<td>磁珠电感、共模扼流圈</td>
+<td>阻抗频率特性</td>
+<td>注意直流偏置特性</td>
+</tr>
+<tr>
+<td><strong>电源滤波</strong></td>
+<td>绕线电感、铁氧体磁芯</td>
+<td>电感值、电流容量</td>
+<td>注意发热问题</td>
+</tr>
+<tr>
+<td><strong>谐振电路</strong></td>
+<td>高 Q 值电感、可调电感</td>
+<td>Q 值、稳定性</td>
+<td>温度系数要小</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="六、电感器应用常见误区"><a href="#六、电感器应用常见误区" class="headerlink" title="六、电感器应用常见误区"></a>六、电感器应用常见误区</h3><ol>
+<li><strong>误区 1</strong>：只看电感值，忽视 SRF 和 Q 值。</li>
+<li><strong>误区 2</strong>：在射频电路中使用普通功率电感。</li>
+<li><strong>误区 3</strong>：PCB 布局时将电感放在信号线旁边。</li>
+<li><strong>误区 4</strong>：忽略电感的饱和电流，导致磁芯饱和。</li>
+<li><strong>误区 5</strong>：以为所有屏蔽电感都适合高频应用。</li>
+<li><strong>误区 6</strong>：忽略温度对电感性能的影响。</li>
+<li><strong>误区 7</strong>：并联电感时未考虑互感影响。</li>
+</ol>
+<hr>
+<h3 id="七、课堂练习"><a href="#七、课堂练习" class="headerlink" title="七、课堂练习"></a>七、课堂练习</h3><h4 id="练习-1：设计-10MHz-LC-低通滤波器"><a href="#练习-1：设计-10MHz-LC-低通滤波器" class="headerlink" title="练习 1：设计 10MHz LC 低通滤波器"></a>练习 1：设计 10MHz LC 低通滤波器</h4><ul>
+<li><strong>设计要求</strong>：源阻抗和负载阻抗均为 $50\Omega$。</li>
+<li><strong>任务</strong>：计算合适的 L 和 C 值组合。</li>
+</ul>
+<h4 id="练习-2：射频电路电感选型"><a href="#练习-2：射频电路电感选型" class="headerlink" title="练习 2：射频电路电感选型"></a>练习 2：射频电路电感选型</h4><ul>
+<li><p><strong>工作频率</strong>：900MHz。</p>
+</li>
+<li><p>两款电感对比</p>
+<p>：</p>
+<p>-<br>- </p>
+</li>
+<li><p><strong>问题</strong>：哪款更适合？说明理由。（提示：参考“高频电感选型黄金法则”中的 SRF 倍数要求）</p>
+</li>
+</ul>
+<hr>
+<h3 id="八、课程小结与下节预告"><a href="#八、课程小结与下节预告" class="headerlink" title="八、课程小结与下节预告"></a>八、课程小结与下节预告</h3><ul>
+<li><strong>核心总结</strong>：<ul>
+<li>电感器是高频电路设计的核心元件，SRF 和 Q 值是关键指标。</li>
+<li>高频选型：SRF 需高于工作频率 2-3 倍，Q 值需大于 30。</li>
+<li>PCB 布局：保证地平面完整，避免信号线耦合。</li>
+<li>应用电路：LC 滤波、射频匹配、DC-DC 转换各有要点。</li>
+</ul>
+</li>
+<li><strong>下节预告</strong>：<strong>第 08 课 连接器与线缆选型规范</strong><ul>
+<li>连接器类型与接口标准 (USB&#x2F;HDMI&#x2F;RJ45&#x2F;航空插头)。</li>
+<li>电流&#x2F;电压&#x2F;频率规格匹配原则。</li>
+<li>机械可靠性设计与插拔寿命。</li>
+</ul>
+</li>
+</ul>
+<h2 id="连接器线缆"><a href="#连接器线缆" class="headerlink" title="连接器线缆"></a>连接器线缆</h2><h3 id="一、连接器类型与接口标准"><a href="#一、连接器类型与接口标准" class="headerlink" title="一、连接器类型与接口标准"></a>一、连接器类型与接口标准</h3><h4 id="1-消费电子类"><a href="#1-消费电子类" class="headerlink" title="1. 消费电子类"></a>1. 消费电子类</h4><ul>
+<li><strong>USB Type-C</strong>：支持 USB 3.2&#x2F;4.0，速率达 10Gbps，支持 100W PD 快充。</li>
+<li><strong>HDMI 2.1</strong>：带宽 48Gbps，支持 8K@60Hz 视频传输。</li>
+<li><strong>RJ45 以太网</strong>：支持 Cat.5e&#x2F;6&#x2F;6A 标准，速率 10Gbps，传输距离 100m。</li>
+</ul>
+<h4 id="2-工业-车规类"><a href="#2-工业-车规类" class="headerlink" title="2. 工业&#x2F;车规类"></a>2. 工业&#x2F;车规类</h4><ul>
+<li><strong>圆形连接器</strong>：符合 MIL-DTL-38999 军标，防护等级 IP67，插拔寿命 500 次以上。</li>
+<li><strong>D-SUB 连接器</strong>：常见 DB-9&#x2F;15&#x2F;25 规格，用于 RS232&#x2F;485 通讯，单针载流 3A。</li>
+<li><strong>板对板连接器</strong>：常见间距为 0.5mm &#x2F; 1.0mm &#x2F; 1.27mm。</li>
+</ul>
+<hr>
+<h3 id="二、电气规格匹配原则"><a href="#二、电气规格匹配原则" class="headerlink" title="二、电气规格匹配原则"></a>二、电气规格匹配原则</h3><p>选型时需严格遵循以下余量设计原则：</p>
+<ol>
+<li><strong>电流容量</strong>：额定电流需大于实际工作电流，并预留 <strong>+30% 余量</strong>。</li>
+<li><strong>电压等级</strong>：耐压值需大于最高工作电压，并预留 <strong>+50% 余量</strong>。</li>
+<li><strong>频率特性</strong>：高频信号传输需考虑阻抗匹配（例如 USB 3.0 差分阻抗需控制在 90Ω）。</li>
+<li><strong>接触电阻</strong>：单个触点的接触电阻应 <strong>&lt; 20mΩ</strong>，以保证低损耗。</li>
+<li><strong>绝缘电阻</strong>：在 500V DC 测试条件下，绝缘电阻应 <strong>&gt; 100MΩ</strong>。</li>
+</ol>
+<hr>
+<h3 id="三、机械可靠性设计"><a href="#三、机械可靠性设计" class="headerlink" title="三、机械可靠性设计"></a>三、机械可靠性设计</h3><p>为确保产品在恶劣环境下稳定工作，需关注以下指标：</p>
+<ol>
+<li><p>插拔寿命</p>
+<p>：</p>
+<ul>
+<li>消费电子：约 500 次</li>
+<li>工业应用：约 1000 次</li>
+<li>车规级应用：约 5000 次</li>
+</ul>
+</li>
+<li><p><strong>锁紧方式</strong>：采用螺纹、卡扣或推拉自锁结构，以增强防振动能力。</p>
+</li>
+<li><p><strong>防误插设计</strong>：通过键位、颜色或形状编码区分，防止插错。</p>
+</li>
+<li><p><strong>端子保持力</strong>：需 <strong>&gt; 15N</strong>，防止端子在使用过程中退针。</p>
+</li>
+<li><p><strong>极化设计</strong>：确保只有唯一正确的插接方向。</p>
+</li>
+</ol>
+<hr>
+<h3 id="四、线缆选型规范"><a href="#四、线缆选型规范" class="headerlink" title="四、线缆选型规范"></a>四、线缆选型规范</h3><ol>
+<li><strong>载流能力</strong>：依据 AWG 线规和环境温度进行降额计算，需预留 <strong>+30% 余量</strong>。</li>
+<li><strong>屏蔽要求</strong>：高频信号传输线缆需采用双屏蔽结构（铝箔 + 编织网）。</li>
+<li><strong>阻抗控制</strong>：高频线缆需严格控制特性阻抗（常见标准为 50Ω &#x2F; 75Ω &#x2F; 100Ω）。</li>
+<li><strong>环境适应性</strong>：需具备防水、防油、耐紫外线及耐高低温性能。</li>
+<li><strong>防火等级</strong>：需满足 VW-1 &#x2F; FT4 阻燃标准或低烟无卤要求。</li>
+</ol>
+<hr>
+<h3 id="五、连接器选型速查表"><a href="#五、连接器选型速查表" class="headerlink" title="五、连接器选型速查表"></a>五、连接器选型速查表</h3><table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>推荐连接器</th>
+<th>关键指标</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>消费电子</strong></td>
+<td>USB-C &#x2F; HDMI &#x2F; RJ45</td>
+<td>传输速率 &#x2F; 功率</td>
+<td>接口兼容性</td>
+</tr>
+<tr>
+<td><strong>工业控制</strong></td>
+<td>圆形 &#x2F; D-SUB</td>
+<td>IP 等级 &#x2F; 插拔寿命</td>
+<td>环境适应性</td>
+</tr>
+<tr>
+<td><strong>汽车电子</strong></td>
+<td>车规圆形 &#x2F; 板对板</td>
+<td>振动 &#x2F; 温度范围</td>
+<td>车规认证</td>
+</tr>
+<tr>
+<td><strong>医疗设备</strong></td>
+<td>医疗专用连接器</td>
+<td>生物相容性 &#x2F; 消毒</td>
+<td>法规符合性</td>
+</tr>
+<tr>
+<td><strong>航空航天</strong></td>
+<td>MIL 标准连接器</td>
+<td>高可靠性 &#x2F; 轻量化</td>
+<td>严格认证</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="六、连接器应用常见误区"><a href="#六、连接器应用常见误区" class="headerlink" title="六、连接器应用常见误区"></a>六、连接器应用常见误区</h3><ol>
+<li><strong>只看外观</strong>：忽视电气规格匹配，导致过热或击穿。</li>
+<li><strong>低估环境因素</strong>：未充分考虑温度、湿度、振动对性能的影响。</li>
+<li><strong>忽略插拔寿命</strong>：选型过低导致过早失效。</li>
+<li><strong>载流计算不足</strong>：线缆过细导致发热严重，甚至烧毁。</li>
+<li><strong>高频忽视阻抗</strong>：未考虑阻抗匹配和屏蔽，导致信号完整性差。</li>
+<li><strong>忽视防误插</strong>：缺乏防呆设计，导致插错损坏设备。</li>
+</ol>
+<hr>
+<h3 id="七、课堂练习参考思路"><a href="#七、课堂练习参考思路" class="headerlink" title="七、课堂练习参考思路"></a>七、课堂练习参考思路</h3><h4 id="练习-1：工业设备电源连接设计"><a href="#练习-1：工业设备电源连接设计" class="headerlink" title="练习 1：工业设备电源连接设计"></a>练习 1：工业设备电源连接设计</h4><ul>
+<li><p><strong>工况分析</strong>：电流 8A，环境温度 60°C（高温需降额），振动较强。</p>
+</li>
+<li><p>选型建议</p>
+<p>：</p>
+<ul>
+<li><strong>连接器</strong>：选择带螺纹锁紧的工业圆形连接器（如 M12 或 M8 航空插头），防护等级 IP67 以上，抗震性好。</li>
+<li><strong>线缆</strong>：根据 8A 电流及 60°C 高温环境，查阅 AWG 线规表，建议选择 16AWG 或更粗的线缆，并预留 30% 余量（即按约 10.4A 载流能力选型）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="练习-2：USB-Type-C-移动硬盘盒设计"><a href="#练习-2：USB-Type-C-移动硬盘盒设计" class="headerlink" title="练习 2：USB Type-C 移动硬盘盒设计"></a>练习 2：USB Type-C 移动硬盘盒设计</h4><ul>
+<li><p>选型要点</p>
+<p>：</p>
+<ul>
+<li>选用支持 USB 3.1 Gen1 (5Gbps) 或 Gen2 (10Gbps) 的全功能 Type-C 母座。</li>
+<li>确认母座支持 5V&#x2F;3A (15W) 或更高功率传输，满足 20W 供电需求。</li>
+</ul>
+</li>
+<li><p>PCB 布局注意事项</p>
+<p>：</p>
+<ul>
+<li><strong>差分走线</strong>：TX&#x2F;RX 差分对需做 90Ω 阻抗控制，尽量短且等长。</li>
+<li><strong>CC 引脚</strong>：CC1&#x2F;CC2 引脚需串联 5.1kΩ 下拉电阻（Device 端）。</li>
+<li><strong>屏蔽接地</strong>：Type-C 外壳屏蔽引脚需大面积铺地，保证 EMI 性能。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二极管"><a href="#二极管" class="headerlink" title="二极管"></a>二极管</h2><h3 id="一、PN结基本原理"><a href="#一、PN结基本原理" class="headerlink" title="一、PN结基本原理"></a>一、PN结基本原理</h3><h4 id="1-PN结核心概念"><a href="#1-PN结核心概念" class="headerlink" title="1. PN结核心概念"></a>1. PN结核心概念</h4><ul>
+<li><strong>耗尽层</strong>：P型与N型半导体结合时，在界面形成的无自由载流子区域。</li>
+<li><strong>扩散电流</strong>：多数载流子从高浓度向低浓度扩散形成的电流。</li>
+<li><strong>漂移电流</strong>：电场作用下少数载流子漂移形成的电流。</li>
+<li><strong>正向偏置</strong>：P接正极，N接负极，耗尽层变窄，电流导通。</li>
+<li><strong>反向偏置</strong>：P接负极，N接正极，耗尽层变宽，电流极小。</li>
+</ul>
+<h4 id="2-PN结示意图（ASCII图）"><a href="#2-PN结示意图（ASCII图）" class="headerlink" title="2. PN结示意图（ASCII图）"></a>2. PN结示意图（ASCII图）</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">  P区 (空穴多)          N区 (电子多)
+┌───────────────┐   ┌───────────────┐
+│  ● ● ● ● ● ●  │   │  ○ ○ ○ ○ ○ ○  │
+│  ● ● ● ● ● ●  │   │  ○ ○ ○ ○ ○ ○  │
+│  ● ● ● ● ● ●  │   │  ○ ○ ○ ○ ○ ○  │
+└───────────────┘   └───────────────┘
+       ↓                   ↓
+┌─────────────────────────────────────┐
+│         Depletion Region            │
+│  (负离子区)       (正离子区)         │
+└─────────────────────────────────────┘</code></pre>
+
+<blockquote>
+<p>说明：左侧为P型半导体（空穴为多数载流子），右侧为N型半导体（电子为多数载流子）。中间为耗尽区，由固定离子构成，无自由载流子。</p>
+</blockquote>
+<hr>
+<h3 id="二、二极管分类与特性"><a href="#二、二极管分类与特性" class="headerlink" title="二、二极管分类与特性"></a>二、二极管分类与特性</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>典型型号</th>
+<th>关键特性</th>
+<th>主要应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整流二极管</td>
+<td>1N4001-1N4007</td>
+<td>Vf≈0.7V, trr慢</td>
+<td>工频整流</td>
+</tr>
+<tr>
+<td>快速恢复</td>
+<td>FR107, UF4007</td>
+<td>trr&lt;100ns</td>
+<td>开关电源</td>
+</tr>
+<tr>
+<td>肖特基</td>
+<td>1N5817-1N5822</td>
+<td>Vf≈0.3V, trr极快</td>
+<td>低压整流</td>
+</tr>
+<tr>
+<td>稳压管</td>
+<td>1N4728-1N4764</td>
+<td>稳定电压Vz</td>
+<td>电压基准</td>
+</tr>
+<tr>
+<td>TVS管</td>
+<td>P6KE6.8A</td>
+<td>响应快&lt;1ns</td>
+<td>浪涌保护</td>
+</tr>
+<tr>
+<td>发光管</td>
+<td>各种颜色LED</td>
+<td>发光效率η</td>
+<td>指示灯</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="三、关键参数详解"><a href="#三、关键参数详解" class="headerlink" title="三、关键参数详解"></a>三、关键参数详解</h3><h4 id="1-正向压降-Vf"><a href="#1-正向压降-Vf" class="headerlink" title="1. 正向压降 Vf"></a>1. 正向压降 Vf</h4><p>决定功耗和效率。</p>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">硅: 0.6-0.7V
+肖特基: 0.2-0.4V
+锗: 0.2-0.3V</code></pre>
+
+<h4 id="2-反向击穿-Vbr"><a href="#2-反向击穿-Vbr" class="headerlink" title="2. 反向击穿 Vbr"></a>2. 反向击穿 Vbr</h4><p>决定耐压能力。</p>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">普通: 50-1000V
+稳压管: 2.4-200V</code></pre>
+
+<h4 id="3-最大电流-If"><a href="#3-最大电流-If" class="headerlink" title="3. 最大电流 If"></a>3. 最大电流 If</h4><p>决定电流能力。</p>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">小信号: 100mA
+功率管: 1-100A</code></pre>
+
+<h4 id="4-反向恢复-trr"><a href="#4-反向恢复-trr" class="headerlink" title="4. 反向恢复 trr"></a>4. 反向恢复 trr</h4><p>决定开关速度。</p>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">普通: 2-5μs
+快速: 50-200ns
+肖特基: ~0</code></pre>
+
+<h4 id="5-结电容-Cj"><a href="#5-结电容-Cj" class="headerlink" title="5. 结电容 Cj"></a>5. 结电容 Cj</h4><p>影响高频性能。</p>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">小信号: 1-10pF
+功率管: 50-500pF</code></pre>
+
+<hr>
+<h3 id="四、典型应用电路（含ASCII图）"><a href="#四、典型应用电路（含ASCII图）" class="headerlink" title="四、典型应用电路（含ASCII图）"></a>四、典型应用电路（含ASCII图）</h3><h4 id="1-半波整流"><a href="#1-半波整流" class="headerlink" title="1. 半波整流"></a>1. 半波整流</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">AC输入 → [D] → 负载 → GND</code></pre>
+
+<blockquote>
+<p>说明：仅利用交流电的正半周，效率低但结构简单可靠。</p>
+</blockquote>
+<h4 id="2-全波桥式整流"><a href="#2-全波桥式整流" class="headerlink" title="2. 全波桥式整流"></a>2. 全波桥式整流</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">AC+ ────[D1]────┬──── 负载+ ────[D3]──── AC-
+                │
+               [D2]
+                │
+AC- ────[D4]────┴──── 负载- ────[D1]──── AC+</code></pre>
+
+<blockquote>
+<p>说明：四个二极管组成桥式结构，利用交流电的正负半周，效率高，是常用方案。</p>
+</blockquote>
+<h4 id="3-防反接保护"><a href="#3-防反接保护" class="headerlink" title="3. 防反接保护"></a>3. 防反接保护</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">电源+ → [D] → 电路 → GND</code></pre>
+
+<blockquote>
+<p>说明：二极管串联在电源正极，防止电源反接损坏后级电路。</p>
+</blockquote>
+<h4 id="4-Zener稳压"><a href="#4-Zener稳压" class="headerlink" title="4. Zener稳压"></a>4. Zener稳压</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">Vin → [R] → [Dz] → GND
+              │
+             Vout</code></pre>
+
+<blockquote>
+<p>说明：稳压管反向工作在击穿区，提供稳定基准电压。</p>
+</blockquote>
+<h4 id="5-续流二极管"><a href="#5-续流二极管" class="headerlink" title="5. 续流二极管"></a>5. 续流二极管</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">电感L ──── [D] ──── GND
+    │
+   开关管</code></pre>
+
+<blockquote>
+<p>说明：与电感并联，当开关管关断时，为电感提供续流通路，保护开关管。</p>
+</blockquote>
+<h4 id="6-逻辑门电路"><a href="#6-逻辑门电路" class="headerlink" title="6. 逻辑门电路"></a>6. 逻辑门电路</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">A ──── [D1] ────┬──── Y
+B ──── [D2] ────┤
+                │
+               GND</code></pre>
+
+<blockquote>
+<p>说明：二极管与门&#x2F;或门，是数字电路的基础单元。</p>
+</blockquote>
+<hr>
+<h3 id="五、选型速查表"><a href="#五、选型速查表" class="headerlink" title="五、选型速查表"></a>五、选型速查表</h3><table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>推荐类型</th>
+<th>关键参数要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>50Hz工频整流</td>
+<td>1N400x系列</td>
+<td>Vf≤1V, If≥1A, Vbr≥2×Vin</td>
+</tr>
+<tr>
+<td>开关电源整流</td>
+<td>肖特基&#x2F;快速恢复</td>
+<td>trr&lt;100ns, Vf小, If足够</td>
+</tr>
+<tr>
+<td>低压降整流</td>
+<td>肖特基二极管</td>
+<td>Vf&lt;0.4V, 注意反向漏电</td>
+</tr>
+<tr>
+<td>电压基准</td>
+<td>稳压二极管</td>
+<td>Vz准确, 温度系数小</td>
+</tr>
+<tr>
+<td>浪涌保护</td>
+<td>TVS二极管</td>
+<td>响应快, 功率大, Vbr合适</td>
+</tr>
+<tr>
+<td>指示灯</td>
+<td>LED</td>
+<td>颜色合适, 亮度够, 电流匹配</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="六、常见误区"><a href="#六、常见误区" class="headerlink" title="六、常见误区"></a>六、常见误区</h3><ul>
+<li>❌ 用普通整流管做开关电源 → 发热严重</li>
+<li>❌ 肖特基管反向电压不足 → 击穿损坏</li>
+<li>❌ 忽视反向恢复时间 → 开关损耗大</li>
+<li>❌ 散热设计不足 → 热击穿</li>
+<li>❌ 防反接二极管压降大 → 系统电压不足</li>
+<li>❌ TVS管选型不当 → 保护无效或误触发</li>
+<li>❌ 并联二极管均流不均 → 电流集中</li>
+</ul>
+<hr>
+<h3 id="七、设计案例分析：开关电源输出整流"><a href="#七、设计案例分析：开关电源输出整流" class="headerlink" title="七、设计案例分析：开关电源输出整流"></a>七、设计案例分析：开关电源输出整流</h3><h4 id="设计要求："><a href="#设计要求：" class="headerlink" title="设计要求："></a>设计要求：</h4><ul>
+<li>输入: 5V&#x2F;2A DC-DC转换器</li>
+<li>开关频率: 500kHz</li>
+<li>输出: 3.3V&#x2F;2A</li>
+<li>环境温度: 40°C</li>
+<li>PCB空间: 有限</li>
+</ul>
+<h4 id="选型方案："><a href="#选型方案：" class="headerlink" title="选型方案："></a>选型方案：</h4><ul>
+<li><strong>类型</strong>: 肖特基二极管 (Vf小, trr快)</li>
+<li><strong>型号</strong>: 1N5822 (40V&#x2F;3A, Vf&#x3D;0.5V@3A)</li>
+<li><strong>散热</strong>: 添加小散热片或铜皮</li>
+</ul>
+<hr>
+<h3 id="八、设计要点总结"><a href="#八、设计要点总结" class="headerlink" title="八、设计要点总结"></a>八、设计要点总结</h3><ul>
+<li>✅ 根据频率选择类型：工频→整流，高频→肖特基&#x2F;快速恢复</li>
+<li>✅ 电压余量：反向耐压 ≥ 1.5 × 实际电压</li>
+<li>✅ 电流余量：正向电流 ≥ 1.3 × 实际电流</li>
+<li>✅ 散热设计：计算功耗，必要时加散热</li>
+<li>✅ PCB布局：大电流路径短粗，减小压降</li>
+<li>✅ 保护电路：敏感系统加TVS&#x2F;防反接</li>
+</ul>
+<h2 id="三极管"><a href="#三极管" class="headerlink" title="三极管"></a>三极管</h2><hr>
+<h3 id="一、三极管工作原理"><a href="#一、三极管工作原理" class="headerlink" title="一、三极管工作原理"></a>一、三极管工作原理</h3><h4 id="1-核心放大公式"><a href="#1-核心放大公式" class="headerlink" title="1. 核心放大公式"></a>1. 核心放大公式</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">Ic &#x3D; β × Ib</code></pre>
+
+<ul>
+<li><strong>Ic</strong>：集电极电流  </li>
+<li><strong>Ib</strong>：基极电流  </li>
+<li><strong>β (hFE)</strong>：电流放大倍数</li>
+</ul>
+<h4 id="2-三种工作状态"><a href="#2-三种工作状态" class="headerlink" title="2. 三种工作状态"></a>2. 三种工作状态</h4><ul>
+<li><strong>截止状态</strong>：<code>Ib ≈ 0</code>，<code>Ic ≈ 0</code>，相当于开关断开。</li>
+<li><strong>放大状态</strong>：<code>0 &lt; Ib &lt; Ib(sat)</code>，<code>Ic = β×Ib</code>，线性放大。</li>
+<li><strong>饱和状态</strong>：<code>Ib ≥ Ib(sat)</code>，<code>Vce ≈ 0.2V</code>，相当于开关闭合。</li>
+</ul>
+<h4 id="3-ASCII图示（简化版）"><a href="#3-ASCII图示（简化版）" class="headerlink" title="3. ASCII图示（简化版）"></a>3. ASCII图示（简化版）</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">  截止状态         放大状态          饱和状态
+┌─────────┐     ┌─────────┐     ┌─────────┐
+│  Ib≈0   │     │  Ib&gt;0   │     │  Ib≥Ib(sat)│
+│  Ic≈0   │     │  Ic&#x3D;β×Ib│     │  Vce≈0.2V │
+│ 开关断开│     │ 线性放大│     │ 开关闭合  │
+└─────────┘     └─────────┘     └─────────┘</code></pre>
+
+<hr>
+<h3 id="二、三种基本放大电路"><a href="#二、三种基本放大电路" class="headerlink" title="二、三种基本放大电路"></a>二、三种基本放大电路</h3><table>
+<thead>
+<tr>
+<th>电路类型</th>
+<th>放大特性</th>
+<th>输入阻抗</th>
+<th>输出阻抗</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>共射放大</td>
+<td>电压放大</td>
+<td>中</td>
+<td>中</td>
+<td>通用放大</td>
+</tr>
+<tr>
+<td>共基放大</td>
+<td>电流放大</td>
+<td>低</td>
+<td>高</td>
+<td>高频放大</td>
+</tr>
+<tr>
+<td>共集放大</td>
+<td>电压跟随</td>
+<td>高</td>
+<td>低</td>
+<td>缓冲&#x2F;驱动</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>记忆口诀</strong>：共射最常用，电压放大；共基高频好，电流放大；共集阻抗匹配，电压跟随。</p>
+</blockquote>
+<h4 id="ASCII图示（简化版）"><a href="#ASCII图示（简化版）" class="headerlink" title="ASCII图示（简化版）"></a>ASCII图示（简化版）</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text"> 共基极           共集极           共射极
+┌───────┐       ┌───────┐       ┌───────┐
+│ 输入→B│       │ 输入→B│       │ 输入→B│
+│ C←输出│       │ E←输出│       │ C←输出│
+│ E接地 │       │ C接Vcc│       │ E接地 │
+└───────┘       └───────┘       └───────┘</code></pre>
+
+<hr>
+<h3 id="三、关键参数详解-1"><a href="#三、关键参数详解-1" class="headerlink" title="三、关键参数详解"></a>三、关键参数详解</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>典型值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>电流放大倍数 β</strong></td>
+<td>小信号管：100-300；功率管：20-100</td>
+<td>随温度、电流变化</td>
+</tr>
+<tr>
+<td><strong>最大集电极电流 Ic(max)</strong></td>
+<td>SOT-23:100-500mA；TO-92:0.5-1A；TO-220:5-100A</td>
+<td>决定电流能力</td>
+</tr>
+<tr>
+<td><strong>饱和电压 Vce(sat)</strong></td>
+<td>普通：0.2-0.5V；低饱和：0.05-0.2V</td>
+<td>影响开关功耗</td>
+</tr>
+<tr>
+<td><strong>最大电压 Vce(max)</strong></td>
+<td>小信号：30-60V；功率管：100-1000V</td>
+<td>决定耐压能力</td>
+</tr>
+<tr>
+<td><strong>功耗 Pd</strong></td>
+<td>SOT-23:0.3-0.5W；TO-92:0.6-1W；TO-220:50-150W</td>
+<td>需散热设计</td>
+</tr>
+<tr>
+<td><strong>特征频率 fT</strong></td>
+<td>通用：300MHz；高频：500MHz-2GHz</td>
+<td>高频应用关键</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="四、偏置电路设计与稳定性"><a href="#四、偏置电路设计与稳定性" class="headerlink" title="四、偏置电路设计与稳定性"></a>四、偏置电路设计与稳定性</h3><table>
+<thead>
+<tr>
+<th>偏置类型</th>
+<th>电路结构</th>
+<th>稳定性</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>固定偏置</td>
+<td>Rb接Vcc</td>
+<td>差</td>
+<td>简单实验</td>
+</tr>
+<tr>
+<td>分压式偏置</td>
+<td>R1&#x2F;R2分压</td>
+<td>好</td>
+<td>通用放大</td>
+</tr>
+<tr>
+<td>电流反馈</td>
+<td>Re反馈</td>
+<td>优</td>
+<td>精密放大</td>
+</tr>
+</tbody></table>
+<h4 id="分压式偏置设计公式"><a href="#分压式偏置设计公式" class="headerlink" title="分压式偏置设计公式"></a>分压式偏置设计公式</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">Vb &#x3D; Vcc × R2 &#x2F; (R1 + R2)
+Ve &#x3D; Vb - 0.7V
+Ie ≈ Ve &#x2F; Re ≈ Ic
+Vc &#x3D; Vcc - Ic × Rc</code></pre>
+
+<hr>
+<h3 id="五、小信号模型与增益计算（共射放大电路）"><a href="#五、小信号模型与增益计算（共射放大电路）" class="headerlink" title="五、小信号模型与增益计算（共射放大电路）"></a>五、小信号模型与增益计算（共射放大电路）</h3><h4 id="关键公式"><a href="#关键公式" class="headerlink" title="关键公式"></a>关键公式</h4><pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">输入阻抗：ri ≈ rπ &#x3D; β × VT &#x2F; Ic
+跨导：gm &#x3D; Ic &#x2F; VT (VT ≈ 26mV)
+电压增益：Av &#x3D; -gm × Rc &#x3D; -Ic × Rc &#x2F; VT
+电流增益：Ai &#x3D; β
+输出阻抗：ro ≈ Rc &#x2F;&#x2F; rce</code></pre>
+
+<h4 id="设计实例"><a href="#设计实例" class="headerlink" title="设计实例"></a>设计实例</h4><p>条件：<code>Vcc=12V, Ic=1mA, β=100, Rc=3kΩ</code><br>计算：</p>
+<pre class="line-numbers language-text" data-language="text" data-start="1"><code class="language-text">gm &#x3D; 1mA &#x2F; 26mV ≈ 38.5mS
+Av &#x3D; -38.5mS × 3kΩ ≈ -115倍
+ri ≈ 100 × 26mV &#x2F; 1mA &#x3D; 2.6kΩ</code></pre>
+
+<hr>
+<h3 id="六、典型应用电路"><a href="#六、典型应用电路" class="headerlink" title="六、典型应用电路"></a>六、典型应用电路</h3><ul>
+<li><strong>小信号放大</strong>：共射+分压偏置，工作点稳定 → 放大</li>
+<li><strong>开关电路</strong>：基极驱动电阻，饱和&#x2F;截止切换 → 开关</li>
+<li><strong>电平转换</strong>：共集&#x2F;共射组合，3.3V↔5V&#x2F;12V → 接口</li>
+<li><strong>电流源&#x2F;镜</strong>：匹配管+Re，稳定偏置&#x2F;参考电流 → 基准</li>
+<li><strong>差分放大</strong>：对管设计，高共模抑制比 → 精密</li>
+<li><strong>达林顿管</strong>：复合管，高β值，大电流驱动 → 驱动</li>
+</ul>
+<hr>
+<h3 id="七、选型速查表"><a href="#七、选型速查表" class="headerlink" title="七、选型速查表"></a>七、选型速查表</h3><table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>推荐型号</th>
+<th>关键参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小信号放大</td>
+<td>2N3904&#x2F;2N3906</td>
+<td>β&#x3D;100-300, fT≥300MHz</td>
+</tr>
+<tr>
+<td>开关驱动</td>
+<td>TIP31C&#x2F;TIP32C</td>
+<td>Ic≥3A, Vce(sat)&lt;1V</td>
+</tr>
+<tr>
+<td>高频放大</td>
+<td>BF199&#x2F;BF245</td>
+<td>fT≥500MHz, 低噪声</td>
+</tr>
+<tr>
+<td>功率放大</td>
+<td>2SC5200&#x2F;2SA1943</td>
+<td>Ic≥15A, Pd≥150W</td>
+</tr>
+<tr>
+<td>达林顿管</td>
+<td>TIP122&#x2F;TIP127</td>
+<td>β≥1000, Ic≥5A</td>
+</tr>
+<tr>
+<td>精密对管</td>
+<td>2N3904&#x2F;2N3906</td>
+<td>匹配性好，Vbe一致</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="八、常见误区"><a href="#八、常见误区" class="headerlink" title="八、常见误区"></a>八、常见误区</h3><ul>
+<li>❌ 忽视β的温度系数 → 温度↑ → β↑ → Ic↑ → 热失控</li>
+<li>❌ 驱动电流不足 → 未饱和 → 开关损耗大</li>
+<li>❌ 散热设计不足 → Pd &gt; Pmax → 热击穿</li>
+<li>❌ 高频应用忽视fT → 增益下降，相位滞后</li>
+<li>❌ 偏置点漂移 → 工作点不稳定 → 失真</li>
+<li>❌ 输入阻抗匹配不当 → 信号衰减，反射</li>
+<li>❌ 输出负载过重 → 失真，效率低</li>
+</ul>
+<hr>
+<h3 id="九、课堂练习"><a href="#九、课堂练习" class="headerlink" title="九、课堂练习"></a>九、课堂练习</h3><h4 id="练习1：共射放大电路设计"><a href="#练习1：共射放大电路设计" class="headerlink" title="练习1：共射放大电路设计"></a>练习1：共射放大电路设计</h4><p>条件：<code>Vcc=15V, Ic=2mA, Vce=7.5V, β=150</code><br>目标：计算Rb、Rc、Re等偏置电阻值。</p>
+<h4 id="练习2：开关电路设计"><a href="#练习2：开关电路设计" class="headerlink" title="练习2：开关电路设计"></a>练习2：开关电路设计</h4><p>条件：<code>12V/1A继电器驱动，单片机IO=3.3V, β=100</code><br>目标：计算基极限流电阻Rb，确保三极管饱和导通。</p>
+<hr>
+<h2 id="MOSFET"><a href="#MOSFET" class="headerlink" title="MOSFET"></a>MOSFET</h2><h3 id="1-MOSFET基本结构与工作原理"><a href="#1-MOSFET基本结构与工作原理" class="headerlink" title="1. MOSFET基本结构与工作原理"></a>1. MOSFET基本结构与工作原理</h3><ul>
+<li><strong>特性：</strong> 电压控制型器件，输入阻抗极高（&gt;10⁸Ω），几乎不消耗驱动电流。</li>
+<li>基本结构（N沟道增强型）：<ul>
+<li>三极：栅极(G)、源极(S)、漏极(D)。</li>
+<li>绝缘层：栅极通过SiO₂与沟道绝缘。</li>
+<li>导电机制：N沟道为电子导电（电流D→S），P沟道为空穴导电。</li>
+</ul>
+</li>
+<li>三种工作区：<ul>
+<li><strong>截止区：</strong> $V_{gs} &lt; V_{gs(th)}$，沟道未形成，无电流。</li>
+<li><strong>线性区（可变电阻区）：</strong> $V_{gs} &gt; V_{gs(th)}$ 且 $V_{ds}$ 较小，如同可变电阻。<strong>开关应用主要在此区和截止区切换</strong>。</li>
+<li><strong>饱和区（恒流区&#x2F;放大区）：</strong> $V_{gs} &gt; V_{gs(th)}$ 且 $V_{ds}$ 较大，用于信号放大。</li>
+</ul>
+</li>
+<li>关键公式：<ul>
+<li>线性区：$I_d &#x3D; \mu_n C_{ox} (W&#x2F;L) [(V_{gs}-V_{th})V_{ds} - V_{ds}^2&#x2F;2]$</li>
+<li>饱和区：$I_d &#x3D; \mu_n C_{ox} (W&#x2F;L)&#x2F;2 \times (V_{gs}-V_{th})^2$</li>
+<li>导通判据：$V_{gs} \geq V_{gs(th)} + 2V$（通常需10V才能完全导通）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-关键参数详解（选型必看六大参数）"><a href="#2-关键参数详解（选型必看六大参数）" class="headerlink" title="2. 关键参数详解（选型必看六大参数）"></a>2. 关键参数详解（选型必看六大参数）</h3><ul>
+<li><strong>Rds(on) 导通电阻：</strong> 决定导通损耗 ($P_{cond} &#x3D; I^2 \times R_{ds(on)}$)。典型值1~50mΩ，具有正温度系数（高温时增大）。</li>
+<li><strong>Vgs(th) 阈值电压：</strong> 开始导通的最低电压。逻辑电平型为1<del>2V（适合MCU直驱），普通型为1</del>4V。温度升高时Vth降低。</li>
+<li><strong>Qg 总栅极电荷：</strong> 决定开关速度和驱动能力。$I_{drive} &#x3D; Q_g &#x2F; t_{switch}$。</li>
+<li><strong>Vds(max) 耐压：</strong> 必须留30%以上余量（如24V系统选60V器件）。</li>
+<li><strong>Id(max) 最大电流：</strong> 标称值通常为25℃下的理论值，实际需按结温降额使用（通常只能用50%左右）。</li>
+<li><strong>Vgs(max) 栅极限压：</strong> 通常±20V，超过会永久击穿氧化层，驱动电路必须钳位保护。</li>
+</ul>
+<h3 id="3-MOSFET驱动电路设计"><a href="#3-MOSFET驱动电路设计" class="headerlink" title="3. MOSFET驱动电路设计"></a>3. MOSFET驱动电路设计</h3><ul>
+<li><strong>栅极驱动电阻 Rg 的作用：</strong> 限制充放电电流峰值，防振荡&#x2F;EMI。推荐范围5<del>47Ω。高频应用(&gt;500kHz)选2</del>10Ω。</li>
+<li>高侧驱动——Bootstrap自举电路：<ul>
+<li><strong>问题：</strong> 高侧N-MOS源极不接地，需要浮动驱动电源。</li>
+<li><strong>原理：</strong> 低侧导通时给自举电容充电，高侧导通时电容提供驱动电压。</li>
+<li><strong>限制：</strong> 占空比不能达到100%（电容无法充电）。</li>
+<li><strong>推荐IC：</strong> IR2110, IR2104, HIP4082A。</li>
+</ul>
+</li>
+<li>驱动方案选择：<ul>
+<li>小功率&#x2F;MCU直驱：&lt;20mA负载。</li>
+<li>图腾柱推挽：双BJT，驱动0.5~2A。</li>
+<li>专用驱动IC：UCC27517&#x2F;TC4420等，驱动能力强。</li>
+<li>隔离驱动：ACPL-314J&#x2F;Si8233，用于高压隔离场合。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-MOSFET热设计"><a href="#4-MOSFET热设计" class="headerlink" title="4. MOSFET热设计"></a>4. MOSFET热设计</h3><ul>
+<li><p>功耗分解计算：</p>
+<ul>
+<li>导通损耗：$P_{cond} &#x3D; I^2 \times R_{ds(on)} \times D$</li>
+<li>开关损耗：$P_{sw} &#x3D; 1&#x2F;2 \times V_{ds} \times I_d \times (t_r+t_f) \times f_{sw}$</li>
+<li>驱动损耗：$P_{gate} &#x3D; Q_g \times V_{gs} \times f_{sw}$</li>
+<li>总功耗：$P_{total} &#x3D; P_{cond} + P_{sw} + P_{gate}$</li>
+</ul>
+</li>
+<li><p>热阻模型：</p>
+<p> $T_j &#x3D; T_a + P_{total} \times (R_{\theta jc} + R_{\theta cs} + R_{\theta sa})$</p>
+<ul>
+<li>目标：结温 $T_j$ 需小于 $T_{j_max} - 15^\circ C$（留余量）。</li>
+</ul>
+</li>
+<li><p><strong>案例：</strong> 24V转12V Buck变换器中，需根据总功耗计算所需散热器的热阻。</p>
+</li>
+</ul>
+<h3 id="5-典型应用电路"><a href="#5-典型应用电路" class="headerlink" title="5. 典型应用电路"></a>5. 典型应用电路</h3><ol>
+<li><strong>同步整流：</strong> 用MOS代替肖特基二极管，效率更高（$V_f &lt; 0.1V$），需互补控制+死区时间。</li>
+<li><strong>H桥电机驱动：</strong> 4个MOS控制正反转，上桥需自举或隔离驱动，注意死区时间。</li>
+<li><strong>负载开关：</strong> 软件控制板级电源通断，可用集成方案（如TPS22918）。</li>
+<li><strong>Buck变换器：</strong> 高频化可减小L&#x2F;C体积，但驱动损耗随频率增加。</li>
+<li><strong>电源防反接：</strong> 利用P沟道或N沟道+电荷泵实现低压降防反接。</li>
+<li><strong>模拟开关&#x2F;多路选择：</strong> 低频信号切换，选低Rds(on)和低Vgs(th)型号。</li>
+</ol>
+<h3 id="6-MOSFET选型速查表"><a href="#6-MOSFET选型速查表" class="headerlink" title="6. MOSFET选型速查表"></a>6. MOSFET选型速查表</h3><ul>
+<li><strong>5V&#x2F;12V开关电源：</strong> 选≤30V，超低Rds(on)，如CSD17570Q5B。</li>
+<li><strong>24V工业电源：</strong> 选耐压≥60V，低Rds(on)，如IPD80N04S4。</li>
+<li><strong>PFC&#x2F;LLC高压变换：</strong> 选耐压≥650V超结MOS，如IPP60R125CFD7。</li>
+<li><strong>电机驱动H桥：</strong> 选配对互补MOS，强体二极管，如SI2302&#x2F;SI2333DS。</li>
+<li><strong>MCU逻辑直驱：</strong> 选逻辑电平MOS（Vgs(th)&lt;2V），如AO3400。</li>
+<li><strong>负载开关&#x2F;防反接：</strong> 选P沟道或集成负载开关，如TPS22918。</li>
+<li><strong>选型原则：</strong> 耐压留1.5~2倍余量；功率管必须核算结温；高频应用重点关注Qg和开关损耗。</li>
+</ul>
+<h3 id="7-常见误区与避坑指南"><a href="#7-常见误区与避坑指南" class="headerlink" title="7. 常见误区与避坑指南"></a>7. 常见误区与避坑指南</h3><ul>
+<li>❌ <strong>Vgs越高越好：</strong> 错！超过Vgs(max)（通常±20V）会永久击穿。</li>
+<li>❌ <strong>可以省略栅极电阻Rg：</strong> 错！无Rg会导致振荡和严重EMI。</li>
+<li>❌ <strong>体二极管当续流二极管用：</strong> 错！体二极管反向恢复慢(t_rr大)，大电流下发热严重，应外加肖特基。</li>
+<li>❌ <strong>按Id(max)额定值设计：</strong> 错！实际工作需大幅降额。</li>
+<li>❌ <strong>高频下开关损耗可以忽略：</strong> 错！200kHz以上开关损耗往往是发热主因。</li>
+<li>❌ <strong>高侧N沟道不需要浮动驱动：</strong> 错！必须用自举或隔离驱动。</li>
+<li>❌ <strong>静电防护无所谓：</strong> 错！MOS极易被静电击穿，操作必须防静电。</li>
+</ul>
+<h3 id="8-本节小结"><a href="#8-本节小结" class="headerlink" title="8. 本节小结"></a>8. 本节小结</h3><ul>
+<li>MOSFET是电压控制器件，核心在于理解三个工作区及关键参数（Rds(on), Qg, Vgs(th)）。</li>
+<li>设计中必须考虑驱动电路（特别是高侧驱动）和热设计（结温核算）。</li>
+<li>务必遵守安全规范：耐压留余量、防静电、加栅极电阻、注意体二极管特性。</li>
+</ul>
+<h2 id="运放"><a href="#运放" class="headerlink" title="运放"></a>运放</h2><h3 id="1-运放简介与理想假设"><a href="#1-运放简介与理想假设" class="headerlink" title="1. 运放简介与理想假设"></a>1. 运放简介与理想假设</h3><ul>
+<li>内部三级结构：<ul>
+<li><strong>差分输入级：</strong> 高输入阻抗，提取差模信号，抑制共模噪声。</li>
+<li><strong>中间增益级：</strong> 极高开环增益（典型&gt;100dB），提供主要放大能力。</li>
+<li><strong>输出级：</strong> 低输出阻抗，采用推挽&#x2F;Class-AB结构，用于驱动负载。</li>
+</ul>
+</li>
+<li>理想运放三大假设（分析基础）：<ul>
+<li><strong>开环增益 Aol：</strong> 理想为无穷大（∞），实际如μA741约为100dB。</li>
+<li><strong>输入阻抗 Zin：</strong> 理想为无穷大（∞），实际双极型约2MΩ，FET型可达1TΩ。</li>
+<li><strong>输出阻抗 Zout：</strong> 理想为0，实际约75Ω。</li>
+<li><strong>带宽 BW：</strong> 理想为无穷大（∞），实际从1MHz到几GHz不等。</li>
+<li><strong>失调电压 Vos：</strong> 理想为0，实际范围1μV~5mV。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-两大黄金法则（负反馈条件下）"><a href="#2-两大黄金法则（负反馈条件下）" class="headerlink" title="2. 两大黄金法则（负反馈条件下）"></a>2. 两大黄金法则（负反馈条件下）</h3><p>这是分析所有线性运放电路的核心工具：</p>
+<ul>
+<li><p>虚短 (Virtual Short)：</p>
+<p> $V_+ \approx V_- &#x3D; 0V$（两输入端电位趋于相等，非真正短路）。</p>
+<ul>
+<li><em>前提：</em> 必须存在负反馈闭环。</li>
+</ul>
+</li>
+<li><p>虚断 (Virtual Open)：</p>
+<p> $I_1 &#x3D; I_2$（流入两输入端的电流为零，非真正断路）。</p>
+<ul>
+<li><em>基础：</em> 输入阻抗趋近于无穷大。</li>
+</ul>
+</li>
+<li><p>分析三步法：</p>
+<ol>
+<li>确认有无负反馈。</li>
+<li>用“虚短” ($V_+&#x3D;V_-$) 列节点方程。</li>
+<li>用“虚断” ($I&#x3D;0$) 简化方程求输出电压 $V_o$。</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-五种基本运放电路"><a href="#3-五种基本运放电路" class="headerlink" title="3. 五种基本运放电路"></a>3. 五种基本运放电路</h3><ul>
+<li>同相放大器：<ul>
+<li>公式：$V_{out} &#x3D; V_i \times (R1+R2)&#x2F;R2$</li>
+<li>特点：高输入阻抗，输出与输入同相。</li>
+</ul>
+</li>
+<li>反相放大器：<ul>
+<li>公式：$V_{out} &#x3D; (-R2&#x2F;R1) \times V_i$</li>
+<li>特点：输入阻抗等于Rin，输出与输入反相180°。</li>
+</ul>
+</li>
+<li>差分放大器：<ul>
+<li>公式：$V_{out} &#x3D; (V_y - V_x)(R1+R2+R3)&#x2F;R2$ （注：此处公式可能基于特定电阻匹配条件，通用公式通常涉及电阻比值）</li>
+<li>特点：高共模抑制比(CMRR)，需精密电阻匹配。</li>
+</ul>
+</li>
+<li>积分器：<ul>
+<li>公式：$V_{out} &#x3D; [(-1)&#x2F;(R1 \times C1)] \int V_1 dt$</li>
+<li>作用：将方波转换为三角波，进行时间积分。</li>
+</ul>
+</li>
+<li>微分器：<ul>
+<li>公式：$V_{out} &#x3D; -i \times R2 &#x3D; -(R2 \times C1) dV_1&#x2F;dt$</li>
+<li>作用：将三角波转换为方波，对高频敏感。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-运放关键参数详解"><a href="#4-运放关键参数详解" class="headerlink" title="4. 运放关键参数详解"></a>4. 运放关键参数详解</h3><p>选型时需重点关注以下六大参数：</p>
+<ul>
+<li><strong>GBW (增益带宽积)：</strong> $GBW &#x3D; \text{增益} \times \text{带宽} &#x3D; \text{常数}$。决定了在特定增益下的可用带宽。范围通常在1MHz~3.8GHz。</li>
+<li><strong>SR (压摆率)：</strong> 大信号下的最大电压变化率 ($dV_o&#x2F;dt$)。单位V&#x2F;μs，范围0.5~5000V&#x2F;μs。SR不足会导致正弦波变三角波。</li>
+<li><strong>Vos (失调电压)：</strong> 直流误差源。精密测量需选&lt;100μV的型号。</li>
+<li><strong>Ib (偏置电流)：</strong> 输入端流过的微小电流。高阻源应用必须选JFET或CMOS输入型（fA~100nA级别）。</li>
+<li><strong>CMRR (共模抑制比)：</strong> 抑制共模噪声的能力。差分应用中越高越好，典型值60~120dB。</li>
+<li><strong>R-R (轨到轨输出)：</strong> 输出电压能接近电源轨 ($V_{CC}$ ~ GND)。传统运放会有1~2V的压降损失，R-R型更适合单电源低压系统。</li>
+</ul>
+<h3 id="5-典型应用电路-1"><a href="#5-典型应用电路-1" class="headerlink" title="5. 典型应用电路"></a>5. 典型应用电路</h3><ul>
+<li><strong>电压跟随器&#x2F;缓冲器：</strong> 增益&#x3D;1，用于传感器隔离、ADC前端驱动，需选低Ib型防止加载效应。</li>
+<li><strong>精密整流器：</strong> 利用运放消除二极管0.7V死区，可处理mV级小信号，用于AC测量和峰值检波。</li>
+<li><strong>仪表放大器 (INA)：</strong> 三运放结构，单电阻调增益，具有极高的CMRR和输入阻抗。推荐型号：INA128, AD8221。</li>
+<li><strong>有源低通滤波器：</strong> 如Sallen-Key二阶低通，用于ADC抗混叠和音频处理。</li>
+<li><strong>比较器注意事项：</strong> 运放开环使用即为比较器，但响应慢（μs级），专用比较器更快（ns级）。LM393等集电极开路(OD)输出需加上拉电阻。</li>
+</ul>
+<h3 id="6-运放选型速查表"><a href="#6-运放选型速查表" class="headerlink" title="6. 运放选型速查表"></a>6. 运放选型速查表</h3><p>根据应用场景快速锁定型号：</p>
+<ul>
+<li><strong>通用&#x2F;教学：</strong> LM358, TL072, μA741</li>
+<li><strong>音频放大 (Hi-Fi)：</strong> NE5532, OPA2134, LM4562</li>
+<li><strong>精密直流测量：</strong> OPA277, AD8628, LTC2057 (关注低Vos)</li>
+<li><strong>高速信号处理：</strong> AD8099, OPA847, THS3001 (关注高GBW, 高SR)</li>
+<li><strong>高阻传感器接口：</strong> TL071, OPA128, AD8610 (关注低Ib)</li>
+<li><strong>电池&#x2F;低功耗：</strong> MCP6001, LPV521, MAX4239</li>
+<li><strong>仪表放大应用：</strong> INA128, AD8221, INA333</li>
+<li><strong>比较器应用：</strong> LM393, TLV3201, ADCMP601</li>
+</ul>
+<h3 id="7-常见误区警示"><a href="#7-常见误区警示" class="headerlink" title="7. 常见误区警示"></a>7. 常见误区警示</h3><ul>
+<li><strong>虚短虚断并非万能：</strong> 仅在<strong>负反馈闭合、线性区</strong>成立！正反馈（如施密特触发器）或饱和时不适用。</li>
+<li><strong>GBW不等于带宽：</strong> 可用带宽 &#x3D; GBW ÷ 闭环增益。例如增益100倍时，1MHz的运放带宽仅剩10kHz。</li>
+<li><strong>运放不能随意代替比较器：</strong> 运放从饱和恢复很慢（μs~ms），且输出结构不同，专用比较器响应更快（ns级）。</li>
+<li><strong>单电源运放处理负压：</strong> 单电源下输出范围是GND~Vcc，处理双极性信号需加偏置电路（虚地）。</li>
+<li><strong>去耦电容不可省：</strong> 高速运放极易因电源噪声振荡，每个电源脚必须紧靠引脚放置100nF + 10μF电容。</li>
+</ul>
+<h3 id="8-设计案例：PT100温度采集前端"><a href="#8-设计案例：PT100温度采集前端" class="headerlink" title="8. 设计案例：PT100温度采集前端"></a>8. 设计案例：PT100温度采集前端</h3><p>这是一个完整的传感器到ADC的信号链设计：</p>
+<ul>
+<li><strong>指标：</strong> PT100传感器 (0<del>100°C)，1mA恒流源激励，目标输出0</del>3V对应12位ADC。</li>
+<li>方案选型：<ul>
+<li>第一级：<strong>INA128</strong> (仪表放大器)，增益80倍，有效抑制工频共模干扰。</li>
+<li>第二级：<strong>OPA277</strong> (精密运放) 做跟随器，缓冲输出。</li>
+<li>滤波：RC低通 (10kΩ&#x2F;100nF)，截止频率约160Hz，抗干扰。</li>
+<li>基准：ADR4525 精密2.5V基准。</li>
+</ul>
+</li>
+<li><strong>精度验证：</strong> 计算表明Vos引起的误差约1.1LSB，噪声性能优秀 (&lt;1LSB)，满足0.1°C分辨率要求。</li>
+</ul>
+<h2 id="功率器件"><a href="#功率器件" class="headerlink" title="功率器件"></a>功率器件</h2><p>这份资料是《电子元器件基础》系列课程中关于**功率器件（Power Devices）**的详细学习笔记，重点讲解了MOSFET、IGBT和SCR三种核心器件的原理、选型及应用。以下是为您整理的核心要点：</p>
+<h3 id="1-功率器件全景概览"><a href="#1-功率器件全景概览" class="headerlink" title="1. 功率器件全景概览"></a>1. 功率器件全景概览</h3><p>主要对比了四种主流功率器件的特性与应用场景：</p>
+<ul>
+<li>功率 MOSFET：<ul>
+<li><strong>电压&#x2F;频率：</strong> &lt;600V &#x2F; 高频 (kHz~MHz)。</li>
+<li><strong>应用：</strong> 开关电源、低压驱动。</li>
+</ul>
+</li>
+<li>IGBT：<ul>
+<li><strong>电压&#x2F;频率：</strong> 600V<del>6.5kV &#x2F; 中频 (kHz</del>数十kHz)。</li>
+<li><strong>应用：</strong> 变频器、逆变器、新能源。</li>
+</ul>
+</li>
+<li>SCR (晶闸管)：<ul>
+<li><strong>电压&#x2F;频率：</strong> 200V<del>数kV &#x2F; 低频 (工频</del>kHz)。</li>
+<li><strong>应用：</strong> 整流&#x2F;调压、软启动。</li>
+</ul>
+</li>
+<li>SiC MOSFET：<ul>
+<li><strong>电压&#x2F;频率：</strong> 600V~1700V &#x2F; 极高频 (MHz)。</li>
+<li><strong>应用：</strong> 新能源汽车、光伏逆变。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-IGBT-绝缘栅双极型晶体管"><a href="#2-IGBT-绝缘栅双极型晶体管" class="headerlink" title="2. IGBT (绝缘栅双极型晶体管)"></a>2. IGBT (绝缘栅双极型晶体管)</h3><h4 id="结构与原理"><a href="#结构与原理" class="headerlink" title="结构与原理"></a>结构与原理</h4><ul>
+<li><strong>本质：</strong> BJT + MOSFET 的融合体，兼具高压、高速和易驱动特性。</li>
+<li><strong>等效结构：</strong> 输入端为 N-MOSFET（控制基极电流），输出端为 PNP BJT（实际导通路径）。</li>
+<li>工作状态：<ul>
+<li><strong>截止：</strong> Vge &lt; Vge(th)，无集电极电流。</li>
+<li><strong>导通：</strong> Vge &gt; Vge(th)，MOSFET导通驱动BJT饱和，Vce(sat)低 (1.5~3V)。</li>
+<li><strong>关断：</strong> 撤除Vge，存在拖尾电流现象。</li>
+</ul>
+</li>
+</ul>
+<h4 id="六大关键参数"><a href="#六大关键参数" class="headerlink" title="六大关键参数"></a>六大关键参数</h4><ul>
+<li><strong>Vce(sat)：</strong> 饱和压降 (1.5~3V)，决定导通损耗。</li>
+<li><strong>Ic：</strong> 最大集电极电流 (10A<del>1000A+)，需留2</del>3倍裕量。</li>
+<li><strong>Vces：</strong> 最大耐压 (600<del>6500V)，需留30</del>50%裕量。</li>
+<li><strong>Vges：</strong> 栅极电压范围 (±20V)，过压会击穿氧化层。</li>
+<li><strong>toff&#x2F;tf：</strong> 关断拖尾时间 (100ns~2μs)，决定最高频率。</li>
+<li><strong>SOA：</strong> 安全工作区，短路保护设计的依据。</li>
+</ul>
+<h4 id="驱动电路设计"><a href="#驱动电路设计" class="headerlink" title="驱动电路设计"></a>驱动电路设计</h4><ul>
+<li><strong>驱动电压：</strong> 导通+15V，关断建议-5V~-15V（负压抑制米勒效应）。</li>
+<li><strong>栅极电阻 Rg：</strong> 控制开关速度与EMI平衡，典型值5~47Ω。</li>
+<li><strong>隔离与保护：</strong> 高侧必须隔离（光耦&#x2F;变压器）；必须具备DESAT去饱和检测防短路；上下桥臂切换需设置死区时间 (2~4μs)。</li>
+</ul>
+<h4 id="损耗计算与热设计"><a href="#损耗计算与热设计" class="headerlink" title="损耗计算与热设计"></a>损耗计算与热设计</h4><ul>
+<li><strong>导通损耗：</strong> $P_{cond} &#x3D; V_{ce(sat)} \times I_c \times D$</li>
+<li><strong>开关损耗：</strong> $P_{sw} &#x3D; (E_{on} + E_{off}) \times f_{sw}$</li>
+<li><strong>结温计算：</strong> $T_j &#x3D; T_a + P_{total} \times (R_{jc} + R_{cs} + R_{sa})$</li>
+<li><strong>注意：</strong> 频率越高开关损耗占比越大，超过20kHz建议考虑SiC MOSFET。</li>
+</ul>
+<h3 id="3-SCR-硅控整流器-晶闸管"><a href="#3-SCR-硅控整流器-晶闸管" class="headerlink" title="3. SCR (硅控整流器&#x2F;晶闸管)"></a>3. SCR (硅控整流器&#x2F;晶闸管)</h3><h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><ul>
+<li><strong>结构：</strong> PNPN四层器件。</li>
+<li><strong>状态：</strong> 正向阻断 → 触发导通 (Vak&gt;0, Ig&gt;Igt) → 维持导通 (Ia&gt;Ih) → 关断 (Ia&lt;Ih或Vak&lt;0)。</li>
+<li><strong>特点：</strong> 一旦导通，门极失去控制作用，无法主动关断。</li>
+</ul>
+<h4 id="关断方法"><a href="#关断方法" class="headerlink" title="关断方法"></a>关断方法</h4><ul>
+<li><strong>自然换相：</strong> 利用交流电过零点关断。</li>
+<li><strong>强迫换相：</strong> 并联电容强制拉低电流（用于DC电路）。</li>
+<li><strong>降低负载电流：</strong> 调节电路使电流小于维持电流。</li>
+</ul>
+<h4 id="关键参数"><a href="#关键参数" class="headerlink" title="关键参数"></a>关键参数</h4><ul>
+<li><strong>VDRM：</strong> 正向断态峰值电压。</li>
+<li><strong>IT(AV)：</strong> 通态平均电流。</li>
+<li><strong>Igt&#x2F;Vgt：</strong> 触发电流&#x2F;电压。</li>
+<li><strong>tq：</strong> 关断时间。</li>
+</ul>
+<h3 id="4-综合对比与选型"><a href="#4-综合对比与选型" class="headerlink" title="4. 综合对比与选型"></a>4. 综合对比与选型</h3><h4 id="全面对比"><a href="#全面对比" class="headerlink" title="全面对比"></a>全面对比</h4><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>MOSFET</th>
+<th>IGBT</th>
+<th>SCR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>驱动方式</strong></td>
+<td>电压驱动 (Vgs)</td>
+<td>电压驱动 (Vge)</td>
+<td>电流触发 (Ig)</td>
+</tr>
+<tr>
+<td><strong>导通压降</strong></td>
+<td>低压小，高压大</td>
+<td>1.5~3V (中高压优势)</td>
+<td>1~2V</td>
+</tr>
+<tr>
+<td><strong>工作频率</strong></td>
+<td>最高 (~MHz)</td>
+<td>中等 (~数十kHz)</td>
+<td>最低 (工频~kHz)</td>
+</tr>
+<tr>
+<td><strong>主动关断</strong></td>
+<td>✅ 是</td>
+<td>✅ 是 (有拖尾)</td>
+<td>❌ 否 (需外部换相)</td>
+</tr>
+<tr>
+<td><strong>典型应用</strong></td>
+<td>开关电源、低压电机</td>
+<td>变频器、逆变器</td>
+<td>AC调压、整流</td>
+</tr>
+</tbody></table>
+<h4 id="选型速查表"><a href="#选型速查表" class="headerlink" title="选型速查表"></a>选型速查表</h4><ul>
+<li><strong>开关电源 (&lt;500V)：</strong> 首选功率MOSFET (如IPP60R125P7)。</li>
+<li><strong>电机驱动 (&lt;400V)：</strong> MOSFET或IGBT (如IRGP4062D)。</li>
+<li><strong>变频器 (380V系统)：</strong> IGBT 1200V模块 (如FF150R12ME4)。</li>
+<li><strong>新能源汽车逆变：</strong> SiC MOSFET&#x2F;IGBT (如SCT3040KL)。</li>
+<li><strong>大功率整流&#x2F;调压：</strong> SCR (如TYN1012)。</li>
+<li><strong>低压大电流 (&lt;100V)：</strong> SiC&#x2F;GaN MOSFET (如GS61008P)。</li>
+</ul>
+<h3 id="5-常见误区警示"><a href="#5-常见误区警示" class="headerlink" title="5. 常见误区警示"></a>5. 常见误区警示</h3><ul>
+<li><strong>❌ IGBT可以工作在MHz高频：</strong> 实际上受限于拖尾电流，通常&lt;50kHz。</li>
+<li><strong>❌ SCR可以主动关断：</strong> 必须依赖外部换相或电流过零。</li>
+<li><strong>❌ IGBT模块可以随意并联扩流：</strong> 需考虑动静态均流，推荐直接选大电流模块。</li>
+<li><strong>❌ 死区时间越小越好：</strong> 不足会导致上下桥直通炸机，需大于开关时间。</li>
+<li><strong>❌ 关断时不需要负压：</strong> 高压IGBT必须用负压 (-5V~-15V) 关断以抑制米勒效应。</li>
+</ul>
+<h2 id="传感器"><a href="#传感器" class="headerlink" title="传感器"></a>传感器</h2><p>这份资料是《电子元器件基础》系列课程中关于**传感器（Sensors）**的系统性讲解，内容涵盖了从基本概念、核心参数到各类常用传感器（温度、电流、位移等）的原理对比、信号调理及选型避坑指南。以下是为您整理的核心要点：</p>
+<h3 id="1-传感器基本概念与分类"><a href="#1-传感器基本概念与分类" class="headerlink" title="1. 传感器基本概念与分类"></a>1. 传感器基本概念与分类</h3><ul>
+<li><strong>定义：</strong> 将非电量（如温度、压力、位移、光强等）转换为可处理电信号（电压、电流、频率）的装置。</li>
+<li>四大分类维度：<ul>
+<li><strong>按被测量：</strong> 温度、压力、位移、流量、光电传感器等。</li>
+<li><strong>按工作原理：</strong> 电阻式、电容式、电感式、压电式、热电式、光电式、磁电式等。</li>
+<li>按输出信号：<ul>
+<li><strong>模拟量：</strong> 连续变化的电压或电流。</li>
+<li><strong>数字量：</strong> 脉冲或总线通信。</li>
+<li><strong>开关量：</strong> 简单的ON&#x2F;OFF状态。</li>
+</ul>
+</li>
+<li>按供电方式：<ul>
+<li><strong>有源：</strong> 需要外部供电（如霍尔传感器）。</li>
+<li><strong>无源：</strong> 自发电（如热电偶、压电传感器）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-核心性能指标（选型六大参数）"><a href="#2-核心性能指标（选型六大参数）" class="headerlink" title="2. 核心性能指标（选型六大参数）"></a>2. 核心性能指标（选型六大参数）</h3><p>在选型时，必须关注以下六个关键指标：</p>
+<ul>
+<li><strong>量程 (Range)：</strong> 能测量的最大&#x2F;最小值范围。<strong>注意：</strong> 超量程可能损坏器件。</li>
+<li><strong>精度 (Accuracy)：</strong> 测量结果与真实值的偏差，通常以满量程百分比 (%FS) 表示。</li>
+<li><strong>分辨率 (Resolution)：</strong> 能检测到的最小变化量。模拟传感器受噪声限制，数字传感器由位数决定。</li>
+<li><strong>灵敏度 (Sensitivity)：</strong> 输出变化量与输入变化量的比值（单位如 mV&#x2F;℃、mV&#x2F;Pa）。</li>
+<li><strong>响应时间 (Response Time)：</strong> 输出从10%变化到90%最终值所需的时间，是动态测量的关键指标。</li>
+<li><strong>稳定性 (Stability)：</strong> 包括长期漂移（老化）和温漂（温度系数TC），影响长期测量精度。</li>
+</ul>
+<h3 id="3-常用传感器详解与对比"><a href="#3-常用传感器详解与对比" class="headerlink" title="3. 常用传感器详解与对比"></a>3. 常用传感器详解与对比</h3><h4 id="温度传感器"><a href="#温度传感器" class="headerlink" title="温度传感器"></a>温度传感器</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>NTC热敏电阻</th>
+<th>PT100铂电阻 (RTD)</th>
+<th>K型热电偶</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>原理</strong></td>
+<td>负温度系数，非线性</td>
+<td>正温度系数，线性度高</td>
+<td>Seebeck效应，温差生电</td>
+</tr>
+<tr>
+<td><strong>特点</strong></td>
+<td>灵敏度高，成本低，体积小</td>
+<td>精度高，线性好，范围适中</td>
+<td>测温范围最广，需冷端补偿</td>
+</tr>
+<tr>
+<td><strong>典型应用</strong></td>
+<td>电池温控、家电</td>
+<td>工业过程控制、精密测量</td>
+<td>高温炉、发动机测温</td>
+</tr>
+</tbody></table>
+<h4 id="电流与电压传感器"><a href="#电流与电压传感器" class="headerlink" title="电流与电压传感器"></a>电流与电压传感器</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>分流器 (Shunt)</th>
+<th>霍尔电流传感器</th>
+<th>电流互感器 (CT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>原理</strong></td>
+<td>Ohm定律 ($V&#x3D;I \cdot R$)</td>
+<td>磁场-霍尔电压</td>
+<td>互感原理 ($N_1&#x2F;N_2$)</td>
+</tr>
+<tr>
+<td><strong>隔离性</strong></td>
+<td>无（需隔离运放）</td>
+<td>有（直接隔离）</td>
+<td>有</td>
+</tr>
+<tr>
+<td><strong>频率范围</strong></td>
+<td>DC ~ 数kHz</td>
+<td>DC ~ 100kHz</td>
+<td>45 ~ 500Hz (工频)</td>
+</tr>
+<tr>
+<td><strong>典型应用</strong></td>
+<td>低成本电机控制</td>
+<td>变频器、UPS、电动汽车</td>
+<td>电能表、工频大电流</td>
+</tr>
+</tbody></table>
+<h4 id="位移与位置传感器"><a href="#位移与位置传感器" class="headerlink" title="位移与位置传感器"></a>位移与位置传感器</h4><ul>
+<li><strong>电位器：</strong> 简单低成本，但有机械磨损，寿命有限。</li>
+<li><strong>增量式编码器：</strong> 输出A&#x2F;B&#x2F;Z脉冲，用于伺服电机测速测位，抗干扰需用差分RS422。</li>
+<li><strong>接近开关：</strong> 分为电感式（测金属）、电容式（测任意介质）、光电式（对射&#x2F;反射）。</li>
+<li><strong>霍尔位置传感器：</strong> 无接触，寿命长，常用于BLDC换相检测。</li>
+</ul>
+<h4 id="其他重要传感器"><a href="#其他重要传感器" class="headerlink" title="其他重要传感器"></a>其他重要传感器</h4><ul>
+<li><strong>压力传感器：</strong> 基于MEMS压阻效应，输出差分mV级信号，需仪表放大。</li>
+<li><strong>加速度计：</strong> MEMS电容式，用于姿态检测、振动监测（如ADXL345）。</li>
+<li><strong>光电传感器：</strong> 光敏电阻（慢）、光电二极管（快）、光电三极管（内置放大）。</li>
+<li><strong>环境类：</strong> 湿度（电容式SHT31）、气体（MQ系列）、超声波测距（HC-SR04）。</li>
+</ul>
+<h3 id="4-信号调理基础"><a href="#4-信号调理基础" class="headerlink" title="4. 信号调理基础"></a>4. 信号调理基础</h3><p>传感器输出的原始信号通常微弱或含有噪声，需要经过调理才能进入ADC：</p>
+<ul>
+<li><strong>标准链路：</strong> 传感器 $\rightarrow$ 激励源 $\rightarrow$ 差分放大(仪表放大器) $\rightarrow$ 滤波 $\rightarrow$ 电平转换 $\rightarrow$ ADC。</li>
+<li>关键组件：<ul>
+<li><strong>激励源：</strong> PT100需恒流源防自热；桥式传感器需恒压源。</li>
+<li><strong>仪表放大器 (INA)：</strong> 高共模抑制比(CMRR)，适合提取微弱差分信号（如INA128）。</li>
+<li><strong>滤波设计：</strong> 一阶RC低通最简单有效；二阶Sallen-Key截止更陡；工频干扰需加50&#x2F;60Hz陷波。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-选型速查与应用误区"><a href="#5-选型速查与应用误区" class="headerlink" title="5. 选型速查与应用误区"></a>5. 选型速查与应用误区</h3><h4 id="选型速查表-1"><a href="#选型速查表-1" class="headerlink" title="选型速查表"></a>选型速查表</h4><ul>
+<li><strong>工业温度监控：</strong> 选PT100 + INA128 + ADC（注意4线法消线阻）。</li>
+<li><strong>家电&#x2F;电池保护：</strong> 选NTC 10kΩ + 分压电路（注意非线性补偿）。</li>
+<li><strong>变频器电流检测：</strong> 选ACS712或霍尔CT（注意带宽匹配）。</li>
+<li><strong>伺服电机位置：</strong> 选增量编码器（注意差分接线抗干扰）。</li>
+</ul>
+<h4 id="五大常见误区（避坑指南）"><a href="#五大常见误区（避坑指南）" class="headerlink" title="五大常见误区（避坑指南）"></a>五大常见误区（避坑指南）</h4><ol>
+<li><strong>PT100接线错误：</strong> 长距离传输用2线法会导致巨大误差（线阻计入测量值），必须用<strong>3线或4线法</strong>。</li>
+<li><strong>忽略冷端补偿：</strong> 热电偶测量的是温差，直接使用必须配合MAX31855等芯片进行<strong>冷端补偿</strong>。</li>
+<li><strong>NTC不做线性化：</strong> NTC是非线性的，直接映射温度误差极大，需用<strong>Steinhart-Hart方程</strong>或查表法。</li>
+<li><strong>编码器信号干扰：</strong> 长距离传输TTL电平易受干扰，超过1米必须使用<strong>差分RS422</strong>接口。</li>
+<li><strong>量程选择过大：</strong> 例如5A系统选50A传感器，会导致小电流下信噪比极差，精度损失严重。建议量程为最大值的<strong>1.5~2倍</strong>。</li>
+</ol>
+<h2 id="稳压二极管选型"><a href="#稳压二极管选型" class="headerlink" title="稳压二极管选型"></a>稳压二极管选型</h2><p>这份资料是《电子元器件基础》系列课程中关于**稳压二极管（Zener Diode）**的详细学习笔记，内容涵盖了从原理特性、关键参数到典型应用、设计避坑及选型流程的完整知识体系。以下是为您整理的核心要点：</p>
+<h3 id="1-稳压二极管-V-I-特性与结构"><a href="#1-稳压二极管-V-I-特性与结构" class="headerlink" title="1. 稳压二极管 V-I 特性与结构"></a>1. 稳压二极管 V-I 特性与结构</h3><ul>
+<li><strong>核心原理：</strong> 利用 PN 结的<strong>反向击穿</strong>特性来实现稳压。在反向击穿区，电流变化很大时，电压基本保持不变。</li>
+<li>电路符号：<ul>
+<li>阴极（Cathode）：标有黑环的一端，对应电路符号中的短横线侧 <code>(-)</code>。</li>
+<li>阳极（Anode）：对应电路符号中的三角形侧 <code>(+)</code>。</li>
+</ul>
+</li>
+<li><strong>工作区域：</strong> 正常稳压工作时，处于反向偏置状态（即阴极接高电位，阳极接低电位）。</li>
+</ul>
+<h3 id="2-关键参数详解（选型必看）"><a href="#2-关键参数详解（选型必看）" class="headerlink" title="2. 关键参数详解（选型必看）"></a>2. 关键参数详解（选型必看）</h3><p>选型时需重点关注以下六个核心指标：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>符号</th>
+<th>典型值&#x2F;范围</th>
+<th>工程说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>稳压电压</strong></td>
+<td>$V_z$</td>
+<td>2.4V ~ 200V</td>
+<td>工作在反向击穿区时的稳定电压值。</td>
+</tr>
+<tr>
+<td><strong>稳压电流</strong></td>
+<td>$I_z$</td>
+<td>5mA ~ 50mA</td>
+<td>维持稳压所需的最小测试电流（通常指 $I_{zt}$）。</td>
+</tr>
+<tr>
+<td><strong>最大功率</strong></td>
+<td>$P_z$</td>
+<td>0.3W &#x2F; 0.5W &#x2F; 1W &#x2F; 5W</td>
+<td>$P_z &#x3D; V_z \times I_{z_max}$。<strong>注意：需降额 70% 使用</strong>。</td>
+</tr>
+<tr>
+<td><strong>动态阻抗</strong></td>
+<td>$Z_z$</td>
+<td>2Ω ~ 100Ω</td>
+<td>越小稳压效果越好，曲线越平坦。</td>
+</tr>
+<tr>
+<td><strong>温度系数</strong></td>
+<td>TC</td>
+<td>±0.1%&#x2F;°C</td>
+<td>$V_z &gt; 5V$ 为正温系数；$V_z &lt; 5V$ 为负温系数（约 5.1V 时最稳）。</td>
+</tr>
+<tr>
+<td><strong>精度等级</strong></td>
+<td>—</td>
+<td>±5% &#x2F; ±2% &#x2F; ±1%</td>
+<td>普通品 ±5%，精密品 ±1%（价格较高）。</td>
+</tr>
+</tbody></table>
+<h3 id="3-三大典型应用场景"><a href="#3-三大典型应用场景" class="headerlink" title="3. 三大典型应用场景"></a>3. 三大典型应用场景</h3><h4 id="简单稳压电路"><a href="#简单稳压电路" class="headerlink" title="简单稳压电路"></a>简单稳压电路</h4><ul>
+<li><strong>电路结构：</strong> $V_{in} \rightarrow R_{串联} \rightarrow \text{负载} \parallel \text{Zener}$。</li>
+<li><strong>稳压条件：</strong> $V_{in} &gt; V_z$，且必须串联限流电阻 $R$。</li>
+<li><strong>电阻计算：</strong> $R &#x3D; (V_{in_max} - V_z) &#x2F; I_{z_max}$。</li>
+<li><strong>优缺点：</strong> 极简、无需 IC；但效率低，负载变化会直接影响稳定性。</li>
+</ul>
+<h4 id="限压保护电路"><a href="#限压保护电路" class="headerlink" title="限压保护电路"></a>限压保护电路</h4><ul>
+<li><strong>保护对象：</strong> 单片机 IO 口或模拟输入端。</li>
+<li><strong>连接方式：</strong> 并联在信号线与 GND 之间。</li>
+<li><strong>双向保护：</strong> 使用双向 TVS 管或两只背靠背（阳极相连）的 Zener 管。</li>
+<li><strong>注意事项：</strong> 需串联限流电阻防止过流烧毁。</li>
+</ul>
+<h4 id="与-TL431-对比"><a href="#与-TL431-对比" class="headerlink" title="与 TL431 对比"></a>与 TL431 对比</h4><ul>
+<li><strong>TL431 特点：</strong> 可调精密稳压源，基准电压 $V_{ref} &#x3D; 2.495V$。</li>
+<li><strong>精度对比：</strong> TL431 ($\pm 1%$) 优于普通 Zener ($\pm 5%$)。</li>
+<li><strong>成本差异：</strong> Zener 极便宜（约 ¥0.05），TL431 稍贵（约 ¥0.3）。</li>
+<li><strong>选型建议：</strong> 低精度&#x2F;低成本&#x2F;简单保护选 Zener；精密稳压&#x2F;可调电压选 TL431。</li>
+</ul>
+<h3 id="4-设计要点与常见误区"><a href="#4-设计要点与常见误区" class="headerlink" title="4. 设计要点与常见误区"></a>4. 设计要点与常见误区</h3><ul>
+<li><strong>必须串联限流电阻：</strong> 稳压管不能直接接电源，否则超过最大电流 $I_{z_max}$ 会立即烧毁。</li>
+<li><strong>功率降额使用：</strong> 实际功耗 $P &#x3D; V_z \times I_z$。设计时按额定功率的 <strong>70%</strong> 降额，散热差时需进一步降额。</li>
+<li><strong>稳压精度有限：</strong> 普通稳压管精度仅 $\pm 5%$ 且随温度漂移。若需高精度，应选用 TL431 或专用基准源。</li>
+<li><strong>负载变化影响稳压：</strong> 负载电流增加会导致流过稳压管的电流减小，稳压效果变差。若负载变化大，建议改用 LDO。</li>
+<li><strong>双向保护接法：</strong> 保护双极性信号线时，两只稳压管需<strong>背靠背</strong>（阳极对阳极）串联后接在信号线与 GND 之间。</li>
+</ul>
+<h3 id="5-常用型号速查与选型流程"><a href="#5-常用型号速查与选型流程" class="headerlink" title="5. 常用型号速查与选型流程"></a>5. 常用型号速查与选型流程</h3><h4 id="常用型号参考表"><a href="#常用型号参考表" class="headerlink" title="常用型号参考表"></a>常用型号参考表</h4><table>
+<thead>
+<tr>
+<th>型号</th>
+<th>$V_z$ (V)</th>
+<th>功率 (W)</th>
+<th>精度</th>
+<th>封装</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1N4728A</td>
+<td>3.3</td>
+<td>1.0</td>
+<td>±5%</td>
+<td>DO-41</td>
+</tr>
+<tr>
+<td>1N4733A</td>
+<td>5.1</td>
+<td>1.0</td>
+<td>±5%</td>
+<td>DO-41</td>
+</tr>
+<tr>
+<td>1N4742A</td>
+<td>12</td>
+<td>1.0</td>
+<td>±5%</td>
+<td>DO-41</td>
+</tr>
+<tr>
+<td>BZX84C5V1</td>
+<td>5.1</td>
+<td>0.3</td>
+<td>±2%</td>
+<td>SOT-23</td>
+</tr>
+<tr>
+<td>MMSZ5231B</td>
+<td>5.1</td>
+<td>0.5</td>
+<td>±2%</td>
+<td>SOD-123</td>
+</tr>
+<tr>
+<td>TL431A</td>
+<td>2.5~36</td>
+<td>1.0</td>
+<td>±1%</td>
+<td>SOT-23&#x2F;TO-92</td>
+</tr>
+<tr>
+<td>LM385-1.2</td>
+<td>1.235</td>
+<td>0.25</td>
+<td>±1%</td>
+<td>SOT-23</td>
+</tr>
+</tbody></table>
+<h4 id="标准选型六步法"><a href="#标准选型六步法" class="headerlink" title="标准选型六步法"></a>标准选型六步法</h4><ol>
+<li><strong>确定稳压电压 $V_z$：</strong> 根据电路需求选定。</li>
+<li><strong>计算最大电流 $I_{z_max}$：</strong> 公式 $I_z &#x3D; (V_{in_max} - V_z) &#x2F; R$。</li>
+<li><strong>选择功率等级：</strong> $P_z &#x3D; V_z \times I_{z_max} \times 1.5$（留余量）。</li>
+<li><strong>确认精度要求：</strong> $\pm 1%$ 选 TL431，$\pm 5%$ 选普通 Zener。</li>
+<li><strong>选封装尺寸：</strong> 插件选 DO-41，贴片选 SOD-123。</li>
+<li><strong>验证热设计：</strong> 确保结温 $T_j &#x3D; T_a + P_z \times \theta_{JA} \leq 150^\circ C$。</li>
+</ol>
+<h3 id="6-本课小结"><a href="#6-本课小结" class="headerlink" title="6. 本课小结"></a>6. 本课小结</h3><ul>
+<li><strong>原理：</strong> 稳压管利用反向击穿特性实现稳压，这不是故障状态。</li>
+<li><strong>温补：</strong> $V_z &lt; 5V$ 为负温系数，$V_z &gt; 5V$ 为正温系数（约 5.1V 时温度稳定性最好）。</li>
+<li><strong>公式：</strong> 限流电阻 $R &#x3D; (V_{in_max} - V_z) &#x2F; I_{z_max}$；功率使用需打 7 折。</li>
+<li><strong>替代：</strong> 精密稳压首选 TL431（$\pm 1%$，可调，带隙基准）。</li>
+<li><strong>性能：</strong> 动态阻抗 $Z_z$ 越小，稳压效果越好。</li>
+</ul>
+<h2 id="MOSFET选型"><a href="#MOSFET选型" class="headerlink" title="MOSFET选型"></a>MOSFET选型</h2><p>这份资料是《电子元器件基础》系列课程中关于 <strong>MOSFET 选型及开关应用</strong> 的详细学习笔记。内容从功率损耗计算入手，深入讲解了散热设计、驱动电路、同步整流选型以及常见的失效模式分析。</p>
+<p>以下是为您整理的核心要点：</p>
+<h3 id="1-功率损耗计算"><a href="#1-功率损耗计算" class="headerlink" title="1. 功率损耗计算"></a>1. 功率损耗计算</h3><p>MOSFET 的总损耗由三部分组成：<strong>导通损耗 ($P_{cond}$)</strong> + <strong>开关损耗 ($P_{sw}$)</strong> + <strong>驱动损耗 ($P_{gate}$)</strong>。</p>
+<h4 id="损耗计算公式与特性"><a href="#损耗计算公式与特性" class="headerlink" title="损耗计算公式与特性"></a>损耗计算公式与特性</h4><table>
+<thead>
+<tr>
+<th>损耗类型</th>
+<th>公式</th>
+<th>关键参数说明</th>
+<th>工程建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>导通损耗</strong> ($P_{cond}$)</td>
+<td>$D \times I_d^2 \times R_{ds(on)}$</td>
+<td>$D$: 占空比 (0~1) $I_d$: 漏极电流 $R_{ds(on)}$: 导通电阻</td>
+<td>- 温度升高会导致 $R_{ds(on)}$ 增大（约 +0.5%&#x2F;℃）。 - 实际选型需降额：$R_{ds(on)<em>actual} &#x3D; R</em>{ds(on)<em>25^\circ C} \times (1.5 \sim 2.0)$。 - <strong>低频场景 (&lt;50kHz)</strong>：优选 $R</em>{ds(on)}$ 小的管子。</td>
+</tr>
+<tr>
+<td><strong>开关损耗</strong> ($P_{sw}$)</td>
+<td>$(E_{on} + E_{off}) \times f_{sw}$</td>
+<td>$E_{on&#x2F;off}$: 开通&#x2F;关断能量 $f_{sw}$: 开关频率</td>
+<td>- 与频率成正比，高频下占比大。 - 米勒平台越短 ($Q_{gd}$小)，开关越快，损耗越小。 - <strong>高频场景 (&gt;200kHz)</strong>：优选 $Q_g&#x2F;Q_{gd}$ 小的管子。</td>
+</tr>
+<tr>
+<td><strong>驱动损耗</strong> ($P_{gate}$)</td>
+<td>$Q_g \times V_{gs} \times f_{sw}$</td>
+<td>$Q_g$: 栅极电荷 $V_{gs}$: 驱动电压</td>
+<td>通常较小，可忽略。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>综合评估指标 (FOM)</strong>：在中频段 (50~200kHz)，使用 $FOM &#x3D; R_{ds(on)} \times Q_g$ 来综合评估器件性能。</p>
+</blockquote>
+<hr>
+<h3 id="2-热阻模型与散热设计"><a href="#2-热阻模型与散热设计" class="headerlink" title="2. 热阻模型与散热设计"></a>2. 热阻模型与散热设计</h3><p>散热的核心目标是确保结温 $T_j$ 不超过最大允许值（通常需留 20% 余量）。</p>
+<h4 id="热阻链模型"><a href="#热阻链模型" class="headerlink" title="热阻链模型"></a>热阻链模型</h4><p>热量传递路径：<strong>芯片结 ($T_j$) $\rightarrow$ 外壳 ($T_c$) $\rightarrow$ 散热器 ($T_s$) $\rightarrow$ 环境 ($T_a$)</strong></p>
+<ul>
+<li><p>结温计算公式：</p>
+<p>$$T_j &#x3D; T_a + P_{total} \times (\theta_{JC} + \theta_{CS} + \theta_{SA})$$</p>
+<ul>
+<li>$\theta_{JC}$: 结到壳热阻（Datasheet提供）</li>
+<li>$\theta_{CS}$: 壳到散热器热阻（导热垫，约 0.5~2 ℃&#x2F;W）</li>
+<li>$\theta_{SA}$: 散热器到环境热阻（需计算或查表）</li>
+</ul>
+</li>
+<li><p><strong>安全准则：</strong> 确保 $T_j &lt; T_{j(max)} \times 0.8$。</p>
+</li>
+</ul>
+<h4 id="常见封装热阻参考"><a href="#常见封装热阻参考" class="headerlink" title="常见封装热阻参考"></a>常见封装热阻参考</h4><table>
+<thead>
+<tr>
+<th>封装类型</th>
+<th>$\theta_{JC}$ (结到壳)</th>
+<th>适用功率范围</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TO-220</strong></td>
+<td>1 ~ 3 ℃&#x2F;W</td>
+<td>5 ~ 50W</td>
+<td>通孔安装，需加散热器</td>
+</tr>
+<tr>
+<td><strong>TO-247</strong></td>
+<td>0.5 ~ 1 ℃&#x2F;W</td>
+<td>&gt; 50W</td>
+<td>大电流场合首选</td>
+</tr>
+<tr>
+<td><strong>TO-263 (D2PAK)</strong></td>
+<td>1 ~ 2 ℃&#x2F;W</td>
+<td>10 ~ 30W</td>
+<td>SMD封装，靠PCB散热</td>
+</tr>
+<tr>
+<td><strong>SOT-23 &#x2F; DFN</strong></td>
+<td>50 ~ 200 ℃&#x2F;W</td>
+<td>&lt; 2W</td>
+<td>小信号&#x2F;低功率，难散热</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="3-高低侧驱动电路设计"><a href="#3-高低侧驱动电路设计" class="headerlink" title="3. 高低侧驱动电路设计"></a>3. 高低侧驱动电路设计</h3><h4 id="低侧-NMOS-驱动-简单"><a href="#低侧-NMOS-驱动-简单" class="headerlink" title="低侧 NMOS 驱动 (简单)"></a>低侧 NMOS 驱动 (简单)</h4><ul>
+<li><strong>特点：</strong> Source 接 GND，$V_{gs} &#x3D; V_g$，MCU 可直接驱动 (3.3V&#x2F;5V)。</li>
+<li>关键元件：<ul>
+<li><strong>栅极电阻 $R_g$ (10~100Ω)：</strong> 抑制振荡，控制 $dV&#x2F;dt$。阻值越大 EMI 越低，但开关变慢。</li>
+<li><strong>下拉电阻 (10~100kΩ)：</strong> 防止上电瞬间误导通。</li>
+<li><strong>TVS管：</strong> 保护栅极，防止 $V_{gs}$ 超过 20V 击穿。</li>
+</ul>
+</li>
+</ul>
+<h4 id="高侧-NMOS-驱动-自举电路"><a href="#高侧-NMOS-驱动-自举电路" class="headerlink" title="高侧 NMOS 驱动 (自举电路)"></a>高侧 NMOS 驱动 (自举电路)</h4><ul>
+<li><p><strong>难点：</strong> Source 电位浮动，$V_{gs}$ 需要跟随 Source 浮动。</p>
+</li>
+<li><p>解决方案：</p>
+<p> 使用自举电容 ($C_{boot}$) + 自举二极管 ($D_{boot}$) 产生浮动电源。</p>
+<ul>
+<li>低管导通时给 $C_{boot}$ 充电，高管导通时放电驱动。</li>
+</ul>
+</li>
+<li><p><strong>专用驱动 IC：</strong> 如 IR2104&#x2F;IR2110&#x2F;HIP4082，内置死区时间控制和欠压保护。</p>
+</li>
+<li><p><strong>死区时间：</strong> 必须设置，防止上下管直通短路。</p>
+</li>
+</ul>
+<h4 id="常用-MOSFET-驱动-IC-速查"><a href="#常用-MOSFET-驱动-IC-速查" class="headerlink" title="常用 MOSFET 驱动 IC 速查"></a>常用 MOSFET 驱动 IC 速查</h4><table>
+<thead>
+<tr>
+<th>型号</th>
+<th>拓扑</th>
+<th>驱动电流</th>
+<th>死区时间</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>IR2104</strong></td>
+<td>半桥 (自举)</td>
+<td>0.21A &#x2F; 0.42A</td>
+<td>内置</td>
+<td>Buck &#x2F; 同步整流</td>
+</tr>
+<tr>
+<td><strong>IR2110</strong></td>
+<td>高低侧独立</td>
+<td>2A &#x2F; 2A</td>
+<td>外置</td>
+<td>全桥 &#x2F; 逆变器</td>
+</tr>
+<tr>
+<td><strong>TC4420&#x2F;4427</strong></td>
+<td>单管驱动</td>
+<td>6A</td>
+<td>无</td>
+<td>低侧大电流驱动</td>
+</tr>
+<tr>
+<td><strong>UCC27525</strong></td>
+<td>双通道</td>
+<td>5A</td>
+<td>无</td>
+<td>高速开关 GaN&#x2F;SiC</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="4-同步整流-MOSFET-选型"><a href="#4-同步整流-MOSFET-选型" class="headerlink" title="4. 同步整流 MOSFET 选型"></a>4. 同步整流 MOSFET 选型</h3><p>用低侧 NMOS 取代传统的续流二极管（肖特基），以降低大电流下的导通损耗。</p>
+<h4 id="为什么用同步整流？"><a href="#为什么用同步整流？" class="headerlink" title="为什么用同步整流？"></a>为什么用同步整流？</h4><ul>
+<li><strong>传统二极管：</strong> 正向压降 $V_f \approx 0.3 \sim 0.6V$。例如 5A 输出时，$P &#x3D; 5A \times 0.4V &#x3D; 2W$。</li>
+<li><strong>同步整流 MOSFET：</strong> 导通压降 $V_{sd} &#x3D; I_d \times R_{ds(on)}$。若 $R_{ds(on)}&#x3D;5m\Omega$，则 $P &#x3D; 25A^2 \times 5m\Omega &#x3D; 3.1W$（注：此处原文示例数值可能有误，通常大电流下 MOS 优势更明显，如 25A 时二极管损耗高达 10W+，而 MOS 仅 3W）。<strong>结论：电流越大，MOSFET 优势越明显。</strong></li>
+</ul>
+<h4 id="选型要点"><a href="#选型要点" class="headerlink" title="选型要点"></a>选型要点</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>要求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>$V_{ds}$ 耐压</strong></td>
+<td>$\ge V_{in} \times 1.3$</td>
+<td>留 30% 余量</td>
+</tr>
+<tr>
+<td><strong>$I_{d(max)}$</strong></td>
+<td>$\ge$ 输出电流 $\times 1.5$</td>
+<td>降额使用</td>
+</tr>
+<tr>
+<td><strong>$R_{ds(on)}$</strong></td>
+<td>越小越好</td>
+<td>直接影响导通损耗</td>
+</tr>
+<tr>
+<td><strong>体二极管 trr</strong></td>
+<td>反向恢复时间要短</td>
+<td>$&lt; 50ns$，防止反向恢复损耗过大</td>
+</tr>
+<tr>
+<td><strong>$Q_g$</strong></td>
+<td>影响开关损耗</td>
+<td>需权衡</td>
+</tr>
+<tr>
+<td><strong>封装</strong></td>
+<td>大电流选 D2PAK&#x2F;TO-263</td>
+<td>散热好</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="5-MOSFET-常见失效分析"><a href="#5-MOSFET-常见失效分析" class="headerlink" title="5. MOSFET 常见失效分析"></a>5. MOSFET 常见失效分析</h3><table>
+<thead>
+<tr>
+<th>失效模式</th>
+<th>原因</th>
+<th>症状</th>
+<th>对策</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>漏源过压击穿</strong></td>
+<td>关断瞬间线圈感应峰值电压超过 $V_{ds(max)}$</td>
+<td>D-S 短路，管子报废</td>
+<td>加钳位二极管 &#x2F; TVS &#x2F; RC Snubber 在 D-S 之间</td>
+</tr>
+<tr>
+<td><strong>热失控</strong></td>
+<td>$R_{ds(on)}$ 正温度系数，散热不足导致温度持续上升</td>
+<td>MOSFET 持续发热 $\rightarrow$ 损坏</td>
+<td>结温降额 ($&lt; T_{j_max} \times 0.8$)，加散热器</td>
+</tr>
+<tr>
+<td><strong>过流烧毁</strong></td>
+<td>短路电流超过 $I_{d(max)}$，结温过高</td>
+<td>管子发黑&#x2F;爆裂，D-G-S 短接</td>
+<td>增加过流保护 (OCP)，选 $I_d$ 降额 50%</td>
+</tr>
+<tr>
+<td><strong>栅极振荡</strong></td>
+<td>$C_{gs}&#x2F;C_{gd}$ 与走线电感谐振，无栅极电阻时极易发生</td>
+<td>高频振荡，EMI 超标</td>
+<td>靠近栅极加 10~100Ω 栅极电阻</td>
+</tr>
+<tr>
+<td><strong>栅极 ESD 损伤</strong></td>
+<td>栅极输入阻抗极高，静电易击穿氧化层</td>
+<td>$V_{gs(th)}$ 漂移，漏电流增大</td>
+<td>TVS&#x2F;稳压管钳位 $V_{gs}$，操作需防静电</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="本课小结与自检"><a href="#本课小结与自检" class="headerlink" title="本课小结与自检"></a>本课小结与自检</h3><ul>
+<li><strong>核心公式：</strong> 掌握 $P_{cond}$ 和 $P_{sw}$ 的计算，理解热阻链 $T_j$ 的计算。</li>
+<li><strong>驱动设计：</strong> 低侧直驱加电阻，高侧需自举或专用 IC。</li>
+<li><strong>同步整流：</strong> 选 $R_{ds}$ 小、trr 短的 NMOS。</li>
+<li><strong>失效防护：</strong> 过压用 TVS，过流用 OCP，ESD 用钳位。</li>
+</ul>
+<h2 id="LED与光耦"><a href="#LED与光耦" class="headerlink" title="LED与光耦"></a>LED与光耦</h2><p>这份资料是《电子元器件基础》系列课程中关于 <strong>LED（发光二极管）与光耦（光电耦合器）</strong> 的详细学习笔记。内容涵盖了从LED的V-I特性、驱动设计，到光耦的工作原理、关键参数（CTR）、隔离应用及选型避坑指南。</p>
+<p>以下是为您整理的核心要点：</p>
+<h3 id="1-LED-V-I-特性与驱动电路设计"><a href="#1-LED-V-I-特性与驱动电路设计" class="headerlink" title="1. LED V-I 特性与驱动电路设计"></a>1. LED V-I 特性与驱动电路设计</h3><ul>
+<li><strong>核心原理：</strong> LED 是电流型器件，不同颜色的 LED 正向压降 ($V_f$) 不同。</li>
+<li>V-I 特性曲线：<ul>
+<li><strong>红色 (625nm):</strong> $V_f \approx 1.8\text{V}$</li>
+<li><strong>绿色 (520nm):</strong> $V_f \approx 2.1\text{V}$</li>
+<li><strong>蓝色 (470nm):</strong> $V_f \approx 3.0\text{V}$</li>
+<li><strong>白色:</strong> $V_f \approx 3.3\text{V}$</li>
+</ul>
+</li>
+<li><strong>典型工作电流：</strong> $20\text{mA}$（切勿超过最大额定值）。</li>
+</ul>
+<h4 id="驱动电路设计四步法"><a href="#驱动电路设计四步法" class="headerlink" title="驱动电路设计四步法"></a>驱动电路设计四步法</h4><ol>
+<li>限流电阻计算：<ul>
+<li>公式：$R &#x3D; (V_{cc} - V_f) &#x2F; I_f$</li>
+<li><em>示例：</em> $V_{cc}&#x3D;3.3\text{V}, V_f&#x3D;2.1\text{V} (\text{绿}), I_f&#x3D;10\text{mA} \rightarrow R&#x3D;(3.3-2.1)&#x2F;0.01 &#x3D; 120\Omega$。</li>
+</ul>
+</li>
+<li>功率计算：<ul>
+<li>电阻功率：$P_R &#x3D; I^2 \times R$ 或 $(V_{cc}-V_f)^2&#x2F;R$</li>
+<li>LED 功率：$P_{LED} &#x3D; V_f \times I_f$</li>
+<li><em>注意：</em> 两者均需降额使用（建议留 70% 余量）。</li>
+</ul>
+</li>
+<li>驱动方式选择：<ul>
+<li><strong>低亮度 (&lt;20mA):</strong> MCU 直驱（需串联 1kΩ 左右电阻）。</li>
+<li><strong>中亮度 (20~100mA):</strong> 三极管（如 S8050）驱动。</li>
+<li><strong>高亮度 (&gt;100mA):</strong> 专用 LED 驱动 IC（恒流源）。</li>
+</ul>
+</li>
+<li>PWM 调光：<ul>
+<li>通过改变 PWM 占空比调节亮度。</li>
+<li>频率 $\ge 100\text{Hz}$（避免人眼感觉到闪烁）。</li>
+<li>恒流驱动 IC 优先（线性度更好）。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="2-LED-关键参数速查"><a href="#2-LED-关键参数速查" class="headerlink" title="2. LED 关键参数速查"></a>2. LED 关键参数速查</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>符号</th>
+<th>典型值&#x2F;范围</th>
+<th>工程说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>正向电压</strong></td>
+<td>$V_f$</td>
+<td>红 1.8V &#x2F; 绿 2.1V &#x2F; 蓝 3.0V &#x2F; 白 3.3V</td>
+<td>驱动电源必须 &gt; $V_f$，否则不亮。</td>
+</tr>
+<tr>
+<td><strong>正向电流</strong></td>
+<td>$I_f$</td>
+<td>典型 20mA，最大 30mA</td>
+<td>超过 $I_{f_max}$ 立即损坏，必须限流。</td>
+</tr>
+<tr>
+<td><strong>发光波长</strong></td>
+<td>$\lambda$</td>
+<td>红 625nm &#x2F; 绿 520nm &#x2F; 蓝 470nm</td>
+<td>决定颜色；红外 850nm 不可见。</td>
+</tr>
+<tr>
+<td><strong>光通量</strong></td>
+<td>$\Phi_v$</td>
+<td>3~30 lm (普通) &#x2F; 100+ lm (高亮)</td>
+<td>指示灯用普通型，照明用大功率型。</td>
+</tr>
+<tr>
+<td><strong>热阻</strong></td>
+<td>$\theta_{JA}$</td>
+<td>200~500 °C&#x2F;W (贴片)</td>
+<td>大电流时散热必须计算。</td>
+</tr>
+<tr>
+<td><strong>最高结温</strong></td>
+<td>$T_{j_max}$</td>
+<td>120~150 °C</td>
+<td>超过则寿命急剧缩短。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>常见失效模式：</strong></p>
+<ul>
+<li><strong>过流烧毁：</strong> 限流电阻过小或短路。</li>
+<li><strong>静电击穿：</strong> LED 对 ESD 敏感，操作需防静电。</li>
+<li><strong>焊接损坏：</strong> 热量超过 260°C 回流焊温度。</li>
+<li><strong>老化衰减：</strong> 长期工作光通量下降 ≥30%。</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="3-光耦合器工作原理与关键参数"><a href="#3-光耦合器工作原理与关键参数" class="headerlink" title="3. 光耦合器工作原理与关键参数"></a>3. 光耦合器工作原理与关键参数</h3><ul>
+<li><strong>结构：</strong> 输入端 LED + 输出端光敏三极管（电气隔离的核心）。</li>
+<li>CTR 特性（电流传输比）：<ul>
+<li>定义：$CTR &#x3D; I_c &#x2F; I_f \times 100%$。</li>
+<li>趋势：随着使用时间推移，CTR 会下降（老化），设计时需预留裕量。</li>
+<li><em>推荐工作点：</em> 例如 PC817 在 $I_f&#x3D;5\text{mA}$ 时，$I_c \approx 5\text{mA}$ (CTR&#x3D;100%)。</li>
+</ul>
+</li>
+</ul>
+<h4 id="光耦关键参数表"><a href="#光耦关键参数表" class="headerlink" title="光耦关键参数表"></a>光耦关键参数表</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>符号</th>
+<th>典型值&#x2F;说明</th>
+<th>选型建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>电流传输比</strong></td>
+<td>CTR</td>
+<td>$I_c&#x2F;I_f \times 100%$</td>
+<td>选型时留 <strong>2倍裕量</strong>，防止老化后失效。</td>
+</tr>
+<tr>
+<td><strong>隔离电压</strong></td>
+<td>$BV_{iso}$</td>
+<td>1500V &#x2F; 2500V &#x2F; 5000Vrms</td>
+<td>安全认证通常需 $\ge 2500\text{V}$。</td>
+</tr>
+<tr>
+<td><strong>响应时间</strong></td>
+<td>$t_r&#x2F;t_f$</td>
+<td>PC817: ~4μs; 6N137: &lt;0.1μs</td>
+<td>高速通信选纳秒级，普通开关选微秒级。</td>
+</tr>
+<tr>
+<td><strong>输出饱和压降</strong></td>
+<td>$V_{CE(sat)}$</td>
+<td>通常 &lt; 0.4V</td>
+<td>影响低电平输出的质量。</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="4-光耦驱动设计五要点（避坑指南）"><a href="#4-光耦驱动设计五要点（避坑指南）" class="headerlink" title="4. 光耦驱动设计五要点（避坑指南）"></a>4. 光耦驱动设计五要点（避坑指南）</h3><ol>
+<li><strong>CTR 要留裕量：</strong> 选型 CTR $\ge$ 2倍工作所需 CTR；光耦老化后 CTR 下降 30~50%，裕量不足则输出电平偏低或失败。</li>
+<li><strong>输入限流电阻：</strong> LED 侧必须串限流电阻：$R_{in} &#x3D; (V_{in} - V_{f_led}) &#x2F; I_f$；$I_f$ 通常设 5mA（兼顾寿命与速度）。</li>
+<li><strong>输出上拉电阻：</strong> 集电极开路输出需外接上拉电阻到 $VCC_{out}$；$R_{pull}$ 决定输出电压：$V_{out} &#x3D; VCC_{out} - I_c \times R_{pull}$。</li>
+<li><strong>电源地隔离：</strong> 光耦两侧电源地必须完全隔离，PCB 布局时两侧敷铜区不得相连，这是隔离的根本。</li>
+<li><strong>速度与 CTR 权衡：</strong> 高 CTR 型响应慢（如 PC817 μs 级）；高速型 6N137 CTR 低但响应 ns 级；二者不可兼得。</li>
+</ol>
+<hr>
+<h3 id="5-典型隔离应用场景"><a href="#5-典型隔离应用场景" class="headerlink" title="5. 典型隔离应用场景"></a>5. 典型隔离应用场景</h3><ol>
+<li><strong>MCU → 高压侧控制：</strong> MCU GPIO → 限流 R → 光耦 LED → 光耦输出控制 IGBT&#x2F;继电器&#x2F;SSR。</li>
+<li><strong>开关电源反馈隔离：</strong> 副边采样电压 → TL431 基准 → PC817 LED → PC817 输出接 PWM 控制器 FB 引脚。</li>
+<li><strong>串口&#x2F;数字信号隔离：</strong> UART TX → 6N137&#x2F;ISO721 → 对侧 RX（隔离防止两侧地电位不同导致干扰）。</li>
+<li><strong>输入状态检测：</strong> 外部高压开关 → 限流 R(10kΩ) → 光耦 → 光耦输出 → MCU GPIO 读取（如 AC220V 检测）。</li>
+</ol>
+<hr>
+<h3 id="6-常用型号速查"><a href="#6-常用型号速查" class="headerlink" title="6. 常用型号速查"></a>6. 常用型号速查</h3><table>
+<thead>
+<tr>
+<th>型号</th>
+<th>类型</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>PC817</strong></td>
+<td>通用型</td>
+<td>便宜，速度慢 (~4μs)，CTR 80-160%</td>
+<td>电源反馈、低速开关信号</td>
+</tr>
+<tr>
+<td><strong>EL817</strong></td>
+<td>通用型</td>
+<td>PC817 兼容替代</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>6N137</strong></td>
+<td>高速型</td>
+<td>速度快 (&lt;0.1μs)，推挽输出</td>
+<td>高速通信、电机驱动</td>
+</tr>
+<tr>
+<td><strong>TLP250</strong></td>
+<td>栅极驱动</td>
+<td>专门驱动 IGBT&#x2F;MOSFET</td>
+<td>逆变器、变频器</td>
+</tr>
+<tr>
+<td><strong>ISO721</strong></td>
+<td>数字隔离</td>
+<td>基于电容隔离技术，极快</td>
+<td>SPI&#x2F;I2C 数字隔离</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://xiaomiao321.github.io">XiaoMiao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://xiaomiao321.github.io/2026/06/13/%E8%80%81%E6%99%BA(2)/">https://xiaomiao321.github.io/2026/06/13/%E8%80%81%E6%99%BA(2)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/08/2026-07-09-MC/" title="MC"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">MC</div></div><div class="info-2"><div class="info-item-1">MChttps://zh.minecraft.wiki/ 快捷键物品操作物品转移 拿起&#x2F;放下整组： 鼠标左键单击 取出一半&#x2F;放下一个： 鼠标右键单击 平均分配： 左键按住拖动 逐一放置： 右键按住拖动 快速堆叠： 鼠标左键双击 快速转移： Shift + 鼠标单击 大量转移： （悬挂物品时）Shift + 左键双击 交换物品位置： （指针对准某格）1~9 数字键 或 F键 快速装备： （手持装备时）右键单击 主副手交换： F键 选择交易项： Tab键 或 &quot;↑&quot; 和 &quot;↓&quot; 交易快速补货： 空格键 或 回车键 批量交易： （对准成品）Shift + 鼠标单击 放入收纳袋： （悬挂物品对准收纳袋）左键单击 或 （悬挂收纳袋对准物品）左键单击 从收纳袋取出： （对准收纳袋）右键单击 或 （悬挂收纳袋对准空格）右键单击 收纳袋内选择物品： （对准收纳袋）鼠标中键滚动  物品丢弃 快捷栏 单个丢弃： Q键（可按住+滚轮滚动） 整组丢弃： Ctrl + Q（可按住+滚轮滚动） 手持收纳袋右键单击丢出其中的物品   物品栏&#x2F...</div></div></div></a><a class="pagination-related" href="/2026/05/31/2026-05-31-PCB/" title="PCB 接地设计与层叠结构学习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">PCB 接地设计与层叠结构学习笔记</div></div><div class="info-2"><div class="info-item-1">PCB 接地方式、层叠结构、割地设计及板载天线布局学习笔记</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XiaoMiao</div><div class="author-info-description">XiaoMiao's technical blog </div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaomiao321" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Welcome! I'm XiaoMiao, EE sophomore @ ZJU. Love embedded systems, circuits, 3D printing & DIY. Sharing my learning journey here.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%80%81%E6%99%BA"><span class="toc-number">1.</span> <span class="toc-text">老智</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">元器件基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D%E4%B8%8E%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text">单位与参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E9%98%BB"><span class="toc-number">1.2.</span> <span class="toc-text">电阻</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%98-%E7%94%B5%E5%AD%90%E5%85%83%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%B8%89%E8%AF%BE%EF%BC%9A%E7%94%B5%E9%98%BB%E5%99%A8%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E7%AC%94%E8%AE%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">📘 电子元器件基础 - 第三课：电阻器深度解析笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%EF%BC%88%E4%B8%8A%EF%BC%89%EF%BC%9A%E9%98%BB%E5%80%BC-%E5%8A%9F%E7%8E%87"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1. 关键参数（上）：阻值 &amp; 功率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%9A%E7%B2%BE%E5%BA%A6-%E6%B8%A9%E5%BA%A6%E7%B3%BB%E6%95%B0"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2. 关键参数（下）：精度 &amp; 温度系数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%B4%B4%E7%89%87%E7%94%B5%E9%98%BB%E5%B0%81%E8%A3%85%E5%B0%BA%E5%AF%B8"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">3. 贴片电阻封装尺寸</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%B8%89%E5%A4%A7%E5%BA%94%E7%94%A8%E7%94%B5%E8%B7%AF"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">4. 三大应用电路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%94%B5%E9%98%BB%E9%80%89%E5%9E%8B%E4%BA%94%E6%AD%A5%E6%B3%95"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">5. 电阻选型五步法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA-%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97"><span class="toc-number">1.2.1.6.</span> <span class="toc-text">6. 常见误区 &amp; 避坑指南</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%98-%E7%94%B5%E5%AD%90%E5%85%83%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%80-%E7%AC%AC%E5%9B%9B%E8%AF%BE%EF%BC%9A%E7%89%B9%E6%AE%8A%E7%94%B5%E9%98%BB%E5%99%A8%E5%BA%94%E7%94%A8%E7%AC%94%E8%AE%B0"><span class="toc-number">1.2.2.</span> <span class="toc-text">📘 电子元器件基础 - 第四课：特殊电阻器应用笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-NTC-%E7%83%AD%E6%95%8F%E7%94%B5%E9%98%BB"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1. NTC 热敏电阻</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-PTC-PPTC-%E2%80%94%E2%80%94-%E8%87%AA%E6%81%A2%E5%A4%8D%E4%BF%9D%E9%99%A9%E4%B8%9D"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2. PTC &#x2F; PPTC —— 自恢复保险丝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-MOV-%E5%8E%8B%E6%95%8F%E7%94%B5%E9%98%BB-%E2%80%94%E2%80%94-%E7%9E%AC%E6%80%81%E8%BF%87%E5%8E%8B%E4%BF%9D%E6%8A%A4"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">3. MOV 压敏电阻 —— 瞬态过压保护</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%94%B5%E4%BD%8D%E5%99%A8-%E6%95%B0%E5%AD%97%E7%94%B5%E4%BD%8D%E5%99%A8-DigiPOT"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">4. 电位器 &amp; 数字电位器 (DigiPOT)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%BB%BC%E5%90%88%E4%BF%9D%E6%8A%A4%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E6%A1%88%E4%BE%8B"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">5. 综合保护电路设计案例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">1.2.2.6.</span> <span class="toc-text">6. 选型速查 &amp; 常见误区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E7%89%B9%E6%AE%8A%E7%94%B5%E9%98%BB%E9%80%9F%E8%AE%B0%E5%8F%A3%E8%AF%80"><span class="toc-number">1.2.2.7.</span> <span class="toc-text">7. 特殊电阻速记口诀</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%AE%B9"><span class="toc-number">1.3.</span> <span class="toc-text">电容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%98-%E7%94%B5%E5%AD%90%E5%85%83%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%BA%94%E8%AF%BE%EF%BC%9A%E7%94%B5%E5%AE%B9%E7%9A%84%E9%80%89%E5%9E%8B%E5%8F%8A%E5%BA%94%E7%94%A8%E7%AC%94%E8%AE%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">📘 电子元器件基础 - 第五课：电容的选型及应用笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%94%B5%E5%AE%B9%E5%99%A8%E5%88%86%E7%B1%BB%E6%80%BB%E8%A7%88"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1. 电容器分类总览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%EF%BC%9A%E5%AE%B9%E9%87%8F%E4%B8%8E%E5%AE%B9%E5%B7%AE"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">2. 关键参数：容量与容差</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-MLCC-%E6%B8%A9%E5%BA%A6%E7%89%B9%E6%80%A7%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">3. MLCC 温度特性代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%80%90%E5%8E%8B%E4%B8%8E%E9%99%8D%E9%A2%9D%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">4. 耐压与降额使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-ESR-%E4%B8%8E-ESL-%E2%80%94%E2%80%94-%E7%94%B5%E5%AE%B9%E7%9A%84%E9%9A%90%E8%97%8F%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">5. ESR 与 ESL —— 电容的隐藏参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%94%B5%E8%A7%A3%E7%94%B5%E5%AE%B9%E9%80%89%E5%9E%8B%E8%A6%81%E7%82%B9"><span class="toc-number">1.3.1.6.</span> <span class="toc-text">6. 电解电容选型要点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.3.1.7.</span> <span class="toc-text">7. 选型速查表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97"><span class="toc-number">1.3.1.8.</span> <span class="toc-text">8. 常见误区避坑指南</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%81%E8%B7%AF%E7%94%B5%E5%AE%B9"><span class="toc-number">1.3.2.</span> <span class="toc-text">旁路电容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%97%81%E8%B7%AF%E7%94%B5%E5%AE%B9%E5%8E%9F%E7%90%86%E4%B8%8E%E5%B8%83%E5%B1%80%E8%A6%81%E6%B1%82"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">一、旁路电容原理与布局要求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%81%E8%B7%AF%E7%94%B5%E5%AE%B9%EF%BC%9F"><span class="toc-number">1.3.2.1.1.</span> <span class="toc-text">什么是旁路电容？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.2.1.2.</span> <span class="toc-text">2. 工作原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8"><span class="toc-number">1.3.2.1.3.</span> <span class="toc-text">3. 核心作用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%9B%9B%E5%A4%A7%E9%BB%84%E9%87%91%E6%B3%95%E5%88%99%EF%BC%88%E5%B8%83%E5%B1%80%E8%A6%81%E6%B1%82%EF%BC%89"><span class="toc-number">1.3.2.1.4.</span> <span class="toc-text">4. 四大黄金法则（布局要求）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%BB%E8%80%A6%E7%94%B5%E5%AE%B9%E9%80%89%E5%9E%8B"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">二、去耦电容选型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E9%AB%98%E9%A2%91%E4%B8%8E%E4%BD%8E%E9%A2%91%E5%8E%BB%E8%80%A6%E7%94%B5%E5%AE%B9%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.2.2.1.</span> <span class="toc-text">1. 高频与低频去耦电容的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E9%80%89%E5%9E%8B%E5%8E%9F%E5%88%99"><span class="toc-number">1.3.2.2.2.</span> <span class="toc-text">2. 选型原则</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%B5%E6%BA%90%E6%BB%A4%E6%B3%A2%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">三、电源滤波电路设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%B8%B8%E8%A7%81%E6%BB%A4%E6%B3%A2%E7%94%B5%E8%B7%AF%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.2.3.1.</span> <span class="toc-text">1. 常见滤波电路类型</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#C%E5%9E%8B%E6%BB%A4%E6%B3%A2"><span class="toc-number">1.3.2.3.1.1.</span> <span class="toc-text">C型滤波</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#LC%E5%9E%8B%E6%BB%A4%E6%B3%A2"><span class="toc-number">1.3.2.3.1.2.</span> <span class="toc-text">LC型滤波</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%CF%80%E5%9E%8B%E6%BB%A4%E6%B3%A2"><span class="toc-number">1.3.2.3.1.3.</span> <span class="toc-text">π型滤波</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E8%AE%BE%E8%AE%A1%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.2.3.2.</span> <span class="toc-text">2. 关键设计参数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%B9%E5%80%BC%E7%BB%84%E5%90%88%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">四、容值组合策略</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%A4%9A%E4%B8%AA%E7%94%B5%E5%AE%B9%E5%B9%B6%E8%81%94%EF%BC%9F"><span class="toc-number">1.3.2.4.1.</span> <span class="toc-text">1. 为什么需要多个电容并联？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%B8%89%E7%BA%A7%E5%AE%B9%E5%80%BC%E7%BB%84%E5%90%88%E6%96%B9%E6%A1%88-100nF-10%CE%BCF-100%CE%BCF"><span class="toc-number">1.3.2.4.2.</span> <span class="toc-text">2. 三级容值组合方案 (100nF + 10μF + 100μF)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">五、实战案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.2.5.1.</span> <span class="toc-text">设计配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.3.2.5.2.</span> <span class="toc-text">布局顺序</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%9C%AC%E8%AF%BE%E5%B0%8F%E7%BB%93"><span class="toc-number">1.3.2.6.</span> <span class="toc-text">六、本课小结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%84%9F"><span class="toc-number">1.4.</span> <span class="toc-text">电感</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%B5%E6%84%9F%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">一、电感器工作原理与核心参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">1. 基本工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9B%9B%E5%A4%A7%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">2. 四大核心参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%AB%98%E9%A2%91%E7%94%B5%E6%84%9F%E9%80%89%E5%9E%8B%E9%BB%84%E9%87%91%E6%B3%95%E5%88%99"><span class="toc-number">1.4.2.</span> <span class="toc-text">二、高频电感选型黄金法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%AB%98%E9%A2%91%E7%94%B5%E6%84%9F-PCB-%E5%B8%83%E5%B1%80%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9"><span class="toc-number">1.4.3.</span> <span class="toc-text">三、高频电感 PCB 布局设计要点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E7%94%B5%E8%B7%AF%EF%BC%88%E5%90%AB-ASCII-%E5%9B%BE%EF%BC%89"><span class="toc-number">1.4.4.</span> <span class="toc-text">四、典型应用电路（含 ASCII 图）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-LC-%E6%BB%A4%E6%B3%A2%E7%94%B5%E8%B7%AF"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">1. LC 滤波电路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B0%84%E9%A2%91%E5%8C%B9%E9%85%8D%E7%BD%91%E7%BB%9C"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">2. 射频匹配网络</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-DC-DC-%E8%BD%AC%E6%8D%A2%E5%99%A8"><span class="toc-number">1.4.4.3.</span> <span class="toc-text">3. DC-DC 转换器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%A4%BA%E4%BE%8B-Buck-%E8%BD%AC%E6%8D%A2%E5%99%A8-%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">计算示例 (Buck 转换器)：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.6.</span> <span class="toc-text">计算过程：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%94%B5%E6%84%9F%E5%99%A8%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.6.1.</span> <span class="toc-text">五、电感器选型速查表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%94%B5%E6%84%9F%E5%99%A8%E5%BA%94%E7%94%A8%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">1.6.2.</span> <span class="toc-text">六、电感器应用常见误区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0"><span class="toc-number">1.6.3.</span> <span class="toc-text">七、课堂练习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0-1%EF%BC%9A%E8%AE%BE%E8%AE%A1-10MHz-LC-%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">练习 1：设计 10MHz LC 低通滤波器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0-2%EF%BC%9A%E5%B0%84%E9%A2%91%E7%94%B5%E8%B7%AF%E7%94%B5%E6%84%9F%E9%80%89%E5%9E%8B"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">练习 2：射频电路电感选型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%AF%BE%E7%A8%8B%E5%B0%8F%E7%BB%93%E4%B8%8E%E4%B8%8B%E8%8A%82%E9%A2%84%E5%91%8A"><span class="toc-number">1.6.4.</span> <span class="toc-text">八、课程小结与下节预告</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%99%A8%E7%BA%BF%E7%BC%86"><span class="toc-number">1.7.</span> <span class="toc-text">连接器线缆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%9E%E6%8E%A5%E5%99%A8%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%A0%87%E5%87%86"><span class="toc-number">1.7.1.</span> <span class="toc-text">一、连接器类型与接口标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%B6%88%E8%B4%B9%E7%94%B5%E5%AD%90%E7%B1%BB"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">1. 消费电子类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B7%A5%E4%B8%9A-%E8%BD%A6%E8%A7%84%E7%B1%BB"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">2. 工业&#x2F;车规类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%94%B5%E6%B0%94%E8%A7%84%E6%A0%BC%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99"><span class="toc-number">1.7.2.</span> <span class="toc-text">二、电气规格匹配原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9C%BA%E6%A2%B0%E5%8F%AF%E9%9D%A0%E6%80%A7%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.7.3.</span> <span class="toc-text">三、机械可靠性设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%BA%BF%E7%BC%86%E9%80%89%E5%9E%8B%E8%A7%84%E8%8C%83"><span class="toc-number">1.7.4.</span> <span class="toc-text">四、线缆选型规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%BF%9E%E6%8E%A5%E5%99%A8%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.7.5.</span> <span class="toc-text">五、连接器选型速查表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%BF%9E%E6%8E%A5%E5%99%A8%E5%BA%94%E7%94%A8%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">1.7.6.</span> <span class="toc-text">六、连接器应用常见误区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0%E5%8F%82%E8%80%83%E6%80%9D%E8%B7%AF"><span class="toc-number">1.7.7.</span> <span class="toc-text">七、课堂练习参考思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0-1%EF%BC%9A%E5%B7%A5%E4%B8%9A%E8%AE%BE%E5%A4%87%E7%94%B5%E6%BA%90%E8%BF%9E%E6%8E%A5%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.7.7.1.</span> <span class="toc-text">练习 1：工业设备电源连接设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0-2%EF%BC%9AUSB-Type-C-%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E7%9B%92%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.7.7.2.</span> <span class="toc-text">练习 2：USB Type-C 移动硬盘盒设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="toc-number">1.8.</span> <span class="toc-text">二极管</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81PN%E7%BB%93%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">1.8.1.</span> <span class="toc-text">一、PN结基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-PN%E7%BB%93%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">1. PN结核心概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-PN%E7%BB%93%E7%A4%BA%E6%84%8F%E5%9B%BE%EF%BC%88ASCII%E5%9B%BE%EF%BC%89"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">2. PN结示意图（ASCII图）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8C%E6%9E%81%E7%AE%A1%E5%88%86%E7%B1%BB%E4%B8%8E%E7%89%B9%E6%80%A7"><span class="toc-number">1.8.2.</span> <span class="toc-text">二、二极管分类与特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.8.3.</span> <span class="toc-text">三、关键参数详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%AD%A3%E5%90%91%E5%8E%8B%E9%99%8D-Vf"><span class="toc-number">1.8.3.1.</span> <span class="toc-text">1. 正向压降 Vf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%8F%8D%E5%90%91%E5%87%BB%E7%A9%BF-Vbr"><span class="toc-number">1.8.3.2.</span> <span class="toc-text">2. 反向击穿 Vbr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9C%80%E5%A4%A7%E7%94%B5%E6%B5%81-If"><span class="toc-number">1.8.3.3.</span> <span class="toc-text">3. 最大电流 If</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8F%8D%E5%90%91%E6%81%A2%E5%A4%8D-trr"><span class="toc-number">1.8.3.4.</span> <span class="toc-text">4. 反向恢复 trr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%BB%93%E7%94%B5%E5%AE%B9-Cj"><span class="toc-number">1.8.3.5.</span> <span class="toc-text">5. 结电容 Cj</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E7%94%B5%E8%B7%AF%EF%BC%88%E5%90%ABASCII%E5%9B%BE%EF%BC%89"><span class="toc-number">1.8.4.</span> <span class="toc-text">四、典型应用电路（含ASCII图）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8D%8A%E6%B3%A2%E6%95%B4%E6%B5%81"><span class="toc-number">1.8.4.1.</span> <span class="toc-text">1. 半波整流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%A8%E6%B3%A2%E6%A1%A5%E5%BC%8F%E6%95%B4%E6%B5%81"><span class="toc-number">1.8.4.2.</span> <span class="toc-text">2. 全波桥式整流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%98%B2%E5%8F%8D%E6%8E%A5%E4%BF%9D%E6%8A%A4"><span class="toc-number">1.8.4.3.</span> <span class="toc-text">3. 防反接保护</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Zener%E7%A8%B3%E5%8E%8B"><span class="toc-number">1.8.4.4.</span> <span class="toc-text">4. Zener稳压</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%BB%AD%E6%B5%81%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="toc-number">1.8.4.5.</span> <span class="toc-text">5. 续流二极管</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E9%80%BB%E8%BE%91%E9%97%A8%E7%94%B5%E8%B7%AF"><span class="toc-number">1.8.4.6.</span> <span class="toc-text">6. 逻辑门电路</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.8.5.</span> <span class="toc-text">五、选型速查表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">1.8.6.</span> <span class="toc-text">六、常见误区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%AE%BE%E8%AE%A1%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E5%BC%80%E5%85%B3%E7%94%B5%E6%BA%90%E8%BE%93%E5%87%BA%E6%95%B4%E6%B5%81"><span class="toc-number">1.8.7.</span> <span class="toc-text">七、设计案例分析：开关电源输出整流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82%EF%BC%9A"><span class="toc-number">1.8.7.1.</span> <span class="toc-text">设计要求：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E5%9E%8B%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="toc-number">1.8.7.2.</span> <span class="toc-text">选型方案：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">1.8.8.</span> <span class="toc-text">八、设计要点总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1"><span class="toc-number">1.9.</span> <span class="toc-text">三极管</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%89%E6%9E%81%E7%AE%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.9.1.</span> <span class="toc-text">一、三极管工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E6%94%BE%E5%A4%A7%E5%85%AC%E5%BC%8F"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">1. 核心放大公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E7%8A%B6%E6%80%81"><span class="toc-number">1.9.1.2.</span> <span class="toc-text">2. 三种工作状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ASCII%E5%9B%BE%E7%A4%BA%EF%BC%88%E7%AE%80%E5%8C%96%E7%89%88%EF%BC%89"><span class="toc-number">1.9.1.3.</span> <span class="toc-text">3. ASCII图示（简化版）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%89%E7%A7%8D%E5%9F%BA%E6%9C%AC%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF"><span class="toc-number">1.9.2.</span> <span class="toc-text">二、三种基本放大电路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ASCII%E5%9B%BE%E7%A4%BA%EF%BC%88%E7%AE%80%E5%8C%96%E7%89%88%EF%BC%89"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">ASCII图示（简化版）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3-1"><span class="toc-number">1.9.3.</span> <span class="toc-text">三、关键参数详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%81%8F%E7%BD%AE%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-number">1.9.4.</span> <span class="toc-text">四、偏置电路设计与稳定性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%8E%8B%E5%BC%8F%E5%81%8F%E7%BD%AE%E8%AE%BE%E8%AE%A1%E5%85%AC%E5%BC%8F"><span class="toc-number">1.9.4.1.</span> <span class="toc-text">分压式偏置设计公式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%B0%8F%E4%BF%A1%E5%8F%B7%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%A2%9E%E7%9B%8A%E8%AE%A1%E7%AE%97%EF%BC%88%E5%85%B1%E5%B0%84%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF%EF%BC%89"><span class="toc-number">1.9.5.</span> <span class="toc-text">五、小信号模型与增益计算（共射放大电路）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%85%AC%E5%BC%8F"><span class="toc-number">1.9.5.1.</span> <span class="toc-text">关键公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.9.5.2.</span> <span class="toc-text">设计实例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E7%94%B5%E8%B7%AF"><span class="toc-number">1.9.6.</span> <span class="toc-text">六、典型应用电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.9.7.</span> <span class="toc-text">七、选型速查表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">1.9.8.</span> <span class="toc-text">八、常见误区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0"><span class="toc-number">1.9.9.</span> <span class="toc-text">九、课堂练习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A01%EF%BC%9A%E5%85%B1%E5%B0%84%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.9.9.1.</span> <span class="toc-text">练习1：共射放大电路设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A02%EF%BC%9A%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.9.9.2.</span> <span class="toc-text">练习2：开关电路设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MOSFET"><span class="toc-number">1.10.</span> <span class="toc-text">MOSFET</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-MOSFET%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E4%B8%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. MOSFET基本结构与工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3%EF%BC%88%E9%80%89%E5%9E%8B%E5%BF%85%E7%9C%8B%E5%85%AD%E5%A4%A7%E5%8F%82%E6%95%B0%EF%BC%89"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. 关键参数详解（选型必看六大参数）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-MOSFET%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.10.3.</span> <span class="toc-text">3. MOSFET驱动电路设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-MOSFET%E7%83%AD%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.10.4.</span> <span class="toc-text">4. MOSFET热设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E7%94%B5%E8%B7%AF"><span class="toc-number">1.10.5.</span> <span class="toc-text">5. 典型应用电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-MOSFET%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.10.6.</span> <span class="toc-text">6. MOSFET选型速查表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97"><span class="toc-number">1.10.7.</span> <span class="toc-text">7. 常见误区与避坑指南</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%9C%AC%E8%8A%82%E5%B0%8F%E7%BB%93"><span class="toc-number">1.10.8.</span> <span class="toc-text">8. 本节小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E6%94%BE"><span class="toc-number">1.11.</span> <span class="toc-text">运放</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%90%E6%94%BE%E7%AE%80%E4%BB%8B%E4%B8%8E%E7%90%86%E6%83%B3%E5%81%87%E8%AE%BE"><span class="toc-number">1.11.1.</span> <span class="toc-text">1. 运放简介与理想假设</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%A4%E5%A4%A7%E9%BB%84%E9%87%91%E6%B3%95%E5%88%99%EF%BC%88%E8%B4%9F%E5%8F%8D%E9%A6%88%E6%9D%A1%E4%BB%B6%E4%B8%8B%EF%BC%89"><span class="toc-number">1.11.2.</span> <span class="toc-text">2. 两大黄金法则（负反馈条件下）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BA%94%E7%A7%8D%E5%9F%BA%E6%9C%AC%E8%BF%90%E6%94%BE%E7%94%B5%E8%B7%AF"><span class="toc-number">1.11.3.</span> <span class="toc-text">3. 五种基本运放电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%90%E6%94%BE%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.11.4.</span> <span class="toc-text">4. 运放关键参数详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E7%94%B5%E8%B7%AF-1"><span class="toc-number">1.11.5.</span> <span class="toc-text">5. 典型应用电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%BF%90%E6%94%BE%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.11.6.</span> <span class="toc-text">6. 运放选型速查表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E8%AD%A6%E7%A4%BA"><span class="toc-number">1.11.7.</span> <span class="toc-text">7. 常见误区警示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E8%AE%BE%E8%AE%A1%E6%A1%88%E4%BE%8B%EF%BC%9APT100%E6%B8%A9%E5%BA%A6%E9%87%87%E9%9B%86%E5%89%8D%E7%AB%AF"><span class="toc-number">1.11.8.</span> <span class="toc-text">8. 设计案例：PT100温度采集前端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E7%8E%87%E5%99%A8%E4%BB%B6"><span class="toc-number">1.12.</span> <span class="toc-text">功率器件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8A%9F%E7%8E%87%E5%99%A8%E4%BB%B6%E5%85%A8%E6%99%AF%E6%A6%82%E8%A7%88"><span class="toc-number">1.12.1.</span> <span class="toc-text">1. 功率器件全景概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IGBT-%E7%BB%9D%E7%BC%98%E6%A0%85%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1"><span class="toc-number">1.12.2.</span> <span class="toc-text">2. IGBT (绝缘栅双极型晶体管)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%B8%8E%E5%8E%9F%E7%90%86"><span class="toc-number">1.12.2.1.</span> <span class="toc-text">结构与原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E5%A4%A7%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0"><span class="toc-number">1.12.2.2.</span> <span class="toc-text">六大关键参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.12.2.3.</span> <span class="toc-text">驱动电路设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8D%9F%E8%80%97%E8%AE%A1%E7%AE%97%E4%B8%8E%E7%83%AD%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.12.2.4.</span> <span class="toc-text">损耗计算与热设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-SCR-%E7%A1%85%E6%8E%A7%E6%95%B4%E6%B5%81%E5%99%A8-%E6%99%B6%E9%97%B8%E7%AE%A1"><span class="toc-number">1.12.3.</span> <span class="toc-text">3. SCR (硅控整流器&#x2F;晶闸管)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.12.3.1.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E6%96%AD%E6%96%B9%E6%B3%95"><span class="toc-number">1.12.3.2.</span> <span class="toc-text">关断方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0"><span class="toc-number">1.12.3.3.</span> <span class="toc-text">关键参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94%E4%B8%8E%E9%80%89%E5%9E%8B"><span class="toc-number">1.12.4.</span> <span class="toc-text">4. 综合对比与选型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94"><span class="toc-number">1.12.4.1.</span> <span class="toc-text">全面对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.12.4.2.</span> <span class="toc-text">选型速查表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E8%AD%A6%E7%A4%BA"><span class="toc-number">1.12.5.</span> <span class="toc-text">5. 常见误区警示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.13.</span> <span class="toc-text">传感器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BC%A0%E6%84%9F%E5%99%A8%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="toc-number">1.13.1.</span> <span class="toc-text">1. 传感器基本概念与分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A0%B8%E5%BF%83%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%EF%BC%88%E9%80%89%E5%9E%8B%E5%85%AD%E5%A4%A7%E5%8F%82%E6%95%B0%EF%BC%89"><span class="toc-number">1.13.2.</span> <span class="toc-text">2. 核心性能指标（选型六大参数）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B8%B8%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AF%B9%E6%AF%94"><span class="toc-number">1.13.3.</span> <span class="toc-text">3. 常用传感器详解与对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.13.3.1.</span> <span class="toc-text">温度传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%B5%81%E4%B8%8E%E7%94%B5%E5%8E%8B%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.13.3.2.</span> <span class="toc-text">电流与电压传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E7%A7%BB%E4%B8%8E%E4%BD%8D%E7%BD%AE%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.13.3.3.</span> <span class="toc-text">位移与位置传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%87%8D%E8%A6%81%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.13.3.4.</span> <span class="toc-text">其他重要传感器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%A1%E5%8F%B7%E8%B0%83%E7%90%86%E5%9F%BA%E7%A1%80"><span class="toc-number">1.13.4.</span> <span class="toc-text">4. 信号调理基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E4%B8%8E%E5%BA%94%E7%94%A8%E8%AF%AF%E5%8C%BA"><span class="toc-number">1.13.5.</span> <span class="toc-text">5. 选型速查与应用误区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E5%9E%8B%E9%80%9F%E6%9F%A5%E8%A1%A8-1"><span class="toc-number">1.13.5.1.</span> <span class="toc-text">选型速查表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E5%A4%A7%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%EF%BC%88%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%EF%BC%89"><span class="toc-number">1.13.5.2.</span> <span class="toc-text">五大常见误区（避坑指南）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%B3%E5%8E%8B%E4%BA%8C%E6%9E%81%E7%AE%A1%E9%80%89%E5%9E%8B"><span class="toc-number">1.14.</span> <span class="toc-text">稳压二极管选型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A8%B3%E5%8E%8B%E4%BA%8C%E6%9E%81%E7%AE%A1-V-I-%E7%89%B9%E6%80%A7%E4%B8%8E%E7%BB%93%E6%9E%84"><span class="toc-number">1.14.1.</span> <span class="toc-text">1. 稳压二极管 V-I 特性与结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3%EF%BC%88%E9%80%89%E5%9E%8B%E5%BF%85%E7%9C%8B%EF%BC%89"><span class="toc-number">1.14.2.</span> <span class="toc-text">2. 关键参数详解（选型必看）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%89%E5%A4%A7%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.14.3.</span> <span class="toc-text">3. 三大典型应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%A8%B3%E5%8E%8B%E7%94%B5%E8%B7%AF"><span class="toc-number">1.14.3.1.</span> <span class="toc-text">简单稳压电路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%99%90%E5%8E%8B%E4%BF%9D%E6%8A%A4%E7%94%B5%E8%B7%AF"><span class="toc-number">1.14.3.2.</span> <span class="toc-text">限压保护电路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E-TL431-%E5%AF%B9%E6%AF%94"><span class="toc-number">1.14.3.3.</span> <span class="toc-text">与 TL431 对比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9%E4%B8%8E%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">1.14.4.</span> <span class="toc-text">4. 设计要点与常见误区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E5%9E%8B%E5%8F%B7%E9%80%9F%E6%9F%A5%E4%B8%8E%E9%80%89%E5%9E%8B%E6%B5%81%E7%A8%8B"><span class="toc-number">1.14.5.</span> <span class="toc-text">5. 常用型号速查与选型流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9E%8B%E5%8F%B7%E5%8F%82%E8%80%83%E8%A1%A8"><span class="toc-number">1.14.5.1.</span> <span class="toc-text">常用型号参考表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E9%80%89%E5%9E%8B%E5%85%AD%E6%AD%A5%E6%B3%95"><span class="toc-number">1.14.5.2.</span> <span class="toc-text">标准选型六步法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%9C%AC%E8%AF%BE%E5%B0%8F%E7%BB%93"><span class="toc-number">1.14.6.</span> <span class="toc-text">6. 本课小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MOSFET%E9%80%89%E5%9E%8B"><span class="toc-number">1.15.</span> <span class="toc-text">MOSFET选型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8A%9F%E7%8E%87%E6%8D%9F%E8%80%97%E8%AE%A1%E7%AE%97"><span class="toc-number">1.15.1.</span> <span class="toc-text">1. 功率损耗计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8D%9F%E8%80%97%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F%E4%B8%8E%E7%89%B9%E6%80%A7"><span class="toc-number">1.15.1.1.</span> <span class="toc-text">损耗计算公式与特性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%83%AD%E9%98%BB%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%A3%E7%83%AD%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.15.2.</span> <span class="toc-text">2. 热阻模型与散热设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%83%AD%E9%98%BB%E9%93%BE%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.15.2.1.</span> <span class="toc-text">热阻链模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%B0%81%E8%A3%85%E7%83%AD%E9%98%BB%E5%8F%82%E8%80%83"><span class="toc-number">1.15.2.2.</span> <span class="toc-text">常见封装热阻参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%AB%98%E4%BD%8E%E4%BE%A7%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.15.3.</span> <span class="toc-text">3. 高低侧驱动电路设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8E%E4%BE%A7-NMOS-%E9%A9%B1%E5%8A%A8-%E7%AE%80%E5%8D%95"><span class="toc-number">1.15.3.1.</span> <span class="toc-text">低侧 NMOS 驱动 (简单)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E4%BE%A7-NMOS-%E9%A9%B1%E5%8A%A8-%E8%87%AA%E4%B8%BE%E7%94%B5%E8%B7%AF"><span class="toc-number">1.15.3.2.</span> <span class="toc-text">高侧 NMOS 驱动 (自举电路)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-MOSFET-%E9%A9%B1%E5%8A%A8-IC-%E9%80%9F%E6%9F%A5"><span class="toc-number">1.15.3.3.</span> <span class="toc-text">常用 MOSFET 驱动 IC 速查</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%90%8C%E6%AD%A5%E6%95%B4%E6%B5%81-MOSFET-%E9%80%89%E5%9E%8B"><span class="toc-number">1.15.4.</span> <span class="toc-text">4. 同步整流 MOSFET 选型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8%E5%90%8C%E6%AD%A5%E6%95%B4%E6%B5%81%EF%BC%9F"><span class="toc-number">1.15.4.1.</span> <span class="toc-text">为什么用同步整流？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E5%9E%8B%E8%A6%81%E7%82%B9"><span class="toc-number">1.15.4.2.</span> <span class="toc-text">选型要点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-MOSFET-%E5%B8%B8%E8%A7%81%E5%A4%B1%E6%95%88%E5%88%86%E6%9E%90"><span class="toc-number">1.15.5.</span> <span class="toc-text">5. MOSFET 常见失效分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E8%AF%BE%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%87%AA%E6%A3%80"><span class="toc-number">1.15.6.</span> <span class="toc-text">本课小结与自检</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LED%E4%B8%8E%E5%85%89%E8%80%A6"><span class="toc-number">1.16.</span> <span class="toc-text">LED与光耦</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-LED-V-I-%E7%89%B9%E6%80%A7%E4%B8%8E%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.16.1.</span> <span class="toc-text">1. LED V-I 特性与驱动电路设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%9B%9B%E6%AD%A5%E6%B3%95"><span class="toc-number">1.16.1.1.</span> <span class="toc-text">驱动电路设计四步法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-LED-%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="toc-number">1.16.2.</span> <span class="toc-text">2. LED 关键参数速查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%89%E8%80%A6%E5%90%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0"><span class="toc-number">1.16.3.</span> <span class="toc-text">3. 光耦合器工作原理与关键参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%89%E8%80%A6%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%A1%A8"><span class="toc-number">1.16.3.1.</span> <span class="toc-text">光耦关键参数表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%85%89%E8%80%A6%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E4%BA%94%E8%A6%81%E7%82%B9%EF%BC%88%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%EF%BC%89"><span class="toc-number">1.16.4.</span> <span class="toc-text">4. 光耦驱动设计五要点（避坑指南）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B8%E5%9E%8B%E9%9A%94%E7%A6%BB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.16.5.</span> <span class="toc-text">5. 典型隔离应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%B8%B8%E7%94%A8%E5%9E%8B%E5%8F%B7%E9%80%9F%E6%9F%A5"><span class="toc-number">1.16.6.</span> <span class="toc-text">6. 常用型号速查</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/04/2026-07-13-%E4%BD%A0%E5%A5%BD%E6%94%BE%E5%A4%A7%E5%99%A8/" title="Untitled">Untitled</a><time datetime="2026-08-04T15:44:30.766Z" title="Created 2026-08-04 23:44:30">2026-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/04/hello-world/" title="Hello, World!">Hello, World!</a><time datetime="2026-08-04T15:44:30.766Z" title="Created 2026-08-04 23:44:30">2026-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/30/PCB%E8%AE%BE%E8%AE%A1%E7%A7%98%E7%B1%8D%E7%AC%94%E8%AE%B0/" title="《PCB 设计秘籍》学习笔记">《PCB 设计秘籍》学习笔记</a><time datetime="2026-07-30T16:00:00.000Z" title="Created 2026-07-31 00:00:00">2026-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/08/2026-07-09-MC/" title="MC">MC</a><time datetime="2026-07-08T17:48:46.000Z" title="Created 2026-07-09 01:48:46">2026-07-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/13/%E8%80%81%E6%99%BA(2)/" title="老智">老智</a><time datetime="2026-06-13T13:56:46.000Z" title="Created 2026-06-13 21:56:46">2026-06-13</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'forest'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.language-mermaid, pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (!false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'xiaomiao321/xiaomiao321.github.io',
+      'data-repo-id': 'R_kgDORnsYMw',
+      'data-category-id': 'DIC_kwDORnsYM84C4feo',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script>(() => {
+  window.Prism = window.Prism || {}
+  window.Prism.manual = true
+
+  const highlightAll = () => {
+    window.Prism.highlightAll()
+  }
+
+  window.addEventListener('load', highlightAll)
+  btf.addGlobalFn('pjaxComplete', highlightAll, 'prismjs')
+  btf.addGlobalFn('encrypt', highlightAll, 'prismjs')
+})()
+</script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.js" defer="defer"></script><script src="/func.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>

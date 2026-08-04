@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-style="terminal">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>元器件库 · Parts DB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,'Cascadia Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  a{text-decoration:none}
+  .term-bar,.cmd,.comment,.statusbar,header,.stats{display:none}
+  .stylesel{margin-left:auto}
+
+  /* ============================================================
+     风格一：复古终端 TERMINAL
+     ============================================================ */
+  html[data-style="terminal"]{
+    --fg:#ecfff5;--green:#54ffb0;--green-d:#2fe895;--green-hi:#b8ffdd;
+    --amber:#ffd06b;--blue:#7cc0ff;--red:#ff7b7b;
+    --dim:#7cb499;--dimmer:#4a705b;--win:#070f0a;--bar:#0b170f;
+    --line:#1c3626;--sel:#123a27;--ink:#03130b;--glow:rgba(84,255,176,.5);
+  }
+  html[data-style="terminal"] body{background:#000;color:var(--fg);font-family:var(--mono);font-size:17px;line-height:1.72;padding:26px 18px 60px;-webkit-font-smoothing:antialiased}
+  html[data-style="terminal"] body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px,rgba(0,0,0,.13) 2px 3px);opacity:.5}
+  html[data-style="terminal"] ::selection{background:var(--green);color:var(--ink)}
+  html[data-style="terminal"] .wrap{max-width:1160px;min-height:calc(100vh - 86px);margin:0 auto;background:var(--win);border:1px solid var(--line);border-radius:11px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 46px var(--glow)}
+  html[data-style="terminal"] .term-bar{display:flex;align-items:center;gap:10px;padding:11px 15px;background:var(--bar);border-bottom:1px solid var(--line)}
+  html[data-style="terminal"] .dots{display:flex;gap:7px}
+  html[data-style="terminal"] .dots i{width:12px;height:12px;border-radius:50%;display:block}
+  html[data-style="terminal"] .dots .r{background:#ff5f56}
+  html[data-style="terminal"] .dots .y{background:#ffbd2e}
+  html[data-style="terminal"] .dots .g{background:#27c93f}
+  html[data-style="terminal"] .term-bar .t{flex:1;text-align:center;color:var(--dim);font-size:13px}
+  html[data-style="terminal"] .body{padding:22px 26px 0;position:relative}
+  html[data-style="terminal"] .cmd{display:block;font-size:17px;margin-bottom:8px;cursor:text;white-space:nowrap;overflow:hidden}
+  html[data-style="terminal"] .cmd .u{color:var(--green);text-shadow:0 0 10px var(--glow)}
+  html[data-style="terminal"] .cmd .path{color:var(--blue)}
+  html[data-style="terminal"] .cmdin{background:transparent;border:none;outline:none;color:var(--fg);font-family:var(--mono);font-size:17px;caret-color:transparent;padding:0;width:1ch;min-width:1ch}
+  html[data-style="terminal"] .cur{display:inline-block;width:9px;height:19px;background:var(--green);vertical-align:-3px;animation:blink 1.05s steps(1) infinite;box-shadow:0 0 12px var(--glow);pointer-events:none;transform:translateX(var(--cursor-shift,0px))}
+  html[data-style="terminal"] .comment{display:block;color:var(--dim);margin:0 0 20px;font-size:15px}
+  html[data-style="terminal"] .comment b{color:var(--green-hi);font-weight:600;text-shadow:0 0 10px var(--glow)}
+  html[data-style="terminal"] .comment .hint{color:var(--dimmer)}
+  html[data-style="terminal"] .toolbar{display:flex;gap:11px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+  html[data-style="terminal"] .search{flex:1 1 300px;position:relative;min-width:240px;display:flex;align-items:center}
+  html[data-style="terminal"] .search .ico{display:none}
+  html[data-style="terminal"] .search input{width:100%;padding:11px 13px 11px 39px;border:1px solid var(--line);border-radius:7px;background:rgba(0,0,0,.25);color:var(--fg);font-family:var(--mono);font-size:15px;caret-color:var(--green)}
+  html[data-style="terminal"] .search input::placeholder{color:var(--dimmer)}
+  html[data-style="terminal"] .search input:focus{outline:none;border-color:var(--green);box-shadow:0 0 12px rgba(84,255,176,.18)}
+  html[data-style="terminal"] .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2}
+  html[data-style="terminal"] select{padding:11px 36px 11px 13px;border:1px solid var(--line);border-radius:7px;background:rgba(0,0,0,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 13px center;color:var(--fg);font-family:var(--mono);font-size:15px;cursor:pointer;-webkit-appearance:none;appearance:none}
+  html[data-style="terminal"] select:focus{outline:none;border-color:var(--green)}
+  html[data-style="terminal"] .btn{padding:11px 16px;border:1px solid var(--green-d);border-radius:7px;background:transparent;color:var(--green);cursor:pointer;font-family:var(--mono);font-size:15px;white-space:nowrap;transition:.12s}
+  html[data-style="terminal"] .btn:hover{background:var(--green);color:var(--ink);box-shadow:0 0 16px var(--glow)}
+  html[data-style="terminal"] .btn::before{content:"[ "}
+  html[data-style="terminal"] .btn::after{content:" ]"}
+  html[data-style="terminal"] table{width:100%;border-collapse:collapse}
+  html[data-style="terminal"] thead th{font-size:13.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:left;padding:11px 15px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap}
+  html[data-style="terminal"] thead th:hover{color:var(--green)}
+  html[data-style="terminal"] thead .arrow{color:var(--green)}
+  html[data-style="terminal"] tbody td{padding:13px 15px;border-bottom:1px dashed var(--line);vertical-align:middle}
+  html[data-style="terminal"] tbody tr:last-child td{border-bottom:none}
+  html[data-style="terminal"] tbody tr:hover{background:var(--sel)}
+  html[data-style="terminal"] tbody tr:hover td:first-child{box-shadow:inset 3px 0 0 var(--green)}
+  html[data-style="terminal"] .pn{font-size:17px;font-weight:600;color:var(--green);text-shadow:0 0 10px var(--glow)}
+  html[data-style="terminal"] .pn a{color:var(--green);border-bottom:1px dotted var(--green-d)}
+  html[data-style="terminal"] .pn a:hover{background:var(--green);color:var(--ink)}
+  html[data-style="terminal"] .sub{font-size:14px;color:var(--dim);margin-top:3px}
+  html[data-style="terminal"] .chip{font-size:14px;color:var(--amber)}
+  html[data-style="terminal"] .chip::before{content:"["}
+  html[data-style="terminal"] .chip::after{content:"]"}
+  html[data-style="terminal"] .pkg{font-size:15.5px;color:var(--fg)}
+  html[data-style="terminal"] .loc{font-size:15px;color:var(--blue)}
+  html[data-style="terminal"] .loc::before{content:"@"}
+  html[data-style="terminal"] .qty{font-size:18px;font-weight:600;color:var(--fg)}
+  html[data-style="terminal"] .qty.low{color:var(--red)}
+  html[data-style="terminal"] .lowtag{color:var(--red);font-size:13px;font-weight:700;letter-spacing:.06em;margin-left:6px;animation:blink 1.2s steps(1) infinite}
+  html[data-style="terminal"] .perm{color:var(--dim);font-size:15.5px}
+  html[data-style="terminal"] .perm::before{content:"∞ "}
+  html[data-style="terminal"] .statusbar{display:flex;margin-top:22px;border-top:1px solid var(--line);font-size:14px}
+  html[data-style="terminal"] .statusbar .mode{background:var(--green);color:var(--ink);font-weight:700;padding:8px 15px;letter-spacing:.08em;box-shadow:0 0 18px var(--glow)}
+  html[data-style="terminal"] .statusbar .seg{padding:8px 15px;color:var(--dim);border-right:1px solid var(--line)}
+  html[data-style="terminal"] .statusbar .spacer{flex:1}
+  html[data-style="terminal"] .statusbar .right{padding:8px 15px;color:var(--dim)}
+
+  /* ============================================================
+     风格二：黑白极简 MINIMAL
+     ============================================================ */
+  html[data-style="minimal"]{--muted:#6a6a6a;--faint:#9b9b9b;--hair:#e4e4e4;--soft:#f5f5f5}
+  html[data-style="minimal"] body{background:#fff;color:#121212;font-family:var(--sans);font-size:17px;line-height:1.6;padding:0 22px 100px;-webkit-font-smoothing:antialiased}
+  html[data-style="minimal"] .wrap{max-width:1120px;margin:0 auto}
+  html[data-style="minimal"] header{display:block;padding:48px 0 0}
+  html[data-style="minimal"] .eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#000}
+  html[data-style="minimal"] .chip-ico{display:none}
+  html[data-style="minimal"] h1{font-size:40px;font-weight:800;letter-spacing:-.03em;color:#000;margin:12px 0 6px}
+  html[data-style="minimal"] h1 em{font-style:normal;font-family:var(--mono);font-size:16px;font-weight:400;color:var(--faint);margin-left:12px}
+  html[data-style="minimal"] .rule{height:3px;background:#000;margin-top:20px}
+  html[data-style="minimal"] .stats{display:flex;margin-top:26px;border:1px solid #000}
+  html[data-style="minimal"] .stat{flex:1;padding:16px 20px;border-right:1px solid #000}
+  html[data-style="minimal"] .stat:last-child{border-right:none}
+  html[data-style="minimal"] .stat .num{font-family:var(--mono);font-size:32px;font-weight:700;color:#000;line-height:1}
+  html[data-style="minimal"] .stat .lab{font-size:13.5px;color:var(--muted);margin-top:7px}
+  html[data-style="minimal"] .body{padding:0}
+  html[data-style="minimal"] .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:30px 0 18px}
+  html[data-style="minimal"] .search{flex:1 1 240px;position:relative;min-width:190px;display:flex;align-items:center}
+  html[data-style="minimal"] .search .ico{display:none}
+  html[data-style="minimal"] .search input{width:100%;padding:13px 15px 13px 44px;border:1.5px solid #000;background:#fff;font-size:16px;font-family:var(--sans);color:#000}
+  html[data-style="minimal"] .search input:focus{outline:none;box-shadow:inset 0 0 0 1.5px #000}
+  html[data-style="minimal"] .search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:#000;fill:none;stroke-width:2}
+  html[data-style="minimal"] select{padding:13px 40px 13px 15px;border:1.5px solid #000;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;font-size:15px;color:#000;font-family:var(--sans);cursor:pointer;-webkit-appearance:none;appearance:none}
+  html[data-style="minimal"] select:focus{outline:none;box-shadow:inset 0 0 0 1.5px #000}
+  html[data-style="minimal"] .btn{padding:13px 20px;border:1.5px solid #000;background:#fff;font-size:15px;font-weight:600;color:#000;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+  html[data-style="minimal"] .btn:hover,html[data-style="minimal"] .btn.primary{background:#000;color:#fff}
+  html[data-style="minimal"] .btn.primary:hover{background:#fff;color:#000}
+  html[data-style="minimal"] .panel{border:1.5px solid #000}
+  html[data-style="minimal"] table{width:100%;border-collapse:collapse}
+  html[data-style="minimal"] thead th{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#000;text-align:left;padding:15px 18px;border-bottom:2px solid #000;cursor:pointer;white-space:nowrap}
+  html[data-style="minimal"] tbody td{padding:16px 18px;border-bottom:1px solid var(--hair)}
+  html[data-style="minimal"] tbody tr:last-child td{border-bottom:none}
+  html[data-style="minimal"] tbody tr:hover{background:var(--soft)}
+  html[data-style="minimal"] tbody tr.low-row td:first-child{box-shadow:inset 4px 0 0 #000}
+  html[data-style="minimal"] .pn{font-family:var(--mono);font-size:16.5px;font-weight:600;color:#000}
+  html[data-style="minimal"] .pn a{color:#000;border-bottom:2px solid #000}
+  html[data-style="minimal"] .pn a:hover{background:#000;color:#fff}
+  html[data-style="minimal"] .sub{font-size:14px;color:var(--muted);margin-top:3px}
+  html[data-style="minimal"] .chip{display:inline-block;font-size:13.5px;font-weight:600;padding:3px 11px;border:1.5px solid #000;color:#000}
+  html[data-style="minimal"] .pkg{font-family:var(--mono);font-size:14.5px;color:#121212}
+  html[data-style="minimal"] .loc{font-family:var(--mono);font-size:14px;font-weight:500;padding:3px 10px;border:1.5px solid #000;color:#000}
+  html[data-style="minimal"] .qty{font-family:var(--mono);font-size:17px;font-weight:700;color:#000}
+  html[data-style="minimal"] .lowtag{font-size:12px;font-weight:700;letter-spacing:.05em;padding:2px 9px;background:#000;color:#fff;margin-left:8px}
+  html[data-style="minimal"] .perm{font-family:var(--mono);font-size:14px;padding:3px 12px;border:1.5px solid var(--faint);color:var(--muted)}
+
+  /* ============================================================
+     风格三：干净现代 MODERN
+     ============================================================ */
+  html[data-style="modern"]{--ink:#0f172a;--text:#334155;--muted:#64748b;--faint:#94a3b8;--line:#eef1f6;--line2:#dfe5ee;--acc:#0d9488;--acc2:#0f766e;--accbg:#f0fdfa;--accln:#c7f0e8;--warn:#c2410c;--warnbg:#fff6ee;--warnln:#fadfc7;--shadow:0 1px 2px rgba(15,23,42,.04),0 2px 8px rgba(15,23,42,.05)}
+  html[data-style="modern"] body{background:radial-gradient(1200px 400px at 80% -120px,#e6faf6 0,transparent 60%),#f4f6f9;color:var(--text);font-family:var(--sans);font-size:16.5px;line-height:1.6;padding:0 20px 90px;-webkit-font-smoothing:antialiased}
+  html[data-style="modern"] .wrap{max-width:1120px;margin:0 auto}
+  html[data-style="modern"] header{display:block;padding:42px 0 0}
+  html[data-style="modern"] .eyebrow{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2)}
+  html[data-style="modern"] .chip-ico{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--accbg);border:1px solid var(--accln);color:var(--acc2)}
+  html[data-style="modern"] .chip-ico svg{width:20px;height:20px}
+  html[data-style="modern"] h1{font-size:30px;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin:12px 0 0}
+  html[data-style="modern"] h1 em{font-style:normal;font-family:var(--mono);font-size:14px;font-weight:400;color:var(--faint);margin-left:10px}
+  html[data-style="modern"] .rule{display:none}
+  html[data-style="modern"] .stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;max-width:none;margin-top:22px}
+  html[data-style="modern"] .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 16px;box-shadow:var(--shadow)}
+  html[data-style="modern"] .stat .num{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--ink)}
+  html[data-style="modern"] .stat .lab{font-size:12.5px;color:var(--muted);margin-top:2px}
+  html[data-style="modern"] .stat.low .num{color:var(--warn)}
+  html[data-style="modern"] .body{padding:0}
+  html[data-style="modern"] .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:26px 0 16px}
+  html[data-style="modern"] .search{flex:1 1 240px;position:relative;min-width:190px;display:flex;align-items:center}
+  html[data-style="modern"] .search .ico{display:none}
+  html[data-style="modern"] .search input{width:100%;padding:11px 14px 11px 40px;border:1px solid var(--line2);border-radius:11px;background:#fff;font-size:15px;font-family:var(--sans);color:var(--ink);box-shadow:var(--shadow)}
+  html[data-style="modern"] .search input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(13,148,136,.14)}
+  html[data-style="modern"] .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:17px;height:17px;stroke:var(--faint);fill:none;stroke-width:2}
+  html[data-style="modern"] select{padding:11px 34px 11px 13px;border:1px solid var(--line2);border-radius:11px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;font-size:14px;color:var(--text);font-family:var(--sans);cursor:pointer;-webkit-appearance:none;appearance:none;box-shadow:var(--shadow)}
+  html[data-style="modern"] select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(13,148,136,.14)}
+  html[data-style="modern"] .btn{padding:11px 16px;border:1px solid var(--line2);border-radius:11px;background:#fff;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;font-family:var(--sans);white-space:nowrap;box-shadow:var(--shadow)}
+  html[data-style="modern"] .btn:hover{border-color:var(--acc);color:var(--acc2)}
+  html[data-style="modern"] .btn.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+  html[data-style="modern"] .btn.primary:hover{background:var(--acc2)}
+  html[data-style="modern"] .panel{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  html[data-style="modern"] table{width:100%;border-collapse:collapse}
+  html[data-style="modern"] thead th{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);background:#fbfcfe;cursor:pointer;white-space:nowrap}
+  html[data-style="modern"] thead .arrow{color:var(--acc)}
+  html[data-style="modern"] tbody td{padding:14px 16px;border-bottom:1px solid var(--line)}
+  html[data-style="modern"] tbody tr:last-child td{border-bottom:none}
+  html[data-style="modern"] tbody tr:hover{background:#f8fbfd}
+  html[data-style="modern"] tbody tr.low-row{box-shadow:inset 3px 0 0 var(--warn)}
+  html[data-style="modern"] .pn{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--ink)}
+  html[data-style="modern"] .pn a{color:var(--acc2);border-bottom:1px solid var(--accln)}
+  html[data-style="modern"] .pn a:hover{border-bottom-color:var(--acc)}
+  html[data-style="modern"] .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+  html[data-style="modern"] .chip{display:inline-flex;align-items:center;font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:7px;background:var(--accbg);color:var(--acc2);border:1px solid var(--accln)}
+  html[data-style="modern"] .pkg{font-family:var(--mono);font-size:13px;color:var(--muted)}
+  html[data-style="modern"] .loc{font-family:var(--mono);font-size:12.5px;padding:3px 9px;border:1px solid var(--line2);border-radius:7px;background:#fbfcfe;color:var(--text)}
+  html[data-style="modern"] .qty{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink)}
+  html[data-style="modern"] .qty.low{color:var(--warn)}
+  html[data-style="modern"] .lowtag{font-size:11px;font-weight:600;padding:1px 8px;border-radius:20px;background:var(--warnbg);color:var(--warn);border:1px solid var(--warnln);margin-left:7px}
+  html[data-style="modern"] .perm{display:inline-flex;align-items:center;font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:20px;background:#f1f5f9;color:var(--muted)}
+
+  /* 通用 */
+  .tr-right{text-align:right}
+  .panel table{table-layout:fixed}.panel th:first-child{width:36%}.panel th:nth-child(2){width:17%}.panel th:nth-child(3){width:19%}.panel th:nth-child(4){width:12%}.panel th:nth-child(5){width:8%}.panel td:first-child{min-width:0}.panel td:first-child .sub{display:block;max-width:100%;white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+  .stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:18px 0}.stat{min-width:0}.category-stats{margin:16px 0 22px;padding:15px 17px}.category-stats-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}.category-stats-title{font-weight:700}.category-stats-sub{font-size:12px;opacity:.65}.category-bars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 22px}.category-row{display:grid;grid-template-columns:minmax(72px,110px) 1fr 28px;align-items:center;gap:9px;font-size:12.5px}.category-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.category-track{height:7px;overflow:hidden}.category-fill{display:block;height:100%;min-width:3px}.category-count{text-align:right;font:600 12px var(--mono)}
+  html[data-style="terminal"] .stats{border:1px solid var(--line);gap:0}html[data-style="terminal"] .stat{padding:12px 14px;border-right:1px solid var(--line)}html[data-style="terminal"] .stat:last-child{border-right:0}html[data-style="terminal"] .stat .num{color:var(--green);font:700 23px var(--mono)}html[data-style="terminal"] .stat .lab{color:var(--dim);font-size:12px}html[data-style="terminal"] .category-stats{border:1px solid var(--line);background:rgba(0,0,0,.18)}html[data-style="terminal"] .category-stats-title{color:var(--green)}html[data-style="terminal"] .category-track{background:var(--line)}html[data-style="terminal"] .category-fill{background:var(--green);box-shadow:0 0 8px var(--glow)}html[data-style="terminal"] .category-count{color:var(--amber)}
+  html[data-style="minimal"] .category-stats{border:1.5px solid #000}html[data-style="minimal"] .category-stats-head{border-bottom:1.5px solid #000;padding-bottom:10px}html[data-style="minimal"] .category-track{background:#e5e5e5;border:1px solid #000}html[data-style="minimal"] .category-fill{background:#000}
+  html[data-style="modern"] .category-stats{border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .category-stats-title{color:var(--ink)}html[data-style="modern"] .category-track{border-radius:99px;background:#e8edf2}html[data-style="modern"] .category-fill{border-radius:99px;background:var(--acc)}html[data-style="modern"] .category-count{color:var(--acc2)}
+  .insights{display:grid;gap:12px;margin:16px 0 24px}.insight-panel{margin:0;padding:0;overflow:hidden;border:1px solid currentColor}.insight-panel>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;cursor:pointer;font-weight:700;list-style:none}.insight-panel>summary::-webkit-details-marker{display:none}.insight-panel>summary::after{content:"＋";font-family:var(--mono)}.insight-panel[open]>summary::after{content:"－"}.insight-panel>summary small{margin-left:auto;font-weight:400;font-size:12px;opacity:.62}.insight-body{padding:4px 16px 15px}.category-bars{display:block}.category-row{display:grid;grid-template-columns:minmax(100px,160px) minmax(150px,1fr) 46px 60px 46px;align-items:center;gap:12px;padding:7px 2px;font-size:12.5px}.category-row:not(.category-head){cursor:pointer}.category-head{padding-top:2px;font-weight:700;opacity:.65}.category-head span:nth-last-child(-n+3),.category-number{text-align:right}.insight-list{display:grid;gap:8px}.location-row{display:grid;grid-template-columns:minmax(130px,210px) 1fr auto;align-items:center;gap:14px;padding:9px 2px;cursor:pointer}.location-title code{display:inline-block;min-width:42px;font-family:var(--mono);font-weight:700}.location-title small{display:block;margin-left:46px;opacity:.62}.location-track{height:8px;overflow:hidden;background:rgba(127,127,127,.18)}.location-fill{display:block;height:100%;min-width:3px;background:currentColor}.location-metrics{min-width:150px;text-align:right;font:12px var(--mono)}.status-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.status-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid currentColor;background:transparent;color:inherit;text-align:left;cursor:pointer}.status-number{font:700 22px var(--mono)}.status-copy{display:grid}.status-copy small{opacity:.62}.insight-panel button:hover,.category-row:not(.category-head):hover,.location-row:hover{filter:brightness(.92)}
+  html[data-style="terminal"] .insight-panel{border-color:var(--line);background:rgba(0,0,0,.18)}html[data-style="terminal"] .insight-panel>summary{color:var(--green);border-bottom:1px solid transparent}html[data-style="terminal"] .insight-panel[open]>summary{border-bottom-color:var(--line)}html[data-style="terminal"] .status-item{border-color:var(--line)}html[data-style="terminal"] .status-number{color:var(--amber)}html[data-style="terminal"] .location-fill{background:var(--green);box-shadow:0 0 8px var(--glow)}
+  html[data-style="minimal"] .insight-panel{border:1.5px solid #000}html[data-style="minimal"] .insight-panel>summary{border-bottom:0}html[data-style="minimal"] .insight-panel[open]>summary{border-bottom:1.5px solid #000}html[data-style="minimal"] .status-item{border:1.5px solid #000}html[data-style="minimal"] .location-track{border:1px solid #000;background:#eee}html[data-style="minimal"] .location-fill{background:#000}
+  html[data-style="modern"] .insight-panel{border-color:var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .insight-panel>summary{color:var(--ink)}html[data-style="modern"] .insight-panel[open]>summary{border-bottom:1px solid var(--line)}html[data-style="modern"] .status-item{border-color:var(--line2);border-radius:10px;background:#fbfcfe}html[data-style="modern"] .status-number{color:var(--acc2)}html[data-style="modern"] .location-track{border-radius:99px;background:#e8edf2}html[data-style="modern"] .location-fill{border-radius:99px;background:var(--acc)}
+  .status-file{border:0;background:transparent;color:inherit;font:inherit;padding:8px 15px;cursor:pointer}.status-file:hover{text-decoration:underline}.json-dialog{width:min(1040px,calc(100% - 40px));max-width:1040px;height:min(760px,calc(100vh - 48px));overflow:hidden;background:#010409!important;color:#f0f6fc!important;border:1px solid #30363d!important;border-radius:8px!important;box-shadow:0 24px 80px rgba(0,0,0,.65)!important}.json-dialog .dlg-head{padding:14px 18px!important;background:#0d1117!important;color:#f0f6fc!important;border-bottom:1px solid #30363d!important;font:600 14px var(--sans)!important}.json-dialog .dlg-sub{color:#8b949e}.json-dialog .dlg-body{height:calc(100% - 116px);padding:0!important;background:#010409!important;border:0!important;display:block}.json-code{height:100%;margin:0;padding:18px 22px;overflow:auto;background:#010409;color:#f0f6fc;font:13px/1.65 var(--mono);white-space:pre;tab-size:2;outline:none}.json-code .key{color:#79c0ff}.json-code .string{color:#a5d6ff}.json-code .number{color:#ffa657}.json-code .boolean{color:#ff7b72}.json-code .null{color:#d2a8ff}.json-dialog .dlg-foot{padding:12px 16px!important;background:#0d1117!important;border-top:1px solid #30363d!important}.json-dialog .btn{background:#21262d!important;color:#f0f6fc!important;border:1px solid #8b949e!important;border-radius:6px!important;box-shadow:none!important}.json-dialog .btn::before,.json-dialog .btn::after{content:none!important}
+  .cards{display:none;flex-direction:column}
+  .empty{padding:56px 20px;text-align:center}
+  .empty .en{font-family:var(--mono);font-size:12.5px;margin-top:5px;opacity:.6}
+  .pagination{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;margin:18px 0}.page-btn{min-width:36px;height:34px;padding:0 10px;border:1px solid currentColor;border-radius:7px;background:transparent;cursor:pointer;font:13px var(--mono)}.page-btn:disabled{opacity:.35;cursor:not-allowed}.page-btn.active{font-weight:700}.page-info{margin:0 5px;font-size:12px;opacity:.7}
+  html[data-style="terminal"] .page-btn{color:var(--dim);border-color:var(--line)}html[data-style="terminal"] .page-btn:hover:not(:disabled),html[data-style="terminal"] .page-btn.active{color:var(--ink);background:var(--green);border-color:var(--green);box-shadow:0 0 10px var(--glow)}
+  html[data-style="minimal"] .page-btn{color:#000;border:1.5px solid #000;border-radius:0}html[data-style="minimal"] .page-btn:hover:not(:disabled),html[data-style="minimal"] .page-btn.active{color:#fff;background:#000}
+  html[data-style="modern"] .page-btn{color:var(--text);border-color:var(--line2);background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .page-btn:hover:not(:disabled),html[data-style="modern"] .page-btn.active{color:#fff;background:var(--acc);border-color:var(--acc)}
+  @media (max-width:760px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))!important;max-width:none!important}.category-bars{grid-template-columns:1fr}.category-stats{padding:13px}.panel table{display:none}.panel{display:none!important}.cards{display:flex}.card{padding:15px 16px;border-bottom:1px solid currentColor;cursor:pointer}.card:last-child{border-bottom:0}.card .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.card .top>div{min-width:0}.card .sub{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2}.card .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}.card .meta .pkg{margin-left:auto}html[data-style="terminal"] .cards{border:1px solid var(--line)}html[data-style="terminal"] .card{border-color:var(--line)}html[data-style="terminal"] .card:hover{background:var(--sel)}html[data-style="minimal"] .cards{border:1.5px solid #000}html[data-style="minimal"] .card{border-color:#ddd}html[data-style="modern"] .cards{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .card{border-color:var(--line)}html[data-style="modern"] .card:hover{background:#f8fbfd}}
+  html[data-style="terminal"] .autocomplete.show{display:grid}
+  .autocomplete button{border:0;background:transparent;color:var(--fg);font:14px var(--mono);text-align:left;padding:7px 10px;cursor:pointer;border-radius:4px}
+  .autocomplete button:hover{background:var(--sel);color:var(--green)}
+  .active-filters{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:-8px 0 14px;min-height:0}
+  .filter-chip{border:1px solid currentColor;border-radius:999px;background:transparent;padding:4px 9px;font:12px var(--mono);cursor:pointer}
+  .clear-filters{border:0;background:transparent;text-decoration:underline;cursor:pointer;font-size:12px}
+  html[data-style="terminal"] .filter-chip,html[data-style="terminal"] .clear-filters{color:var(--dim)}
+  html[data-style="minimal"] .filter-chip,html[data-style="minimal"] .clear-filters{color:#111}
+  html[data-style="modern"] .filter-chip,html[data-style="modern"] .clear-filters{color:var(--acc2)}
+  .low-toggle.active{font-weight:700}
+  tbody tr{cursor:pointer}
+  .drawer-mask{display:none;position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:80}
+  .drawer-mask.open{display:block}
+  .drawer{position:absolute;right:0;top:0;height:100%;width:min(430px,92vw);overflow:auto;background:#fff;color:#172033;padding:28px;box-shadow:-16px 0 50px rgba(0,0,0,.25)}
+  .drawer-close{float:right;border:0;background:transparent;font-size:26px;cursor:pointer}
+  .drawer h2{font:700 23px var(--mono);margin:28px 0 4px}.drawer .dname{color:#64748b;margin-bottom:22px}
+  .detail-grid{display:grid;grid-template-columns:100px 1fr;gap:10px 14px;font-size:14px}.detail-grid dt{color:#64748b}.detail-grid dd{margin:0;font-family:var(--mono)}
+  .drawer .dnote{margin-top:22px;padding:14px;background:#f4f6f8;border-left:3px solid #0d9488}
+  .editbar{display:none;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 12px;margin:0 0 14px;border:1px solid currentColor;border-radius:8px;font-size:13px}.editbar.on{display:flex}.editbar .spacer{flex:1}
+  dialog{position:fixed;inset:auto;top:50%;left:50%;margin:0;transform:translate(-50%,-50%);border:0;border-radius:18px;padding:0;max-width:780px;width:calc(100% - 40px);max-height:calc(100vh - 48px);overflow:auto;color:#172033;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.32)}dialog::backdrop{background:rgba(7,15,25,.58);backdrop-filter:blur(3px)}
+  .dlg-head{display:flex;align-items:center;gap:13px;padding:22px 28px;font-weight:700;font-size:22px}.dlg-head-ico{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:12px;background:#e9faf6;color:#0f766e}.dlg-head-ico svg{width:23px;height:23px}.dlg-title-wrap{min-width:0}.dlg-sub{display:block;margin-top:3px;font-size:12px;font-weight:400;opacity:.62}.dlg-body{padding:24px 28px 27px;display:grid;gap:18px;border-top:1px solid #e5e9ef;border-bottom:1px solid #e5e9ef;background:#f7f9fb}.form-section{display:grid;gap:14px;padding:17px 18px;background:#fff;border:1px solid #e2e7ee;border-radius:12px}.form-section-title{font-size:13px;font-weight:700;color:#334155}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field label{display:block;font-size:12px;font-weight:600;color:#64748b;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;min-height:43px;padding:10px 12px;border:1px solid #d8dee8;border-radius:8px;background:#fff;font:14px var(--sans);color:#172033;transition:border-color .15s,box-shadow .15s}.field textarea{resize:vertical}.dlg-foot{display:flex;justify-content:flex-end;gap:10px;padding:18px 28px 21px;background:#fff}.dlg-foot .btn{min-width:96px;color:#172033}.dlg-foot .primary{color:#fff;background:#0d9488}.hint{font-size:12px;color:#64748b}#toast{position:fixed;z-index:120;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;background:#172033;color:#fff;padding:9px 16px;border-radius:8px;transition:.2s;pointer-events:none}#toast.show{opacity:1;transform:translate(-50%,0)}#toast.err{background:#b42318}
+  html[data-style="terminal"] dialog{border:1px solid var(--green-d);border-radius:8px;background:#071009;color:var(--fg);box-shadow:0 0 34px var(--glow);font-family:var(--mono)}
+  html[data-style="terminal"] dialog::backdrop{background:rgba(0,0,0,.78)}
+  html[data-style="terminal"] .dlg-head{color:var(--green);border-bottom:1px solid var(--line);padding:19px 24px;font-family:var(--mono);background:#0b170f}
+  html[data-style="terminal"] .dlg-head-ico{border:1px solid var(--green-d);border-radius:5px;background:#020704;color:var(--green);box-shadow:0 0 13px rgba(84,255,176,.2)}
+  html[data-style="terminal"] .dlg-body{padding:22px 24px;border-color:var(--line);background:#050b07}
+  html[data-style="terminal"] .form-section{border:1px solid var(--line);border-radius:6px;background:#071009}
+  html[data-style="terminal"] .form-section-title{color:var(--amber);font-family:var(--mono);border-bottom:1px dashed var(--line);padding-bottom:9px}
+  html[data-style="terminal"] .field label{color:var(--dim);font-family:var(--mono);letter-spacing:.06em}
+  #pLifeCat{margin-top:8px}
+  .review-nav{display:flex;align-items:center;gap:10px;margin-right:auto}.review-nav[hidden]{display:none}.review-nav .btn{min-width:auto;padding-left:13px;padding-right:13px}.review-progress{font:12px var(--mono);opacity:.68;white-space:nowrap}
+  .missing-flags{display:inline-flex;gap:5px;margin-left:7px;vertical-align:middle}.missing-flag{display:inline-block;padding:1px 5px;border:1px solid currentColor;border-radius:4px;color:#b45309;font:10px var(--mono);white-space:nowrap}.loc-link{border:0;background:transparent;color:inherit;padding:0;cursor:pointer}.loc-link:hover{text-decoration:underline}.stock-actions{display:inline-flex;gap:4px;margin-left:7px}.stock-actions button{padding:2px 6px!important;font-size:11px!important}.rowact{white-space:nowrap}.backup-input{display:none}.preview-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.preview-stat{padding:14px;text-align:center;border:1px solid currentColor}.preview-stat b{display:block;font:700 24px var(--mono)}.location-items,.movement-list{display:grid;gap:8px;max-height:390px;overflow:auto}.location-item,.movement-item{padding:10px 12px;border:1px solid currentColor}.location-item b,.movement-item b{display:block}.location-warning{padding:10px 12px;border:1px solid #b45309;color:#b45309}.time-note{font-size:12px;opacity:.65}
+  html[data-style="terminal"] .field input,html[data-style="terminal"] .field textarea,html[data-style="terminal"] .field select{border:1px solid var(--line);border-radius:5px;background:#020704;color:var(--fg);font-family:var(--mono);caret-color:var(--green)}
+  html[data-style="terminal"] .field input:focus,html[data-style="terminal"] .field textarea:focus,html[data-style="terminal"] .field select:focus{outline:none;border-color:var(--green);box-shadow:0 0 10px rgba(84,255,176,.18)}
+  html[data-style="terminal"] .dlg-foot{background:#0b170f;border-top:1px solid var(--line)}
+  html[data-style="terminal"] .dlg-foot .btn{border-color:var(--green-d);background:transparent;color:var(--green);font-family:var(--mono)}
+  html[data-style="terminal"] .dlg-foot .btn::before{content:"[ "}html[data-style="terminal"] .dlg-foot .btn::after{content:" ]"}
+  html[data-style="terminal"] .dlg-foot .primary{background:var(--green);color:var(--ink)}
+  html[data-style="minimal"] dialog{border:2px solid #000;border-radius:0;box-shadow:10px 10px 0 #000;color:#111}
+  html[data-style="minimal"] dialog::backdrop{background:rgba(255,255,255,.72)}
+  html[data-style="minimal"] .dlg-head{padding:20px 24px;border-bottom:2px solid #000;font-size:23px}
+  html[data-style="minimal"] .dlg-head-ico{border:2px solid #000;border-radius:0;background:#000;color:#fff}
+  html[data-style="minimal"] .dlg-body{border-color:#000;background:#f5f5f5}html[data-style="minimal"] .form-section{border:1.5px solid #000;border-radius:0;box-shadow:4px 4px 0 #000}html[data-style="minimal"] .form-section-title{font-family:var(--mono);color:#000;border-bottom:1.5px solid #000;padding-bottom:8px}
+  html[data-style="minimal"] .field label{color:#333;font-weight:700;letter-spacing:.08em}
+  html[data-style="minimal"] .field input,html[data-style="minimal"] .field textarea,html[data-style="minimal"] .field select{border:1.5px solid #000;border-radius:0;background:#fff;color:#000}
+  html[data-style="minimal"] .field input:focus,html[data-style="minimal"] .field textarea:focus,html[data-style="minimal"] .field select:focus{outline:none;box-shadow:inset 0 0 0 1px #000}
+  html[data-style="minimal"] .dlg-foot{border-top:0;background:#f5f5f5}
+  html[data-style="minimal"] .dlg-foot .btn{border:1.5px solid #000;border-radius:0;background:#fff;color:#000}
+  html[data-style="minimal"] .dlg-foot .primary{background:#000;color:#fff}
+  html[data-style="modern"] dialog{border:1px solid var(--line2);border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 20px 60px rgba(15,23,42,.22)}
+  html[data-style="modern"] .dlg-head{padding:25px 28px 19px;font-size:22px;color:var(--ink);background:linear-gradient(135deg,#f0fdfa,#fff 65%)}
+  html[data-style="modern"] .dlg-body{padding:23px 28px 26px;border-color:var(--line)}
+  html[data-style="modern"] .field label{color:var(--muted);font-weight:600}
+  html[data-style="modern"] .field input,html[data-style="modern"] .field textarea,html[data-style="modern"] .field select{border:1px solid var(--line2);border-radius:9px;background:#fbfcfe;color:var(--ink)}
+  html[data-style="modern"] .field input:focus,html[data-style="modern"] .field textarea:focus,html[data-style="modern"] .field select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(13,148,136,.13);background:#fff}
+  html[data-style="modern"] .dlg-foot{background:#fbfcfe}
+  html[data-style="modern"] .dlg-foot .btn{border-radius:9px;color:var(--text)}html[data-style="modern"] .dlg-foot .primary{background:var(--acc);border-color:var(--acc);color:#fff}
+  @media(max-width:640px){dialog{width:calc(100% - 20px);max-height:calc(100vh - 20px)}.grid2{grid-template-columns:1fr}.dlg-head{padding:16px 18px}.dlg-body{padding:14px}.form-section{padding:14px}.dlg-foot{padding:14px 18px}}
+
+  .location-guide{margin:0 0 15px;border:1px solid currentColor;border-radius:9px;overflow:hidden;font-size:13px}.location-guide summary{padding:10px 14px;cursor:pointer;font-weight:700;list-style:none}.location-guide summary::-webkit-details-marker{display:none}.location-guide summary::before{content:"＋ ";font-family:var(--mono)}.location-guide[open] summary::before{content:"－ "}.guide-body{padding:3px 14px 14px}.guide-intro{margin-bottom:10px}.guide-table-wrap{overflow-x:auto}.guide-table{width:100%;min-width:700px;border-collapse:collapse;border:1px solid currentColor;font-size:13px}.guide-table th,.guide-table td{padding:9px 16px;border:1px solid currentColor;text-align:left;vertical-align:top}.guide-table th{font-weight:700;background:rgba(127,127,127,.12)}.guide-table th:first-child,.guide-table td:first-child{width:110px}.guide-table th:nth-child(2),.guide-table td:nth-child(2){width:250px}.guide-table code{font-family:var(--mono);font-weight:700}.guide-range{opacity:.78}.guide-examples{font-family:var(--mono);font-size:12px;opacity:.8;margin-top:11px}
+  html[data-style="terminal"] .location-guide{color:var(--dim);border-color:var(--line);background:rgba(0,0,0,.2)}html[data-style="terminal"] .location-guide summary{color:var(--green)}
+  html[data-style="minimal"] .location-guide{color:#111;border:1.5px solid #000;border-radius:0}
+  html[data-style="modern"] .location-guide{color:var(--text);border-color:var(--line2);background:#fff;box-shadow:var(--shadow)}html[data-style="modern"] .location-guide summary{color:var(--acc2)}
+  .loc-picker{position:relative}.loc-desc{display:block;min-height:18px;margin-top:5px;font-size:12px;line-height:18px;color:#64748b}.loc-results{display:none;position:absolute;z-index:200;left:0;right:0;top:calc(100% - 18px);max-height:190px;overflow:auto;padding:4px;background:#fff;border:1px solid #cfd6df;border-radius:8px;box-shadow:0 14px 30px rgba(15,23,42,.2)}.loc-results.show{display:grid}.loc-result{display:block;border:0;border-radius:6px;background:transparent;padding:8px 10px;text-align:left;cursor:pointer;color:#0f766e;font:13px var(--mono)}.loc-result:hover{background:#edf8f5}
+  html[data-style="terminal"] .loc-desc{color:var(--dim)}html[data-style="terminal"] .loc-results{background:#071009;border-color:var(--green-d);box-shadow:0 0 22px rgba(84,255,176,.2)}html[data-style="terminal"] .loc-result{color:var(--green)}html[data-style="terminal"] .loc-result:hover{background:var(--sel)}
+  html[data-style="minimal"] .loc-desc{color:#444}html[data-style="minimal"] .loc-results{border:1.5px solid #000;border-radius:0;box-shadow:5px 5px 0 #000}html[data-style="minimal"] .loc-result{border-radius:0;color:#000}html[data-style="minimal"] .loc-result:hover{background:#eee}
+  @media(max-width:760px){.stats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;max-width:none!important}.category-head{display:none}.category-row{grid-template-columns:minmax(90px,130px) 1fr 32px}.category-row .category-stock,.category-row .category-permanent{display:none}.location-row{grid-template-columns:1fr auto}.location-track{grid-column:1/-1;grid-row:2}.location-metrics{min-width:0}.status-grid{grid-template-columns:1fr}.insight-panel>summary small{display:none}}
+  @media(max-width:640px){.guide-body{padding-left:10px;padding-right:10px}.field input,.field textarea,.field select{font-size:16px!important}}
+
+  /* 全屏工作台预览：取消悬浮窗口感，让页面直接占满视口。 */
+  html[data-style="terminal"] body{padding:0;min-height:100vh;background:var(--win)}
+  html[data-style="terminal"] .wrap{width:100%;max-width:none;min-height:100vh;margin:0;border:0;border-radius:0;box-shadow:none}
+  html[data-style="minimal"] body,html[data-style="modern"] body{padding-left:0;padding-right:0}
+  html[data-style="minimal"] .wrap,html[data-style="modern"] .wrap{width:100%;max-width:none;margin:0}
+  html[data-style="minimal"] .head,html[data-style="minimal"] .body,html[data-style="modern"] .head,html[data-style="modern"] .body{padding-left:28px;padding-right:28px}
+  html[data-style="modern"] body{background:#f4f6f9}
+
+  /* SaaS 工作台预览：减少模板化圆角、阴影和卡片嵌套。 */
+  html[data-style="modern"] .stats{grid-template-columns:repeat(8,minmax(0,1fr));gap:0;overflow:hidden;border:1px solid var(--line);border-radius:6px;background:#fff}
+  html[data-style="modern"] .stat{border:0;border-right:1px solid var(--line);border-radius:0;padding:14px 16px;box-shadow:none}
+  html[data-style="modern"] .stat:nth-child(1),html[data-style="modern"] .stat:nth-child(2){grid-column:span 2}
+  html[data-style="modern"] .stat:last-child{border-right:0}
+  html[data-style="modern"] .panel,html[data-style="modern"] .category-stats,html[data-style="modern"] .insight-panel,html[data-style="modern"] .cards{border-radius:6px;box-shadow:none}
+  html[data-style="modern"] .search input,html[data-style="modern"] select,html[data-style="modern"] .btn{border-radius:5px;box-shadow:none}
+  html[data-style="modern"] .chip,html[data-style="modern"] .loc,html[data-style="modern"] .page-btn,html[data-style="modern"] .editbar{border-radius:4px;box-shadow:none}
+  html[data-style="modern"] .status-grid{gap:0;border-top:1px solid var(--line)}
+  html[data-style="modern"] .status-item{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:13px 4px}
+  html[data-style="modern"] .status-item:nth-child(odd){border-right:1px solid var(--line);padding-right:16px}
+  html[data-style="modern"] .status-item:nth-child(even){padding-left:16px}
+  html[data-style="modern"] dialog{border-radius:8px;box-shadow:0 18px 48px rgba(15,23,42,.18)}
+  html[data-style="modern"] .dlg-head{background:#fff;border-bottom:1px solid var(--line);padding-top:19px;padding-bottom:19px}
+  html[data-style="modern"] .dlg-head-ico{width:34px;height:34px;border-radius:5px;background:#fff;border:1px solid var(--line2)}
+  html[data-style="modern"] .dlg-body{gap:0;background:#fff;padding-top:8px;padding-bottom:8px}
+  html[data-style="modern"] .form-section{border:0;border-radius:0;background:#fff;padding:18px 0}
+  html[data-style="modern"] .form-section+.form-section{border-top:1px solid var(--line)}
+  html[data-style="modern"] .field input,html[data-style="modern"] .field textarea,html[data-style="modern"] .field select{border-radius:5px;background:#fff}
+  @media(max-width:760px){html[data-style="modern"] .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}html[data-style="modern"] .stat:nth-child(n){grid-column:span 1}html[data-style="modern"] .stat:nth-child(even){border-right:0}}
+  @keyframes blink{50%{opacity:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="term-bar">
+    <span class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></span>
+    <span class="t">parts.db — ~/inventory — zsh</span>
+  </div>
+
+  <header>
+    <div class="eyebrow">
+      <span class="chip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v2M14 3v2M10 19v2M14 19v2M3 10h2M3 14h2M19 10h2M19 14h2"/></svg></span>
+      库存管理 · Parts DB
+    </div>
+    <h1>元器件库<em>component inventory</em></h1>
+    <div class="rule"></div>
+  </header>
+
+  <div class="body">
+    <div class="cmd" id="cmdLine"><span class="u">xiaomiao@blog</span>:<span class="path">~/inventory</span>$ <input id="cmdInput" class="cmdin" autocomplete="off" spellcheck="false" aria-label="终端筛选命令"><span class="cur"></span></div>
+    <div class="autocomplete" id="autocomplete"></div>
+    <div class="comment"># <span id="cmtTotal">0</span> 种元器件 · 在库 <span id="cmtQty">0</span> 件 · <b><span id="cmtLow">0</span> 项低库存</b><span class="hint" id="cmtHint"></span></div>
+    <div class="stats">
+      <div class="stat"><div class="num" id="statTotal">0</div><div class="lab">种类</div></div>
+      <div class="stat"><div class="num" id="statQty">0</div><div class="lab">在库件数</div></div>
+      <div class="stat"><div class="num" id="statPermanent">0</div><div class="lab">常备项目</div></div>
+      <div class="stat low"><div class="num" id="statLow">0</div><div class="lab">低库存</div></div>
+      <div class="stat"><div class="num" id="statLocations">0</div><div class="lab">已用位置</div></div>
+      <div class="stat"><div class="num" id="statIncomplete">0</div><div class="lab">待完善资料</div></div>
+    </div>
+    <div class="insights">
+      <details class="category-stats insight-panel" open><summary><span>分类详细统计</span><small>种类、库存、常备与占比</small></summary><div class="insight-body"><div class="category-head category-row"><span>分类</span><span>种类占比</span><span>种类</span><span>库存</span><span>常备</span></div><div class="category-bars" id="categoryStats"></div></div></details>
+      <details class="insight-panel"><summary><span>存储区域使用情况</span><small>已用位置与容量</small></summary><div class="insight-body insight-list" id="locationStats"></div></details>
+      <details class="insight-panel"><summary><span>库存状态</span><small>点击状态筛选列表</small></summary><div class="insight-body status-grid" id="stockStats"></div></details>
+      <details class="insight-panel"><summary><span>数据完整度</span><small>不统计链接与备注</small></summary><div class="insight-body status-grid" id="qualityStats"></div></details>
+    </div>
+
+    <div class="toolbar">
+      <div class="search"><span class="ico"></span><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="搜索名称 / 用途 / 规格 / 位置…" autocomplete="off"></div>
+      <select id="fCat"><option value="">全部分类</option></select>
+      <select id="fLoc"><option value="">全部位置</option></select>
+      <button class="btn low-toggle" id="btnLow" aria-pressed="false">低库存</button>
+      <button class="btn" id="btnEdit">编辑模式</button>
+      <button class="btn primary" id="btnAdd" hidden>+ 新增</button>
+      <select id="styleSel" class="stylesel" title="切换样式">
+        <option value="terminal">◈ 复古终端</option>
+        <option value="minimal">▢ 黑白极简</option>
+        <option value="modern">● 干净现代</option>
+      </select>
+    </div>
+    <div class="active-filters" id="activeFilters"></div>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th data-k="model">名称 / 用途 <span class="arrow"></span></th>
+            <th data-k="category">分类 <span class="arrow"></span></th>
+            <th data-k="package">封装 <span class="arrow"></span></th>
+            <th data-k="location">位置 <span class="arrow"></span></th>
+            <th data-k="qty" class="tr-right">数量 <span class="arrow"></span></th>
+            <th class="act-col" hidden></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="empty" id="emptyMsg" hidden>没有匹配的元器件<div class="en">no parts found</div></div>
+    </div>
+
+    <div class="cards" id="cards"></div>
+    <nav class="pagination" id="pagination" aria-label="器件列表分页"></nav>
+
+    <div class="statusbar">
+      <span class="mode">NORMAL</span>
+      <button class="seg status-file" id="btnJson" type="button" title="查看原始 JSON 文件">parts.json</button>
+      <span class="seg">utf-8</span>
+      <span class="spacer"></span>
+      <span class="right"><span id="sbCount">0</span> items · <span id="sbLow">0</span> low</span>
+    </div>
+    <div class="editbar" id="editbar"><span>编辑模式：改动暂存在本地</span><span>待提交 <b id="pendingN">0</b> 项</span><span class="spacer"></span><button class="btn" id="btnExport">导出备份</button><button class="btn" id="btnImport">导入备份</button><input class="backup-input" id="backupInput" type="file" accept="application/json,.json"><button class="btn" id="btnLogout">退出编辑</button><button class="btn primary" id="btnCommit" disabled>提交到 GitHub</button></div>
+    <details class="location-guide"><summary>位置代码与编号范围</summary><div class="guide-body"><div class="guide-intro">编号统一按从上到下、从左到右排列。带挡板的抽屉中，A 表示靠里，B 表示靠外。</div><div class="guide-table-wrap"><table class="guide-table"><thead><tr><th>代码</th><th>位置名称</th><th>编号范围</th></tr></thead><tbody>
+      <tr><td><code>GL</code></td><td>绿林收纳柜</td><td class="guide-range">GL-S01–GL-S39；每个抽屉分两格：A 靠里，B 靠外</td></tr>
+      <tr><td><code>PD</code></td><td>3D 打印抽屉</td><td class="guide-range">PD-S01–PD-S20</td></tr>
+      <tr><td><code>PS</code></td><td>3D 打印小柜子</td><td class="guide-range">PS-C1–C2；每柜 D01–D04 共 4 个抽屉；每个抽屉 S1–S5 共 5 格</td></tr>
+      <tr><td><code>SH</code></td><td>桌面上层书架</td><td class="guide-range">仅使用 SH，区域内部不再细分</td></tr>
+      <tr><td><code>RU</code></td><td>桌面右侧上部</td><td class="guide-range">仅使用 RU，区域内部不再细分</td></tr>
+      <tr><td><code>RL</code></td><td>桌面右侧下部</td><td class="guide-range">仅使用 RL，区域内部不再细分</td></tr>
+      <tr><td><code>CD</code></td><td>桌面正下方抽屉</td><td class="guide-range">仅使用 CD，区域内部不再细分</td></tr>
+      <tr><td><code>LD</code></td><td>桌面左下抽屉</td><td class="guide-range">仅使用 LD，区域内部不再细分</td></tr>
+      <tr><td><code>LO</code></td><td>桌面左下开放式柜子</td><td class="guide-range">仅使用 LO，区域内部不再细分</td></tr>
+      <tr><td><code>RC</code></td><td>桌面右下闭合式柜子</td><td class="guide-range">仅使用 RC，区域内部不再细分</td></tr>
+      <tr><td><code>WD1</code></td><td>衣柜下方抽屉 1</td><td class="guide-range">仅使用 WD1，区域内部不再细分</td></tr>
+      <tr><td><code>WD2</code></td><td>衣柜下方抽屉 2</td><td class="guide-range">仅使用 WD2，区域内部不再细分</td></tr>
+      <tr><td><code>WG</code></td><td>衣柜左侧与墙壁之间的开放区域</td><td class="guide-range">仅使用 WG，区域内部不再细分</td></tr>
+      <tr><td><code>GT</code></td><td>绿林收纳柜上方</td><td class="guide-range">仅使用 GT，区域内部不再细分</td></tr>
+      <tr><td><code>PT</code></td><td>3D 打印柜上方</td><td class="guide-range">仅使用 PT，区域内部不再细分</td></tr>
+    </tbody></table></div><div class="guide-examples">示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　PD-S03 = 3D 打印柜第 3 个抽屉　｜　PS-C2-D03-S4 = 3D 打印小柜子第 2 柜、第 3 抽屉、第 4 格</div></div></details>
+  </div>
+</div>
+
+<dialog id="dlgPart"><div class="dlg-head"><span class="dlg-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v2M14 3v2M10 19v2M14 19v2M3 10h2M3 14h2M19 10h2M19 14h2"/></svg></span><span class="dlg-title-wrap"><span id="dlgPartTitle">新增元器件</span><span class="dlg-sub">填写器件信息并加入库存</span></span></div><div class="dlg-body">
+  <section class="form-section"><div class="form-section-title">基础信息</div>
+    <div class="grid2"><div class="field"><label>名称 / 型号 *</label><input id="pModel" placeholder="例如 ESP32 开发板 / 壁纸刀"></div><div class="field"><label>补充名称 *</label><input id="pAlias" placeholder="例如 Wi-Fi 开发板 / 固体胶"></div></div>
+    <div class="field"><label>用途</label><textarea id="pName" rows="3" placeholder="它具体用来做什么"></textarea></div>
+    <div class="grid2"><div class="field"><label>分类</label><select id="pCat"><option>芯片 / IC</option><option>开发板 / 核心板</option><option>电源与电池</option><option>传感器与测量</option><option>通信与接口</option><option>显示与光电</option><option>音频与声学</option><option>电机与执行器</option><option>存储</option><option>开关与输入</option><option>无源器件</option><option>分立半导体</option><option>连接器与线材</option><option>PCB / 电路板</option><option>紧固与结构件</option><option>工具</option><option>耗材</option><option>生活用品</option><option>待分类</option></select><select id="pLifeCat" hidden aria-label="生活用品细分类"><option>医疗与护理</option><option>健康与营养</option><option>餐饮用品</option><option>文具与办公</option><option>个人护理</option><option>穿戴与户外</option><option>宠物用品</option><option>数码配件</option><option>家居与收纳</option><option>纪念与装饰</option><option>休闲娱乐</option></select></div><div class="field"><label>封装 / 规格</label><input id="pPkg" placeholder="例如 QFN-32 / M3×8 / 0603"></div></div>
+  </section>
+  <section class="form-section"><div class="form-section-title">库存信息</div>
+    <div class="grid2"><div class="field loc-picker"><label>存放位置 *</label><input id="pLocSearch" autocomplete="off" placeholder="输入名称或代码后选择，如：GL-S12-A" required><input id="pLoc" type="hidden"><span class="loc-desc" id="pLocDesc">必填：输入后选择位置代码</span><div class="loc-results" id="pLocResults"></div></div><div class="field"><label>数量（留空为常备）</label><input id="pQty" type="number" min="0" placeholder="0"></div></div>
+    <div class="grid2"><div class="field"><label>低库存阈值</label><input id="pLow" type="number" min="0" placeholder="0"></div><div class="field"><label>购买 / 资料链接</label><input id="pLink" type="url" placeholder="https://…"></div></div>
+  </section>
+  <section class="form-section"><div class="form-section-title">补充信息</div><div class="field"><label>备注</label><textarea id="pNote" rows="3" placeholder="参数、替代料、使用注意事项…"></textarea></div></section>
+</div><div class="dlg-foot"><div class="review-nav" id="reviewNav" hidden><button class="btn" id="reviewPrev" type="button">上一件</button><span class="review-progress" id="reviewProgress"></span><button class="btn" id="reviewNext" type="button">下一件</button></div><button class="btn" id="pCancel">取消</button><button class="btn primary" id="pSave">保存器件</button></div></dialog>
+<dialog id="dlgToken"><div class="dlg-head">进入编辑模式</div><div class="dlg-body"><p class="hint">Token 仅保存在本机浏览器，需要仓库 Contents 读写权限。</p><div class="field"><label>GitHub Token</label><input id="tokenInput" type="password"></div></div><div class="dlg-foot"><button class="btn" id="tCancel">取消</button><button class="btn primary" id="tSave">确认</button></div></dialog>
+<dialog id="dlgJson" class="json-dialog"><div class="dlg-head"><span class="dlg-title-wrap"><span>source/data/parts.json</span><span class="dlg-sub">只读 · JSON · GitHub Dark High Contrast</span></span></div><div class="dlg-body"><pre class="json-code" id="jsonCode" tabindex="0" aria-label="只读 JSON 文件内容"></pre></div><div class="dlg-foot"><button class="btn" id="jsonRefresh">刷新</button><button class="btn" id="jsonClose">关闭</button></div></dialog>
+<dialog id="dlgStock"><div class="dlg-head"><span class="dlg-title-wrap"><span id="stockTitle">库存变动</span><span class="dlg-sub" id="stockCurrent"></span></span></div><div class="dlg-body"><section class="form-section"><div class="grid2"><div class="field"><label id="stockAmountLabel">数量 *</label><input id="stockAmount" type="number" min="1" step="1" value="1"></div><div class="field"><label>备注</label><input id="stockNote" placeholder="例如：项目领用 / 新购入库"></div></div></section><section class="form-section"><div class="form-section-title">最近变动</div><div class="movement-list" id="movementList"></div></section></div><div class="dlg-foot"><button class="btn" id="stockCancel">取消</button><button class="btn primary" id="stockSave">确认</button></div></dialog>
+<dialog id="dlgLocation"><div class="dlg-head"><span class="dlg-title-wrap"><span id="locationTitle">位置详情</span><span class="dlg-sub" id="locationSubtitle"></span></span></div><div class="dlg-body"><div id="locationWarning"></div><div class="location-items" id="locationItems"></div></div><div class="dlg-foot"><button class="btn" id="locationClose">关闭</button></div></dialog>
+<dialog id="dlgImport"><div class="dlg-head"><span class="dlg-title-wrap"><span>导入备份预览</span><span class="dlg-sub">确认后才会替换当前暂存数据</span></span></div><div class="dlg-body"><div class="preview-summary"><div class="preview-stat"><b id="importAdd">0</b>新增</div><div class="preview-stat"><b id="importChange">0</b>修改</div><div class="preview-stat"><b id="importRemove">0</b>删除</div></div><p class="hint" id="importHint"></p></div><div class="dlg-foot"><button class="btn" id="importCancel">取消</button><button class="btn primary" id="importConfirm">确认导入</button></div></dialog>
+<div id="toast" role="status"></div>
+
+<div class="drawer-mask" id="drawerMask"><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+  <button class="drawer-close" id="drawerClose" aria-label="关闭">×</button>
+  <h2 id="drawerTitle"></h2><div class="dname" id="drawerName"></div>
+  <dl class="detail-grid" id="detailGrid"></dl><div class="dnote" id="drawerNote"></div>
+</aside></div>
+
+<script>
+const $=id=>document.getElementById(id);
+let queryStr="", sortKey="model", sortAsc=true, lowOnly=false, insightFilter=null, currentPage=1, lastFilterKey="",reviewIds=[],reviewIndex=-1,reviewKind="",stockPartId=null,stockDirection=1,pendingImport=null;
+const PAGE_SIZE=10;
+
+/* 样式切换 */
+function setStyle(s){
+  document.documentElement.dataset.style=s;
+  try{localStorage.setItem("parts_style",s)}catch(e){}
+  $("styleSel").value=s;
+  syncCmdWidth();
+}
+
+/* 数据（预览示例） */
+const GH={owner:"xiaomiao321",repo:"xiaomiao321.github.io",branch:"source",path:"source/data/parts.json"};
+const LOCAL_JSON="../data/parts.json";
+let parts=[],fileSha=null,pending=0,editMode=false,editingId=null;
+const token=()=>localStorage.getItem("parts_gh_token")||"";
+const pad2=n=>String(n).padStart(2,"0");
+const LOCATION_AREAS=[
+  ["SH","桌面上层书架"],["RU","桌面右侧上部"],["RL","桌面右侧下部"],["CD","桌面正下方抽屉"],
+  ["LD","桌面左下抽屉"],["LO","桌面左下开放柜"],["RC","桌面右下闭合柜"],["WD1","衣柜下方抽屉 1"],
+  ["WD2","衣柜下方抽屉 2"],["WG","衣柜与墙壁间开放区"],["GT","绿林收纳柜上方"],["PT","3D 打印柜上方"]
+];
+const AREA_META=[
+  ["GL","绿林收纳柜",78],["PD","3D 打印抽屉",20],["PS","3D 打印小柜子",40],
+  ["SH","桌面上层书架",null],["RU","桌面右侧上部",null],["RL","桌面右侧下部",null],["CD","桌面正下方抽屉",null],
+  ["LD","桌面左下抽屉",null],["LO","桌面左下开放柜",null],["RC","桌面右下闭合柜",null],
+  ["WD1","衣柜下方抽屉 1",null],["WD2","衣柜下方抽屉 2",null],["WG","衣柜与墙壁间开放区",null],
+  ["GT","绿林收纳柜上方",null],["PT","3D 打印柜上方",null]
+];
+const LOCATIONS=[];
+for(const [code,name] of LOCATION_AREAS)LOCATIONS.push({code,label:name});
+for(let i=1;i<=39;i++)for(const slot of ["A","B"])LOCATIONS.push({code:`GL-S${String(i).padStart(2,"0")}-${slot}`,label:`绿林收纳柜 · 第 ${i} 个抽屉 · ${slot} 格`});
+for(let i=1;i<=20;i++)LOCATIONS.push({code:`PD-S${String(i).padStart(2,"0")}`,label:`3D 打印抽屉 · 第 ${i} 个抽屉`});
+for(let cabinet=1;cabinet<=2;cabinet++)for(let drawer=1;drawer<=4;drawer++)for(let slot=1;slot<=5;slot++)LOCATIONS.push({code:`PS-C${cabinet}-D${String(drawer).padStart(2,"0")}-S${slot}`,label:`3D 打印小柜子 · 第 ${cabinet} 柜 · 第 ${drawer} 抽屉 · 第 ${slot} 格`});
+function isLow(p){if(p.qty===null||p.qty===undefined||p.qty==="")return false;const th=(p.low===null||p.low===undefined||p.low==="")?0:Number(p.low);return th>0&&Number(p.qty)<=th;}
+function isPermanent(p){return p.qty===null||p.qty===undefined||p.qty==="";}
+function needsWork(p){return !String(p.name||"").trim()||!String(p.purpose||"").trim()||!String(p.category||"").trim()||!String(p.location||"").trim()||!String(p.package||"").trim()||p.package==="规格待确认";}
+function matchesQuality(p,value){if(value==="all")return needsWork(p);if(value==="location")return !String(p.location||"").trim();if(value==="package")return !String(p.package||"").trim()||p.package==="规格待确认";if(value==="threshold")return !Number(p.low);return false;}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function hi(s){
+  const raw=String(s??""),q=queryStr.trim();if(!q)return esc(raw);
+  const low=raw.toLowerCase(),needle=q.toLowerCase();let out="",at=0,i;
+  while((i=low.indexOf(needle,at))>-1){out+=esc(raw.slice(at,i))+`<mark>${esc(raw.slice(i,i+q.length))}</mark>`;at=i+q.length;}
+  return out+esc(raw.slice(at));
+}
+function qtyHTML(p){
+  if(p.qty===null||p.qty===undefined||p.qty==="")return `<span class="perm">常备</span>`;
+  const low=isLow(p);
+  return `<span class="qty ${low?'low':''}">${p.qty}${low?'<span class="lowtag">低 LOW</span>':''}</span>`;
+}
+function modelHTML(p){return p.link?`<a href="${esc(p.link)}" target="_blank" rel="noopener">${hi(p.model)}</a>`:hi(p.model);}
+const LEGACY_DATE="2026-08-03T00:00:00+08:00";
+function normalizeLocationCode(location){return String(location||"").replace(/^GL-S(\d)(-[AB])$/,"GL-S0$1$2").replace(/^PD-S(\d)$/,"PD-S0$1").replace(/^(PS-C\d-D)(\d)(-S\d)$/,(m,a,b,c)=>a+"0"+b+c);}
+function normalizePart(p){return{...p,location:normalizeLocationCode(p.location),createdAt:p.createdAt||LEGACY_DATE,updatedAt:p.updatedAt||LEGACY_DATE,movements:Array.isArray(p.movements)?p.movements:[]};}
+function normalizeParts(){parts=parts.map(normalizePart);}
+
+async function load(){
+  if(token()){try{await loadFromGitHub();render();return;}catch(e){console.warn(e);}}
+  try{const r=await fetch(LOCAL_JSON+"?t="+Date.now());if(!r.ok)throw new Error(r.status);parts=await r.json();normalizeParts();}
+  catch(e){parts=[];toast("加载 parts.json 失败",true);}render();
+}
+async function loadFromGitHub(){const url=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}?ref=${GH.branch}`;const r=await fetch(url,{headers:ghHeaders()});if(!r.ok)throw new Error("GitHub API "+r.status);const j=await r.json();fileSha=j.sha;parts=JSON.parse(decodeB64(j.content));normalizeParts();}
+function ghHeaders(){return{"Authorization":"Bearer "+token(),"Accept":"application/vnd.github+json"};}
+function decodeB64(b64){const bin=atob(b64.replace(/\n/g,""));return new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0)));}
+function encodeB64(str){const bytes=new TextEncoder().encode(str);let bin="";bytes.forEach(b=>bin+=String.fromCharCode(b));return btoa(bin);}
+function highlightJson(raw){
+  const re=/("(?:\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*")(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?/g;let out="",at=0,m;
+  while((m=re.exec(raw))){out+=esc(raw.slice(at,m.index));const token=m[0],isString=token[0]==='"',isKey=isString&&m[2],kind=isKey?"key":isString?"string":token==="null"?"null":/^(true|false)$/.test(token)?"boolean":"number";out+=`<span class="${kind}">${esc(isKey?m[1]:token)}</span>${isKey?esc(m[2]):""}`;at=m.index+token.length;}
+  return out+esc(raw.slice(at));
+}
+function missingHTML(p){const flags=[];if(!String(p.purpose||"").trim())flags.push("缺用途");if(!String(p.package||"").trim()||p.package==="规格待确认")flags.push("缺规格");return flags.length?`<span class="missing-flags">${flags.map(x=>`<span class="missing-flag">${x}</span>`).join("")}</span>`:"";}
+function fmtTime(value){if(!value)return"历史数据未记录";const d=new Date(value);if(Number.isNaN(d.getTime()))return String(value);const pad=n=>String(n).padStart(2,"0"),date=`${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}`;return d.getHours()||d.getMinutes()?`${date} ${pad(d.getHours())}:${pad(d.getMinutes())}`:date;}
+function sameRecord(a,b){return JSON.stringify(a)===JSON.stringify(b);}
+async function loadJsonViewer(){
+  $("jsonCode").textContent="正在读取 parts.json…";
+  try{$("jsonCode").innerHTML=highlightJson(JSON.stringify(parts,null,2));}
+  catch(e){$("jsonCode").textContent="读取失败："+e.message;}
+}
+
+/* 命令行宽度及虚拟方块光标位置随真实插入点同步。 */
+let measureCtx;
+function textWidth(text,el){
+  measureCtx??=document.createElement("canvas").getContext("2d");
+  measureCtx.font=getComputedStyle(el).font;
+  return measureCtx.measureText(text).width;
+}
+function syncCmdCursor(){
+  const el=$("cmdInput"),cur=document.querySelector("#cmdLine .cur");
+  if(!el||!cur)return;
+  const pos=el.selectionStart??el.value.length;
+  el.style.width=Math.max(textWidth(el.value,el),textWidth(" ",el))+"px";
+  cur.style.setProperty("--cursor-shift",-textWidth(el.value.slice(pos),el)+"px");
+}
+function syncCmdWidth(){syncCmdCursor();}
+
+/* 博客自己的 parts CLI：搜索框、筛选器和命令行双向同步。 */
+function dq(v){return `"${String(v).replace(/\\/g,"\\\\").replace(/"/g,'\\"')}"`;}
+function undq(v){return String(v).replace(/\\([\\"])/g,"$1");}
+function buildCommand(){
+  const q=queryStr.trim(),fc=$("fCat").value,fl=$("fLoc").value;
+  if(!q&&!fc&&!fl&&!lowOnly)return "parts list";
+  const args=["parts find"];
+  if(q)args.push(dq(q));
+  if(fc)args.push(`--category ${dq(fc)}`);
+  if(fl)args.push(`--location ${dq(fl)}`);
+  if(lowOnly)args.push("--low-stock");
+  return args.join(" ");
+}
+function syncCommandFromControls(){
+  const cmd=buildCommand(),el=$("cmdInput");
+  if(el.value!==cmd)el.value=cmd;
+  syncCmdWidth();
+}
+function onQuery(v){
+  queryStr=v;
+  if($("q").value!==v)$("q").value=v;
+  syncCommandFromControls();
+  render();
+}
+function onCommand(v){
+  const list=/^\s*parts\s+list\s*$/.test(v);
+  const find=v.match(/^\s*parts\s+find(?:\s+"((?:\\.|[^"])*)")?(?:\s+--category\s+"((?:\\.|[^"])*)")?(?:\s+--location\s+"((?:\\.|[^"])*)")?(\s+--low-stock)?\s*$/);
+  if(!list&&!find){$("cmtHint").textContent="　· 命令格式无效";syncCmdWidth();updateSuggestions();return;}
+  queryStr=find&&find[1]?undq(find[1]):"";
+  $("q").value=queryStr;
+  $("fCat").value=find&&find[2]?undq(find[2]):"";
+  $("fLoc").value=find&&find[3]?undq(find[3]):"";
+  lowOnly=!!(find&&find[4]);
+  syncCmdWidth();
+  render();
+}
+
+function filtered(){
+  const q=queryStr.trim().toLowerCase(),fc=$("fCat").value,fl=$("fLoc").value;
+  let list=parts.filter(p=>{
+    if(fc&&p.category!==fc)return false;
+    if(fl&&p.location!==fl)return false;
+    if(lowOnly&&!isLow(p))return false;
+    if(insightFilter){
+      const {kind,value}=insightFilter;
+      if(kind==="area"&&!(p.location===value||String(p.location||"").startsWith(value+"-")))return false;
+      if(kind==="stock"&&value==="low"&&!isLow(p))return false;
+      if(kind==="stock"&&value==="known"&&(isPermanent(p)||isLow(p)))return false;
+      if(kind==="stock"&&value==="permanent"&&!isPermanent(p))return false;
+      if(kind==="quality"&&!matchesQuality(p,value))return false;
+    }
+    if(!q)return true;
+    return [p.model,p.name,p.purpose,p.category,p.package,p.location,p.note].some(v=>String(v??"").toLowerCase().includes(q));
+  });
+  list.sort((a,b)=>{
+    let va=a[sortKey],vb=b[sortKey];
+    if(sortKey==="qty"){va=va??Infinity;vb=vb??Infinity;return sortAsc?va-vb:vb-va;}
+    va=String(va??"");vb=String(vb??"");
+    return sortAsc?va.localeCompare(vb,"zh"):vb.localeCompare(va,"zh");
+  });
+  return list;
+}
+function render(){
+  const list=filtered();
+  const filterKey=JSON.stringify([queryStr,$("fCat").value,$("fLoc").value,lowOnly,insightFilter]);
+  if(filterKey!==lastFilterKey){currentPage=1;lastFilterKey=filterKey;}
+  const pageCount=Math.max(1,Math.ceil(list.length/PAGE_SIZE));
+  currentPage=Math.min(Math.max(1,currentPage),pageCount);
+  const pageList=list.slice((currentPage-1)*PAGE_SIZE,currentPage*PAGE_SIZE);
+  const total=parts.length, inStock=parts.reduce((s,p)=>s+(Number(p.qty)||0),0), lowN=parts.filter(isLow).length;
+  const locationN=new Set(parts.map(p=>p.location).filter(Boolean)).size;
+  const permanentN=parts.filter(isPermanent).length,incompleteN=parts.filter(needsWork).length;
+  ["statTotal","cmtTotal"].forEach(i=>$(i).textContent=total);
+  ["statQty","cmtQty"].forEach(i=>$(i).textContent=inStock);
+  ["statLow","cmtLow"].forEach(i=>$(i).textContent=lowN);
+  $("statLocations").textContent=locationN;$("statPermanent").textContent=permanentN;$("statIncomplete").textContent=incompleteN;
+  renderCategoryStats();renderLocationStats();renderStockStats();renderQualityStats();
+  $("sbCount").textContent=list.length;$("sbLow").textContent=lowN;
+  $("cmtHint").textContent = (queryStr.trim()||$("fCat").value||$("fLoc").value||lowOnly||insightFilter) ? `　· 匹配 ${list.length} 项` : "　· 键入以搜索";
+  $("btnLow").classList.toggle("active",lowOnly);$("btnLow").setAttribute("aria-pressed",String(lowOnly));
+  fillSelect("fCat",[...new Set(parts.map(p=>p.category).filter(Boolean))].sort());
+  fillSelect("fLoc",[...new Set(parts.map(p=>p.location).filter(Boolean))].sort());
+  const tb=$("tbody");tb.innerHTML="";
+  pageList.forEach(p=>{
+    const tr=document.createElement("tr");
+    if(isLow(p))tr.className="low-row";
+    tr.innerHTML=`
+      <td><div class="pn">${modelHTML(p)}${missingHTML(p)}</div><div class="sub" title="${esc(p.purpose||p.name||"")}">${hi(p.purpose||p.name)}${p.note?" · "+hi(p.note):""}</div></td>
+      <td data-col="category">${p.category?`<span class="chip">${hi(p.category)}</span>`:""}</td>
+      <td data-col="package"><span class="pkg">${hi(p.package)}</span></td>
+      <td data-col="location">${p.location?`<button class="loc loc-link" data-location="${esc(p.location)}">${hi(p.location)}</button>`:""}</td>
+      <td data-col="qty" class="tr-right">${qtyHTML(p)}${editMode&&!isPermanent(p)?`<span class="stock-actions"><button data-stock="in" data-id="${p.id}">入库</button><button data-stock="out" data-id="${p.id}">取用</button></span>`:""}</td>
+      <td class="rowact" ${editMode?"":"hidden"}><button data-edit="${p.id}">改</button> <button data-copy="${p.id}">复制</button> <button data-del="${p.id}">删</button></td>`;
+    tr.onclick=e=>{if(!e.target.closest("button,a"))openDetail(p);};
+    tb.appendChild(tr);
+  });
+  const cd=$("cards");cd.innerHTML="";
+  pageList.forEach(p=>{
+    const div=document.createElement("div");
+    div.className="card"+(isLow(p)?" low-row":"");
+    div.innerHTML=`
+      <div class="top"><div><div class="pn">${modelHTML(p)}${missingHTML(p)}</div><div class="sub" title="${esc(p.purpose||p.name||"")}">${hi(p.purpose||p.name)}</div></div>${qtyHTML(p)}</div>
+      <div class="meta">
+        ${p.category?`<span class="chip">${esc(p.category)}</span>`:""}
+        ${p.package?`<span class="pkg">${esc(p.package)}</span>`:""}
+        ${p.location?`<button class="loc loc-link" data-location="${esc(p.location)}">${esc(p.location)}</button>`:""}
+      </div>
+      ${p.note?`<div class="note">${esc(p.note)}</div>`:""}`;
+    if(editMode)div.innerHTML+=`<div class="actions">${!isPermanent(p)?`<button data-stock="in" data-id="${p.id}">入库</button> <button data-stock="out" data-id="${p.id}">取用</button> `:""}<button data-edit="${p.id}">编辑</button> <button data-copy="${p.id}">复制</button> <button data-del="${p.id}">删除</button></div>`;
+    cd.appendChild(div);
+    div.onclick=e=>{if(!e.target.closest("button,a"))openDetail(p);};
+  });
+  $("emptyMsg").hidden=list.length>0;
+  renderPagination(list.length,pageCount);
+  document.querySelectorAll(".act-col").forEach(x=>x.hidden=!editMode);
+  renderFilterChips();saveView();updateSuggestions();
+}
+function renderPagination(total,pageCount){
+  const box=$("pagination");box.innerHTML="";box.hidden=total<=PAGE_SIZE;if(box.hidden)return;
+  const add=(label,target,disabled=false,active=false)=>{const b=document.createElement("button");b.type="button";b.className="page-btn"+(active?" active":"");b.textContent=label;b.disabled=disabled;b.setAttribute("aria-label",label);if(active)b.setAttribute("aria-current","page");b.onclick=()=>{currentPage=target;render();document.querySelector(".panel").scrollIntoView({behavior:"smooth",block:"start"});};box.appendChild(b);};
+  add("上一页",currentPage-1,currentPage===1);
+  for(let i=1;i<=pageCount;i++)add(String(i),i,false,i===currentPage);
+  const info=document.createElement("span");info.className="page-info";info.textContent=`共 ${total} 项` ;box.appendChild(info);
+  add("下一页",currentPage+1,currentPage===pageCount);
+}
+function renderCategoryStats(){
+  const stats=new Map();parts.forEach(p=>{const name=p.category||"未分类",s=stats.get(name)||{count:0,qty:0,permanent:0};s.count++;s.qty+=Number(p.qty)||0;if(isPermanent(p))s.permanent++;stats.set(name,s);});
+  const rows=[...stats].sort((a,b)=>b[1].count-a[1].count||a[0].localeCompare(b[0],"zh")),max=Math.max(1,...rows.map(x=>x[1].count));
+  $("categoryStats").innerHTML=rows.map(([name,s])=>`<div class="category-row" data-category="${esc(name)}"><span class="category-name" title="${esc(name)}">${esc(name)}</span><span class="category-track"><span class="category-fill" style="width:${s.count/max*100}%"></span></span><span class="category-count">${s.count}</span><span class="category-number category-stock">${s.qty}</span><span class="category-number category-permanent">${s.permanent}</span></div>`).join("");
+  $("categoryStats").querySelectorAll("[data-category]").forEach(row=>row.onclick=()=>{$("fCat").value=row.dataset.category;insightFilter=null;syncCommandFromControls();render();});
+}
+function renderLocationStats(){
+  const rows=AREA_META.map(([code,name,capacity])=>{const items=parts.filter(p=>p.location===code||String(p.location||"").startsWith(code+"-")),used=capacity?new Set(items.map(p=>p.location).filter(Boolean)).size:(items.length?1:0),qty=items.reduce((n,p)=>n+(Number(p.qty)||0),0);return{code,name,capacity,items:items.length,used,qty};});
+  $("locationStats").innerHTML=rows.map(x=>{const pct=x.capacity?Math.min(100,x.used/x.capacity*100):(x.used?100:0),usage=x.capacity?`${x.used}/${x.capacity} 格 · ${Math.round(x.used/x.capacity*100)}%`:(x.used?"已占用 · 100%":"未使用 · 0%");return`<div class="location-row" data-area="${x.code}"><span class="location-title"><code>${x.code}</code>${esc(x.name)}<small>${x.items} 种 · ${x.qty} 件</small></span><span class="location-track"><span class="location-fill" style="width:${pct}%"></span></span><span class="location-metrics">${usage}</span></div>`;}).join("");
+  $("locationStats").querySelectorAll("[data-area]").forEach(row=>row.onclick=()=>applyInsightFilter("area",row.dataset.area,`${row.dataset.area} 区域`));
+}
+function statButton(count,title,sub,kind,value,label){return`<button type="button" class="status-item" data-kind="${kind}" data-value="${value}" data-label="${label}"><span class="status-number">${count}</span><span class="status-copy"><b>${title}</b><small>${sub}</small></span></button>`;}
+function renderStockStats(){
+  const low=parts.filter(isLow).length,permanent=parts.filter(isPermanent).length,known=parts.length-low-permanent;
+  $("stockStats").innerHTML=statButton(known,"库存正常","有数量且未触发预警","stock","known","库存正常")+statButton(low,"低库存","达到或低于预警值","stock","low","低库存")+statButton(permanent,"常备项目","不记录具体数量","stock","permanent","常备项目");bindStatButtons($("stockStats"));
+}
+function renderQualityStats(){
+  const all=parts.filter(needsWork).length,location=parts.filter(p=>!String(p.location||"").trim()).length,pkg=parts.filter(p=>!String(p.package||"").trim()||p.package==="规格待确认").length,threshold=parts.filter(p=>!Number(p.low)).length;
+  $("qualityStats").innerHTML=statButton(all,"待完善资料","补充名称、用途、分类、位置或规格不完整","quality","all","待完善资料")+statButton(location,"缺少位置","尚未填写存放位置","quality","location","缺少位置")+statButton(pkg,"规格待确认","需要查看实物后补充","quality","package","规格待确认")+statButton(threshold,"未启用预警","低库存阈值为 0","quality","threshold","未启用预警");bindStatButtons($("qualityStats"));
+}
+function bindStatButtons(box){box.querySelectorAll("[data-kind]").forEach(b=>b.onclick=()=>{if(editMode&&b.dataset.kind==="quality")startQualityReview(b.dataset.value);else applyInsightFilter(b.dataset.kind,b.dataset.value,b.dataset.label);});}
+function applyInsightFilter(kind,value,label){insightFilter={kind,value,label};lowOnly=false;syncCommandFromControls();render();}
+function startQualityReview(value){reviewIds=parts.filter(p=>matchesQuality(p,value)).map(p=>String(p.id));reviewIndex=0;reviewKind=value;if(!reviewIds.length){toast("这一项已经全部完善");return;}openPartDlg(reviewIds[0],true);}
+function updateReviewNav(){const active=reviewIndex>=0&&reviewIds.length>0;$("reviewNav").hidden=!active;if(!active)return;$("reviewProgress").textContent=`${reviewIndex+1} / ${reviewIds.length}`;$("reviewPrev").disabled=reviewIndex<=0;$("reviewNext").disabled=reviewIndex>=reviewIds.length-1;}
+function moveReview(step){const next=reviewIndex+step;if(next<0||next>=reviewIds.length)return;reviewIndex=next;$("dlgPart").close();setTimeout(()=>openPartDlg(reviewIds[reviewIndex],true),0);}
+function fillSelect(id,arr){const sel=$(id),cur=sel.value;sel.length=1;arr.forEach(v=>sel.add(new Option(v,v)));sel.value=cur;}
+function locationByCode(code){return LOCATIONS.find(x=>x.code===code);}
+function selectLocation(loc){$("pLoc").value=loc.code;$("pLocSearch").value=loc.code;$("pLocDesc").textContent=loc.label;$("pLocResults").classList.remove("show");}
+function renderLocationResults(query=""){
+  const terms=query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const box=$("pLocResults");box.innerHTML="";if(!terms.length){box.classList.remove("show");return;}
+  const list=LOCATIONS.filter(x=>terms.every(t=>(x.code+" "+x.label).toLowerCase().includes(t))).slice(0,5);
+  list.forEach(loc=>{const b=document.createElement("button");b.type="button";b.className="loc-result";b.textContent=loc.code;b.onmousedown=e=>{e.preventDefault();selectLocation(loc);};box.appendChild(b);});box.classList.toggle("show",list.length>0&&document.activeElement===$("pLocSearch"));
+}
+function syncLocationEditor(code){const loc=locationByCode(code);$("pLoc").value=code||"";$("pLocSearch").value=code||"";$("pLocDesc").textContent=loc?loc.label:"必填：输入后选择位置代码";}
+
+function renderFilterChips(){
+  const items=[];
+  if(queryStr.trim())items.push([`搜索: ${queryStr}`,()=>onQuery("")]);
+  if($("fCat").value)items.push([`分类: ${$("fCat").value}`,()=>{$("fCat").value="";syncCommandFromControls();render();}]);
+  if($("fLoc").value)items.push([`位置: ${$("fLoc").value}`,()=>{$("fLoc").value="";syncCommandFromControls();render();}]);
+  if(lowOnly)items.push(["低库存",()=>{lowOnly=false;syncCommandFromControls();render();}]);
+  if(insightFilter)items.push([insightFilter.label,()=>{insightFilter=null;render();}]);
+  const box=$("activeFilters");box.innerHTML="";
+  items.forEach(([label,fn])=>{const b=document.createElement("button");b.className="filter-chip";b.textContent=label+" ×";b.onclick=fn;box.appendChild(b);});
+  if(items.length>1){const b=document.createElement("button");b.className="clear-filters";b.textContent="清除全部";b.onclick=clearFilters;box.appendChild(b);}
+}
+function clearFilters(){queryStr="";$("q").value="";$("fCat").value="";$("fLoc").value="";lowOnly=false;insightFilter=null;syncCommandFromControls();render();}
+function saveView(){try{localStorage.setItem("parts_view",JSON.stringify({sortKey,sortAsc,queryStr,cat:$("fCat").value,loc:$("fLoc").value,lowOnly}));}catch(e){}}
+function loadView(){try{const v=JSON.parse(localStorage.getItem("parts_view")||"null");if(!v)return;sortKey=v.sortKey||sortKey;sortAsc=v.sortAsc??sortAsc;queryStr=v.queryStr||"";lowOnly=!!v.lowOnly;$("q").value=queryStr;setTimeout(()=>{$("fCat").value=v.cat||"";$("fLoc").value=v.loc||"";syncCommandFromControls();render();},0);}catch(e){}}
+function openDetail(p){
+  $("drawerTitle").textContent=p.model;$("drawerName").textContent=p.purpose||p.name||"";
+  $("detailGrid").innerHTML=`${p.name?`<dt>补充名称</dt><dd>${esc(p.name)}</dd>`:""}<dt>分类</dt><dd>${esc(p.category||"—")}</dd><dt>封装</dt><dd>${esc(p.package||"—")}</dd><dt>位置</dt><dd>${p.location?`<button class="loc loc-link" data-location="${esc(p.location)}">${esc(p.location)}</button>`:"—"}</dd><dt>数量</dt><dd>${p.qty??"常备"}</dd><dt>预警值</dt><dd>${p.low??"—"}</dd><dt>入库时间</dt><dd>${fmtTime(p.createdAt)}</dd><dt>最近修改</dt><dd>${fmtTime(p.updatedAt)}</dd><dt>库存记录</dt><dd>${(p.movements||[]).length} 条</dd>${p.link?`<dt>链接</dt><dd><a href="${esc(p.link)}" target="_blank" rel="noopener">打开资料</a></dd>`:""}`;
+  $("drawerNote").textContent=p.note||"暂无备注";$("drawerMask").classList.add("open");
+}
+function updateSuggestions(){
+  const el=$("cmdInput"),box=$("autocomplete"),v=el.value,items=[];
+  const cm=v.match(/--category\s+"([^"]*)$/),lm=v.match(/--location\s+"([^"]*)$/);
+  if(cm){const p=cm[1].toLowerCase();[...new Set(parts.map(x=>x.category).filter(Boolean))].filter(x=>x.toLowerCase().includes(p)).forEach(x=>items.push([x,()=>completeQuoted("category",x)]));}
+  else if(lm){const p=lm[1].toLowerCase();[...new Set(parts.map(x=>x.location).filter(Boolean))].filter(x=>x.toLowerCase().includes(p)).forEach(x=>items.push([x,()=>completeQuoted("location",x)]));}
+  else if(/--\s*$/.test(v)){[["--category",()=>appendOption("category")],["--location",()=>appendOption("location")],["--low-stock",()=>{lowOnly=true;syncCommandFromControls();render();}]].forEach(x=>items.push(x));}
+  box.innerHTML="";items.slice(0,8).forEach(([label,fn])=>{const b=document.createElement("button");b.textContent=label;b.onmousedown=e=>{e.preventDefault();fn();};box.appendChild(b);});box.classList.toggle("show",items.length>0);
+}
+function appendOption(name){const el=$("cmdInput");el.value=el.value.replace(/--\s*$/,`--${name} "`);el.focus();el.setSelectionRange(el.value.length,el.value.length);syncCmdCursor();updateSuggestions();}
+function completeQuoted(name,value){const el=$("cmdInput");el.value=el.value.replace(new RegExp(`--${name}\\s+"[^"]*$`),`--${name} ${dq(value)}`);onCommand(el.value);el.focus();}
+
+document.querySelectorAll("thead th[data-k]").forEach(th=>{
+  th.onclick=()=>{const k=th.dataset.k;if(sortKey===k)sortAsc=!sortAsc;else{sortKey=k;sortAsc=true;}
+  document.querySelectorAll("thead .arrow").forEach(a=>a.textContent="");
+  th.querySelector(".arrow").textContent=sortAsc?"▲":"▼";render();};
+});
+$("q").oninput=e=>onQuery(e.target.value);
+$("cmdInput").oninput=e=>onCommand(e.target.value);
+$("cmdInput").addEventListener("keyup",syncCmdCursor);
+$("cmdInput").addEventListener("click",syncCmdCursor);
+$("cmdInput").addEventListener("select",syncCmdCursor);
+$("cmdInput").addEventListener("focus",syncCmdCursor);
+document.addEventListener("selectionchange",()=>{if(document.activeElement===$("cmdInput"))syncCmdCursor();});
+$("cmdLine").onclick=e=>{if(e.target!==$("cmdInput")){$("cmdInput").focus();$("cmdInput").setSelectionRange($("cmdInput").value.length,$("cmdInput").value.length);}syncCmdCursor();};
+$("fCat").onchange=()=>{syncCommandFromControls();render();};
+$("fLoc").onchange=()=>{syncCommandFromControls();render();};
+$("btnLow").onclick=()=>{lowOnly=!lowOnly;syncCommandFromControls();render();};
+$("drawerClose").onclick=()=>$("drawerMask").classList.remove("open");
+$("drawerMask").onclick=e=>{if(e.target===$("drawerMask"))$("drawerMask").classList.remove("open");};
+$("styleSel").onchange=()=>setStyle($("styleSel").value);
+$("btnJson").onclick=()=>{$("dlgJson").showModal();loadJsonViewer();};
+$("jsonRefresh").onclick=loadJsonViewer;
+$("jsonClose").onclick=()=>$("dlgJson").close();
+
+function openLocation(code){const items=parts.filter(p=>p.location===code),loc=locationByCode(code);$("locationTitle").textContent=code;$("locationSubtitle").textContent=loc?.label||"存放位置反向查询";$("locationWarning").innerHTML=items.length>=5?`<div class="location-warning">该位置已有 ${items.length} 种物品，建议确认是否过于拥挤。</div>`:"";$("locationItems").innerHTML=items.length?items.map(p=>`<div class="location-item"><b>${esc(p.model)}</b><span>${esc(p.name||"")} · ${p.qty??"常备"}</span></div>`).join(""):`<div class="empty">该位置暂无物品</div>`;$("dlgLocation").showModal();}
+$("locationClose").onclick=()=>$("dlgLocation").close();
+
+function openStock(id,direction){const p=parts.find(x=>String(x.id)===String(id));if(!p)return;if(isPermanent(p)){toast("常备项目需要先编辑为明确数量",true);return;}stockPartId=p.id;stockDirection=direction==="out"?-1:1;$("stockTitle").textContent=stockDirection>0?`入库 · ${p.model}`:`取用 · ${p.model}`;$("stockCurrent").textContent=`当前库存：${p.qty}`;$("stockAmountLabel").textContent=stockDirection>0?"入库数量 *":"取用数量 *";$("stockAmount").value=1;$("stockNote").value="";const list=(p.movements||[]).slice().reverse().slice(0,8);$("movementList").innerHTML=list.length?list.map(m=>`<div class="movement-item"><b>${Number(m.delta)>0?"+":""}${m.delta} → ${m.balance}</b><span>${fmtTime(m.at)}${m.note?` · ${esc(m.note)}`:""}</span></div>`).join(""):`<span class="time-note">暂无库存变动记录</span>`;$("dlgStock").showModal();$("stockAmount").focus();}
+$("stockCancel").onclick=()=>$("dlgStock").close();
+$("stockSave").onclick=()=>{const p=parts.find(x=>String(x.id)===String(stockPartId)),amount=Number($("stockAmount").value);if(!p||!Number.isInteger(amount)||amount<=0){toast("请输入大于 0 的整数",true);return;}const next=Number(p.qty)+stockDirection*amount;if(next<0){toast(`库存不足，当前只有 ${p.qty} 件`,true);return;}const now=new Date().toISOString(),delta=stockDirection*amount;p.qty=next;p.updatedAt=now;p.movements=[...(p.movements||[]),{at:now,delta,balance:next,note:$("stockNote").value.trim()}];markDirty();render();$("dlgStock").close();toast(`${stockDirection>0?"入库":"取用"}已记录`);};
+
+function copyPart(id){const source=parts.find(x=>String(x.id)===String(id));if(!source)return;const now=new Date().toISOString(),copy={...JSON.parse(JSON.stringify(source)),id:Date.now(),model:source.model+"（副本）",createdAt:now,updatedAt:now,movements:[]};parts.unshift(copy);markDirty();render();openPartDlg(copy.id);toast("已复制，请修改后保存");}
+
+$("btnExport").onclick=()=>{const blob=new Blob([JSON.stringify(parts,null,2)+"\n"],{type:"application/json"}),a=document.createElement("a"),d=new Date(),pad=n=>String(n).padStart(2,"0");a.href=URL.createObjectURL(blob);a.download=`parts-backup-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);};
+$("btnImport").onclick=()=>{$("backupInput").value="";$("backupInput").click();};
+$("backupInput").onchange=async e=>{try{const parsed=JSON.parse(await e.target.files[0].text());if(!Array.isArray(parsed)||parsed.some(p=>!p||p.id===undefined))throw new Error("文件不是有效的器件数组");pendingImport=parsed.map(normalizePart);const oldMap=new Map(parts.map(p=>[String(p.id),p])),newMap=new Map(pendingImport.map(p=>[String(p.id),p]));const added=[...newMap].filter(([id])=>!oldMap.has(id)).length,removed=[...oldMap].filter(([id])=>!newMap.has(id)).length,changed=[...newMap].filter(([id,p])=>oldMap.has(id)&&!sameRecord(p,oldMap.get(id))).length;$("importAdd").textContent=added;$("importChange").textContent=changed;$("importRemove").textContent=removed;$("importHint").textContent=`备份共 ${pendingImport.length} 条；导入后需点击“提交到 GitHub”才会生效。`;$("dlgImport").showModal();}catch(err){toast("导入失败："+err.message,true);pendingImport=null;}};
+$("importCancel").onclick=()=>{pendingImport=null;$("dlgImport").close();};
+$("importConfirm").onclick=()=>{if(!pendingImport)return;parts=pendingImport;pendingImport=null;markDirty();render();$("dlgImport").close();toast("备份已载入预览数据，记得提交");};
+
+function markDirty(){pending++;$("pendingN").textContent=pending;$("btnCommit").disabled=false;}
+$("btnEdit").onclick=()=>{if(editMode)return;if(token())enterEdit();else $("dlgToken").showModal();};
+$("tCancel").onclick=()=>$("dlgToken").close();
+$("tSave").onclick=()=>{const t=$("tokenInput").value.trim();if(!t)return;localStorage.setItem("parts_gh_token",t);$("dlgToken").close();enterEdit();};
+async function enterEdit(){try{await loadFromGitHub();}catch(e){localStorage.removeItem("parts_gh_token");toast("Token 无效或仓库配置错误："+e.message,true);return;}editMode=true;$("editbar").classList.add("on");$("btnAdd").hidden=false;$("btnEdit").hidden=true;render();toast("已进入编辑模式");}
+$("btnLogout").onclick=()=>{if(pending&& !confirm("有未提交的改动，确定放弃？"))return;editMode=false;pending=0;fileSha=null;localStorage.removeItem("parts_gh_token");$("editbar").classList.remove("on");$("btnAdd").hidden=true;$("btnEdit").hidden=false;$("pendingN").textContent="0";$("btnCommit").disabled=true;load();};
+$("btnAdd").onclick=()=>openPartDlg(null);$("pCancel").onclick=()=>{reviewIds=[];reviewIndex=-1;reviewKind="";$("dlgPart").close();};
+$("reviewPrev").onclick=()=>moveReview(-1);$("reviewNext").onclick=()=>moveReview(1);
+document.body.addEventListener("click",e=>{const ed=e.target.closest("[data-edit]"),cp=e.target.closest("[data-copy]"),dl=e.target.closest("[data-del]"),st=e.target.closest("[data-stock]"),loc=e.target.closest("[data-location]");if(ed){e.stopPropagation();openPartDlg(ed.dataset.edit);}else if(cp){e.stopPropagation();copyPart(cp.dataset.copy);}else if(dl){e.stopPropagation();const p=parts.find(x=>String(x.id)===dl.dataset.del);if(p&&confirm(`删除 ${p.model}？`)){parts=parts.filter(x=>x!==p);markDirty();render();}}else if(st){e.stopPropagation();openStock(st.dataset.id,st.dataset.stock);}else if(loc){e.stopPropagation();openLocation(loc.dataset.location);}});
+function syncLifeCategory(value=""){const isLife=$("pCat").value==="生活用品";$("pLifeCat").hidden=!isLife;if(isLife&&value)$("pLifeCat").value=value;}
+$("pCat").onchange=()=>syncLifeCategory();
+function openPartDlg(id,keepReview=false){if(!keepReview){reviewIds=[];reviewIndex=-1;reviewKind="";}editingId=id;const p=id?parts.find(x=>String(x.id)===String(id)):null,cat=String(p?.category||""),life=cat.startsWith("生活用品 / ")?cat.slice(7):"";$("dlgPartTitle").textContent=p?"编辑元器件":"新增元器件";[["pModel","model"],["pAlias","name"],["pName","purpose"],["pPkg","package"],["pQty","qty"],["pLow","low"],["pLink","link"],["pNote","note"]].forEach(([el,k])=>$(el).value=p?.[k]??"");$("pCat").value=life?"生活用品":cat||"芯片 / IC";syncLifeCategory(life);syncLocationEditor(p?.location??"");updateReviewNav();$("dlgPart").showModal();$("pModel").focus();}
+$("pSave").onclick=()=>{const model=$("pModel").value.trim(),name=$("pAlias").value.trim(),purpose=$("pName").value.trim(),pkg=$("pPkg").value.trim(),location=$("pLoc").value.trim(),baseCategory=$("pCat").value.trim(),category=baseCategory==="生活用品"?`生活用品 / ${$("pLifeCat").value}`:baseCategory;if(!model){toast("名称 / 型号不能为空",true);$("pModel").focus();return;}if(!name){toast("补充名称不能为空",true);$("pAlias").focus();return;}if(!location){toast("存放位置为必填项，请从提示中选择位置代码",true);$("pLocSearch").focus();return;}if(reviewKind==="threshold"&&!Number($("pLow").value)){toast("请填写大于 0 的低库存阈值",true);$("pLow").focus();return;}const existing=editingId?parts.find(x=>String(x.id)===String(editingId)):null,now=new Date().toISOString(),obj={id:editingId??Date.now(),model,name,purpose,category,package:pkg,location,qty:$("pQty").value===""?null:Number($("pQty").value),low:$("pLow").value===""?null:Number($("pLow").value),link:$("pLink").value.trim(),note:$("pNote").value.trim(),createdAt:existing?.createdAt||now,updatedAt:now,movements:existing?.movements||[]};if(editingId){parts[parts.findIndex(x=>String(x.id)===String(editingId))]=obj;}else parts.unshift(obj);markDirty();render();if(reviewIndex>=0&&reviewIndex<reviewIds.length-1){reviewIndex++;$("dlgPart").close();setTimeout(()=>openPartDlg(reviewIds[reviewIndex],true),0);}else{reviewIds=[];reviewIndex=-1;reviewKind="";$("dlgPart").close();toast("已保存；记得提交到 GitHub");}};
+$("pLocSearch").addEventListener("input",e=>{$("pLoc").value="";$("pLocDesc").textContent="必填：输入后选择位置代码";renderLocationResults(e.target.value);});
+$("pLocSearch").addEventListener("focus",()=>$("pLocResults").classList.remove("show"));
+$("pLocSearch").addEventListener("blur",()=>setTimeout(()=>$("pLocResults").classList.remove("show"),120));
+$("btnCommit").onclick=async()=>{const b=$("btnCommit");b.disabled=true;b.textContent="提交中…";try{const url=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,body={message:`parts: 更新元器件库存（${pending} 项改动）`,content:encodeB64(JSON.stringify(parts,null,2)+"\n"),branch:GH.branch};if(fileSha)body.sha=fileSha;const r=await fetch(url,{method:"PUT",headers:{...ghHeaders(),"Content-Type":"application/json"},body:JSON.stringify(body)});if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.message||r.status);}const j=await r.json();fileSha=j.content.sha;pending=0;$("pendingN").textContent="0";toast("已提交，等待自动部署");}catch(e){toast("提交失败："+e.message,true);b.disabled=false;}b.textContent="提交到 GitHub";};
+let toastTimer;function toast(msg,err){const t=$("toast");t.textContent=msg;t.className=err?"show err":"show";clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.className="",3200);}
+
+setStyle((()=>{try{return localStorage.getItem("parts_style")}catch(e){return null}})()||"terminal");
+syncCommandFromControls();loadView();load();
+</script>
+</body>
+</html>
