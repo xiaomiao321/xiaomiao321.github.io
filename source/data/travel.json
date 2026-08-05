@@ -1,5 +1,5 @@
 {
-  "active": "trip-1785859403594",
+  "active": "trip-home",
   "bags": [
     {
       "id": "case",
@@ -45,24 +45,6 @@
       "to": "天津",
       "date": "日期待定",
       "items": [
-        {
-          "id": 1,
-          "name": "换洗衣物",
-          "qty": 3,
-          "bag": "case",
-          "zone": "下层",
-          "note": "按天数调整",
-          "done": false
-        },
-        {
-          "id": 2,
-          "name": "洗漱用品",
-          "qty": 1,
-          "bag": "case",
-          "zone": "网袋",
-          "note": "液体注意密封",
-          "done": false
-        },
         {
           "id": 3,
           "name": "笔记本电脑",
