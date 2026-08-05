@@ -9,9 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face{font-family:'Fusion Pixel';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/fusion-pixel/fusion-pixel-12px-zh-hans.woff2') format('woff2')}
   :root{
-    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,'Cascadia Mono',Menlo,Consolas,monospace;
+    --sans:'Fusion Pixel','Minecraft Ten','Minecraft','PingFang SC','Microsoft YaHei',sans-serif;
+    --mono:'Fusion Pixel','Minecraft Ten','Minecraft',ui-monospace,'Cascadia Mono',Consolas,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
@@ -304,6 +305,17 @@
   html[data-style="modern"] .form-section{border:0;border-radius:0;background:#fff;padding:18px 0}
   html[data-style="modern"] .form-section+.form-section{border-top:1px solid var(--line)}
   html[data-style="modern"] .field input,html[data-style="modern"] .field textarea,html[data-style="modern"] .field select{border-radius:5px;background:#fff}
+
+  /* 新增/编辑器件：跟随主工作台的扁平视觉，不使用悬浮光晕。 */
+  #dlgPart{box-shadow:none!important;backdrop-filter:none}
+  #dlgPart::backdrop{backdrop-filter:none}
+  #dlgPart .dlg-head-ico,#dlgPart .form-section,#dlgPart .field input:focus,#dlgPart .field textarea:focus,#dlgPart .field select:focus,#dlgPart .loc-results,#dlgPart .btn:hover{box-shadow:none!important}
+  html[data-style="terminal"] #dlgPart{border:1px solid var(--line);border-radius:0;background:var(--win)}
+  html[data-style="terminal"] #dlgPart .dlg-head,html[data-style="terminal"] #dlgPart .dlg-body,html[data-style="terminal"] #dlgPart .dlg-foot{background:var(--win)}
+  html[data-style="terminal"] #dlgPart .form-section{border-color:var(--line);border-radius:0;background:transparent}
+  html[data-style="minimal"] #dlgPart{box-shadow:none;border-radius:0}
+  html[data-style="minimal"] #dlgPart .form-section{box-shadow:none}
+  html[data-style="modern"] #dlgPart{border-radius:6px;box-shadow:none}
   @media(max-width:760px){html[data-style="modern"] .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}html[data-style="modern"] .stat:nth-child(n){grid-column:span 1}html[data-style="modern"] .stat:nth-child(even){border-right:0}}
   @keyframes blink{50%{opacity:0}}
 </style>
