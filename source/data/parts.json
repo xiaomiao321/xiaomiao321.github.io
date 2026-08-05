@@ -1,5 +1,37 @@
 [
   {
+    "id": 1785920696536,
+    "model": "U盘",
+    "name": "64G",
+    "purpose": "",
+    "category": "生活用品 / 数码配件",
+    "package": "",
+    "location": "PD-S18",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-08-05T09:04:56.536Z",
+    "updatedAt": "2026-08-05T09:04:56.536Z",
+    "movements": []
+  },
+  {
+    "id": 1785920679415,
+    "model": "U盘",
+    "name": "32G",
+    "purpose": "",
+    "category": "生活用品 / 数码配件",
+    "package": "",
+    "location": "PD-S18",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-08-05T09:04:39.415Z",
+    "updatedAt": "2026-08-05T09:04:39.415Z",
+    "movements": []
+  },
+  {
     "id": 1785903735341,
     "model": "洞洞板",
     "name": "单双面镀锡的都有",
