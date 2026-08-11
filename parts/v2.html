@@ -9,9 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face{font-family:'Fusion Pixel';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/fusion-pixel/fusion-pixel-12px-zh-hans.woff2') format('woff2')}
   :root{
-    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,'Cascadia Mono',Menlo,Consolas,monospace;
+    --sans:'Fusion Pixel','Minecraft Ten','Minecraft','PingFang SC','Microsoft YaHei',sans-serif;
+    --mono:'Fusion Pixel','Minecraft Ten','Minecraft',ui-monospace,'Cascadia Mono',Consolas,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
@@ -304,6 +305,17 @@
   html[data-style="modern"] .form-section{border:0;border-radius:0;background:#fff;padding:18px 0}
   html[data-style="modern"] .form-section+.form-section{border-top:1px solid var(--line)}
   html[data-style="modern"] .field input,html[data-style="modern"] .field textarea,html[data-style="modern"] .field select{border-radius:5px;background:#fff}
+
+  /* 新增/编辑器件：跟随主工作台的扁平视觉，不使用悬浮光晕。 */
+  #dlgPart{box-shadow:none!important;backdrop-filter:none}
+  #dlgPart::backdrop{backdrop-filter:none}
+  #dlgPart .dlg-head-ico,#dlgPart .form-section,#dlgPart .field input:focus,#dlgPart .field textarea:focus,#dlgPart .field select:focus,#dlgPart .loc-results,#dlgPart .btn:hover{box-shadow:none!important}
+  html[data-style="terminal"] #dlgPart{border:1px solid var(--line);border-radius:0;background:var(--win)}
+  html[data-style="terminal"] #dlgPart .dlg-head,html[data-style="terminal"] #dlgPart .dlg-body,html[data-style="terminal"] #dlgPart .dlg-foot{background:var(--win)}
+  html[data-style="terminal"] #dlgPart .form-section{border-color:var(--line);border-radius:0;background:transparent}
+  html[data-style="minimal"] #dlgPart{box-shadow:none;border-radius:0}
+  html[data-style="minimal"] #dlgPart .form-section{box-shadow:none}
+  html[data-style="modern"] #dlgPart{border-radius:6px;box-shadow:none}
   @media(max-width:760px){html[data-style="modern"] .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}html[data-style="modern"] .stat:nth-child(n){grid-column:span 1}html[data-style="modern"] .stat:nth-child(even){border-right:0}}
   @keyframes blink{50%{opacity:0}}
 </style>
@@ -387,22 +399,22 @@
     </div>
     <div class="editbar" id="editbar"><span>编辑模式：改动暂存在本地</span><span>待提交 <b id="pendingN">0</b> 项</span><span class="spacer"></span><button class="btn" id="btnExport">导出备份</button><button class="btn" id="btnImport">导入备份</button><input class="backup-input" id="backupInput" type="file" accept="application/json,.json"><button class="btn" id="btnLogout">退出编辑</button><button class="btn primary" id="btnCommit" disabled>提交到 GitHub</button></div>
     <details class="location-guide"><summary>位置代码与编号范围</summary><div class="guide-body"><div class="guide-intro">编号统一按从上到下、从左到右排列。带挡板的抽屉中，A 表示靠里，B 表示靠外。</div><div class="guide-table-wrap"><table class="guide-table"><thead><tr><th>代码</th><th>位置名称</th><th>编号范围</th></tr></thead><tbody>
-      <tr><td><code>GL</code></td><td>绿林收纳柜</td><td class="guide-range">GL-S01–GL-S39；每个抽屉分两格：A 靠里，B 靠外</td></tr>
-      <tr><td><code>PD</code></td><td>3D 打印抽屉</td><td class="guide-range">PD-S01–PD-S20</td></tr>
-      <tr><td><code>PS</code></td><td>3D 打印小柜子</td><td class="guide-range">PS-C1–C2；每柜 D01–D04 共 4 个抽屉；每个抽屉 S1–S5 共 5 格</td></tr>
-      <tr><td><code>SH</code></td><td>桌面上层书架</td><td class="guide-range">仅使用 SH，区域内部不再细分</td></tr>
-      <tr><td><code>RU</code></td><td>桌面右侧上部</td><td class="guide-range">仅使用 RU，区域内部不再细分</td></tr>
-      <tr><td><code>RL</code></td><td>桌面右侧下部</td><td class="guide-range">仅使用 RL，区域内部不再细分</td></tr>
-      <tr><td><code>CD</code></td><td>桌面正下方抽屉</td><td class="guide-range">仅使用 CD，区域内部不再细分</td></tr>
-      <tr><td><code>LD</code></td><td>桌面左下抽屉</td><td class="guide-range">仅使用 LD，区域内部不再细分</td></tr>
-      <tr><td><code>LO</code></td><td>桌面左下开放式柜子</td><td class="guide-range">仅使用 LO，区域内部不再细分</td></tr>
-      <tr><td><code>RC</code></td><td>桌面右下闭合式柜子</td><td class="guide-range">仅使用 RC，区域内部不再细分</td></tr>
-      <tr><td><code>WD1</code></td><td>衣柜下方抽屉 1</td><td class="guide-range">仅使用 WD1，区域内部不再细分</td></tr>
-      <tr><td><code>WD2</code></td><td>衣柜下方抽屉 2</td><td class="guide-range">仅使用 WD2，区域内部不再细分</td></tr>
-      <tr><td><code>WG</code></td><td>衣柜左侧与墙壁之间的开放区域</td><td class="guide-range">仅使用 WG，区域内部不再细分</td></tr>
-      <tr><td><code>GT</code></td><td>绿林收纳柜上方</td><td class="guide-range">仅使用 GT，区域内部不再细分</td></tr>
-      <tr><td><code>PT</code></td><td>3D 打印柜上方</td><td class="guide-range">仅使用 PT，区域内部不再细分</td></tr>
-    </tbody></table></div><div class="guide-examples">示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　PD-S03 = 3D 打印柜第 3 个抽屉　｜　PS-C2-D03-S4 = 3D 打印小柜子第 2 柜、第 3 抽屉、第 4 格</div></div></details>
+      <tr><td><code>GL</code>（Green Lulin）</td><td>绿林收纳柜</td><td class="guide-range">GL-S01–GL-S39；每个抽屉分两格：A 靠里，B 靠外</td></tr>
+      <tr><td><code>PD</code>（Printer Drawer）</td><td>3D 打印抽屉</td><td class="guide-range">PD-S01–PD-S20</td></tr>
+      <tr><td><code>PS</code>（Printer Storage）</td><td>3D 打印小柜子</td><td class="guide-range">PS-C1–C2；每柜 D01–D04 共 4 个抽屉；每个抽屉 S1–S5 共 5 格</td></tr>
+      <tr><td><code>SH</code>（Shelf）</td><td>桌面上层书架</td><td class="guide-range">仅使用 SH，区域内部不再细分</td></tr>
+      <tr><td><code>RU</code>（Right Upper）</td><td>桌面右侧上部</td><td class="guide-range">仅使用 RU，区域内部不再细分</td></tr>
+      <tr><td><code>RL</code>（Right Lower）</td><td>桌面右侧下部</td><td class="guide-range">仅使用 RL，区域内部不再细分</td></tr>
+      <tr><td><code>CD</code>（Center Drawer）</td><td>桌面正下方抽屉</td><td class="guide-range">仅使用 CD，区域内部不再细分</td></tr>
+      <tr><td><code>LD</code>（Left Drawer）</td><td>桌面左下抽屉</td><td class="guide-range">仅使用 LD，区域内部不再细分</td></tr>
+      <tr><td><code>LO</code>（Left Open）</td><td>桌面左下开放式柜子</td><td class="guide-range">仅使用 LO，区域内部不再细分</td></tr>
+      <tr><td><code>RC</code>（Right Closed）</td><td>桌面右下闭合式柜子</td><td class="guide-range">仅使用 RC，区域内部不再细分</td></tr>
+      <tr><td><code>WD1</code>（Wardrobe Drawer 1）</td><td>衣柜下方抽屉 1</td><td class="guide-range">仅使用 WD1，区域内部不再细分</td></tr>
+      <tr><td><code>WD2</code>（Wardrobe Drawer 2）</td><td>衣柜下方抽屉 2</td><td class="guide-range">仅使用 WD2，区域内部不再细分</td></tr>
+      <tr><td><code>WG</code>（Wardrobe Gap）</td><td>衣柜左侧与墙壁之间的开放区域</td><td class="guide-range">仅使用 WG，区域内部不再细分</td></tr>
+      <tr><td><code>GT</code>（Green-cabinet Top）</td><td>绿林收纳柜上方</td><td class="guide-range">仅使用 GT，区域内部不再细分</td></tr>
+      <tr><td><code>PT</code>（Printer-cabinet Top）</td><td>3D 打印柜上方</td><td class="guide-range">仅使用 PT，区域内部不再细分</td></tr>
+    </tbody></table></div><div class="guide-examples">层级字段：C（Cabinet，柜）｜D（Drawer，抽屉）｜S（Slot，格位）｜A 靠里｜B 靠外<br>示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　PD-S03 = 3D 打印柜第 3 个抽屉　｜　PS-C2-D03-S4 = 3D 打印小柜子第 2 柜、第 3 抽屉、第 4 格</div></div></details>
   </div>
 </div>
 
