@@ -414,7 +414,14 @@
       <tr><td><code>WG</code>（Wardrobe Gap）</td><td>衣柜左侧与墙壁之间的开放区域</td><td class="guide-range">仅使用 WG，区域内部不再细分</td></tr>
       <tr><td><code>GT</code>（Green-cabinet Top）</td><td>绿林收纳柜上方</td><td class="guide-range">仅使用 GT，区域内部不再细分</td></tr>
       <tr><td><code>PT</code>（Printer-cabinet Top）</td><td>3D 打印柜上方</td><td class="guide-range">仅使用 PT，区域内部不再细分</td></tr>
-    </tbody></table></div><div class="guide-examples">层级字段：C（Cabinet，柜）｜D（Drawer，抽屉）｜S（Slot，格位）｜A 靠里｜B 靠外<br>示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　PD-S03 = 3D 打印柜第 3 个抽屉　｜　PS-C2-D03-S4 = 3D 打印小柜子第 2 柜、第 3 抽屉、第 4 格</div></div></details>
+      <tr><td><code>HDT</code>（Home Desk Top）</td><td>家里我那屋的桌面</td><td class="guide-range">仅使用 HDT，区域内部不再细分</td></tr>
+      <tr><td><code>HCD</code>（Home Center Drawer）</td><td>家里我那屋中间抽屉</td><td class="guide-range">仅使用 HCD，区域内部不再细分</td></tr>
+      <tr><td><code>HLD</code>（Home Left Drawer）</td><td>家里我那屋左边抽屉</td><td class="guide-range">仅使用 HLD，区域内部不再细分</td></tr>
+      <tr><td><code>HRD</code>（Home Right Drawer）</td><td>家里我那屋右边抽屉</td><td class="guide-range">仅使用 HRD，区域内部不再细分</td></tr>
+      <tr><td><code>HLC</code>（Home Left Cabinet）</td><td>家里我那屋左下柜子</td><td class="guide-range">仅使用 HLC，区域内部不再细分</td></tr>
+      <tr><td><code>HRC</code>（Home Right Cabinet）</td><td>家里我那屋右下柜子</td><td class="guide-range">仅使用 HRC，区域内部不再细分</td></tr>
+      <tr><td><code>HBS</code>（Home BookShelf）</td><td>家里我那屋书架</td><td class="guide-range">HBS-S01–HBS-S04；按从上到下编号</td></tr>
+    </tbody></table></div><div class="guide-examples">层级字段：C（Cabinet，柜）｜D（Drawer，抽屉）｜S（Slot / Shelf，格位 / 书架层）｜A 靠里｜B 靠外<br>示例：GL-S12-A = 绿林柜第 12 个抽屉靠里的一格　｜　PD-S03 = 3D 打印柜第 3 个抽屉　｜　PS-C2-D03-S4 = 3D 打印小柜子第 2 柜、第 3 抽屉、第 4 格　｜　HBS-S02 = 家里我那屋书架从上到下第 2 排</div></div></details>
   </div>
 </div>
 
@@ -465,20 +472,26 @@ const pad2=n=>String(n).padStart(2,"0");
 const LOCATION_AREAS=[
   ["SH","桌面上层书架"],["RU","桌面右侧上部"],["RL","桌面右侧下部"],["CD","桌面正下方抽屉"],
   ["LD","桌面左下抽屉"],["LO","桌面左下开放柜"],["RC","桌面右下闭合柜"],["WD1","衣柜下方抽屉 1"],
-  ["WD2","衣柜下方抽屉 2"],["WG","衣柜与墙壁间开放区"],["GT","绿林收纳柜上方"],["PT","3D 打印柜上方"]
+  ["WD2","衣柜下方抽屉 2"],["WG","衣柜与墙壁间开放区"],["GT","绿林收纳柜上方"],["PT","3D 打印柜上方"],
+  ["HDT","家里我那屋的桌面"],["HCD","家里我那屋中间抽屉"],["HLD","家里我那屋左边抽屉"],
+  ["HRD","家里我那屋右边抽屉"],["HLC","家里我那屋左下柜子"],["HRC","家里我那屋右下柜子"]
 ];
 const AREA_META=[
   ["GL","绿林收纳柜",78],["PD","3D 打印抽屉",20],["PS","3D 打印小柜子",40],
   ["SH","桌面上层书架",null],["RU","桌面右侧上部",null],["RL","桌面右侧下部",null],["CD","桌面正下方抽屉",null],
   ["LD","桌面左下抽屉",null],["LO","桌面左下开放柜",null],["RC","桌面右下闭合柜",null],
   ["WD1","衣柜下方抽屉 1",null],["WD2","衣柜下方抽屉 2",null],["WG","衣柜与墙壁间开放区",null],
-  ["GT","绿林收纳柜上方",null],["PT","3D 打印柜上方",null]
+  ["GT","绿林收纳柜上方",null],["PT","3D 打印柜上方",null],
+  ["HDT","家里我那屋的桌面",null],["HCD","家里我那屋中间抽屉",null],["HLD","家里我那屋左边抽屉",null],
+  ["HRD","家里我那屋右边抽屉",null],["HLC","家里我那屋左下柜子",null],["HRC","家里我那屋右下柜子",null],
+  ["HBS","家里我那屋书架",4]
 ];
 const LOCATIONS=[];
 for(const [code,name] of LOCATION_AREAS)LOCATIONS.push({code,label:name});
 for(let i=1;i<=39;i++)for(const slot of ["A","B"])LOCATIONS.push({code:`GL-S${String(i).padStart(2,"0")}-${slot}`,label:`绿林收纳柜 · 第 ${i} 个抽屉 · ${slot} 格`});
 for(let i=1;i<=20;i++)LOCATIONS.push({code:`PD-S${String(i).padStart(2,"0")}`,label:`3D 打印抽屉 · 第 ${i} 个抽屉`});
 for(let cabinet=1;cabinet<=2;cabinet++)for(let drawer=1;drawer<=4;drawer++)for(let slot=1;slot<=5;slot++)LOCATIONS.push({code:`PS-C${cabinet}-D${String(drawer).padStart(2,"0")}-S${slot}`,label:`3D 打印小柜子 · 第 ${cabinet} 柜 · 第 ${drawer} 抽屉 · 第 ${slot} 格`});
+for(let shelf=1;shelf<=4;shelf++)LOCATIONS.push({code:`HBS-S${String(shelf).padStart(2,"0")}`,label:`家里我那屋书架 · 从上到下第 ${shelf} 排`});
 function isLow(p){if(p.qty===null||p.qty===undefined||p.qty==="")return false;const th=(p.low===null||p.low===undefined||p.low==="")?0:Number(p.low);return th>0&&Number(p.qty)<=th;}
 function isPermanent(p){return p.qty===null||p.qty===undefined||p.qty==="";}
 function needsWork(p){return !String(p.name||"").trim()||!String(p.purpose||"").trim()||!String(p.category||"").trim()||!String(p.location||"").trim()||!String(p.package||"").trim()||p.package==="规格待确认";}
@@ -497,7 +510,7 @@ function qtyHTML(p){
 }
 function modelHTML(p){return p.link?`<a href="${esc(p.link)}" target="_blank" rel="noopener">${hi(p.model)}</a>`:hi(p.model);}
 const LEGACY_DATE="2026-08-03T00:00:00+08:00";
-function normalizeLocationCode(location){return String(location||"").replace(/^GL-S(\d)(-[AB])$/,"GL-S0$1$2").replace(/^PD-S(\d)$/,"PD-S0$1").replace(/^(PS-C\d-D)(\d)(-S\d)$/,(m,a,b,c)=>a+"0"+b+c);}
+function normalizeLocationCode(location){return String(location||"").replace(/^GL-S(\d)(-[AB])$/,"GL-S0$1$2").replace(/^PD-S(\d)$/,"PD-S0$1").replace(/^HBS-S(\d)$/,"HBS-S0$1").replace(/^(PS-C\d-D)(\d)(-S\d)$/,(m,a,b,c)=>a+"0"+b+c);}
 function normalizePart(p){return{...p,location:normalizeLocationCode(p.location),createdAt:p.createdAt||LEGACY_DATE,updatedAt:p.updatedAt||LEGACY_DATE,movements:Array.isArray(p.movements)?p.movements:[]};}
 function normalizeParts(){parts=parts.map(normalizePart);}
 
