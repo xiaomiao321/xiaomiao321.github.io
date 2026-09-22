@@ -1,5 +1,37 @@
 [
   {
+    "id": 1790043147156,
+    "model": "手表",
+    "name": "两块手表，都是机械的",
+    "purpose": "",
+    "category": "生活用品 / 穿戴与户外",
+    "package": "",
+    "location": "LD",
+    "qty": 2,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-09-22T02:12:27.156Z",
+    "updatedAt": "2026-09-22T02:12:27.156Z",
+    "movements": []
+  },
+  {
+    "id": 1790043077506,
+    "model": "各种小型的包装袋",
+    "name": "防静电袋等",
+    "purpose": "",
+    "category": "生活用品 / 家居与收纳",
+    "package": "",
+    "location": "WD2",
+    "qty": null,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-09-22T02:11:17.506Z",
+    "updatedAt": "2026-09-22T02:11:17.506Z",
+    "movements": []
+  },
+  {
     "id": 1789003470298,
     "model": "洗护三件套旅行装",
     "name": "海洋至尊",
