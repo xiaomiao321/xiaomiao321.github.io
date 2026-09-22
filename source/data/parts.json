@@ -1,5 +1,21 @@
 [
   {
+    "id": 1790043675700,
+    "model": "ni usb配件",
+    "name": "usb配件",
+    "purpose": "",
+    "category": "通信与接口",
+    "package": "",
+    "location": "PD-S18",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-09-22T02:21:15.700Z",
+    "updatedAt": "2026-09-22T02:21:15.700Z",
+    "movements": []
+  },
+  {
     "id": 1790043147156,
     "model": "手表",
     "name": "两块手表，都是机械的",
