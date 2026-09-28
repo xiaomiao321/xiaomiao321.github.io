@@ -1,5 +1,21 @@
 [
   {
+    "id": 1790561916432,
+    "model": "小房间钥匙",
+    "name": "科技园小房间钥匙一把",
+    "purpose": "backup",
+    "category": "生活用品 / 文具与办公",
+    "package": "",
+    "location": "LD",
+    "qty": 1,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-09-28T02:18:36.431Z",
+    "updatedAt": "2026-09-28T02:18:36.431Z",
+    "movements": []
+  },
+  {
     "id": 1790043675700,
     "model": "ni usb配件",
     "name": "usb配件",
