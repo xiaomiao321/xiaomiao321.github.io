@@ -1,5 +1,37 @@
 [
   {
+    "id": 1791944583965,
+    "model": "真空收纳袋与手动抽气",
+    "name": "收纳",
+    "purpose": "",
+    "category": "生活用品 / 家居与收纳",
+    "package": "",
+    "location": "LO",
+    "qty": 3,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-10-14T02:23:03.965Z",
+    "updatedAt": "2026-10-14T02:23:03.965Z",
+    "movements": []
+  },
+  {
+    "id": 1791944555839,
+    "model": "真空收纳袋封闭器",
+    "name": "鼻儿",
+    "purpose": "",
+    "category": "生活用品 / 家居与收纳",
+    "package": "",
+    "location": "PD-S17",
+    "qty": 2,
+    "low": null,
+    "link": "",
+    "note": "",
+    "createdAt": "2026-10-14T02:22:35.839Z",
+    "updatedAt": "2026-10-14T02:22:35.839Z",
+    "movements": []
+  },
+  {
     "id": 1791514143428,
     "model": "吸锡带",
     "name": "修正带式",
