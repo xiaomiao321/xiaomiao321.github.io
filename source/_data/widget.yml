@@ -1,0 +1,11 @@
+top:
+  - class_name: card-shuoxiahua
+    id_name: card-shuoxiahua
+    name: 说瞎话
+    icon: fas fa-clone
+    html: |
+      <a href="/shuoxiahua/" style="display:block;padding:14px 16px;border-radius:10px;background:linear-gradient(135deg,#143329,#27543f);color:#f4ebd6;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(199,154,78,.55)">
+        <strong style="display:block;font-size:18px;letter-spacing:.12em">开始打牌</strong>
+        <span style="display:block;margin-top:6px;font-size:13px;line-height:1.6;opacity:.82">一个人对三个电脑对手，手机浏览器直接玩。</span>
+        <span style="display:block;margin-top:10px;color:#c79a4e;font-size:13px">进入游戏 →</span>
+      </a>
