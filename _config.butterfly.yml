@@ -19,12 +19,10 @@ nav:
 
 menu:
   Home: / || fas fa-home
-  Travel: /travel/ || fas fa-suitcase-rolling
-  Daily: /daily-summary/ || fas fa-calendar-day
+  Portfolio: /portfolio/ || fas fa-briefcase
   Archives: /archives/ || fas fa-archive
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder-open
-  Music: /music/ || fas fa-music
   Component: /parts/ || fas fa-microchip
   Wechat: /chat-stats/ || fas fa-comments
 
