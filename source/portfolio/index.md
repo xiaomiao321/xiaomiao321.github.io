@@ -68,7 +68,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 
 <div class="pf-grid">
 <a class="pf-card" href="#lamp"><img src="img/lamp_robot.jpg" alt="Lamp robot"><div><b>Desk Lamp Motor Controller</b><span class="pf-badge pf-ok">Board tested</span></div></a>
-<a class="pf-card" href="#temp"><img src="img/temp_v2.jpg" alt="Alarm controller"><div><b>PT100 Alarm Controller</b><span class="pf-badge pf-ok">Delivered</span></div></a>
+<a class="pf-card" href="#temp"><img src="img/temp_v2_display.jpg" alt="Alarm controller"><div><b>PT100 Alarm Controller</b><span class="pf-badge pf-ok">Delivered</span></div></a>
 <a class="pf-card" href="#glove"><img src="img/srtp_stim.jpg" alt="Stimulation board"><div><b>Tremor Glove Boards</b><span class="pf-badge pf-wip">Revising v1</span></div></a>
 <a class="pf-card" href="#drone"><img src="img/drone.jpg" alt="Quadcopter"><div><b>Quadcopter Flight Controller</b><span class="pf-badge pf-wip">Bench-tested</span></div></a>
 <a class="pf-card" href="#clock"><img src="img/clock_front.jpg" alt="ESP32 clock"><div><b>ESP32-C3 IoT Clock</b><span class="pf-badge pf-ok">Completed</span></div></a>
@@ -108,12 +108,14 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 
 <div class="pf-proj" id="temp">
 <h2>8-Channel PT100 Over-Temperature Alarm Controller</h2>
-<div class="pf-meta">Contract project, Jul 2026 to present &nbsp; Sole hardware and firmware designer &nbsp; <span class="pf-badge pf-ok">v1 delivered</span> <span class="pf-badge pf-wip">v2 in progress</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/Temperature"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<div class="pf-meta">Contract project, Jul 2026 to present &nbsp; Sole hardware and firmware designer &nbsp; <span class="pf-badge pf-ok">v1 delivered</span> <span class="pf-badge pf-wip">v2 assembled, testing</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/Temperature"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
 <p>Fire-protection controller for kitchens and ducts. When any of eight temperature channels passes its threshold, it sounds the alarm, stops the fan, shuts the gas valve and closes the fire damper. Version 1 was delivered to the customer site in July 2026.</p>
 <div class="pf-chips"><span class="pf-chip">STM32F103</span><span class="pf-chip">RS485 Modbus RTU</span><span class="pf-chip">Relay control</span><span class="pf-chip">Fail-safe design</span><span class="pf-chip">Orange Pi Linux</span></div>
-<div class="pf-gal">
+<div class="pf-gal pf-gal4">
+<figure><img src="img/temp_v2_display.jpg" alt="Assembled v2 board with display boards"><figcaption>v2 board, assembled, with the plug-in 7-segment display boards</figcaption></figure>
+<figure><img src="img/temp_v2_photo.jpg" alt="Assembled v2 board without display boards"><figcaption>v2 board with the display boards removed, STM32F103 in the middle</figcaption></figure>
+<figure><img src="img/temp_v2.jpg" alt="Version 2 integrated board render"><figcaption>v2 integrated board, 3D render</figcaption></figure>
 <figure><img src="img/temp_v1.jpg" alt="Version 1 board"><figcaption>v1 carrier board, 3D render</figcaption></figure>
-<figure><img src="img/temp_v2.jpg" alt="Version 2 integrated board"><figcaption>v2 integrated board, 3D render</figcaption></figure>
 </div>
 <div class="pf-cols">
 <div>
@@ -127,7 +129,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 </ul>
 </div>
 <div>
-<h3>Version 2, in progress</h3>
+<h3>Version 2, assembled</h3>
 <ul>
 <li>Single integrated board: STM32F103, RS485 transceiver, four 250 VAC 10 A relays</li>
 <li>Isolation slot between the mains relay area and the low-voltage logic</li>
