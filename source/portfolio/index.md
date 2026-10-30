@@ -41,6 +41,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 .pf-gal { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 12px 0; }
 .pf-gal4 { grid-template-columns: repeat(4, 1fr); }
 .pf-gal3 { grid-template-columns: repeat(3, 1fr); }
+.pf-gal figure.pf-wide { grid-column: 1 / -1; }
 @media (max-width: 760px) { .pf-gal4, .pf-gal3 { grid-template-columns: repeat(2, 1fr); } }
 .pf-gal figure { margin: 0; }
 .pf-gal img { width: 100%; border-radius: 6px; margin: 0 !important; }
@@ -61,15 +62,14 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <div class="pf-hero">
 <h1>Xiangyu Miao</h1>
 <div class="pf-role">Embedded hardware and firmware</div>
-<p>I'm a junior in Electronic Science and Technology at Zhejiang University, working on embedded hardware from the schematic to the firmware. Most of what is on this page I designed, soldered and debugged myself. Two projects matter most to me: an over-temperature alarm controller now delivered to a customer, and a 4-layer motor controller for a robot lamp.</p>
-<div class="pf-chips"><span class="pf-chip">U.S. citizen</span><span class="pf-chip">Graduating June 2028</span><span class="pf-chip">Available from June 29, 2027</span></div>
+<p>I'm a junior in Electronic Science and Technology at Zhejiang University, working on embedded hardware from the schematic to the firmware. Most of what is on this page I designed, soldered and debugged myself.</p>
 <div class="pf-links"><a class="pf-gh-main" href="https://github.com/xiaomiao321"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>github.com/xiaomiao321</a><a href="mailto:xiaomiao2026@gmail.com"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.75 2h12.5c.97 0 1.75.78 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5C0 2.78.78 2 1.75 2zM1.5 5.06v7.19c0 .14.11.25.25.25h12.5c.14 0 .25-.11.25-.25V5.06L8.4 9.03a.75.75 0 01-.8 0L1.5 5.06zm13-1.4V3.75a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v-.09L8 7.56l6.5-3.9z"/></svg>xiaomiao2026@gmail.com</a></div>
 </div>
 
 <div class="pf-grid">
-<a class="pf-card" href="#lamp"><img src="img/lamp_real_top.jpg" alt="Lamp controller"><div><b>Desk Lamp Motor Controller</b><span class="pf-badge pf-ok">Board tested</span></div></a>
+<a class="pf-card" href="#lamp"><img src="img/lamp_robot.jpg" alt="Lamp robot"><div><b>Desk Lamp Motor Controller</b><span class="pf-badge pf-ok">Board tested</span></div></a>
 <a class="pf-card" href="#temp"><img src="img/temp_v2.jpg" alt="Alarm controller"><div><b>PT100 Alarm Controller</b><span class="pf-badge pf-ok">Delivered</span></div></a>
-<a class="pf-card" href="#glove"><img src="img/srtp_stim.jpg" alt="Stimulation board"><div><b>Tremor Glove Boards</b><span class="pf-badge pf-design">Design complete</span></div></a>
+<a class="pf-card" href="#glove"><img src="img/srtp_stim.jpg" alt="Stimulation board"><div><b>Tremor Glove Boards</b><span class="pf-badge pf-wip">Revising v1</span></div></a>
 <a class="pf-card" href="#drone"><img src="img/drone.jpg" alt="Quadcopter"><div><b>Quadcopter Flight Controller</b><span class="pf-badge pf-wip">Bench-tested</span></div></a>
 <a class="pf-card" href="#clock"><img src="img/clock_front.jpg" alt="ESP32 clock"><div><b>ESP32-C3 IoT Clock</b><span class="pf-badge pf-ok">Completed</span></div></a>
 </div>
@@ -79,7 +79,8 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <div class="pf-meta">Sep 2026 to present &nbsp; Sole hardware and firmware designer &nbsp; <span class="pf-badge pf-ok">Board tested, firmware running</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/taideng"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
 <p>Motor and lighting controller for a lamp-shaped companion robot prototype. It takes commands from a Linux main board over UART and drives the robot's joints and lights.</p>
 <div class="pf-chips"><span class="pf-chip">STM32F407</span><span class="pf-chip">4-layer PCB</span><span class="pf-chip">FreeRTOS</span><span class="pf-chip">8x H-bridge</span><span class="pf-chip">24 V input</span><span class="pf-chip">EasyEDA Pro</span><span class="pf-chip">Python tools</span></div>
-<div class="pf-gal">
+<div class="pf-gal pf-gal3">
+<figure class="pf-wide"><img src="img/lamp_robot.jpg" alt="Lamp robot prototype on the bench with both lamp heads on"><figcaption>Team prototype on the bench, 24 V supply. My controller drives the arm joints, the tracks and both lamp heads</figcaption></figure>
 <figure><img src="img/lamp_real_top.jpg" alt="Assembled lamp controller, powered on"><figcaption>Assembled board, powered on</figcaption></figure>
 <figure><img src="img/lamp_top.jpg" alt="Lamp controller top"><figcaption>Top side, 3D render</figcaption></figure>
 <figure><img src="img/lamp_bottom.jpg" alt="Lamp controller bottom"><figcaption>Bottom side, 3D render</figcaption></figure>
@@ -103,7 +104,6 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 </ul>
 </div>
 </div>
-<div class="pf-note">Debug note: on the first board, one of four lamp PWM channels had no output while the other three worked. All four share the same timer configuration, so a software cause was unlikely. I added a probe mode that drives the suspect pin and a known-good pin as plain 1 Hz GPIO: the suspect pin stayed flat right at the MCU, which ruled out the series resistor and connector and pointed to a cold solder joint on the QFP pin. Reworking it fixed the channel; one ADC channel had the same cause.</div>
 </div>
 
 <div class="pf-proj" id="temp">
@@ -140,7 +140,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 
 <div class="pf-proj" id="glove">
 <h2>Tremor Assessment and Intervention Glove</h2>
-<div class="pf-meta">SRTP research project, <a href="https://person.zju.edu.cn/en/panyun">Prof. Yun Pan's lab</a>, Feb 2026 to present &nbsp; Sole board designer &nbsp; <span class="pf-badge pf-design">Design complete, DRC clean, awaiting fabrication</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/SRTP"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<div class="pf-meta">SRTP research project, <a href="https://person.zju.edu.cn/en/panyun">Prof. Yun Pan's lab</a>, Feb 2026 to present &nbsp; Sole board designer &nbsp; <span class="pf-badge pf-design">v1 layout complete</span> <span class="pf-badge pf-wip">v2 revision in progress</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/SRTP"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
 <p>A wearable glove that measures hand tremor and applies transcutaneous electrical stimulation. Two stacked boards connected over SPI. Research prototype, no medical claims.</p>
 <div class="pf-chips"><span class="pf-chip">nRF52832 BLE</span><span class="pf-chip">NNC6121</span><span class="pf-chip">4-layer and 6-layer PCB</span><span class="pf-chip">High-voltage layout</span><span class="pf-chip">EasyEDA scripting</span></div>
 <h3>Boards</h3>
@@ -159,7 +159,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <figure><img src="img/srtp_nnc.jpg" alt="NNC6121 area"><figcaption>Around the NNC6121, close-up</figcaption></figure>
 <figure><img src="img/srtp_stack.jpg" alt="Stack alignment check"><figcaption>Main board outline overlaid on the stimulation board to check connector and button alignment</figcaption></figure>
 </div>
-<p class="pf-meta">All images on this project are 3D renders and layout exports; the boards are not yet fabricated.</p>
+<p class="pf-meta">All images on this project are 3D renders and layout exports of the first revision. The boards are being revised before fabrication.</p>
 <div class="pf-cols">
 <div>
 <h3>Main board</h3>
@@ -209,16 +209,35 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 
 <div class="pf-proj" id="clock">
 <h2>ESP32-C3 IoT Clock</h2>
-<div class="pf-meta">Oct 2025 to Nov 2025 &nbsp; Sole hardware and firmware designer &nbsp; <span class="pf-badge pf-ok">Completed</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/Aiot-project-ESP32C3"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
-<div class="pf-chips"><span class="pf-chip">ESP32-C3</span><span class="pf-chip">PlatformIO</span><span class="pf-chip">FreeRTOS</span><span class="pf-chip">MQTT</span></div>
+<div class="pf-meta">Oct 2025 to Nov 2025 &nbsp; Sole hardware and firmware designer &nbsp; Course project, team of two &nbsp; <span class="pf-badge pf-ok">Completed</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/Aiot-project-ESP32C3"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<p>Desktop assistant for an AIoT course. I designed and built the device, wrote all of its firmware, connected it to Huawei Cloud and wrote a WeChat Mini Program to control it remotely. My teammate built the YOLOv5 camera node on an Orange Pi.</p>
+<div class="pf-chips"><span class="pf-chip">ESP32-C3</span><span class="pf-chip">PlatformIO</span><span class="pf-chip">FreeRTOS</span><span class="pf-chip">MQTT</span><span class="pf-chip">Huawei Cloud IoTDA</span><span class="pf-chip">WeChat Mini Program</span></div>
 <div class="pf-gal pf-gal3">
 <figure><img src="img/clock_front.jpg" alt="Clock front"><figcaption>Running clock</figcaption></figure>
 <figure><img src="img/clock_back.jpg" alt="Clock back"><figcaption>Back of the board</figcaption></figure>
+<figure><img src="img/clock_stocks.jpg" alt="Stock price page on the clock"><figcaption>One of 20 online info pages, stock prices</figcaption></figure>
 </div>
+<div class="pf-cols">
+<div>
+<h3>Device</h3>
 <ul>
-<li>Designed and soldered the board</li>
-<li>Wi-Fi provisioning, NTP time sync, Huawei Cloud IoT connection over MQTT</li>
+<li>ESP32-C3 with a 1.69 inch TFT, rotary encoder menu, buzzer, WS2812 LEDs, DS18B20 temperature sensor and photoresistor</li>
+<li>Wi-Fi setup through a SoftAP web page; NTP time sync, 17 watch faces and weather</li>
+<li>20 online info pages from web APIs, including exchange rates, GitHub trending, stock prices and the ISS position</li>
+<li>Alarm, countdown, Pomodoro timer and stopwatch; 88 songs on the buzzer with LED effects; four small games</li>
+<li>PC monitor showing CPU and GPU temperature and load and RAM usage, streamed from the PC over USB serial</li>
+<li>Background FreeRTOS tasks for MQTT, sensor sampling, alarm checks, music playback and the PC data serial link</li>
 </ul>
+</div>
+<div>
+<h3>Cloud and app</h3>
+<ul>
+<li>Temperature, light and PC data reported to Huawei Cloud IoTDA over MQTT</li>
+<li>Cloud commands to set LEDs, pick songs and set alarms</li>
+<li>WeChat Mini Program that signs in through Huawei Cloud IAM, reads the device shadow and sends commands</li>
+</ul>
+</div>
+</div>
 </div>
 
 <div class="pf-proj">
