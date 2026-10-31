@@ -1,0 +1,820 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Portfolio | XiaoMiao's Blog</title><meta name="author" content="XiaoMiao"><meta name="copyright" content="XiaoMiao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content=".pf { --pf-line: rgba(127,127,127,.28); --pf-soft: rgba(127,127,127,.08); --pf-mute: #8a8f98; font-size: 18px; line-height: 1.7; } .pf p { margin: 0 0 .6em; } .pf a { text-decoration: none; } .pf-her">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Portfolio">
+<meta property="og:url" content="https://xiaomiao321.github.io/portfolio/index.html">
+<meta property="og:site_name" content="XiaoMiao&#39;s Blog">
+<meta property="og:description" content=".pf { --pf-line: rgba(127,127,127,.28); --pf-soft: rgba(127,127,127,.08); --pf-mute: #8a8f98; font-size: 18px; line-height: 1.7; } .pf p { margin: 0 0 .6em; } .pf a { text-decoration: none; } .pf-her">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xiaomiao321.github.io/img/avatar.png">
+<meta property="article:published_time" content="2026-10-25T14:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-31T02:51:01.812Z">
+<meta property="article:author" content="XiaoMiao">
+<meta property="article:tag" content="ESP32,embedded development,Arduino,STM32,Git,Linux,programming notes,technical blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaomiao321.github.io/img/avatar.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://xiaomiao321.github.io/portfolio/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-YEX7FDZ26Z"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-YEX7FDZ26Z')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-YEX7FDZ26Z', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'medium-zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Portfolio',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/calendar-override.css"/><link rel="stylesheet" href="/style.css"/><!-- hexo injector head_end start --><script src="./func.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/css/pace-loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="bg-animation" id="web_bg" style="background: linear-gradient(to bottom,;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/portfolio/"><i class="fa-fw fas fa-briefcase"></i><span> Portfolio</span></a></div><div class="menus_item"><a class="site-page" href="/shuoxiahua/"><i class="fa-fw fas fa-clone"></i><span> 说瞎话</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/parts/"><i class="fa-fw fas fa-microchip"></i><span> Component</span></a></div><div class="menus_item"><a class="site-page" href="/chat-stats/"><i class="fa-fw fas fa-comments"></i><span> Wechat</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XiaoMiao's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/portfolio/"><i class="fa-fw fas fa-briefcase"></i><span> Portfolio</span></a></div><div class="menus_item"><a class="site-page" href="/shuoxiahua/"><i class="fa-fw fas fa-clone"></i><span> 说瞎话</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/parts/"><i class="fa-fw fas fa-microchip"></i><span> Component</span></a></div><div class="menus_item"><a class="site-page" href="/chat-stats/"><i class="fa-fw fas fa-comments"></i><span> Wechat</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">Portfolio</h1></header><main class="layout hide-aside" id="content-inner"><div id="page"><div class="page-title">Portfolio</div><div class="container" id="article-container"><style>
+.pf { --pf-line: rgba(127,127,127,.28); --pf-soft: rgba(127,127,127,.08); --pf-mute: #8a8f98; font-size: 18px; line-height: 1.7; }
+.pf p { margin: 0 0 .6em; }
+.pf a { text-decoration: none; }
+.pf-hero { padding: 6px 0 18px; border-bottom: 1px solid var(--pf-line); margin-bottom: 22px; }
+.pf-hero h1 { font-size: 2.2em; margin: 0 0 2px; border: 0; padding: 0; }
+.pf-hero .pf-role { font-size: 1.2em; color: var(--pf-mute); margin-bottom: 12px; }
+.pf-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.pf-links a { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--pf-line); border-radius: 999px; padding: 6px 16px; font-size: .95em; }
+.pf-links a.pf-gh-main { background: #24292f; border-color: #24292f; color: #fff !important; font-weight: 600; }
+[data-theme="dark"] .pf-links a.pf-gh-main { background: #f0f3f6; border-color: #f0f3f6; color: #1f2328 !important; }
+.pf-ico { width: 1.1em; height: 1.1em; flex: none; }
+a.pf-gh { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--pf-line); border-radius: 999px; padding: 1px 10px; font-size: .95em; vertical-align: middle; }
+a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
+.pf-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.pf-chip { background: var(--pf-soft); border: 1px solid var(--pf-line); border-radius: 4px; padding: 2px 10px; font-size: .88em; white-space: nowrap; }
+.pf-badge { display: inline-block; border-radius: 4px; padding: 1px 9px; font-size: .85em; font-weight: 600; vertical-align: middle; }
+.pf-ok { background: rgba(46,160,67,.16); color: #2ea043; }
+.pf-wip { background: rgba(210,153,34,.18); color: #c38a12; }
+.pf-design { background: rgba(56,139,253,.16); color: #388bfd; }
+#page .page-title { display: none; }
+.pf-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 10px 0 26px; }
+@media (max-width: 900px) { .pf-grid { grid-template-columns: repeat(2, 1fr); } }
+.pf-card { display: block; border: 1px solid var(--pf-line); border-radius: 8px; overflow: hidden; color: inherit !important; transition: transform .15s; }
+.pf-card:hover { transform: translateY(-2px); }
+.pf-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; margin: 0 !important; display: block; }
+.pf-card div { padding: 8px 10px 10px; font-size: .95em; line-height: 1.4; }
+.pf-card b { font-weight: 600; display: block; margin-bottom: 4px; }
+.pf-proj { border: 1px solid var(--pf-line); border-radius: 10px; padding: 18px 20px 12px; margin: 0 0 22px; }
+.pf-proj h2 { margin: 0 0 4px !important; padding: 0 !important; border: 0 !important; font-size: 1.55em; }
+.pf-proj h2::before { display: none !important; }
+.pf-meta { color: var(--pf-mute); font-size: .95em; margin-bottom: 8px; }
+.pf-gal { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 12px 0; }
+.pf-gal4 { grid-template-columns: repeat(4, 1fr); }
+.pf-gal3 { grid-template-columns: repeat(3, 1fr); }
+.pf-gal figure.pf-wide { grid-column: 1 / -1; }
+@media (max-width: 760px) { .pf-gal4, .pf-gal3 { grid-template-columns: repeat(2, 1fr); } }
+.pf-gal figure { margin: 0; }
+.pf-gal img { width: 100%; border-radius: 6px; margin: 0 !important; }
+.pf-gal figcaption { font-size: .88em; color: var(--pf-mute); text-align: center; margin-top: 3px; }
+.pf-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 760px) { .pf-cols { grid-template-columns: 1fr; } .pf-proj { padding: 14px 12px 8px; } }
+.pf h3 { font-size: .95em !important; margin: 10px 0 6px !important; color: var(--pf-mute); text-transform: uppercase; letter-spacing: .04em; }
+.pf ul { margin: 0 0 8px; padding-left: 1.2em; }
+.pf li { margin: 3px 0; font-size: 1em; }
+.pf-note { background: var(--pf-soft); border-left: 3px solid #388bfd; border-radius: 4px; padding: 12px 16px; margin: 8px 0 10px; font-size: 1em; }
+.pf-skills { display: grid; grid-template-columns: 150px 1fr; gap: 8px 14px; align-items: start; font-size: 1em; }
+@media (max-width: 760px) { .pf-skills { grid-template-columns: 1fr; gap: 2px; } .pf-skills > span { margin-top: 8px; } }
+.pf-skills > span, .pf-skills > div { font-size: 1em; line-height: 1.6; }
+.pf-skills > span { color: var(--pf-mute); font-weight: 600; }
+</style>
+
+<div class="pf">
+<div class="pf-hero">
+<h1>Xiangyu Miao</h1>
+<div class="pf-role">Embedded hardware and firmware</div>
+<p>I'm a junior in Electronic Science and Technology at Zhejiang University, working on embedded hardware from the schematic to the firmware. Most of what is on this page I designed, soldered and debugged myself.</p>
+<div class="pf-links"><a class="pf-gh-main" target="_blank" rel="noopener" href="https://github.com/xiaomiao321"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>github.com/xiaomiao321</a><a href="mailto:xiaomiao2026@gmail.com"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.75 2h12.5c.97 0 1.75.78 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5C0 2.78.78 2 1.75 2zM1.5 5.06v7.19c0 .14.11.25.25.25h12.5c.14 0 .25-.11.25-.25V5.06L8.4 9.03a.75.75 0 01-.8 0L1.5 5.06zm13-1.4V3.75a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v-.09L8 7.56l6.5-3.9z"/></svg>xiaomiao2026@gmail.com</a></div>
+</div>
+
+<div class="pf-grid">
+<a class="pf-card" href="#lamp"><img src="img/lamp_robot.jpg" alt="Lamp robot"><div><b>Desk Lamp Motor Controller</b><span class="pf-badge pf-ok">Board tested</span></div></a>
+<a class="pf-card" href="#temp"><img src="img/temp_v2_display.jpg" alt="Alarm controller"><div><b>PT100 Alarm Controller</b><span class="pf-badge pf-ok">Delivered</span></div></a>
+<a class="pf-card" href="#glove"><img src="img/srtp_stim.jpg" alt="Stimulation board"><div><b>Tremor Glove Boards</b><span class="pf-badge pf-wip">Revising v1</span></div></a>
+<a class="pf-card" href="#drone"><img src="img/drone.jpg" alt="Quadcopter"><div><b>Quadcopter Flight Controller</b><span class="pf-badge pf-wip">Bench-tested</span></div></a>
+<a class="pf-card" href="#clock"><img src="img/clock_front.jpg" alt="ESP32 clock"><div><b>ESP32-C3 IoT Clock</b><span class="pf-badge pf-ok">Completed</span></div></a>
+</div>
+
+<div class="pf-proj" id="lamp">
+<h2>Desk Lamp Motor and Lighting Controller</h2>
+<div class="pf-meta">Sep 2026 to present &nbsp; Sole hardware and firmware designer &nbsp; <span class="pf-badge pf-ok">Board tested, firmware running</span> &nbsp; <a class="pf-gh" target="_blank" rel="noopener" href="https://github.com/xiaomiao321/taideng"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<p>Motor and lighting controller for a lamp-shaped companion robot prototype. It takes commands from a Linux main board over UART and drives the robot's joints and lights.</p>
+<div class="pf-chips"><span class="pf-chip">STM32F407</span><span class="pf-chip">4-layer PCB</span><span class="pf-chip">FreeRTOS</span><span class="pf-chip">8x H-bridge</span><span class="pf-chip">24 V input</span><span class="pf-chip">EasyEDA Pro</span><span class="pf-chip">Python tools</span></div>
+<div class="pf-gal pf-gal3">
+<figure class="pf-wide"><img src="img/lamp_robot.jpg" alt="Lamp robot prototype on the bench with both lamp heads on"><figcaption>Team prototype on the bench, 24 V supply. My controller drives the arm joints, the tracks and both lamp heads</figcaption></figure>
+<figure><img src="img/lamp_real_top.jpg" alt="Assembled lamp controller, powered on"><figcaption>Assembled board, powered on</figcaption></figure>
+<figure><img src="img/lamp_top.jpg" alt="Lamp controller top"><figcaption>Top side, 3D render</figcaption></figure>
+<figure><img src="img/lamp_bottom.jpg" alt="Lamp controller bottom"><figcaption>Bottom side, 3D render</figcaption></figure>
+</div>
+<div class="pf-cols">
+<div>
+<h3>Hardware</h3>
+<ul>
+<li>24 V input with fuse, P-MOS reverse-polarity protection and TVS; three buck stages for motors, the Linux board and logic, plus a 3.3 V LDO</li>
+<li>8 RZ7899 H-bridge motor channels, 6 potentiometer inputs for joint angle, 7 lamp PWM channels</li>
+<li>Stackup: signal, solid GND plane, power plane split into 24 V, 12 V and 5 V regions, signal; motor and lamp power kept to the board edges, away from PWM and feedback lines</li>
+</ul>
+</div>
+<div>
+<h3>Firmware and tools</h3>
+<ul>
+<li>Binary UART protocol to the main board: framing, CRC16, duplicate filtering, timeout and error recovery</li>
+<li>Joint calibration stored in on-chip flash and restored at power-up</li>
+<li>Watchdog; on fault, e-stop or heartbeat timeout all outputs stop until explicitly re-armed</li>
+<li>Protocol and control layers unit-tested on PC with gcc; Python GUI for driving all motors and lights on the bench</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="pf-proj" id="temp">
+<h2>8-Channel PT100 Over-Temperature Alarm Controller</h2>
+<div class="pf-meta">Contract project, Jul 2026 to present &nbsp; Sole hardware and firmware designer &nbsp; <span class="pf-badge pf-ok">v1 delivered</span> <span class="pf-badge pf-wip">v2 assembled, testing</span> &nbsp; <a class="pf-gh" target="_blank" rel="noopener" href="https://github.com/xiaomiao321/Temperature"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<p>Fire-protection controller for kitchens and ducts. When any of eight temperature channels passes its threshold, it sounds the alarm, stops the fan, shuts the gas valve and closes the fire damper. Version 1 was delivered to the customer site in July 2026.</p>
+<div class="pf-chips"><span class="pf-chip">STM32F103</span><span class="pf-chip">RS485 Modbus RTU</span><span class="pf-chip">Relay control</span><span class="pf-chip">Fail-safe design</span><span class="pf-chip">Orange Pi Linux</span></div>
+<div class="pf-gal pf-gal4">
+<figure><img src="img/temp_v2_display.jpg" alt="Assembled v2 board with display boards"><figcaption>v2 board, assembled, with the plug-in 7-segment display boards</figcaption></figure>
+<figure><img src="img/temp_v2_photo.jpg" alt="Assembled v2 board without display boards"><figcaption>v2 board with the display boards removed, STM32F103 in the middle</figcaption></figure>
+<figure><img src="img/temp_v2.jpg" alt="Version 2 integrated board render"><figcaption>v2 integrated board, 3D render</figcaption></figure>
+<figure><img src="img/temp_v1.jpg" alt="Version 1 board"><figcaption>v1 carrier board, 3D render</figcaption></figure>
+</div>
+<div class="pf-cols">
+<div>
+<h3>Version 1, delivered</h3>
+<ul>
+<li>Carrier board for an STM32F103 core module, buck and RS485 modules; 7-segment displays, setting keys, indicators and four relay outputs</li>
+<li>Reads a PT100 acquisition card over RS485 Modbus RTU</li>
+<li>Alarm latches until manual reset, then a 3-minute hold-off so residual heat at the sensors does not retrigger it</li>
+<li>Relays release on power loss and the damper stays open, so a controller failure never blocks other equipment</li>
+<li>Installation and maintenance manual for the site electricians</li>
+</ul>
+</div>
+<div>
+<h3>Version 2, assembled</h3>
+<ul>
+<li>Single integrated board: STM32F103, RS485 transceiver, four 250 VAC 10 A relays</li>
+<li>Isolation slot between the mains relay area and the low-voltage logic</li>
+<li>24 V to 5 V 5 A supply and a UART link for an Orange Pi Linux gateway</li>
+<li>Gateway for HTTPS data upload and alarm video recording, software in progress</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="pf-proj" id="glove">
+<h2>Tremor Assessment and Intervention Glove</h2>
+<div class="pf-meta">SRTP research project, <a target="_blank" rel="noopener" href="https://person.zju.edu.cn/en/panyun">Prof. Yun Pan's lab</a>, Feb 2026 to present &nbsp; Sole board designer &nbsp; <span class="pf-badge pf-design">v1 layout complete</span> <span class="pf-badge pf-wip">v2 revision in progress</span> &nbsp; <a class="pf-gh" target="_blank" rel="noopener" href="https://github.com/xiaomiao321/SRTP"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<p>A wearable glove that measures hand tremor and applies transcutaneous electrical stimulation. Two stacked boards connected over SPI. Research prototype, no medical claims.</p>
+<div class="pf-chips"><span class="pf-chip">nRF52832 BLE</span><span class="pf-chip">NNC6121</span><span class="pf-chip">4-layer and 6-layer PCB</span><span class="pf-chip">High-voltage layout</span><span class="pf-chip">EasyEDA scripting</span></div>
+<h3>Boards</h3>
+<div class="pf-gal pf-gal4">
+<figure><img src="img/srtp_main.jpg" alt="Main board top"><figcaption>Main board, top</figcaption></figure>
+<figure><img src="img/srtp_main_back.jpg" alt="Main board bottom"><figcaption>Main board, bottom</figcaption></figure>
+<figure><img src="img/srtp_stim.jpg" alt="Stimulation board top"><figcaption>Stimulation board, top</figcaption></figure>
+<figure><img src="img/srtp_stim_back.jpg" alt="Stimulation board bottom"><figcaption>Stimulation board, bottom</figcaption></figure>
+</div>
+<h3>Stimulation board layout</h3>
+<div class="pf-gal pf-gal3">
+<figure><img src="img/srtp_stim_top_layer.jpg" alt="Top layer routing"><figcaption>Top layer, nets colored by class; high-voltage nets in red</figcaption></figure>
+<figure><img src="img/srtp_stim_gnd.jpg" alt="Inner GND layer"><figcaption>Inner GND layer: high-voltage ground, red, and digital ground, blue, joined at one point</figcaption></figure>
+<figure><img src="img/srtp_stim_bottom_layer.jpg" alt="Bottom layer routing"><figcaption>Bottom layer</figcaption></figure>
+<figure><img src="img/srtp_boost.jpg" alt="Boost converter area"><figcaption>Boost converter area, close-up</figcaption></figure>
+<figure><img src="img/srtp_nnc.jpg" alt="NNC6121 area"><figcaption>Around the NNC6121, close-up</figcaption></figure>
+<figure><img src="img/srtp_stack.jpg" alt="Stack alignment check"><figcaption>Main board outline overlaid on the stimulation board to check connector and button alignment</figcaption></figure>
+</div>
+<p class="pf-meta">All images on this project are 3D renders and layout exports of the first revision. The boards are being revised before fabrication.</p>
+<div class="pf-cols">
+<div>
+<h3>Main board</h3>
+<ul>
+<li>nRF52832 with 2.4 GHz antenna matching network</li>
+<li>Eight I2C sensor ports for finger sensors, wrist IMU and magnetometer, with switched sensor power</li>
+<li>USB battery charging and battery voltage sensing</li>
+</ul>
+</div>
+<div>
+<h3>Stimulation board</h3>
+<ul>
+<li>NNC6121 with on-chip boost up to 55 V, two stimulation channels, electrode-off detection and an e-stop button</li>
+<li>Stackup: top, GND, signal, signal, GND, bottom; 0.6 mm clearance rule for all high-voltage nets</li>
+<li>High-voltage, analog and digital grounds split and joined at a single point; boost and output stages kept away from the digital area</li>
+<li>Python scripts on the EasyEDA API for rule-aware routing and connectivity checks; stackup, rules, part choices and final review done by hand</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="pf-proj" id="drone">
+<h2>STM32 Quadcopter Flight Controller</h2>
+<div class="pf-meta">Jan 2026 to Feb 2026 &nbsp; <span class="pf-badge pf-wip">v3 bench-tested, not yet flown</span> &nbsp; <a class="pf-gh" target="_blank" rel="noopener" href="https://github.com/xiaomiao321/Drone"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<p>Three revisions of a flight controller board. The first two ran ArduPilot on an STM32H743; the third moved to an STM32F103 running my own flight control firmware.</p>
+<div class="pf-chips"><span class="pf-chip">STM32F103</span><span class="pf-chip">STM32H743</span><span class="pf-chip">FreeRTOS</span><span class="pf-chip">Quaternion attitude</span><span class="pf-chip">Cascaded PID</span></div>
+<h3>Photos</h3>
+<div class="pf-gal pf-gal4">
+<figure><img src="img/drone_v1_photo.jpg" alt="v1 flight controller"><figcaption>v1, STM32H743</figcaption></figure>
+<figure><img src="img/drone_v2_photo.jpg" alt="v2 flight controller"><figcaption>v2, STM32H743</figcaption></figure>
+<figure><img src="img/drone_fc_v3.jpg" alt="v3 flight controller"><figcaption>v3, STM32F103</figcaption></figure>
+<figure><img src="img/drone.jpg" alt="Assembled quadcopter"><figcaption>Assembled quadcopter</figcaption></figure>
+</div>
+<h3>Board renders</h3>
+<div class="pf-gal pf-gal4">
+<figure><img src="img/drone_v1_3d.jpg" alt="v1 render"><figcaption>v1, 3D render</figcaption></figure>
+<figure><img src="img/drone_v2_3d.jpg" alt="v2 render"><figcaption>v2, 3D render</figcaption></figure>
+<figure><img src="img/drone_v3_front.jpg" alt="v3 top"><figcaption>v3, top side</figcaption></figure>
+<figure><img src="img/drone_v3_back.jpg" alt="v3 bottom"><figcaption>v3, bottom side</figcaption></figure>
+</div>
+<ul>
+<li>Schematic, PCB and assembly for each revision; ArduPilot flashed on v1 and v2</li>
+<li>v3 firmware under FreeRTOS: quaternion attitude estimation, cascaded PID and motor mixing</li>
+<li>v3 bench test: firmware running and all four motors driven; not yet flown</li>
+</ul>
+</div>
+
+<div class="pf-proj" id="clock">
+<h2>ESP32-C3 IoT Clock</h2>
+<div class="pf-meta">Oct 2025 to Nov 2025 &nbsp; Sole hardware and firmware designer &nbsp; Course project, team of two &nbsp; <span class="pf-badge pf-ok">Completed</span> &nbsp; <a class="pf-gh" target="_blank" rel="noopener" href="https://github.com/xiaomiao321/Aiot-project-ESP32C3"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<p>Desktop assistant for an AIoT course. I designed and built the device, wrote all of its firmware, connected it to Huawei Cloud and wrote a WeChat Mini Program to control it remotely. My teammate built the YOLOv5 camera node on an Orange Pi.</p>
+<div class="pf-chips"><span class="pf-chip">ESP32-C3</span><span class="pf-chip">PlatformIO</span><span class="pf-chip">FreeRTOS</span><span class="pf-chip">MQTT</span><span class="pf-chip">Huawei Cloud IoTDA</span><span class="pf-chip">WeChat Mini Program</span></div>
+<div class="pf-gal pf-gal3">
+<figure><img src="img/clock_front.jpg" alt="Clock front"><figcaption>Running clock</figcaption></figure>
+<figure><img src="img/clock_back.jpg" alt="Clock back"><figcaption>Back of the board</figcaption></figure>
+<figure><img src="img/clock_stocks.jpg" alt="Stock price page on the clock"><figcaption>One of 20 online info pages, stock prices</figcaption></figure>
+</div>
+<div class="pf-cols">
+<div>
+<h3>Device</h3>
+<ul>
+<li>ESP32-C3 with a 1.69 inch TFT, rotary encoder menu, buzzer, WS2812 LEDs, DS18B20 temperature sensor and photoresistor</li>
+<li>Wi-Fi setup through a SoftAP web page; NTP time sync, 17 watch faces and weather</li>
+<li>20 online info pages from web APIs, including exchange rates, GitHub trending, stock prices and the ISS position</li>
+<li>Alarm, countdown, Pomodoro timer and stopwatch; 88 songs on the buzzer with LED effects; four small games</li>
+<li>PC monitor showing CPU and GPU temperature and load and RAM usage, streamed from the PC over USB serial</li>
+<li>Background FreeRTOS tasks for MQTT, sensor sampling, alarm checks, music playback and the PC data serial link</li>
+</ul>
+</div>
+<div>
+<h3>Cloud and app</h3>
+<ul>
+<li>Temperature, light and PC data reported to Huawei Cloud IoTDA over MQTT</li>
+<li>Cloud commands to set LEDs, pick songs and set alarms</li>
+<li>WeChat Mini Program that signs in through Huawei Cloud IAM, reads the device shadow and sends commands</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="pf-proj">
+<h2>Skills</h2>
+<div class="pf-skills">
+<span>PCB</span><div>EasyEDA Pro: schematics, 4 and 6 layer layout, design rules, DRC, Gerber and BOM; Altium Designer</div>
+<span>Bench</span><div>Hand soldering and rework, multimeter, oscilloscope, bench supplies, board-level fault isolation</div>
+<span>Platforms</span><div>STM32, ESP32, TI MSPM0, FPGA, Raspberry Pi, Orange Pi</div>
+<span>Firmware</span><div>C and C++, FreeRTOS, CMake, OpenOCD and gdb, PlatformIO; Python for test tools</div>
+<span>Interfaces</span><div>UART, SPI, I2C, RS485 Modbus RTU, USB, BLE, Wi-Fi, MQTT, HTTPS</div>
+</div>
+</div>
+</div>
+</div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XiaoMiao</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'forest'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.language-mermaid, pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (!false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script>(() => {
+  window.Prism = window.Prism || {}
+  window.Prism.manual = true
+
+  const highlightAll = () => {
+    window.Prism.highlightAll()
+  }
+
+  window.addEventListener('load', highlightAll)
+  btf.addGlobalFn('pjaxComplete', highlightAll, 'prismjs')
+  btf.addGlobalFn('encrypt', highlightAll, 'prismjs')
+})()
+</script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.js" defer="defer"></script><script src="/func.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
