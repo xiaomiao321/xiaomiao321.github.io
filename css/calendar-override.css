@@ -1,0 +1,65 @@
+/* 日历样式覆盖 - 适配 Butterfly 主题深色模式 */
+.together {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 2rem auto;
+  padding: 1.5rem 1rem;
+  width: 90%;
+  max-width: 900px;
+}
+
+.c_title {
+  color: var(--theme-color) !important;
+  font-size: 1.8rem !important;
+}
+
+.c_label, label, span, .lessmore {
+  color: var(--font-color) !important;
+}
+
+.year-select {
+  background: var(--card-bg) !important;
+  color: var(--font-color) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+.grid-item {
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.15);
+}
+
+.tooltip {
+  background: var(--theme-color) !important;
+  border-radius: 6px;
+  font-size: 0.85rem !important;
+  padding: 0.4rem 0.6rem !important;
+  z-index: 9999 !important;
+}
+
+/* 日历容器位置调整 */
+#content-inner + .together {
+  margin-top: 2rem;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .together {
+    width: 95%;
+    padding: 1rem 0.5rem;
+  }
+  
+  .c_title {
+    font-size: 1.4rem !important;
+  }
+  
+  .grid-item {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+}
