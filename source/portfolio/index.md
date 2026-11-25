@@ -69,7 +69,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <div class="pf-grid">
 <a class="pf-card" href="#lamp"><img src="img/lamp_robot.jpg" alt="Lamp robot"><div><b>Desk Lamp Motor Controller</b><span class="pf-badge pf-ok">Board tested</span></div></a>
 <a class="pf-card" href="#temp"><img src="img/temp_v2_display.jpg" alt="Alarm controller"><div><b>PT100 Alarm Controller</b><span class="pf-badge pf-ok">Delivered</span></div></a>
-<a class="pf-card" href="#glove"><img src="img/srtp_stim.jpg" alt="Stimulation board"><div><b>Tremor Glove Boards</b><span class="pf-badge pf-wip">v2 fabricated</span></div></a>
+<a class="pf-card" href="#glove"><img src="img/srtp2_stim_top.jpg" alt="Stimulation board"><div><b>Tremor Glove Boards</b><span class="pf-badge pf-wip">v2 fabricated</span></div></a>
 <a class="pf-card" href="#drone"><img src="img/drone.jpg" alt="Quadcopter"><div><b>Quadcopter Flight Controller</b><span class="pf-badge pf-wip">Bench-tested</span></div></a>
 <a class="pf-card" href="#clock"><img src="img/clock_front.jpg" alt="ESP32 clock"><div><b>ESP32-C3 IoT Clock</b><span class="pf-badge pf-ok">Completed</span></div></a>
 </div>
@@ -148,23 +148,23 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <div class="pf-meta">SRTP research project, <a href="https://person.zju.edu.cn/en/panyun">Prof. Yun Pan's lab</a>, Feb 2026 to present &nbsp; Sole board designer &nbsp; <span class="pf-badge pf-wip">v2 fabricated, not yet powered</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/SRTP"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
 <p>A wearable glove that measures hand tremor and applies transcutaneous electrical stimulation. Two stacked boards connected over SPI. Research prototype, no medical claims.</p>
 <div class="pf-chips"><span class="pf-chip">nRF52832 BLE</span><span class="pf-chip">NNC6121</span><span class="pf-chip">4-layer and 6-layer PCB</span><span class="pf-chip">High-voltage layout</span><span class="pf-chip">EasyEDA scripting</span></div>
-<h3>Boards</h3>
+<h3>Boards, second revision</h3>
 <div class="pf-gal pf-gal4">
-<figure><img src="img/srtp_main.jpg" alt="Main board top"><figcaption>Main board, top</figcaption></figure>
-<figure><img src="img/srtp_main_back.jpg" alt="Main board bottom"><figcaption>Main board, bottom</figcaption></figure>
-<figure><img src="img/srtp_stim.jpg" alt="Stimulation board top"><figcaption>Stimulation board, top</figcaption></figure>
-<figure><img src="img/srtp_stim_back.jpg" alt="Stimulation board bottom"><figcaption>Stimulation board, bottom</figcaption></figure>
+<figure><img src="img/srtp2_main_top.jpg" alt="Main board top"><figcaption>Main board, top</figcaption></figure>
+<figure><img src="img/srtp2_main_bottom.jpg" alt="Main board bottom"><figcaption>Main board, bottom, viewed from below</figcaption></figure>
+<figure><img src="img/srtp2_stim_top.jpg" alt="Stimulation board top"><figcaption>Stimulation board, top</figcaption></figure>
+<figure><img src="img/srtp2_stim_bottom.jpg" alt="Stimulation board bottom"><figcaption>Stimulation board, bottom, viewed from below</figcaption></figure>
 </div>
-<h3>Stimulation board layout</h3>
+<h3>Stimulation board copper, six layers</h3>
 <div class="pf-gal pf-gal3">
-<figure><img src="img/srtp_stim_top_layer.jpg" alt="Top layer routing"><figcaption>Top layer, nets colored by class; high-voltage nets in red</figcaption></figure>
-<figure><img src="img/srtp_stim_gnd.jpg" alt="Inner GND layer"><figcaption>Inner GND layer: high-voltage ground, red, and digital ground, blue, joined at one point</figcaption></figure>
-<figure><img src="img/srtp_stim_bottom_layer.jpg" alt="Bottom layer routing"><figcaption>Bottom layer</figcaption></figure>
-<figure><img src="img/srtp_boost.jpg" alt="Boost converter area"><figcaption>Boost converter area, close-up</figcaption></figure>
-<figure><img src="img/srtp_nnc.jpg" alt="NNC6121 area"><figcaption>Around the NNC6121, close-up</figcaption></figure>
-<figure><img src="img/srtp_stack.jpg" alt="Stack alignment check"><figcaption>Main board outline overlaid on the stimulation board to check connector and button alignment</figcaption></figure>
+<figure><img src="img/srtp2_stim_L1.jpg" alt="Top layer copper"><figcaption>Top layer</figcaption></figure>
+<figure><img src="img/srtp2_stim_L2.jpg" alt="Inner layer 1 copper"><figcaption>Inner 1, GND: the split separates the high-voltage ground from the digital ground</figcaption></figure>
+<figure><img src="img/srtp2_stim_L3.jpg" alt="Inner layer 2 copper"><figcaption>Inner 2, signals routed mostly horizontally</figcaption></figure>
+<figure><img src="img/srtp2_stim_L4.jpg" alt="Inner layer 3 copper"><figcaption>Inner 3, signals routed mostly vertically</figcaption></figure>
+<figure><img src="img/srtp2_stim_L5.jpg" alt="Inner layer 4 copper"><figcaption>Inner 4, second GND layer with the same split</figcaption></figure>
+<figure><img src="img/srtp2_stim_L6.jpg" alt="Bottom layer copper"><figcaption>Bottom layer</figcaption></figure>
 </div>
-<p class="pf-meta">All images on this project are 3D renders and layout exports of the first revision. The second revision of both boards has been fabricated and is not yet powered up.</p>
+<p class="pf-meta">All images are rendered from the fabrication Gerber files of the second revision; copper layers are viewed from the top. Both boards have been fabricated and are not yet powered up.</p>
 <div class="pf-cols">
 <div>
 <h3>Main board</h3>
