@@ -189,7 +189,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <div class="pf-proj" id="drone">
 <h2>STM32 Quadcopter Flight Controller</h2>
 <div class="pf-meta">Jan 2026 to Feb 2026 &nbsp; <span class="pf-badge pf-wip">v3 bench-tested, not yet flown</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/Drone"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
-<p>Three revisions of a flight controller board. The first two ran ArduPilot on an STM32H743; the third moved to an STM32F103 running my own flight control firmware.</p>
+<p>Team project. Three revisions of a flight controller board: a teammate designed the first, and I designed the second and third. The first two ran ArduPilot on an STM32H743; the third moved to an STM32F103 running FreeRTOS flight control firmware adapted from a course reference design.</p>
 <div class="pf-chips"><span class="pf-chip">STM32F103</span><span class="pf-chip">STM32H743</span><span class="pf-chip">FreeRTOS</span><span class="pf-chip">Quaternion attitude</span><span class="pf-chip">Cascaded PID</span></div>
 <h3>Photos</h3>
 <div class="pf-gal pf-gal4">
@@ -206,15 +206,15 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <figure><img src="img/drone_v3_back.jpg" alt="v3 bottom"><figcaption>v3, bottom side</figcaption></figure>
 </div>
 <ul>
-<li>Schematic, PCB and assembly for each revision; ArduPilot flashed on v1 and v2</li>
-<li>v3 firmware under FreeRTOS: quaternion attitude estimation, cascaded PID and motor mixing</li>
+<li>My part: schematic, PCB and assembly of v2 and v3; ArduPilot flashed on v1 and v2</li>
+<li>v3 firmware under FreeRTOS, adapted from a course reference design: quaternion attitude estimation, cascaded PID and motor mixing</li>
 <li>v3 bench test: firmware running and all four motors driven; not yet flown</li>
 </ul>
 </div>
 
 <div class="pf-proj" id="clock">
 <h2>ESP32-C3 IoT Clock</h2>
-<div class="pf-meta">Oct 2025 to Nov 2025 &nbsp; Sole hardware and firmware designer &nbsp; Course project, team of two &nbsp; <span class="pf-badge pf-ok">Completed</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/Aiot-project-ESP32C3"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<div class="pf-meta">Oct 2025 to Nov 2025 &nbsp; Course project, team of two &nbsp; My part: hardware, firmware and WeChat Mini Program &nbsp; <span class="pf-badge pf-ok">Completed</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/Aiot-project-ESP32C3"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
 <p>Desktop assistant for an AIoT course. I designed and built the device, wrote all of its firmware, connected it to Huawei Cloud and wrote a WeChat Mini Program to control it remotely. My teammate built the YOLOv5 camera node on an Orange Pi.</p>
 <div class="pf-chips"><span class="pf-chip">ESP32-C3</span><span class="pf-chip">PlatformIO</span><span class="pf-chip">FreeRTOS</span><span class="pf-chip">MQTT</span><span class="pf-chip">Huawei Cloud IoTDA</span><span class="pf-chip">WeChat Mini Program</span></div>
 <div class="pf-gal pf-gal3">
