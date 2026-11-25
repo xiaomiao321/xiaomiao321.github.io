@@ -69,7 +69,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <div class="pf-grid">
 <a class="pf-card" href="#lamp"><img src="img/lamp_robot.jpg" alt="Lamp robot"><div><b>Desk Lamp Motor Controller</b><span class="pf-badge pf-ok">Board tested</span></div></a>
 <a class="pf-card" href="#temp"><img src="img/temp_v2_display.jpg" alt="Alarm controller"><div><b>PT100 Alarm Controller</b><span class="pf-badge pf-ok">Delivered</span></div></a>
-<a class="pf-card" href="#glove"><img src="img/srtp_stim.jpg" alt="Stimulation board"><div><b>Tremor Glove Boards</b><span class="pf-badge pf-wip">Revising v1</span></div></a>
+<a class="pf-card" href="#glove"><img src="img/srtp_stim.jpg" alt="Stimulation board"><div><b>Tremor Glove Boards</b><span class="pf-badge pf-wip">v2 fabricated</span></div></a>
 <a class="pf-card" href="#drone"><img src="img/drone.jpg" alt="Quadcopter"><div><b>Quadcopter Flight Controller</b><span class="pf-badge pf-wip">Bench-tested</span></div></a>
 <a class="pf-card" href="#clock"><img src="img/clock_front.jpg" alt="ESP32 clock"><div><b>ESP32-C3 IoT Clock</b><span class="pf-badge pf-ok">Completed</span></div></a>
 </div>
@@ -145,7 +145,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 
 <div class="pf-proj" id="glove">
 <h2>Tremor Assessment and Intervention Glove</h2>
-<div class="pf-meta">SRTP research project, <a href="https://person.zju.edu.cn/en/panyun">Prof. Yun Pan's lab</a>, Feb 2026 to present &nbsp; Sole board designer &nbsp; <span class="pf-badge pf-design">v1 layout complete</span> <span class="pf-badge pf-wip">v2 revision in progress</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/SRTP"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
+<div class="pf-meta">SRTP research project, <a href="https://person.zju.edu.cn/en/panyun">Prof. Yun Pan's lab</a>, Feb 2026 to present &nbsp; Sole board designer &nbsp; <span class="pf-badge pf-wip">v2 fabricated, not yet powered</span> &nbsp; <a class="pf-gh" href="https://github.com/xiaomiao321/SRTP"><svg class="pf-ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source on GitHub</a></div>
 <p>A wearable glove that measures hand tremor and applies transcutaneous electrical stimulation. Two stacked boards connected over SPI. Research prototype, no medical claims.</p>
 <div class="pf-chips"><span class="pf-chip">nRF52832 BLE</span><span class="pf-chip">NNC6121</span><span class="pf-chip">4-layer and 6-layer PCB</span><span class="pf-chip">High-voltage layout</span><span class="pf-chip">EasyEDA scripting</span></div>
 <h3>Boards</h3>
@@ -164,7 +164,7 @@ a.pf-gh:hover, .pf-links a:hover { border-color: currentColor; }
 <figure><img src="img/srtp_nnc.jpg" alt="NNC6121 area"><figcaption>Around the NNC6121, close-up</figcaption></figure>
 <figure><img src="img/srtp_stack.jpg" alt="Stack alignment check"><figcaption>Main board outline overlaid on the stimulation board to check connector and button alignment</figcaption></figure>
 </div>
-<p class="pf-meta">All images on this project are 3D renders and layout exports of the first revision. The boards are being revised before fabrication.</p>
+<p class="pf-meta">All images on this project are 3D renders and layout exports of the first revision. The second revision of both boards has been fabricated and is not yet powered up.</p>
 <div class="pf-cols">
 <div>
 <h3>Main board</h3>
